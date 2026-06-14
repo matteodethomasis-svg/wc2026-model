@@ -5,12 +5,15 @@ name: Refresh model & deploy site
 # regenerates web/data.json, commits it, and publishes web/ to GitHub Pages.
 on:
   schedule:
-    - cron: "*/10 * * * *"   # every 10 minutes (UTC) — catches results minutes after FT
+    - cron: "*/20 * * * *"   # every 20 min — comfortably longer than a run, avoids overlap
 
   workflow_dispatch: {}        # manual "Run workflow" button
   push:
     branches: [main]
-    paths: [web/**, scripts/**, src/**]
+    # Only code changes re-trigger a deploy. NOT web/data.json or reports/ — those are
+    # written by the bot itself, and including them would make every auto-commit
+    # re-trigger the workflow in an endless overlapping loop.
+    paths: [scripts/**, src/**, web/index.html, web/style.css, web/app.js, '.github/workflows/**']
 
 permissions:
   contents: write   # to commit refreshed data.json
@@ -38,11 +41,17 @@ jobs:
         # contains it. Set it once: repo Settings -> Secrets and variables -> Actions
         # -> New secret named MODEL_CONFIG_JSON with the JSON from your local
         # model_config.json. Without it, CI would run the de-tuned baseline.
+        # continue-on-error: a transient feed/network hiccup must not block the deploy;
+        # the site then ships with the last good web/data.json from the repo.
+        continue-on-error: true
         env:
           MODEL_CONFIG_JSON: ${{ secrets.MODEL_CONFIG_JSON }}
-        run: uv run python scripts/refresh_model_and_site.py --simulations 2000
+        run: uv run python scripts/refresh_model_and_site.py --simulations 1000
 
       - name: Commit refreshed data (if changed)
+        # Never let a push race (concurrent runs / your manual pushes) fail the job —
+        # the site deploy must still happen. Rebase-pull-retry, then swallow failure.
+        continue-on-error: true
         run: |
           git config user.name "wc2026-bot"
           git config user.email "actions@github.com"
@@ -51,7 +60,11 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "auto: refresh model + site ($(date -u +%Y-%m-%dT%H:%MZ))"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && break
+              echo "push attempt $i failed; retrying after rebase…"
+              sleep 5
+            done
           fi
 
       - name: Upload Pages artifact
