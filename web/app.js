@@ -419,6 +419,90 @@ function renderSimMany(counts, runs) {
     </div>`;
 }
 
+// ---------- Predict a game ----------
+function _ratingOf(team) {
+  const t = (DATA.sim_engine?.teams || []).find((x) => x.team === team);
+  return t ? t.rating : null;
+}
+
+function predictGame(match) {
+  // Use the model's OFFICIAL calibrated 1/X/2 (precise), and add Monte-Carlo
+  // scorelines from the team ratings for colour.
+  const ra = _ratingOf(match.home), rb = _ratingOf(match.away);
+  const scoreCounts = {};
+  let simHome = 0, simDraw = 0, simAway = 0;
+  const N = 4000;
+  if (ra != null && rb != null) {
+    for (let i = 0; i < N; i++) {
+      const [hg, ag] = SIM.playMatch(match.home, match.away, { [match.home]: ra, [match.away]: rb }, DATA.sim_engine.home_advantage * (match.neutral ? 0 : 1));
+      const key = `${Math.min(hg, 6)}–${Math.min(ag, 6)}`;
+      scoreCounts[key] = (scoreCounts[key] || 0) + 1;
+      if (hg > ag) simHome++; else if (hg < ag) simAway++; else simDraw++;
+    }
+  }
+  const topScores = Object.entries(scoreCounts)
+    .sort((a, b) => b[1] - a[1]).slice(0, 4)
+    .map(([s, n]) => ({ score: s, pct: (n / N) * 100 }));
+  return { topScores, simN: N };
+}
+
+function renderPrediction(match) {
+  const out = $("#pg-result");
+  const probs = { home: match.p_home, draw: match.p_draw, away: match.p_away };
+  const pickSide = match.pick;
+  const conf = match.confidence;
+  const confTier = conf >= 60 ? "high" : conf >= 40 ? "med" : "low";
+  const [pl] = pickLabel(pickSide);
+  const pickName = pickSide === "home" ? match.home : pickSide === "away" ? match.away : "a draw";
+  const mc = predictGame(match);
+
+  out.innerHTML = `
+    <div class="sim-result">
+      <div class="mc-teams" style="margin-bottom:10px">
+        <span class="home">${esc(match.home)}</span>
+        <span class="mc-vs">${esc(match.date)}</span>
+        <span class="away">${esc(match.away)}</span>
+      </div>
+      <div class="probbar" style="height:32px">
+        <span class="p-home" style="width:${probs.home}%">${probs.home >= 10 ? probs.home + "%" : ""}</span>
+        <span class="p-draw" style="width:${probs.draw}%">${probs.draw >= 10 ? "X " + probs.draw + "%" : ""}</span>
+        <span class="p-away" style="width:${probs.away}%">${probs.away >= 10 ? probs.away + "%" : ""}</span>
+      </div>
+      <div class="mc-odds" style="margin-top:6px">
+        <span>${esc(match.home)} <b>${fmtPct(probs.home)}</b></span>
+        <span>Draw <b>${fmtPct(probs.draw)}</b></span>
+        <span>${esc(match.away)} <b>${fmtPct(probs.away)}</b></span>
+      </div>
+      <div class="pg-call">
+        Model leans <span class="pill ${pickLabel(pickSide)[1]}">${pl}</span> <b>${esc(pickName)}</b>
+        <span class="conf conf-${confTier}">· ${fmtPct(conf)} confident
+          <span class="conf-bar"><span style="width:${conf}%"></span></span>
+        </span>
+      </div>
+      ${mc.topScores.length ? `
+      <div class="pg-scores">
+        <div class="hint">Most likely scorelines (${mc.simN.toLocaleString()} simulations):</div>
+        <div class="score-chips">
+          ${mc.topScores.map((s) => `<span class="score-chip">${esc(match.home.slice(0,3).toUpperCase())} ${s.score} ${esc(match.away.slice(0,3).toUpperCase())} <b>${s.pct.toFixed(0)}%</b></span>`).join("")}
+        </div>
+      </div>` : ""}
+      ${match.home_xg != null ? `<div class="mc-xg" style="margin-top:8px">📊 Expected goals: <b>${fmt(match.home_xg,2)}</b> – <b>${fmt(match.away_xg,2)}</b></div>` : ""}
+    </div>`;
+}
+
+function initPredictGame() {
+  const sel = $("#pg-match");
+  if (!sel) return;
+  const upcoming = DATA.predictions.filter((m) => !m.played);
+  if (!upcoming.length) { document.querySelectorAll(".sim-box")[1]?.style && (document.querySelectorAll(".sim-box")[1].style.display = "none"); return; }
+  sel.innerHTML = upcoming.map((m, i) =>
+    `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)}</option>`).join("");
+  const run = () => renderPrediction(upcoming[parseInt(sel.value, 10) || 0]);
+  $("#pg-run").addEventListener("click", run);
+  sel.addEventListener("change", run);
+  run();
+}
+
 function initSimulator() {
   const engine = DATA.sim_engine;
   const box = document.querySelector(".sim-box");
@@ -464,6 +548,7 @@ async function boot() {
   renderLeaderboard();
   renderTrackRecord();
   initSimulator();
+  initPredictGame();
   initH2H();
   renderTitleRace();
 }

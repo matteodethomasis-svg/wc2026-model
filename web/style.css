@@ -189,6 +189,13 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .sim-result { margin-top: 12px; }
 .sim-result .champ { font-size: 18px; }
 .sim-result .champ b { color: var(--gold); }
+.pg-call { margin-top: 12px; font-size: 14px; }
+.pg-call b { color: var(--text); }
+.pg-scores { margin-top: 14px; }
+.score-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.score-chip { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.score-chip b { color: var(--accent); }
+#pg-match { flex: 1; min-width: 200px; }
 
 /* fun */
 .h2h-pickers { display: flex; align-items: center; gap: 12px; margin: 12px 0; flex-wrap: wrap; }

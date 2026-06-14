@@ -162,8 +162,22 @@
         <div id="sim-many"></div>
       </div>
 
+      <div class="sim-box">
+        <h3 class="section-label">⚽ Let's predict a game</h3>
+        <p class="hint">
+          Pick an upcoming match from the schedule and we'll run it through the model
+          thousands of times: win / draw / win chances, how confident the model is, and
+          the most likely scorelines. (Goalscorer predictions coming in a future update.)
+        </p>
+        <div class="h2h-pickers">
+          <select id="pg-match"></select>
+          <button id="pg-run" class="sim-btn">⚽ Predict</button>
+        </div>
+        <div id="pg-result"></div>
+      </div>
+
       <div class="h2h">
-        <h3 class="section-label">⚔️ Head-to-head simulator</h3>
+        <h3 class="section-label">⚔️ Quick head-to-head</h3>
         <div class="h2h-pickers">
           <select id="h2h-a"></select>
           <span class="vs">vs</span>
