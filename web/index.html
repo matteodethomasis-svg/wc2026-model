@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WC2026 Model — Predictions, Edge & Reliability</title>
+  <meta name="description" content="A football model for the 2026 World Cup: match predictions, where it beats the market, and how much you can trust it." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">
+        <span class="ball">⚽</span>
+        <div>
+          <h1>WC2026 Model</h1>
+          <p class="tagline">Predictions · Market edge · Reliability — explained for humans.</p>
+        </div>
+      </div>
+      <div class="meta" id="meta"></div>
+    </div>
+    <nav class="tabs wrap">
+      <button class="tab active" data-tab="predictions">🏆 Predictions</button>
+      <button class="tab" data-tab="edge">💰 Edge vs Market</button>
+      <button class="tab" data-tab="reliability">📊 Reliability</button>
+      <button class="tab" data-tab="track">🎯 Track Record</button>
+      <button class="tab" data-tab="fun">🎲 Fun Zone</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- PREDICTIONS -->
+    <section id="predictions" class="panel active">
+      <div class="intro">
+        <h2>Every match, what the model thinks</h2>
+        <p>
+          For each game we show the chance of a <b>home win (1)</b>, <b>draw (X)</b> and
+          <b>away win (2)</b>, plus the model's <b>expected goals</b>. The
+          <span class="pill pill-home">colored badge</span> is the model's call.
+          "Fair odds" are what the odds <i>should</i> be if the model is right
+          (1 ÷ probability) — handy to compare against a bookmaker.
+        </p>
+      </div>
+      <div class="controls">
+        <input type="search" id="pred-search" placeholder="🔎 Filter by team…" />
+        <select id="pred-sort">
+          <option value="date">Sort: by date</option>
+          <option value="confidence">Sort: most confident</option>
+          <option value="upset">Sort: closest games</option>
+        </select>
+      </div>
+      <div id="pred-list" class="card-grid"></div>
+    </section>
+
+    <!-- EDGE -->
+    <section id="edge" class="panel">
+      <div class="intro">
+        <h2>Where the model disagrees with the market 💸</h2>
+        <p>
+          The market (bookmakers &amp; Polymarket) is the toughest "rival model" out there.
+          When our model gives an outcome a <b>higher</b> chance than the market's
+          <b>no-vig</b> price implies, that's an <b>edge</b> — a possible value bet.
+          <b>EV</b> (expected value) is your average profit per 1 unit staked if the model is right.
+          <span class="legend"><span class="dot pos"></span> green = value · <span class="dot neg"></span> red = market disagrees</span>
+        </p>
+        <p class="reality-check">
+          🧠 <b>Reality check:</b> a <i>huge</i> edge usually means the <b>model</b> is wrong, not that
+          you found free money — deep, liquid markets (Polymarket has tens of millions in volume) are
+          hard to beat. Our sim tends to <b>over-rate favourites</b> for the title because it doesn't fully
+          capture tournament chaos. Treat big outright edges as "the model is bullish here," not as a lock.
+        </p>
+      </div>
+
+      <h3 class="section-label">🥇 World Cup winner — model vs Polymarket</h3>
+      <p class="hint">Live prediction-market prices vs our tournament simulation.</p>
+      <div id="outright-table" class="table-wrap"></div>
+
+      <h3 class="section-label">⚔️ Match odds — model vs bookmakers</h3>
+      <p class="hint">Sample of matches where we have bookmaker prices on file.</p>
+      <div id="match-edges" class="card-grid"></div>
+    </section>
+
+    <!-- RELIABILITY -->
+    <section id="reliability" class="panel">
+      <div class="intro">
+        <h2>How much can you trust it? 🧪</h2>
+        <p>
+          We backtested the model on real past tournaments and scored it against
+          simpler rivals. <b>Log loss</b> is the headline number: it punishes
+          confident-but-wrong predictions — <b>lower is better</b>. A model that just
+          guessed randomly scores ~1.10; beating that, and beating the simpler
+          football models, is the whole game.
+        </p>
+      </div>
+      <div id="leaderboard" class="table-wrap"></div>
+      <div class="strengths">
+        <div class="card good">
+          <h3>✅ Strengths</h3>
+          <ul>
+            <li>Beats Elo-only, recent-form, and Dixon-Coles baselines on backtest.</li>
+            <li>Uses <b>expected goals</b> (shot quality), not just results.</li>
+            <li><b>Squad &amp; lineup layer</b>: rates the projected XI + keeper, so strong-roster
+                teams (e.g. France) aren't under-rated by national Elo alone.</li>
+            <li>Adjusts for <b>injuries / availability</b> of expected starters.</li>
+            <li>Head-to-head history adds a small but real, validated edge.</li>
+          </ul>
+        </div>
+        <div class="card bad">
+          <h3>⚠️ Weaknesses</h3>
+          <ul>
+            <li>Football is low-scoring &amp; chaotic — single games are hard.</li>
+            <li>Tends to <b>over-rate South American sides</b> for the title vs the market.</li>
+            <li>Coach quality isn't modelled yet (no leak-free historical data).</li>
+            <li>Neutral-venue World Cup is unusual vs the training data.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACK RECORD -->
+    <section id="track" class="panel">
+      <div class="intro">
+        <h2>Model vs market — who's actually right? 🎯</h2>
+        <p>
+          Talk is cheap, so we keep score. Before each match we log what the model said
+          and what the market said; once it's played, we grade both on the real result
+          (<b>log loss</b> — lower is better). This is the honest, running head-to-head,
+          updated as the tournament goes.
+        </p>
+      </div>
+      <div id="track-scoreboard" class="track-scoreboard"></div>
+      <p class="hint">
+        Graded game by game: for each match, who gave the result that actually happened
+        the better score across the whole 1/X/2 distribution? We count wins per match —
+        a model can't game this by just over-predicting draws.
+      </p>
+      <h3 class="section-label">Played matches — model vs market, per game</h3>
+      <div id="track-table" class="table-wrap"></div>
+    </section>
+
+    <!-- FUN -->
+    <section id="fun" class="panel">
+      <div class="intro">
+        <h2>Play with it 🎮</h2>
+        <p>Pick two teams and see who the model favours, or browse the title-race odds.</p>
+      </div>
+
+      <div class="h2h">
+        <h3 class="section-label">⚔️ Head-to-head simulator</h3>
+        <div class="h2h-pickers">
+          <select id="h2h-a"></select>
+          <span class="vs">vs</span>
+          <select id="h2h-b"></select>
+        </div>
+        <div id="h2h-result"></div>
+      </div>
+
+      <h3 class="section-label">🏆 Who wins the World Cup?</h3>
+      <p class="hint">Champion probability from the tournament simulation.</p>
+      <div id="title-race" class="title-race"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>
+      Built from the WC2026 model's own backtests &amp; live reports. Probabilities are
+      model estimates, not guarantees — bet responsibly, and mostly just enjoy the football. ⚽
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

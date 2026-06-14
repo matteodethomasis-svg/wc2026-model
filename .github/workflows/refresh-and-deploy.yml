@@ -1,0 +1,65 @@
+name: Refresh model & deploy site
+
+# Runs on a schedule (every 30 min during the tournament) and on manual trigger.
+# Pulls the latest free results feed, refreshes the model + conditioned simulation,
+# regenerates web/data.json, commits it, and publishes web/ to GitHub Pages.
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # every 10 minutes (UTC) — catches results minutes after FT
+
+  workflow_dispatch: {}        # manual "Run workflow" button
+  push:
+    branches: [main]
+    paths: [web/**, scripts/**, src/**]
+
+permissions:
+  contents: write   # to commit refreshed data.json
+  pages: write
+  id-token: write
+
+concurrency:
+  group: refresh-and-deploy
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python + sync deps
+        run: uv sync --frozen || uv sync
+
+      - name: Refresh model, conditioned sim, and web data
+        run: uv run python scripts/refresh_model_and_site.py --simulations 2000
+
+      - name: Commit refreshed data (if changed)
+        run: |
+          git config user.name "wc2026-bot"
+          git config user.email "actions@github.com"
+          git add web/data.json reports/ data/interim/ models/ || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "auto: refresh model + site ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+  deploy:
+    needs: refresh
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

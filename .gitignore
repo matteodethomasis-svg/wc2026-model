@@ -1,0 +1,46 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Ignore the CONTENTS of heavy/derived data dirs (note: dir/* not dir/, so that the
+# `!` allow-list below can re-include specific files — git won't descend into a dir
+# excluded as `dir/`).
+data/raw/*
+data/raw/archive/*
+data/interim/*
+data/processed/*
+models/*
+reports/*
+
+# Keep reference data (small, needed) entirely.
+!data/reference/
+
+# Inputs the refresh pipeline + CI actually need.
+!data/raw/archive/
+!data/raw/archive/players.csv
+!data/raw/archive/coaches.csv
+!data/raw/international_results.csv
+!data/interim/international_results_augmented.csv
+!data/interim/polymarket_world_cup_winner.csv
+!models/baseline_dixon_coles_elo.pkl
+!reports/wc2026_squad_strength_ratings.csv
+!reports/wc2026_squad_strength_player_elo_ratings.csv
+!reports/wc2026_squad_players_with_player_elo.csv
+!reports/wc2026_squad_players_with_club_elo.csv
+!reports/baseline_latest_elo_ratings.csv
+!reports/baseline_training_frame.csv
+
+# Track-record ledgers must persist across CI runs (append-only history).
+!reports/track_record_match_ledger.csv
+!reports/track_record_outright_ledger.csv
+!reports/track_record_match_scored.csv
+!reports/track_record_summary.json
+
+# Never commit scratch files.
+reports/tmp_*
+data/raw/tmp_*
+data/interim/tmp_*

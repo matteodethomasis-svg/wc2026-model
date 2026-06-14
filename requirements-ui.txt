@@ -1,0 +1,3 @@
+# The web dashboard (web/) is plain HTML/CSS/JS — no runtime deps.
+# The data generator only needs pandas (already a core project dependency).
+pandas>=2.2
