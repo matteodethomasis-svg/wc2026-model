@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-06-14 22:41 UTC",
+    "generated_at": "2026-06-14 22:58 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -1895,116 +1895,27 @@
       "pick_correct": false
     }
   ],
-  "match_edges": [
-    {
-      "home": "Brazil",
-      "away": "Morocco",
-      "date": "2026-06-13",
-      "bookmaker": "best_listed_prices",
-      "source_title": "Brazil vs Morocco preview: Betting tips, odds and free bets (World Cup, Group C)",
-      "source_url": "https://www.thesun.co.uk/sport/39310967/brazil-vs-morocco-preview-betting-tips-predictions-world-cup/",
-      "outcomes": [
-        {
-          "label": "1",
-          "side": "home",
-          "model_p": 44.3,
-          "market_p": 57.0,
-          "edge": -12.7,
-          "ev": -28.4,
-          "book_odds": 1.6153846153846154
-        },
-        {
-          "label": "X",
-          "side": "draw",
-          "model_p": 32.7,
-          "market_p": 24.6,
-          "edge": 8.1,
-          "ev": 22.6,
-          "book_odds": 3.75
-        },
-        {
-          "label": "2",
-          "side": "away",
-          "model_p": 23.0,
-          "market_p": 18.4,
-          "edge": 4.6,
-          "ev": 15.0,
-          "book_odds": 5.0
-        }
-      ],
-      "best_edge": 8.1,
-      "best_ev": 22.6
-    },
-    {
-      "home": "Qatar",
-      "away": "Switzerland",
-      "date": "2026-06-13",
-      "bookmaker": "bet365",
-      "source_title": "World Cup: Qatar vs Switzerland predictions and betting tips - Get 6/1 on a Switzerland 3-0 win",
-      "source_url": "https://bettingwidgets.talksport.com/event?token=bNFCL3LHObTZQYrvEzXf0qsPQ3qNCMR2peVhzGtO",
-      "outcomes": [
-        {
-          "label": "1",
-          "side": "home",
-          "model_p": 3.3,
-          "market_p": 7.3,
-          "edge": -4.0,
-          "ev": -56.6,
-          "book_odds": 13.0
-        },
-        {
-          "label": "X",
-          "side": "draw",
-          "model_p": 11.5,
-          "market_p": 13.6,
-          "edge": -2.1,
-          "ev": -19.8,
-          "book_odds": 7.0
-        },
-        {
-          "label": "2",
-          "side": "away",
-          "model_p": 85.2,
-          "market_p": 79.1,
-          "edge": 6.1,
-          "ev": 2.2,
-          "book_odds": 1.2
-        }
-      ],
-      "best_edge": 6.1,
-      "best_ev": 2.2
-    }
-  ],
+  "match_edges": [],
   "outright_edges": [
     {
       "team": "Argentina",
-      "model_p": 21.6,
-      "market_p": 7.8,
-      "edge": 13.8,
-      "ev": 13.8,
-      "model_odds": 4.63,
-      "market_odds": 12.738853503184714,
-      "volume": 41426207.07730554
+      "model_p": 22.1,
+      "market_p": 8.0,
+      "edge": 14.1,
+      "ev": 14.1,
+      "model_odds": 4.52,
+      "market_odds": 12.578616352201257,
+      "volume": 41976479.02063153
     },
     {
       "team": "Spain",
-      "model_p": 23.0,
+      "model_p": 22.4,
       "market_p": 16.4,
-      "edge": 6.7,
-      "ev": 6.7,
-      "model_odds": 4.35,
+      "edge": 6.0,
+      "ev": 6.0,
+      "model_odds": 4.46,
       "market_odds": 6.116207951070336,
-      "volume": 44689711.4148885
-    },
-    {
-      "team": "Morocco",
-      "model_p": 4.2,
-      "market_p": 2.1,
-      "edge": 2.1,
-      "ev": 2.1,
-      "model_odds": 23.81,
-      "market_odds": 48.78048780487805,
-      "volume": 53636137.28560213
+      "volume": 44934961.111832455
     },
     {
       "team": "Colombia",
@@ -2014,57 +1925,67 @@
       "ev": 1.4,
       "model_odds": 33.33,
       "market_odds": 64.51612903225806,
-      "volume": 48615442.13717611
+      "volume": 48703302.74464112
     },
     {
-      "team": "England",
-      "model_p": 10.6,
-      "market_p": 9.7,
-      "edge": 0.9,
-      "ev": 0.9,
-      "model_odds": 9.43,
-      "market_odds": 10.362694300518134,
-      "volume": 38438685.052552216
+      "team": "Morocco",
+      "model_p": 3.4,
+      "market_p": 2.1,
+      "edge": 1.4,
+      "ev": 1.4,
+      "model_odds": 29.41,
+      "market_odds": 48.78048780487805,
+      "volume": 53821336.48632814
     },
     {
       "team": "Belgium",
-      "model_p": 2.8,
+      "model_p": 2.7,
       "market_p": 1.9,
-      "edge": 0.9,
-      "ev": 0.9,
-      "model_odds": 35.71,
+      "edge": 0.8,
+      "ev": 0.8,
+      "model_odds": 37.04,
       "market_odds": 51.282051282051285,
-      "volume": 49043753.0691658
-    },
-    {
-      "team": "Australia",
-      "model_p": 0.6,
-      "market_p": 0.4,
-      "edge": 0.2,
-      "ev": 0.2,
-      "model_odds": 166.67,
-      "market_odds": 285.7142857142857,
-      "volume": 58597791.11439266
-    },
-    {
-      "team": "Algeria",
-      "model_p": 0.4,
-      "market_p": 0.1,
-      "edge": 0.2,
-      "ev": 0.2,
-      "model_odds": 250.0,
-      "market_odds": 666.6666666666666,
-      "volume": 53144746.60121554
+      "volume": 49090021.4426388
     },
     {
       "team": "Senegal",
-      "model_p": 0.8,
+      "model_p": 0.9,
       "market_p": 0.7,
+      "edge": 0.2,
+      "ev": 0.2,
+      "model_odds": 111.11,
+      "market_odds": 153.84615384615384,
+      "volume": 44279574.27580359
+    },
+    {
+      "team": "Algeria",
+      "model_p": 0.3,
+      "market_p": 0.1,
       "edge": 0.1,
       "ev": 0.1,
-      "model_odds": 125.0,
-      "market_odds": 153.84615384615384,
-      "volume": 44232148.93437759
+      "model_odds": 333.33,
+      "market_odds": 666.6666666666666,
+      "volume": 53156889.12321556
+    },
+    {
+      "team": "Australia",
+      "model_p": 0.4,
+      "market_p": 0.4,
+      "edge": 0.1,
+      "ev": 0.1,
+      "model_odds": 250.0,
+      "market_odds": 285.7142857142857,
+      "volume": 58599028.62672565
+    },
+    {
+      "team": "Ivory Coast",
+      "model_p": 0.4,
+      "market_p": 0.4,
+      "edge": 0.1,
+      "ev": 0.1,
+      "model_odds": 250.0,
+      "market_odds": 285.7142857142857,
+      "volume": 60971133.68977029
     },
     {
       "team": "Canada",
@@ -2074,7 +1995,27 @@
       "ev": -0.1,
       "model_odds": 500.0,
       "market_odds": 400.0,
-      "volume": 51660814.86379116
+      "volume": 51662925.37795617
+    },
+    {
+      "team": "Egypt",
+      "model_p": 0.1,
+      "market_p": 0.1,
+      "edge": -0.1,
+      "ev": -0.1,
+      "model_odds": 1000.0,
+      "market_odds": 666.6666666666666,
+      "volume": 56661138.81935966
+    },
+    {
+      "team": "Iran",
+      "model_p": 0.1,
+      "market_p": 0.1,
+      "edge": -0.1,
+      "ev": -0.1,
+      "model_odds": 1000.0,
+      "market_odds": 666.6666666666666,
+      "volume": 52136685.76778988
     },
     {
       "team": "Cape Verde",
@@ -2084,7 +2025,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 42203260.24716404
+      "volume": 42204260.24716404
     },
     {
       "team": "Curaçao",
@@ -2094,7 +2035,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 43606922.22691622
+      "volume": 43607922.22691622
     },
     {
       "team": "Haiti",
@@ -2104,7 +2045,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 32643227.94182009
+      "volume": 32654227.94182009
     },
     {
       "team": "Iraq",
@@ -2114,7 +2055,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 29573885.602710936
+      "volume": 29574885.602710936
     },
     {
       "team": "Jordan",
@@ -2124,7 +2065,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 32329945.79188277
+      "volume": 32330945.79188277
     },
     {
       "team": "New Zealand",
@@ -2134,7 +2075,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 46193181.53264519
+      "volume": 46194181.53264519
     },
     {
       "team": "Panama",
@@ -2144,7 +2085,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 19775561.75575688
+      "volume": 19776561.75575688
     },
     {
       "team": "Qatar",
@@ -2154,7 +2095,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 43072954.15833187
+      "volume": 43073954.15833187
     },
     {
       "team": "Saudi Arabia",
@@ -2164,7 +2105,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 49804503.02288372
+      "volume": 49805503.02288372
     },
     {
       "team": "South Africa",
@@ -2174,7 +2115,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 38858282.30789427
+      "volume": 38859282.30789427
     },
     {
       "team": "Tunisia",
@@ -2184,7 +2125,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 36191742.263686016
+      "volume": 36192814.263686016
     },
     {
       "team": "Uzbekistan",
@@ -2194,7 +2135,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 60781202.13841757
+      "volume": 60782202.13841757
     },
     {
       "team": "Switzerland",
@@ -2204,27 +2145,7 @@
       "ev": -0.1,
       "model_odds": 125.0,
       "market_odds": 117.6470588235294,
-      "volume": 48339807.38638317
-    },
-    {
-      "team": "Ivory Coast",
-      "model_p": 0.2,
-      "market_p": 0.4,
-      "edge": -0.1,
-      "ev": -0.1,
-      "model_odds": 500.0,
-      "market_odds": 285.7142857142857,
-      "volume": 60764888.91277028
-    },
-    {
-      "team": "Sweden",
-      "model_p": 0.2,
-      "market_p": 0.4,
-      "edge": -0.1,
-      "ev": -0.1,
-      "model_odds": 500.0,
-      "market_odds": 285.7142857142857,
-      "volume": 41338493.90322313
+      "volume": 48438371.36627018
     },
     {
       "team": "Bosnia and Herzegovina",
@@ -2234,7 +2155,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 39078423.310717866
+      "volume": 39079438.707717866
     },
     {
       "team": "Czech Republic",
@@ -2244,7 +2165,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 50701081.95801585
+      "volume": 50718061.77801584
     },
     {
       "team": "DR Congo",
@@ -2254,17 +2175,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 62576756.925409794
-    },
-    {
-      "team": "Egypt",
-      "model_p": 0.0,
-      "market_p": 0.1,
-      "edge": -0.1,
-      "ev": -0.1,
-      "model_odds": null,
-      "market_odds": 666.6666666666666,
-      "volume": 56650085.91335966
+      "volume": 62588632.36140979
     },
     {
       "team": "Ghana",
@@ -2274,17 +2185,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 44002066.15644197
-    },
-    {
-      "team": "Iran",
-      "model_p": 0.0,
-      "market_p": 0.1,
-      "edge": -0.1,
-      "ev": -0.1,
-      "model_odds": null,
-      "market_odds": 666.6666666666666,
-      "volume": 52125194.89678988
+      "volume": 44014017.59744196
     },
     {
       "team": "Paraguay",
@@ -2294,17 +2195,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 57018548.27798752
-    },
-    {
-      "team": "Brazil",
-      "model_p": 6.6,
-      "market_p": 6.8,
-      "edge": -0.1,
-      "ev": -0.1,
-      "model_odds": 15.15,
-      "market_odds": 14.814814814814811,
-      "volume": 40482119.23790438
+      "volume": 57019637.37798753
     },
     {
       "team": "Austria",
@@ -2314,17 +2205,17 @@
       "ev": -0.2,
       "model_odds": 500.0,
       "market_odds": 222.22222222222223,
-      "volume": 52910437.21238735
+      "volume": 52933103.41188734
     },
     {
-      "team": "South Korea",
-      "model_p": 0.2,
+      "team": "Sweden",
+      "model_p": 0.1,
       "market_p": 0.4,
       "edge": -0.2,
       "ev": -0.2,
-      "model_odds": 500.0,
-      "market_odds": 222.22222222222223,
-      "volume": 65887158.2255537
+      "model_odds": 1000.0,
+      "market_odds": 285.7142857142857,
+      "volume": 41351373.652223125
     },
     {
       "team": "Scotland",
@@ -2334,7 +2225,7 @@
       "ev": -0.2,
       "model_odds": null,
       "market_odds": 400.0,
-      "volume": 54826768.786284246
+      "volume": 54829083.71945025
     },
     {
       "team": "Croatia",
@@ -2344,7 +2235,7 @@
       "ev": -0.2,
       "model_odds": 166.67,
       "market_odds": 117.6470588235294,
-      "volume": 54379531.22291942
+      "volume": 54406152.88934842
     },
     {
       "team": "Uruguay",
@@ -2354,435 +2245,412 @@
       "ev": -0.2,
       "model_odds": 166.67,
       "market_odds": 117.6470588235294,
-      "volume": 50374896.27337297
+      "volume": 50412947.206204966
     },
     {
       "team": "Ecuador",
-      "model_p": 0.2,
+      "model_p": 0.4,
       "market_p": 0.8,
-      "edge": -0.5,
-      "ev": -0.5,
-      "model_odds": 500.0,
+      "edge": -0.3,
+      "ev": -0.3,
+      "model_odds": 250.0,
       "market_odds": 133.33333333333334,
-      "volume": 55228750.96968354
+      "volume": 55240482.80868053
     },
     {
-      "team": "Japan",
-      "model_p": 1.0,
-      "market_p": 1.9,
-      "edge": -0.9,
-      "ev": -0.9,
-      "model_odds": 100.0,
-      "market_odds": 51.282051282051285,
-      "volume": 51007727.19642615
+      "team": "South Korea",
+      "model_p": 0.1,
+      "market_p": 0.4,
+      "edge": -0.3,
+      "ev": -0.3,
+      "model_odds": 1000.0,
+      "market_odds": 222.22222222222223,
+      "volume": 65897127.67680369
+    },
+    {
+      "team": "England",
+      "model_p": 9.3,
+      "market_p": 9.7,
+      "edge": -0.4,
+      "ev": -0.4,
+      "model_odds": 10.75,
+      "market_odds": 10.362694300518134,
+      "volume": 38498041.97551423
     },
     {
       "team": "Mexico",
-      "model_p": 0.2,
+      "model_p": 0.4,
       "market_p": 1.2,
+      "edge": -0.9,
+      "ev": -0.9,
+      "model_odds": 250.0,
+      "market_odds": 80.0,
+      "volume": 55998765.95460665
+    },
+    {
+      "team": "Brazil",
+      "model_p": 5.7,
+      "market_p": 6.8,
       "edge": -1.1,
       "ev": -1.1,
-      "model_odds": 500.0,
-      "market_odds": 80.0,
-      "volume": 55957503.60380866
+      "model_odds": 17.54,
+      "market_odds": 14.814814814814811,
+      "volume": 40654378.29554037
+    },
+    {
+      "team": "Japan",
+      "model_p": 0.7,
+      "market_p": 1.8,
+      "edge": -1.1,
+      "ev": -1.1,
+      "model_odds": 142.86,
+      "market_odds": 54.054054054054056,
+      "volume": 51083362.05035614
     },
     {
       "team": "Norway",
-      "model_p": 1.0,
+      "model_p": 1.3,
       "market_p": 2.5,
-      "edge": -1.5,
-      "ev": -1.5,
-      "model_odds": 100.0,
+      "edge": -1.1,
+      "ev": -1.1,
+      "model_odds": 76.92,
       "market_odds": 40.81632653061224,
-      "volume": 47079753.81105198
-    },
-    {
-      "team": "United States",
-      "model_p": 0.0,
-      "market_p": 2.1,
-      "edge": -2.1,
-      "ev": -2.1,
-      "model_odds": null,
-      "market_odds": 48.78048780487805,
-      "volume": 70304456.75140943
+      "volume": 47111892.47713299
     },
     {
       "team": "Netherlands",
-      "model_p": 2.6,
+      "model_p": 3.5,
       "market_p": 5.1,
-      "edge": -2.5,
-      "ev": -2.5,
-      "model_odds": 38.46,
-      "market_odds": 19.417475728155345,
-      "volume": 47025465.45480406
+      "edge": -1.6,
+      "ev": -1.6,
+      "model_odds": 28.57,
+      "market_odds": 19.8019801980198,
+      "volume": 47139077.1679661
+    },
+    {
+      "team": "United States",
+      "model_p": 0.3,
+      "market_p": 2.1,
+      "edge": -1.8,
+      "ev": -1.8,
+      "model_odds": 333.33,
+      "market_odds": 48.78048780487805,
+      "volume": 70378337.94464865
     },
     {
       "team": "Portugal",
-      "model_p": 7.8,
+      "model_p": 8.3,
       "market_p": 11.2,
-      "edge": -3.5,
-      "ev": -3.5,
-      "model_odds": 12.82,
+      "edge": -2.9,
+      "ev": -2.9,
+      "model_odds": 12.05,
       "market_odds": 8.88888888888889,
-      "volume": 46745622.073190026
+      "volume": 46812042.31493703
     },
     {
       "team": "Germany",
-      "model_p": 2.4,
+      "model_p": 2.3,
       "market_p": 6.0,
-      "edge": -3.6,
-      "ev": -3.6,
-      "model_odds": 41.67,
+      "edge": -3.8,
+      "ev": -3.8,
+      "model_odds": 43.48,
       "market_odds": 16.528925619834713,
-      "volume": 47048538.74156997
+      "volume": 47093497.034311935
     },
     {
       "team": "France",
-      "model_p": 8.2,
-      "market_p": 16.4,
-      "edge": -8.2,
-      "ev": -8.2,
-      "model_odds": 12.2,
-      "market_odds": 6.0790273556231,
-      "volume": 51252787.39668225
+      "model_p": 9.4,
+      "market_p": 16.1,
+      "edge": -6.7,
+      "ev": -6.7,
+      "model_odds": 10.64,
+      "market_odds": 6.230529595015576,
+      "volume": 51473397.74999631
     }
   ],
   "reliability": {
-    "models": [
-      {
-        "name": "elo_multinomial_xg_h2h",
-        "label": "Our model (xG + H2H)",
-        "log_loss": 1.0649,
-        "brier": 0.6441,
-        "rps": 0.2232,
-        "ece": 0.0799,
-        "is_ours": true,
-        "is_best": true
-      },
-      {
-        "name": "elo_multinomial_xg",
-        "label": "xG model",
-        "log_loss": 1.0727,
-        "brier": 0.6493,
-        "rps": 0.2258,
-        "ece": 0.078,
-        "is_ours": false,
-        "is_best": false
-      },
-      {
-        "name": "elo_multinomial_form",
-        "label": "Recent form",
-        "log_loss": 1.0974,
-        "brier": 0.6602,
-        "rps": 0.2295,
-        "ece": 0.0984,
-        "is_ours": false,
-        "is_best": false
-      },
-      {
-        "name": "uniform",
-        "label": "Random guess",
-        "log_loss": 1.0986,
-        "brier": 0.6667,
-        "rps": 0.2339,
-        "ece": 0.0585,
-        "is_ours": false,
-        "is_best": false
-      },
-      {
-        "name": "historical_prior",
-        "label": "Historical average",
-        "log_loss": 1.1042,
-        "brier": 0.671,
-        "rps": 0.2379,
-        "ece": 0.0472,
-        "is_ours": false,
-        "is_best": false
-      },
-      {
-        "name": "elo_multinomial",
-        "label": "Elo only",
-        "log_loss": 1.1124,
-        "brier": 0.6742,
-        "rps": 0.2393,
-        "ece": 0.087,
-        "is_ours": false,
-        "is_best": false
-      },
-      {
-        "name": "dixon_coles_elo",
-        "label": "Dixon-Coles",
-        "log_loss": 1.6464,
-        "brier": 0.839,
-        "rps": 0.3048,
-        "ece": 0.118,
-        "is_ours": false,
-        "is_best": false
-      }
-    ]
+    "models": []
   },
   "tournament": {
     "teams": [
       {
         "team": "Spain",
         "group": "H",
-        "champion": 23.0,
-        "final": 36.0,
-        "semi": 47.2,
-        "quarter": 60.2,
-        "group_winner": 87.2
+        "champion": 22.4,
+        "final": 34.6,
+        "semi": 46.4,
+        "quarter": 56.9,
+        "group_winner": 84.7
       },
       {
         "team": "Argentina",
         "group": "J",
-        "champion": 21.6,
-        "final": 33.6,
-        "semi": 47.2,
-        "quarter": 62.0,
-        "group_winner": 74.2
-      },
-      {
-        "team": "England",
-        "group": "L",
-        "champion": 10.6,
-        "final": 21.0,
-        "semi": 37.8,
-        "quarter": 56.4,
-        "group_winner": 71.6
+        "champion": 22.1,
+        "final": 35.2,
+        "semi": 49.7,
+        "quarter": 63.9,
+        "group_winner": 76.4
       },
       {
         "team": "France",
         "group": "I",
-        "champion": 8.2,
-        "final": 15.8,
-        "semi": 33.8,
-        "quarter": 54.4,
-        "group_winner": 59.8
+        "champion": 9.4,
+        "final": 17.2,
+        "semi": 33.1,
+        "quarter": 52.9,
+        "group_winner": 58.3
+      },
+      {
+        "team": "England",
+        "group": "L",
+        "champion": 9.3,
+        "final": 19.2,
+        "semi": 36.6,
+        "quarter": 55.0,
+        "group_winner": 71.3
       },
       {
         "team": "Portugal",
         "group": "K",
-        "champion": 7.8,
+        "champion": 8.3,
         "final": 16.4,
-        "semi": 28.2,
-        "quarter": 50.8,
-        "group_winner": 61.8
+        "semi": 27.9,
+        "quarter": 50.4,
+        "group_winner": 61.0
       },
       {
         "team": "Brazil",
         "group": "C",
-        "champion": 6.6,
-        "final": 13.2,
-        "semi": 25.8,
-        "quarter": 46.4,
-        "group_winner": 57.0
+        "champion": 5.7,
+        "final": 11.5,
+        "semi": 25.6,
+        "quarter": 44.3,
+        "group_winner": 57.8
+      },
+      {
+        "team": "Netherlands",
+        "group": "F",
+        "champion": 3.5,
+        "final": 9.1,
+        "semi": 19.5,
+        "quarter": 35.9,
+        "group_winner": 53.6
       },
       {
         "team": "Morocco",
         "group": "C",
-        "champion": 4.2,
-        "final": 9.8,
-        "semi": 22.8,
-        "quarter": 43.4,
-        "group_winner": 34.2
+        "champion": 3.4,
+        "final": 9.0,
+        "semi": 22.0,
+        "quarter": 41.2,
+        "group_winner": 33.8
       },
       {
         "team": "Colombia",
         "group": "K",
         "champion": 3.0,
-        "final": 6.0,
-        "semi": 15.6,
-        "quarter": 29.6,
-        "group_winner": 31.0
+        "final": 6.4,
+        "semi": 14.1,
+        "quarter": 29.0,
+        "group_winner": 32.3
       },
       {
         "team": "Belgium",
         "group": "G",
-        "champion": 2.8,
-        "final": 8.6,
-        "semi": 17.0,
-        "quarter": 49.4,
-        "group_winner": 70.8
-      },
-      {
-        "team": "Netherlands",
-        "group": "F",
-        "champion": 2.6,
-        "final": 7.2,
-        "semi": 17.6,
-        "quarter": 33.8,
-        "group_winner": 55.0
+        "champion": 2.7,
+        "final": 8.0,
+        "semi": 17.1,
+        "quarter": 50.0,
+        "group_winner": 70.6
       },
       {
         "team": "Germany",
         "group": "E",
-        "champion": 2.4,
-        "final": 6.0,
-        "semi": 17.8,
-        "quarter": 34.0,
-        "group_winner": 66.6
-      },
-      {
-        "team": "Japan",
-        "group": "F",
-        "champion": 1.0,
-        "final": 3.6,
-        "semi": 12.0,
-        "quarter": 24.8,
-        "group_winner": 34.0
+        "champion": 2.3,
+        "final": 6.4,
+        "semi": 17.6,
+        "quarter": 33.4,
+        "group_winner": 64.8
       },
       {
         "team": "Norway",
         "group": "I",
-        "champion": 1.0,
-        "final": 2.8,
-        "semi": 6.8,
-        "quarter": 19.6,
-        "group_winner": 22.4
+        "champion": 1.3,
+        "final": 3.6,
+        "semi": 7.4,
+        "quarter": 20.5,
+        "group_winner": 23.8
       },
       {
         "team": "Senegal",
         "group": "I",
-        "champion": 0.8,
-        "final": 2.4,
-        "semi": 6.6,
-        "quarter": 15.0,
-        "group_winner": 17.0
+        "champion": 0.9,
+        "final": 2.1,
+        "semi": 7.0,
+        "quarter": 17.3,
+        "group_winner": 17.2
       },
       {
         "team": "Switzerland",
         "group": "B",
         "champion": 0.8,
-        "final": 2.2,
-        "semi": 6.4,
-        "quarter": 18.8,
-        "group_winner": 52.4
+        "final": 1.8,
+        "semi": 6.5,
+        "quarter": 21.9,
+        "group_winner": 53.7
       },
       {
-        "team": "Croatia",
-        "group": "L",
-        "champion": 0.6,
-        "final": 3.6,
-        "semi": 8.6,
-        "quarter": 22.0,
-        "group_winner": 26.6
+        "team": "Japan",
+        "group": "F",
+        "champion": 0.7,
+        "final": 3.4,
+        "semi": 11.1,
+        "quarter": 24.9,
+        "group_winner": 33.9
       },
       {
         "team": "Uruguay",
         "group": "H",
         "champion": 0.6,
+        "final": 2.6,
+        "semi": 6.9,
+        "quarter": 17.2,
+        "group_winner": 13.8
+      },
+      {
+        "team": "Croatia",
+        "group": "L",
+        "champion": 0.6,
         "final": 2.4,
-        "semi": 6.8,
-        "quarter": 18.0,
-        "group_winner": 12.2
+        "semi": 9.0,
+        "quarter": 21.9,
+        "group_winner": 26.1
+      },
+      {
+        "team": "Ecuador",
+        "group": "E",
+        "champion": 0.4,
+        "final": 1.6,
+        "semi": 5.7,
+        "quarter": 17.4,
+        "group_winner": 19.2
       },
       {
         "team": "Australia",
         "group": "D",
-        "champion": 0.6,
-        "final": 2.0,
-        "semi": 6.4,
-        "quarter": 21.4,
-        "group_winner": 49.2
+        "champion": 0.4,
+        "final": 1.5,
+        "semi": 5.1,
+        "quarter": 20.7,
+        "group_winner": 49.3
       },
       {
-        "team": "Algeria",
-        "group": "J",
+        "team": "Mexico",
+        "group": "A",
         "champion": 0.4,
-        "final": 1.0,
-        "semi": 3.8,
-        "quarter": 11.0,
-        "group_winner": 14.0
+        "final": 1.3,
+        "semi": 4.2,
+        "quarter": 15.5,
+        "group_winner": 55.3
       },
       {
         "team": "Ivory Coast",
         "group": "E",
-        "champion": 0.2,
+        "champion": 0.4,
+        "final": 1.1,
+        "semi": 3.9,
+        "quarter": 12.5,
+        "group_winner": 15.9
+      },
+      {
+        "team": "Algeria",
+        "group": "J",
+        "champion": 0.3,
         "final": 1.2,
-        "semi": 3.2,
-        "quarter": 11.0,
-        "group_winner": 15.4
+        "semi": 3.4,
+        "quarter": 10.7,
+        "group_winner": 13.2
+      },
+      {
+        "team": "United States",
+        "group": "D",
+        "champion": 0.3,
+        "final": 0.6,
+        "semi": 3.0,
+        "quarter": 13.5,
+        "group_winner": 42.8
       },
       {
         "team": "Austria",
         "group": "J",
         "champion": 0.2,
-        "final": 1.0,
-        "semi": 3.2,
-        "quarter": 9.4,
-        "group_winner": 11.2
-      },
-      {
-        "team": "Ecuador",
-        "group": "E",
-        "champion": 0.2,
-        "final": 1.0,
-        "semi": 5.6,
-        "quarter": 17.4,
-        "group_winner": 17.8
-      },
-      {
-        "team": "Mexico",
-        "group": "A",
-        "champion": 0.2,
-        "final": 1.0,
-        "semi": 4.2,
-        "quarter": 16.8,
-        "group_winner": 52.8
+        "final": 1.2,
+        "semi": 3.1,
+        "quarter": 8.4,
+        "group_winner": 9.6
       },
       {
         "team": "Canada",
         "group": "B",
         "champion": 0.2,
         "final": 0.8,
-        "semi": 2.8,
-        "quarter": 10.0,
-        "group_winner": 33.6
+        "semi": 3.3,
+        "quarter": 11.1,
+        "group_winner": 32.7
       },
       {
         "team": "South Korea",
         "group": "A",
-        "champion": 0.2,
+        "champion": 0.1,
+        "final": 0.6,
+        "semi": 2.7,
+        "quarter": 9.9,
+        "group_winner": 38.7
+      },
+      {
+        "team": "Egypt",
+        "group": "G",
+        "champion": 0.1,
+        "final": 0.4,
+        "semi": 1.5,
+        "quarter": 5.2,
+        "group_winner": 12.2
+      },
+      {
+        "team": "Iran",
+        "group": "G",
+        "champion": 0.1,
         "final": 0.2,
-        "semi": 2.4,
-        "quarter": 8.2,
-        "group_winner": 40.6
+        "semi": 1.7,
+        "quarter": 7.0,
+        "group_winner": 15.0
       },
       {
         "team": "Sweden",
         "group": "F",
-        "champion": 0.2,
+        "champion": 0.1,
         "final": 0.2,
-        "semi": 0.4,
-        "quarter": 3.0,
-        "group_winner": 7.4
+        "semi": 0.3,
+        "quarter": 2.9,
+        "group_winner": 8.6
       },
       {
         "team": "Turkey",
         "group": "D",
         "champion": 0.0,
-        "final": 0.4,
-        "semi": 1.8,
-        "quarter": 7.0,
-        "group_winner": 5.8
+        "final": 0.3,
+        "semi": 2.0,
+        "quarter": 7.6,
+        "group_winner": 5.9
       },
       {
-        "team": "United States",
-        "group": "D",
+        "team": "Scotland",
+        "group": "C",
         "champion": 0.0,
-        "final": 0.4,
-        "semi": 2.8,
-        "quarter": 15.4,
-        "group_winner": 43.2
-      },
-      {
-        "team": "Egypt",
-        "group": "G",
-        "champion": 0.0,
-        "final": 0.2,
-        "semi": 1.2,
-        "quarter": 4.6,
-        "group_winner": 12.2
+        "final": 0.1,
+        "semi": 1.4,
+        "quarter": 5.9,
+        "group_winner": 8.4
       },
       {
         "team": "Bosnia and Herzegovina",
@@ -2791,7 +2659,7 @@
         "final": 0.0,
         "semi": 0.0,
         "quarter": 1.4,
-        "group_winner": 9.4
+        "group_winner": 8.5
       },
       {
         "team": "Cape Verde",
@@ -2799,8 +2667,8 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.2,
-        "group_winner": 0.4
+        "quarter": 0.3,
+        "group_winner": 0.8
       },
       {
         "team": "Curaçao",
@@ -2809,25 +2677,25 @@
         "final": 0.0,
         "semi": 0.0,
         "quarter": 0.0,
-        "group_winner": 0.2
+        "group_winner": 0.1
       },
       {
         "team": "Czech Republic",
         "group": "A",
         "champion": 0.0,
         "final": 0.0,
-        "semi": 0.4,
-        "quarter": 5.0,
-        "group_winner": 6.4
+        "semi": 0.6,
+        "quarter": 5.9,
+        "group_winner": 5.6
       },
       {
         "team": "DR Congo",
         "group": "K",
         "champion": 0.0,
         "final": 0.0,
-        "semi": 0.2,
-        "quarter": 1.0,
-        "group_winner": 3.2
+        "semi": 0.3,
+        "quarter": 1.6,
+        "group_winner": 3.6
       },
       {
         "team": "Ghana",
@@ -2835,8 +2703,8 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.0,
-        "group_winner": 1.0
+        "quarter": 0.1,
+        "group_winner": 1.2
       },
       {
         "team": "Haiti",
@@ -2848,22 +2716,13 @@
         "group_winner": 0.0
       },
       {
-        "team": "Iran",
-        "group": "G",
-        "champion": 0.0,
-        "final": 0.0,
-        "semi": 1.8,
-        "quarter": 7.8,
-        "group_winner": 15.2
-      },
-      {
         "team": "Iraq",
         "group": "I",
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.2,
-        "group_winner": 0.8
+        "quarter": 0.1,
+        "group_winner": 0.7
       },
       {
         "team": "Jordan",
@@ -2871,8 +2730,8 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.6,
-        "group_winner": 0.6
+        "quarter": 0.4,
+        "group_winner": 0.8
       },
       {
         "team": "New Zealand",
@@ -2880,8 +2739,8 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.0,
-        "group_winner": 1.8
+        "quarter": 0.3,
+        "group_winner": 2.2
       },
       {
         "team": "Panama",
@@ -2889,17 +2748,17 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.4,
-        "group_winner": 0.8
+        "quarter": 0.3,
+        "group_winner": 1.4
       },
       {
         "team": "Paraguay",
         "group": "D",
         "champion": 0.0,
         "final": 0.0,
-        "semi": 0.4,
-        "quarter": 1.0,
-        "group_winner": 1.8
+        "semi": 0.2,
+        "quarter": 1.2,
+        "group_winner": 2.0
       },
       {
         "team": "Qatar",
@@ -2907,26 +2766,17 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.2,
-        "group_winner": 4.6
+        "quarter": 0.3,
+        "group_winner": 5.1
       },
       {
         "team": "Saudi Arabia",
         "group": "H",
         "champion": 0.0,
         "final": 0.0,
-        "semi": 0.2,
-        "quarter": 1.2,
-        "group_winner": 0.2
-      },
-      {
-        "team": "Scotland",
-        "group": "C",
-        "champion": 0.0,
-        "final": 0.0,
-        "semi": 1.2,
-        "quarter": 5.0,
-        "group_winner": 8.8
+        "semi": 0.1,
+        "quarter": 1.0,
+        "group_winner": 0.7
       },
       {
         "team": "South Africa",
@@ -2934,8 +2784,8 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 0.0,
-        "group_winner": 0.2
+        "quarter": 0.3,
+        "group_winner": 0.4
       },
       {
         "team": "Tunisia",
@@ -2944,7 +2794,7 @@
         "final": 0.0,
         "semi": 0.0,
         "quarter": 0.4,
-        "group_winner": 3.6
+        "group_winner": 3.9
       },
       {
         "team": "Uzbekistan",
@@ -2952,14 +2802,14 @@
         "champion": 0.0,
         "final": 0.0,
         "semi": 0.0,
-        "quarter": 1.8,
-        "group_winner": 4.0
+        "quarter": 1.5,
+        "group_winner": 3.1
       }
     ]
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-06-14T22:11Z",
+      "snapshot_ts": "2026-06-14T22:58Z",
       "resolved_matches": 0
     },
     "matches": []
