@@ -11,6 +11,29 @@ const fmt = (v, d = 1) => (v === null || v === undefined ? "—" : Number(v).toF
 const fmtPct = (v) => (v === null || v === undefined ? "—" : `${Number(v).toFixed(1)}%`);
 const fmtOdds = (v) => (v === null || v === undefined ? "—" : Number(v).toFixed(2));
 const fmtSign = (v) => (v === null || v === undefined ? "—" : `${v > 0 ? "+" : ""}${Number(v).toFixed(1)}%`);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// ---------- flags ----------
+// Emoji flags keyed by team name (covers the WC2026 field + common qualifiers).
+const FLAGS = {
+  "Argentina":"🇦🇷","Australia":"🇦🇺","Austria":"🇦🇹","Belgium":"🇧🇪","Brazil":"🇧🇷",
+  "Cameroon":"🇨🇲","Canada":"🇨🇦","Chile":"🇨🇱","Colombia":"🇨🇴","Costa Rica":"🇨🇷",
+  "Croatia":"🇭🇷","Czechia":"🇨🇿","Czech Republic":"🇨🇿","Denmark":"🇩🇰","Ecuador":"🇪🇨",
+  "Egypt":"🇪🇬","England":"🏴\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}","France":"🇫🇷",
+  "Germany":"🇩🇪","Ghana":"🇬🇭","Greece":"🇬🇷","Hungary":"🇭🇺","Iran":"🇮🇷","IR Iran":"🇮🇷",
+  "Italy":"🇮🇹","Ivory Coast":"🇨🇮","Côte d'Ivoire":"🇨🇮","Japan":"🇯🇵","Jordan":"🇯🇴",
+  "Mexico":"🇲🇽","Morocco":"🇲🇦","Netherlands":"🇳🇱","New Zealand":"🇳🇿","Nigeria":"🇳🇬",
+  "Norway":"🇳🇴","Panama":"🇵🇦","Paraguay":"🇵🇾","Peru":"🇵🇪","Poland":"🇵🇱","Portugal":"🇵🇹",
+  "Qatar":"🇶🇦","Saudi Arabia":"🇸🇦","Scotland":"🏴\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}",
+  "Senegal":"🇸🇳","Serbia":"🇷🇸","Slovenia":"🇸🇮","South Africa":"🇿🇦","South Korea":"🇰🇷",
+  "Korea Republic":"🇰🇷","Spain":"🇪🇸","Sweden":"🇸🇪","Switzerland":"🇨🇭","Tunisia":"🇹🇳",
+  "Turkey":"🇹🇷","Türkiye":"🇹🇷","Ukraine":"🇺🇦","United States":"🇺🇸","USA":"🇺🇸","Uruguay":"🇺🇾",
+  "Uzbekistan":"🇺🇿","Wales":"🏴\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}",
+  "Algeria":"🇩🇿","Bolivia":"🇧🇴","Cape Verde":"🇨🇻","Curacao":"🇨🇼","Curaçao":"🇨🇼",
+  "DR Congo":"🇨🇩","Haiti":"🇭🇹","Honduras":"🇭🇳","Jamaica":"🇯🇲","New Caledonia":"🇳🇨",
+  "Bolivia ":"🇧🇴","Iraq":"🇮🇶","UAE":"🇦🇪","United Arab Emirates":"🇦🇪",
+};
+const flag = (team) => FLAGS[team] || "🏳️";
 
 // ---------- tabs ----------
 function initTabs() {
@@ -29,56 +52,21 @@ function pickLabel(pick) {
   return { home: ["1", "pill-home"], draw: ["X", "pill-draw"], away: ["2", "pill-away"] }[pick];
 }
 
-function renderPredictions() {
-  const list = $("#pred-list");
-  const q = $("#pred-search").value.trim().toLowerCase();
-  const sort = $("#pred-sort").value;
-  let items = DATA.predictions.slice();
-
-  if (q) items = items.filter((m) => (m.home + " " + m.away).toLowerCase().includes(q));
-
-  if (sort === "confidence") items.sort((a, b) => (b.confidence ?? 0) - (a.confidence ?? 0));
-  else if (sort === "upset") items.sort((a, b) => (a.confidence ?? 0) - (b.confidence ?? 0));
-  else items.sort((a, b) => (a.date + a.home).localeCompare(b.date + b.home));
-
-  if (!items.length) { list.innerHTML = `<div class="empty">No matches found.</div>`; return; }
-
-  list.innerHTML = items.map((m) => {
-    const [pl, pc] = pickLabel(m.pick);
-    const confTier = m.confidence >= 60 ? "high" : m.confidence >= 40 ? "med" : "low";
-
-    if (m.played) {
-      // Final score + whether the model's pick was right.
-      const ok = m.pick_correct;
-      return `
-      <div class="match-card played">
-        <div class="mc-top">
-          <span>${esc(m.date)} · full time</span>
-          <span class="${ok ? "tick" : "cross"}">${ok ? "✓ model got it" : "✗ model missed"}</span>
-        </div>
-        <div class="mc-teams">
-          <span class="home ${m.result_side === "home" ? "won" : ""}">${esc(m.home)}</span>
-          <span class="mc-score">${m.result_home_goals}–${m.result_away_goals}</span>
-          <span class="away ${m.result_side === "away" ? "won" : ""}">${esc(m.away)}</span>
-        </div>
-        <div class="mc-recap">
-          Model had picked <span class="pill ${pc}">${pl}</span> at ${fmtPct(m.confidence)} confidence.
-        </div>
-      </div>`;
-    }
-
-    const xg = (m.home_xg != null && m.away_xg != null)
-      ? `📊 Expected goals: <b>${fmt(m.home_xg, 2)}</b> – <b>${fmt(m.away_xg, 2)}</b>` : "";
-    return `
+function upcomingCard(m) {
+  const [pl, pc] = pickLabel(m.pick);
+  const confTier = m.confidence >= 60 ? "high" : m.confidence >= 40 ? "med" : "low";
+  const xg = (m.home_xg != null && m.away_xg != null)
+    ? `📊 Expected goals: <b>${fmt(m.home_xg, 2)}</b> – <b>${fmt(m.away_xg, 2)}</b>` : "";
+  return `
     <div class="match-card">
       <div class="mc-top">
         <span>${esc(m.date)}</span>
         <span>${m.neutral ? "neutral venue" : esc(m.city)}</span>
       </div>
       <div class="mc-teams">
-        <span class="home">${esc(m.home)}</span>
+        <span class="home"><span class="flag">${flag(m.home)}</span> ${esc(m.home)}</span>
         <span class="mc-vs">vs</span>
-        <span class="away">${esc(m.away)}</span>
+        <span class="away">${esc(m.away)} <span class="flag">${flag(m.away)}</span></span>
       </div>
       <div class="probbar">
         <span class="p-home" style="width:${m.p_home}%" title="Home win">${m.p_home >= 12 ? m.p_home + "%" : ""}</span>
@@ -99,7 +87,89 @@ function renderPredictions() {
         </span>
       </div>
     </div>`;
-  }).join("");
+}
+
+function playedCard(m) {
+  const [pl, pc] = pickLabel(m.pick);
+  const ok = m.pick_correct;
+  return `
+    <div class="match-card played">
+      <div class="mc-top">
+        <span>${esc(m.date)} · full time</span>
+        <span class="${ok ? "tick" : "cross"}">${ok ? "✓ model got it" : "✗ model missed"}</span>
+      </div>
+      <div class="mc-teams">
+        <span class="home ${m.result_side === "home" ? "won" : ""}"><span class="flag">${flag(m.home)}</span> ${esc(m.home)}</span>
+        <span class="mc-score">${m.result_home_goals}–${m.result_away_goals}</span>
+        <span class="away ${m.result_side === "away" ? "won" : ""}">${esc(m.away)} <span class="flag">${flag(m.away)}</span></span>
+      </div>
+      <div class="mc-recap">
+        Model had picked <span class="pill ${pc}">${pl}</span> at ${fmtPct(m.confidence)} confidence.
+      </div>
+    </div>`;
+}
+
+function renderPredictions() {
+  const q = $("#pred-search").value.trim().toLowerCase();
+  const sort = $("#pred-sort").value;
+  let items = DATA.predictions.slice();
+  if (q) items = items.filter((m) => (m.home + " " + m.away).toLowerCase().includes(q));
+
+  const sortFn = (a, b) => {
+    if (sort === "confidence") return (b.confidence ?? 0) - (a.confidence ?? 0);
+    if (sort === "upset") return (a.confidence ?? 0) - (b.confidence ?? 0);
+    return (a.date + a.home).localeCompare(b.date + b.home);
+  };
+
+  const upcoming = items.filter((m) => !m.played).sort(sortFn);
+  // Older matches: most recent first regardless of the chosen sort (latest result on top).
+  const played = items.filter((m) => m.played)
+    .sort((a, b) => (b.date + b.home).localeCompare(a.date + a.home));
+
+  const upList = $("#pred-upcoming");
+  const oldList = $("#pred-played");
+  const oldHead = $("#played-toggle");
+  const oldCount = $("#played-count");
+  const upLabel = $("#upcoming-label");
+
+  if (!upcoming.length && !played.length) {
+    upLabel.style.display = "none";
+    upList.innerHTML = `<div class="empty">No matches found.</div>`;
+    oldHead.style.display = "none"; oldList.innerHTML = ""; return;
+  }
+
+  // Upcoming (next match first).
+  upLabel.style.display = upcoming.length ? "" : "none";
+  if (upcoming.length) {
+    const [next, ...rest] = upcoming;
+    upList.innerHTML =
+      `<div class="next-up">
+         <div class="next-badge">⏭️ Next up</div>
+         ${upcomingCard(next)}
+       </div>` +
+      (rest.length ? `<div class="card-grid">${rest.map(upcomingCard).join("")}</div>` : "");
+  } else {
+    upList.innerHTML = "";
+  }
+
+  // Played (collapsible, latest first).
+  if (played.length) {
+    oldHead.style.display = "";
+    oldCount.textContent = played.length;
+    oldList.innerHTML = `<div class="card-grid">${played.map(playedCard).join("")}</div>`;
+  } else {
+    oldHead.style.display = "none";
+    oldList.innerHTML = "";
+  }
+}
+
+function initPredictionsCollapse() {
+  const head = $("#played-toggle");
+  if (!head) return;
+  head.addEventListener("click", () => {
+    const open = head.classList.toggle("open");
+    $("#pred-played").classList.toggle("collapsed", !open);
+  });
 }
 
 // ---------- edge: outright ----------
@@ -446,24 +516,38 @@ function predictGame(match) {
   return { topScores, simN: N };
 }
 
-function renderPrediction(match) {
-  const out = $("#pg-result");
+let PG_BUSY = false;
+
+// Build the full result card markup (revealed after the suspense animation).
+function predictionCardHTML(match, mc) {
   const probs = { home: match.p_home, draw: match.p_draw, away: match.p_away };
   const pickSide = match.pick;
   const conf = match.confidence;
   const confTier = conf >= 60 ? "high" : conf >= 40 ? "med" : "low";
   const [pl] = pickLabel(pickSide);
   const pickName = pickSide === "home" ? match.home : pickSide === "away" ? match.away : "a draw";
-  const mc = predictGame(match);
 
-  out.innerHTML = `
-    <div class="sim-result">
-      <div class="mc-teams" style="margin-bottom:10px">
-        <span class="home">${esc(match.home)}</span>
-        <span class="mc-vs">${esc(match.date)}</span>
-        <span class="away">${esc(match.away)}</span>
+  // Headline = the single most likely scoreline.
+  const top = mc.topScores[0];
+  const headlineScore = top ? top.score.replace("–", " – ") : "—";
+  const rest = mc.topScores.slice(1, 4);
+
+  return `
+    <div class="pg-reveal">
+      <div class="pg-fixture">
+        <span class="pg-side"><span class="pg-flag">${flag(match.home)}</span><span class="pg-name">${esc(match.home)}</span></span>
+        <span class="pg-bigscore">${headlineScore}</span>
+        <span class="pg-side"><span class="pg-flag">${flag(match.away)}</span><span class="pg-name">${esc(match.away)}</span></span>
       </div>
-      <div class="probbar" style="height:32px">
+      <div class="pg-headline-sub">most likely scoreline${top ? ` · <b>${top.pct.toFixed(0)}%</b> of sims` : ""}</div>
+
+      ${rest.length ? `
+      <div class="pg-alts">
+        <span class="pg-alts-label">other likely results:</span>
+        ${rest.map((s) => `<span class="score-chip">${esc(s.score.replace("–"," – "))} <b>${s.pct.toFixed(0)}%</b></span>`).join("")}
+      </div>` : ""}
+
+      <div class="probbar" style="height:32px;margin-top:16px">
         <span class="p-home" style="width:${probs.home}%">${probs.home >= 10 ? probs.home + "%" : ""}</span>
         <span class="p-draw" style="width:${probs.draw}%">${probs.draw >= 10 ? "X " + probs.draw + "%" : ""}</span>
         <span class="p-away" style="width:${probs.away}%">${probs.away >= 10 ? probs.away + "%" : ""}</span>
@@ -479,15 +563,45 @@ function renderPrediction(match) {
           <span class="conf-bar"><span style="width:${conf}%"></span></span>
         </span>
       </div>
-      ${mc.topScores.length ? `
-      <div class="pg-scores">
-        <div class="hint">Most likely scorelines (${mc.simN.toLocaleString()} simulations):</div>
-        <div class="score-chips">
-          ${mc.topScores.map((s) => `<span class="score-chip">${esc(match.home.slice(0,3).toUpperCase())} ${s.score} ${esc(match.away.slice(0,3).toUpperCase())} <b>${s.pct.toFixed(0)}%</b></span>`).join("")}
-        </div>
-      </div>` : ""}
       ${match.home_xg != null ? `<div class="mc-xg" style="margin-top:8px">📊 Expected goals: <b>${fmt(match.home_xg,2)}</b> – <b>${fmt(match.away_xg,2)}</b></div>` : ""}
     </div>`;
+}
+
+// Suspense: spin a ball, flash random ticking scores, then reveal.
+async function renderPrediction(match) {
+  if (PG_BUSY) return;
+  PG_BUSY = true;
+  const out = $("#pg-result");
+  const btn = $("#pg-run");
+  btn.disabled = true;
+  const mc = predictGame(match);
+
+  // Build the "rolling" stage.
+  out.innerHTML = `
+    <div class="pg-rolling">
+      <div class="pg-fixture">
+        <span class="pg-side"><span class="pg-flag">${flag(match.home)}</span><span class="pg-name">${esc(match.home)}</span></span>
+        <span class="pg-bigscore rolling" id="pg-roll">0 – 0</span>
+        <span class="pg-side"><span class="pg-flag">${flag(match.away)}</span><span class="pg-name">${esc(match.away)}</span></span>
+      </div>
+      <div class="pg-spinner"><span class="pg-ball">⚽</span> simulating ${mc.simN.toLocaleString()} matches…</div>
+    </div>`;
+
+  // Flash random plausible scores for ~1.2s, slowing down.
+  const roll = $("#pg-roll");
+  const pool = mc.topScores.length ? mc.topScores : [{ score: "1–1" }];
+  let delay = 55;
+  for (let t = 0; t < 22; t++) {
+    const s = pool[Math.floor(Math.random() * pool.length)].score;
+    if (roll) roll.textContent = s.replace("–", " – ");
+    await sleep(delay);
+    delay = Math.min(220, delay * 1.12); // ease out
+  }
+
+  // Reveal.
+  out.innerHTML = predictionCardHTML(match, mc);
+  btn.disabled = false;
+  PG_BUSY = false;
 }
 
 function initPredictGame() {
@@ -499,8 +613,9 @@ function initPredictGame() {
     `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)}</option>`).join("");
   const run = () => renderPrediction(upcoming[parseInt(sel.value, 10) || 0]);
   $("#pg-run").addEventListener("click", run);
-  sel.addEventListener("change", run);
-  run();
+  // Don't auto-run on dropdown change (would skip the suspense); just clear.
+  sel.addEventListener("change", () => { if (!PG_BUSY) $("#pg-result").innerHTML = `<p class="hint">Hit <b>Predict</b> to simulate this match.</p>`; });
+  $("#pg-result").innerHTML = `<p class="hint">Pick a match and hit <b>Predict</b> ⚽</p>`;
 }
 
 function initSimulator() {
@@ -540,6 +655,7 @@ async function boot() {
   $("#meta").innerHTML = `Model: ${esc(DATA.meta.model)}<br/>Updated ${esc(DATA.meta.generated_at)}`;
 
   renderPredictions();
+  initPredictionsCollapse();
   $("#pred-search").addEventListener("input", renderPredictions);
   $("#pred-sort").addEventListener("change", renderPredictions);
 

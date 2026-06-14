@@ -50,7 +50,15 @@
           <option value="upset">Sort: closest games</option>
         </select>
       </div>
-      <div id="pred-list" class="card-grid"></div>
+      <h3 class="section-label" id="upcoming-label">📅 Upcoming matches</h3>
+      <div id="pred-upcoming"></div>
+
+      <button id="played-toggle" class="collapse-head" style="display:none">
+        <span class="chev">▸</span>
+        <span>Already played <span class="muted-count">(<span id="played-count">0</span>)</span></span>
+        <span class="collapse-hint">show / hide</span>
+      </button>
+      <div id="pred-played" class="collapsed"></div>
     </section>
 
     <!-- EDGE -->
