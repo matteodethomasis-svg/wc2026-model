@@ -22,6 +22,8 @@ calibration gammas 1.05 / 1.10, friendly Elo K=10.
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import subprocess
 import sys
 from datetime import date
@@ -41,12 +43,44 @@ POLY_CMP = "reports/polymarket_world_cup_winner_live_comparison.csv"
 POLY_MARKET = "data/interim/polymarket_world_cup_winner.csv"
 POLY_SUMMARY = "reports/polymarket_world_cup_winner_live_comparison_summary.json"
 
-# Validated recipe.
-SQUAD_SCALE = "0.52"
-GK_SCALE = "0.276"
-BLEND_ALPHA = "0.75"
-GAMMA_HOME = "1.05"
-GAMMA_AWAY = "1.1"
+# The tuned recipe is the edge: these scales/weights are the distilled result of all
+# the backtesting. We keep them OUT of the public repo. The real values live in a
+# local, gitignored `model_config.json` (or the MODEL_CONFIG_JSON env var, injected as
+# a GitHub Actions secret for our own deploy). Without them, the model falls back to a
+# de-tuned baseline — a working shell that does NOT reproduce our calibrated numbers.
+_DETUNED_FALLBACK = {
+    "squad_scale": "0.0",      # no per-player squad layer
+    "gk_scale": "0.0",         # no goalkeeper layer
+    "blend_alpha": "1.0",      # pure Dixon-Coles, no Elo blend
+    "gamma_home": "1.0",       # no calibration
+    "gamma_away": "1.0",
+}
+
+
+def _load_recipe() -> dict[str, str]:
+    raw = os.environ.get("MODEL_CONFIG_JSON")
+    if raw:
+        try:
+            return {**_DETUNED_FALLBACK, **json.loads(raw)}
+        except Exception:
+            pass
+    cfg_path = ROOT / "model_config.json"
+    if cfg_path.exists():
+        try:
+            return {**_DETUNED_FALLBACK, **json.loads(cfg_path.read_text(encoding="utf-8"))}
+        except Exception:
+            pass
+    print("  [recipe] No model_config.json / MODEL_CONFIG_JSON found — using DE-TUNED "
+          "baseline (public fallback, not the calibrated model).")
+    return dict(_DETUNED_FALLBACK)
+
+
+_RECIPE = _load_recipe()
+SQUAD_SCALE = _RECIPE["squad_scale"]
+GK_SCALE = _RECIPE["gk_scale"]
+BLEND_ALPHA = _RECIPE["blend_alpha"]
+GAMMA_HOME = _RECIPE["gamma_home"]
+GAMMA_AWAY = _RECIPE["gamma_away"]
 
 
 def run(cmd: list[str], desc: str) -> None:

@@ -1,0 +1,8 @@
+{
+  "_comment": "Copy this to model_config.json and set your own tuned values. The real, backtested recipe is intentionally NOT shipped in the public repo. These example values are a DE-TUNED baseline (no squad/GK layer, no blend, no calibration) — a working shell, not the calibrated model. Find good values yourself via the backtest scripts.",
+  "squad_scale": "0.0",
+  "gk_scale": "0.0",
+  "blend_alpha": "1.0",
+  "gamma_home": "1.0",
+  "gamma_away": "1.0"
+}

@@ -1,5 +1,8 @@
 .venv/
 .env
+
+# The tuned model recipe — kept private so the public repo doesn't hand over the edge.
+model_config.json
 __pycache__/
 *.pyc
 .pytest_cache/
