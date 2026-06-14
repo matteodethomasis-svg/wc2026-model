@@ -45,6 +45,28 @@ function renderPredictions() {
 
   list.innerHTML = items.map((m) => {
     const [pl, pc] = pickLabel(m.pick);
+    const confTier = m.confidence >= 60 ? "high" : m.confidence >= 40 ? "med" : "low";
+
+    if (m.played) {
+      // Final score + whether the model's pick was right.
+      const ok = m.pick_correct;
+      return `
+      <div class="match-card played">
+        <div class="mc-top">
+          <span>${esc(m.date)} · full time</span>
+          <span class="${ok ? "tick" : "cross"}">${ok ? "✓ model got it" : "✗ model missed"}</span>
+        </div>
+        <div class="mc-teams">
+          <span class="home ${m.result_side === "home" ? "won" : ""}">${esc(m.home)}</span>
+          <span class="mc-score">${m.result_home_goals}–${m.result_away_goals}</span>
+          <span class="away ${m.result_side === "away" ? "won" : ""}">${esc(m.away)}</span>
+        </div>
+        <div class="mc-recap">
+          Model had picked <span class="pill ${pc}">${pl}</span> at ${fmtPct(m.confidence)} confidence.
+        </div>
+      </div>`;
+    }
+
     const xg = (m.home_xg != null && m.away_xg != null)
       ? `📊 Expected goals: <b>${fmt(m.home_xg, 2)}</b> – <b>${fmt(m.away_xg, 2)}</b>` : "";
     return `
@@ -69,8 +91,12 @@ function renderPredictions() {
         <span>2 <b>${fmtOdds(m.odds_away)}</b></span>
       </div>
       <div class="mc-xg">${xg}</div>
-      <div style="margin-top:10px">
-        Model call: <span class="pill ${pc}">${pl} · ${fmtPct(m.confidence)}</span>
+      <div class="mc-call">
+        <span>Model call <span class="pill ${pc}">${pl}</span></span>
+        <span class="conf conf-${confTier}" title="How sure the model is">
+          ${fmtPct(m.confidence)} confident
+          <span class="conf-bar"><span style="width:${m.confidence}%"></span></span>
+        </span>
       </div>
     </div>`;
   }).join("");
@@ -276,6 +302,146 @@ function renderTrackRecord() {
     </table>`;
 }
 
+// ---------- Monte Carlo simulator ----------
+// Lightweight in-browser version of the model's tournament sim: scores come from each
+// team's combined rating (Poisson means from the rating gap), groups then knockout.
+const SIM = {
+  // Expected goals for a team given a rating gap (calibrated to look like the model:
+  // ~1.35 avg goals, swinging with the gap). Tuned for plausibility, not exactness.
+  lambdas(gap) {
+    const base = 1.35;
+    const swing = gap / 400; // ~Elo scale
+    return [Math.max(0.15, base + 0.55 * swing), Math.max(0.15, base - 0.55 * swing)];
+  },
+  poisson(lambda) {
+    let L = Math.exp(-lambda), k = 0, p = 1;
+    do { k++; p *= Math.random(); } while (p > L);
+    return k - 1;
+  },
+  playMatch(a, b, ratings, homeAdv = 0) {
+    const gap = (ratings[a] + homeAdv) - ratings[b];
+    const [la, lb] = SIM.lambdas(gap);
+    return [SIM.poisson(la), SIM.poisson(lb)];
+  },
+  // Decisive winner (knockout): if drawn, coin-flip weighted slightly by rating.
+  knockoutWinner(a, b, ratings) {
+    const [ga, gb] = SIM.playMatch(a, b, ratings);
+    if (ga !== gb) return ga > gb ? a : b;
+    const pa = 1 / (1 + Math.pow(10, (ratings[b] - ratings[a]) / 400));
+    return Math.random() < pa ? a : b;
+  },
+  runOnce(engine) {
+    const ratings = {};
+    engine.teams.forEach((t) => { ratings[t.team] = t.rating; });
+    const groups = {};
+    engine.teams.forEach((t) => {
+      (groups[t.group] = groups[t.group] || []).push(t.team);
+    });
+
+    // Standings seeded with already-played results, then remaining fixtures.
+    const table = {};
+    engine.teams.forEach((t) => { table[t.team] = { pts: 0, gf: 0, ga: 0, team: t.team, group: t.group }; });
+    const applyResult = (h, a, hg, ag) => {
+      table[h].gf += hg; table[h].ga += ag; table[a].gf += ag; table[a].ga += hg;
+      if (hg > ag) table[h].pts += 3; else if (hg < ag) table[a].pts += 3;
+      else { table[h].pts += 1; table[a].pts += 1; }
+    };
+    (engine.played || []).forEach((m) => applyResult(m.home, m.away, m.home_goals, m.away_goals));
+    (engine.remaining_group_fixtures || []).forEach((m) => {
+      const [hg, ag] = SIM.playMatch(m.home, m.away, ratings);
+      applyResult(m.home, m.away, hg, ag);
+    });
+
+    // Rank each group; collect winners, runners-up, and the 8 best third-placed.
+    const rankFn = (x, y) => (y.pts - x.pts) || ((y.gf - y.ga) - (x.gf - x.ga)) || (y.gf - x.gf) || (Math.random() - 0.5);
+    const winners = {}, runners = {}, thirds = [];
+    Object.keys(groups).forEach((g) => {
+      const standing = groups[g].map((t) => table[t]).sort(rankFn);
+      winners[g] = standing[0].team;
+      runners[g] = standing[1].team;
+      if (standing[2]) thirds.push(standing[2]);
+    });
+    const best8thirds = thirds.sort(rankFn).slice(0, 8).map((t) => t.team);
+
+    // Knockout: pool everyone who advanced, pair them, play down to a champion.
+    // (Bracket-faithful seeding is approximated by random pairing of qualified teams —
+    //  enough for a fun run; the published title odds use the exact bracket.)
+    let alive = [...Object.values(winners), ...Object.values(runners), ...best8thirds];
+    const path = [];
+    while (alive.length > 1) {
+      shuffle(alive);
+      const next = [];
+      for (let i = 0; i < alive.length; i += 2) {
+        if (i + 1 >= alive.length) { next.push(alive[i]); continue; }
+        next.push(SIM.knockoutWinner(alive[i], alive[i + 1], ratings));
+      }
+      path.push(`${alive.length} → ${next.length}`);
+      alive = next;
+    }
+    return { champion: alive[0], winners, runners };
+  },
+};
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function renderSimSingle(res) {
+  $("#sim-many").innerHTML = "";
+  $("#sim-single").innerHTML = `
+    <div class="sim-result">
+      <div class="champ">🏆 <b>${esc(res.champion)}</b> wins this simulation!</div>
+      <p class="hint">Run it again — the model gives everyone a shot.</p>
+    </div>`;
+}
+
+function renderSimMany(counts, runs) {
+  $("#sim-single").innerHTML = "";
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 12);
+  const max = sorted[0][1];
+  $("#sim-many").innerHTML = `
+    <div class="sim-result">
+      <div class="champ">Across <b>${runs.toLocaleString()}</b> of your simulations:</div>
+      <div class="title-race" style="margin-top:10px">
+        ${sorted.map(([team, n]) => `
+          <div class="tr-row">
+            <span class="tr-rank">${((n / runs) * 100).toFixed(1)}%</span>
+            <span class="tr-team">${esc(team)}</span>
+            <div class="tr-bar-track"><div class="tr-bar" style="width:${(n / max) * 100}%"></div></div>
+            <span class="tr-val">${n}</span>
+          </div>`).join("")}
+      </div>
+      <p class="hint">Your own Monte Carlo — won't exactly match the published odds (those use the full bracket), but close.</p>
+    </div>`;
+}
+
+function initSimulator() {
+  const engine = DATA.sim_engine;
+  const box = document.querySelector(".sim-box");
+  if (!engine || !engine.teams || !engine.teams.length) { if (box) box.style.display = "none"; return; }
+  $("#sim-run").addEventListener("click", () => {
+    $("#sim-status").textContent = "";
+    renderSimSingle(SIM.runOnce(engine));
+  });
+  $("#sim-run-many").addEventListener("click", () => {
+    const runs = 1000;
+    $("#sim-status").textContent = "crunching…";
+    setTimeout(() => {
+      const counts = {};
+      for (let i = 0; i < runs; i++) {
+        const c = SIM.runOnce(engine).champion;
+        counts[c] = (counts[c] || 0) + 1;
+      }
+      $("#sim-status").textContent = "";
+      renderSimMany(counts, runs);
+    }, 20);
+  });
+}
+
 // ---------- boot ----------
 async function boot() {
   initTabs();
@@ -297,6 +463,7 @@ async function boot() {
   renderMatchEdges();
   renderLeaderboard();
   renderTrackRecord();
+  initSimulator();
   initH2H();
   renderTitleRace();
 }

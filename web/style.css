@@ -100,6 +100,22 @@ input:focus, select:focus { border-color: var(--accent); }
 .mc-odds b { color: var(--text); }
 .mc-xg { margin-top: 8px; font-size: 12px; color: var(--muted); }
 
+/* played-match card */
+.match-card.played { opacity: 0.92; border-color: #2a3344; background: #151a23; }
+.mc-score { font-size: 20px; font-weight: 800; letter-spacing: 1px; }
+.mc-teams .won { color: var(--text); font-weight: 800; }
+.mc-teams .home:not(.won), .mc-teams .away:not(.won) { color: var(--muted); }
+.tick { color: var(--pos); font-weight: 700; }
+.cross { color: var(--neg); font-weight: 700; }
+.mc-recap { margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+/* confidence meter */
+.mc-call { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 8px; flex-wrap: wrap; }
+.conf { font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.conf-high { color: var(--pos); } .conf-med { color: var(--gold); } .conf-low { color: var(--muted); }
+.conf-bar { display: inline-block; width: 54px; height: 6px; background: var(--bg-soft); border-radius: 4px; overflow: hidden; }
+.conf-bar span { display: block; height: 100%; background: currentColor; border-radius: 4px; }
+
 .pill { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; color: #0d1117; }
 .pill-home { background: var(--home); } .pill-draw { background: var(--draw); } .pill-away { background: var(--away); }
 
@@ -163,6 +179,16 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .w-tie { color: var(--muted); }
 .res-pill { padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 700; color: #0d1117; }
 .res-home { background: var(--home); } .res-draw { background: var(--draw); } .res-away { background: var(--away); }
+
+/* fun: simulator */
+.sim-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 20px; box-shadow: var(--shadow); }
+.sim-controls { display: flex; align-items: center; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+.sim-btn { background: var(--accent); color: #0d1117; border: none; padding: 11px 18px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: transform .1s, filter .1s; }
+.sim-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.sim-btn.secondary { background: var(--bg-soft); color: var(--text); border: 1px solid var(--border); }
+.sim-result { margin-top: 12px; }
+.sim-result .champ { font-size: 18px; }
+.sim-result .champ b { color: var(--gold); }
 
 /* fun */
 .h2h-pickers { display: flex; align-items: center; gap: 12px; margin: 12px 0; flex-wrap: wrap; }

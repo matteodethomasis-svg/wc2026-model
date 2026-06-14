@@ -73,7 +73,28 @@ def _fair_odds(prob: float | None) -> float | None:
 # ----------------------------- predictions ----------------------------------
 
 
-def build_predictions(fixtures: pd.DataFrame) -> list[dict[str, Any]]:
+def _played_results_lookup(results: pd.DataFrame | None) -> dict[tuple[str, str], dict[str, Any]]:
+    if results is None or results.empty:
+        return {}
+    res = results.copy()
+    res["match_date"] = pd.to_datetime(res["match_date"], errors="coerce")
+    wc = res[(res["tournament"] == "FIFA World Cup") & (res["match_date"].dt.year == 2026)]
+    lookup: dict[tuple[str, str], dict[str, Any]] = {}
+    for r in wc.itertuples(index=False):
+        hg, ag = _num(r.home_goals), _num(r.away_goals)
+        if hg is None or ag is None:
+            continue
+        side = "home" if hg > ag else "away" if hg < ag else "draw"
+        lookup[(str(r.home_team), str(r.away_team))] = {
+            "home_goals": int(hg), "away_goals": int(ag), "result_side": side,
+        }
+    return lookup
+
+
+def build_predictions(
+    fixtures: pd.DataFrame, results: pd.DataFrame | None = None
+) -> list[dict[str, Any]]:
+    played = _played_results_lookup(results)
     rows: list[dict[str, Any]] = []
     for row in fixtures.itertuples(index=False):
         home_p = _num(getattr(row, "home_win_probability", None))
@@ -84,6 +105,7 @@ def build_predictions(fixtures: pd.DataFrame) -> list[dict[str, Any]]:
         # The model's most confident pick, for the "call" badge.
         picks = {"home": home_p, "draw": draw_p, "away": away_p}
         pick = max(picks, key=picks.get)
+        result = played.get((str(getattr(row, "home_team", "")), str(getattr(row, "away_team", ""))))
         rows.append(
             {
                 "match_id": str(getattr(row, "match_id", "")),
@@ -107,9 +129,15 @@ def build_predictions(fixtures: pd.DataFrame) -> list[dict[str, Any]]:
                 "odds_away": _fair_odds(away_p),
                 "pick": pick,
                 "confidence": _pct(picks[pick]),
+                "played": result is not None,
+                "result_home_goals": (result or {}).get("home_goals"),
+                "result_away_goals": (result or {}).get("away_goals"),
+                "result_side": (result or {}).get("result_side"),
+                "pick_correct": (None if result is None else pick == result["result_side"]),
             }
         )
-    rows.sort(key=lambda r: (r["date"], r["home"]))
+    # Upcoming matches first (sorted by date), played matches pushed to the bottom.
+    rows.sort(key=lambda r: (r["played"], r["date"], r["home"]))
     return rows
 
 
@@ -265,6 +293,71 @@ def build_tournament(sim: pd.DataFrame) -> dict[str, Any]:
     return {"teams": teams}
 
 
+def build_sim_engine(
+    elo: pd.DataFrame | None,
+    squad: pd.DataFrame | None,
+    groups: pd.DataFrame | None,
+    fixtures: pd.DataFrame | None,
+    results: pd.DataFrame | None,
+    *,
+    squad_scale: float,
+    gk_scale: float,
+) -> dict[str, Any]:
+    """Ingredients for an in-browser Monte Carlo: each team's combined rating (the
+    same national-Elo + squad layers the Python sim uses), the groups, the remaining
+    fixtures, and results already played. The JS samples match scores from the rating
+    gap (Poisson) and propagates through groups + the knockout bracket.
+    """
+    if elo is None or groups is None:
+        return {}
+    elo_map = {str(r.team): _num(r.elo_rating) for r in elo.itertuples(index=False)}
+    xi_map, gk_map = {}, {}
+    if squad is not None:
+        for r in squad.itertuples(index=False):
+            xi_map[str(r.team)] = _num(getattr(r, "expected_xi_player_elo_rating", None))
+            gk_map[str(r.team)] = _num(getattr(r, "expected_xi_goalkeeper_player_elo_rating", None))
+
+    team_ratings: dict[str, float] = {}
+    group_of: dict[str, str] = {}
+    for r in groups.itertuples(index=False):
+        team = str(r.team)
+        group_of[team] = str(r.group)
+        base = elo_map.get(team)
+        if base is None:
+            continue
+        rating = base
+        if xi_map.get(team) is not None:
+            rating += squad_scale * xi_map[team]
+        if gk_map.get(team) is not None:
+            rating += gk_scale * gk_map[team]
+        team_ratings[team] = round(rating, 1)
+
+    # Results already played (fixed in the sim).
+    played = _played_results_lookup(results)
+    played_list = [
+        {"home": h, "away": a, "home_goals": v["home_goals"], "away_goals": v["away_goals"]}
+        for (h, a), v in played.items()
+    ]
+    # Group-stage fixtures still to play.
+    remaining = []
+    if fixtures is not None:
+        for r in fixtures.itertuples(index=False):
+            h, a = str(getattr(r, "home_team", "")), str(getattr(r, "away_team", ""))
+            if (h, a) in played:
+                continue
+            if h in group_of and a in group_of and group_of[h] == group_of[a]:
+                remaining.append({"home": h, "away": a, "group": group_of[h]})
+
+    teams = [{"team": t, "group": group_of.get(t, ""), "rating": team_ratings[t]}
+             for t in sorted(team_ratings)]
+    return {
+        "teams": teams,
+        "played": played_list,
+        "remaining_group_fixtures": remaining,
+        "home_advantage": 60.0,  # modest; most WC games are at neutral venues
+    }
+
+
 # ----------------------------- main -----------------------------------------
 
 
@@ -296,6 +389,12 @@ def main() -> None:
     )
     parser.add_argument("--track-summary", default="reports/track_record_summary.json")
     parser.add_argument("--track-scored", default="reports/track_record_match_scored.csv")
+    parser.add_argument("--results", default="data/interim/international_results_augmented.csv")
+    parser.add_argument("--elo", default="reports/baseline_latest_elo_ratings.csv")
+    parser.add_argument("--squad", default="reports/wc2026_squad_strength_player_elo_ratings.csv")
+    parser.add_argument("--groups", default="data/reference/wc2026_groups_actual.csv")
+    parser.add_argument("--squad-scale", type=float, default=0.52)
+    parser.add_argument("--gk-scale", type=float, default=0.276)
     parser.add_argument("--output", default="web/data.json")
     args = parser.parse_args()
 
@@ -305,13 +404,17 @@ def main() -> None:
     summary = _read_csv(ROOT / args.backtest_summary)
     ablation = _read_csv(ROOT / args.ablation_summary)
     sim = _read_csv(ROOT / args.tournament)
+    results = _read_csv(ROOT / args.results)
+    elo = _read_csv(ROOT / args.elo)
+    squad = _read_csv(ROOT / args.squad)
+    groups = _read_csv(ROOT / args.groups)
 
     payload: dict[str, Any] = {
         "meta": {
             "generated_at": pd.Timestamp.now("UTC").strftime("%Y-%m-%d %H:%M UTC"),
             "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)",
         },
-        "predictions": build_predictions(fixtures) if fixtures is not None else [],
+        "predictions": build_predictions(fixtures, results) if fixtures is not None else [],
         "match_edges": build_match_edges(match_cmp) if match_cmp is not None else [],
         "outright_edges": build_outright_edges(outright_cmp) if outright_cmp is not None else [],
         "reliability": build_reliability(summary, ablation),
@@ -319,6 +422,10 @@ def main() -> None:
         "track_record": build_track_record(
             _read_json(ROOT / args.track_summary),
             _read_csv(ROOT / args.track_scored),
+        ),
+        "sim_engine": build_sim_engine(
+            elo, squad, groups, fixtures, results,
+            squad_scale=args.squad_scale, gk_scale=args.gk_scale,
         ),
     }
 

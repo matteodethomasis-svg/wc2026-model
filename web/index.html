@@ -143,7 +143,23 @@
     <section id="fun" class="panel">
       <div class="intro">
         <h2>Play with it 🎮</h2>
-        <p>Pick two teams and see who the model favours, or browse the title-race odds.</p>
+        <p>Run the model yourself, pick two teams head-to-head, or browse the title race.</p>
+      </div>
+
+      <div class="sim-box">
+        <h3 class="section-label">🎲 Simulate the whole World Cup</h3>
+        <p class="hint">
+          This runs a Monte Carlo with the model's team ratings — playing out the remaining
+          group games and the entire knockout bracket. Results already played are kept fixed.
+          Hit run a few times: sometimes the favourite lifts it, sometimes there's an upset.
+        </p>
+        <div class="sim-controls">
+          <button id="sim-run" class="sim-btn">🎲 Simulate once</button>
+          <button id="sim-run-many" class="sim-btn secondary">⚡ Run 1,000×</button>
+          <span id="sim-status" class="hint"></span>
+        </div>
+        <div id="sim-single"></div>
+        <div id="sim-many"></div>
       </div>
 
       <div class="h2h">
