@@ -109,7 +109,10 @@ def main() -> None:
         default="reports/wc2026_fixture_predictions_expected_xi_plus_goalkeeper_recipe_2026-06-13.csv")
     parser.add_argument(
         "--market-matches",
-        default="reports/bookmaker_match_odds_expected_xi_plus_goalkeeper_live_sample_comparison.csv")
+        # Full per-match Polymarket comparison (all merged matches, with no-vig 1X2).
+        # The ledger only KEEPS market odds snapshotted strictly before kickoff
+        # (_blank_market_for_started_matches), so this is ante-post by construction.
+        default="reports/polymarket_match_full_comparison.csv")
     parser.add_argument(
         "--outright", default="reports/polymarket_world_cup_winner_live_comparison.csv")
     parser.add_argument(

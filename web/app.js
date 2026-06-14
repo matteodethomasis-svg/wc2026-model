@@ -172,57 +172,100 @@ function initPredictionsCollapse() {
   });
 }
 
-// ---------- edge: outright ----------
+// ---------- edge: outright (collapsible, sorted by our prob) ----------
 function renderOutright() {
   const wrap = $("#outright-table");
   const rows = DATA.outright_edges.filter((r) => r.market_p != null);
   if (!rows.length) { wrap.innerHTML = `<div class="empty">No market comparison available.</div>`; return; }
-  wrap.innerHTML = `
+  wrap.innerHTML = perTeamTable(rows, { evCol: true });
+}
+
+// Shared renderer for "per-team Yes-market" tables (winner, rounds, group winner).
+function perTeamTable(rows, { evCol = false } = {}) {
+  return `
     <table>
       <thead><tr>
-        <th>Team</th><th class="num">Model</th><th class="num">Market</th>
-        <th class="num">Edge</th><th class="num">EV / share</th>
+        <th>Team</th><th class="num">Model</th><th class="num">Polymarket</th>
+        <th class="num">Edge</th>${evCol ? `<th class="num">EV / share</th>` : ""}
       </tr></thead>
       <tbody>
         ${rows.map((r) => `
         <tr>
-          <td>${esc(r.team)}</td>
+          <td><span class="flag">${flag(r.team)}</span> ${esc(r.team)}</td>
           <td class="num">${fmtPct(r.model_p)}</td>
           <td class="num">${fmtPct(r.market_p)}</td>
-          <td class="num ${r.edge > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(r.edge)}</td>
-          <td class="num ${r.ev > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(r.ev)}</td>
+          <td class="num ${(r.edge ?? 0) > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(r.edge)}</td>
+          ${evCol ? `<td class="num ${(r.ev ?? 0) > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(r.ev)}</td>` : ""}
         </tr>`).join("")}
       </tbody>
     </table>`;
 }
 
-// ---------- edge: match cards ----------
-function renderMatchEdges() {
+// ---------- edge: per-match 1X2 (dropdown, one match at a time) ----------
+function renderMatchEdge(m) {
   const wrap = $("#match-edges");
-  const rows = DATA.match_edges;
-  if (!rows.length) { wrap.innerHTML = `<div class="empty">No bookmaker match prices on file yet.</div>`; return; }
-  wrap.innerHTML = rows.map((m) => {
-    const hasValue = (m.best_ev ?? -1) > 0;
-    const outcomeRows = m.outcomes.map((o) => `
-      <div class="ec-row">
-        <span class="o-label">${o.label}</span>
-        <span>model <b>${fmtPct(o.model_p)}</b></span>
-        <span>mkt ${fmtPct(o.market_p)} @ ${fmtOdds(o.book_odds)}</span>
-        <span class="o-edge ${o.edge > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(o.edge)}</span>
-      </div>`).join("");
-    return `
+  if (!m) { wrap.innerHTML = `<div class="empty">No upcoming match odds on Polymarket right now.</div>`; return; }
+  const hasValue = (m.best_ev ?? -1) > 0;
+  const labelName = { "1": m.home, "X": "Draw", "2": m.away };
+  const outcomeRows = m.outcomes.map((o) => `
+    <div class="ec-row">
+      <span class="o-label">${o.label} · ${esc(labelName[o.label] || "")}</span>
+      <span>model <b>${fmtPct(o.model_p)}</b></span>
+      <span>poly ${fmtPct(o.market_p)} @ ${fmtOdds(o.book_odds)}</span>
+      <span class="o-edge ${o.edge > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(o.edge)}</span>
+    </div>`).join("");
+  wrap.innerHTML = `
     <div class="edge-card ${hasValue ? "has-value" : ""}">
       <div class="ec-head">
-        <span class="teams">${esc(m.home)} vs ${esc(m.away)}</span>
-        <span class="book">${esc(m.bookmaker)}</span>
+        <span class="teams"><span class="flag">${flag(m.home)}</span> ${esc(m.home)} vs ${esc(m.away)} <span class="flag">${flag(m.away)}</span></span>
+        <span class="book">${esc(m.date)} · ${esc(m.bookmaker)}</span>
       </div>
       ${outcomeRows}
       <div style="margin-top:10px;font-size:13px">
         Best value: <span class="${hasValue ? "edge-pos" : "edge-neg"}">${fmtSign(m.best_ev)} EV</span>
-        ${m.source_url ? `· <a href="${esc(m.source_url)}" target="_blank" rel="noopener" style="color:var(--accent)">source</a>` : ""}
+        ${m.source_url ? `· <a href="${esc(m.source_url)}" target="_blank" rel="noopener" style="color:var(--accent)">view on Polymarket ↗</a>` : ""}
       </div>
     </div>`;
-  }).join("");
+}
+
+function initMatchEdges() {
+  const sel = $("#me-match");
+  const rows = DATA.match_edges || [];
+  if (!rows.length) { renderMatchEdge(null); if (sel) sel.style.display = "none"; return; }
+  sel.innerHTML = rows.map((m, i) =>
+    `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)} (best ${fmtSign(m.best_ev)} EV)</option>`).join("");
+  sel.addEventListener("change", () => renderMatchEdge(rows[parseInt(sel.value, 10) || 0]));
+  renderMatchEdge(rows[0]);
+}
+
+// ---------- edge: round markets (dropdown) ----------
+function initRoundMarkets() {
+  const sel = $("#me-round");
+  const groups = (DATA.market_comparisons && DATA.market_comparisons.rounds) || [];
+  const wrap = $("#round-table");
+  if (!groups.length) { wrap.innerHTML = `<div class="empty">No advancement markets available.</div>`; if (sel) sel.style.display = "none"; return; }
+  sel.innerHTML = groups.map((g, i) => `<option value="${i}">${esc(g.label)}</option>`).join("");
+  const render = () => {
+    const g = groups[parseInt(sel.value, 10) || 0];
+    wrap.innerHTML = g.rows.length ? perTeamTable(g.rows) : `<div class="empty">No data.</div>`;
+  };
+  sel.addEventListener("change", render);
+  render();
+}
+
+// ---------- edge: group winner (dropdown) ----------
+function initGroupMarkets() {
+  const sel = $("#me-group");
+  const groups = (DATA.market_comparisons && DATA.market_comparisons.groups) || [];
+  const wrap = $("#group-table");
+  if (!groups.length) { wrap.innerHTML = `<div class="empty">No group-winner markets available.</div>`; if (sel) sel.style.display = "none"; return; }
+  sel.innerHTML = groups.map((g, i) => `<option value="${i}">${esc(g.label)}</option>`).join("");
+  const render = () => {
+    const g = groups[parseInt(sel.value, 10) || 0];
+    wrap.innerHTML = g.rows.length ? perTeamTable(g.rows) : `<div class="empty">No data.</div>`;
+  };
+  sel.addEventListener("change", render);
+  render();
 }
 
 // ---------- reliability ----------
@@ -660,7 +703,14 @@ async function boot() {
   $("#pred-sort").addEventListener("change", renderPredictions);
 
   renderOutright();
-  renderMatchEdges();
+  initMatchEdges();
+  initRoundMarkets();
+  initGroupMarkets();
+  const ot = $("#outright-toggle");
+  if (ot) ot.addEventListener("click", () => {
+    const open = ot.classList.toggle("open");
+    $("#outright-table").classList.toggle("collapsed", !open);
+  });
   renderLeaderboard();
   renderTrackRecord();
   initSimulator();

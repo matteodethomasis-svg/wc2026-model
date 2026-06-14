@@ -64,29 +64,53 @@
     <!-- EDGE -->
     <section id="edge" class="panel">
       <div class="intro">
-        <h2>Where the model disagrees with the market 💸</h2>
+        <h2>Model vs Polymarket 💸</h2>
         <p>
-          The market (bookmakers &amp; Polymarket) is the toughest "rival model" out there.
-          When our model gives an outcome a <b>higher</b> chance than the market's
-          <b>no-vig</b> price implies, that's an <b>edge</b> — a possible value bet.
-          <b>EV</b> (expected value) is your average profit per 1 unit staked if the model is right.
-          <span class="legend"><span class="dot pos"></span> green = value · <span class="dot neg"></span> red = market disagrees</span>
+          Polymarket is the toughest "rival model" out there — deep, liquid, real money.
+          For every market we show <b>our probability</b> next to <b>Polymarket's price</b>,
+          and the <b>edge</b> (ours − theirs). Pick a market below. Everything is sorted by
+          <b>our</b> probability, so it reads as our board with the market alongside.
+          <span class="legend"><span class="dot pos"></span> green = we're higher · <span class="dot neg"></span> red = market's higher</span>
         </p>
         <p class="reality-check">
-          🧠 <b>Reality check:</b> a <i>huge</i> edge usually means the <b>model</b> is wrong, not that
-          you found free money — deep, liquid markets (Polymarket has tens of millions in volume) are
-          hard to beat. Our sim tends to <b>over-rate favourites</b> for the title because it doesn't fully
-          capture tournament chaos. Treat big outright edges as "the model is bullish here," not as a lock.
+          🧠 <b>Reality check:</b> a <i>huge</i> edge usually means the <b>model</b> is wrong, not free
+          money — these markets are hard to beat. Match odds shown are <b>ante-post only</b> (before
+          kickoff); once a game starts it moves to the Track Record, where we grade both on the real result.
         </p>
       </div>
 
-      <h3 class="section-label">🥇 World Cup winner — model vs Polymarket</h3>
-      <p class="hint">Live prediction-market prices vs our tournament simulation.</p>
-      <div id="outright-table" class="table-wrap"></div>
+      <!-- MATCH 1X2 (top, dropdown to keep it compact) -->
+      <h3 class="section-label">⚔️ Match odds (1 / X / 2) — model vs Polymarket</h3>
+      <p class="hint">Upcoming matches only (ante-post). Pick one to compare our 1X2 with Polymarket's.</p>
+      <div class="market-picker">
+        <select id="me-match"></select>
+      </div>
+      <div id="match-edges"></div>
 
-      <h3 class="section-label">⚔️ Match odds — model vs bookmakers</h3>
-      <p class="hint">Sample of matches where we have bookmaker prices on file.</p>
-      <div id="match-edges" class="card-grid"></div>
+      <!-- ADVANCEMENT / ROUND markets -->
+      <h3 class="section-label">🚀 Advancement — will a nation reach a round?</h3>
+      <p class="hint">Per-nation "reach the round" markets. Choose a round.</p>
+      <div class="market-picker">
+        <select id="me-round"></select>
+      </div>
+      <div id="round-table" class="table-wrap"></div>
+
+      <!-- GROUP WINNER -->
+      <h3 class="section-label">🏳️ Group winners</h3>
+      <p class="hint">Who tops each group — model vs Polymarket.</p>
+      <div class="market-picker">
+        <select id="me-group"></select>
+      </div>
+      <div id="group-table" class="table-wrap"></div>
+
+      <!-- OUTRIGHT WINNER -->
+      <h3 class="section-label">🥇 World Cup winner — model vs Polymarket</h3>
+      <p class="hint">Our title board (sorted by our probability), with Polymarket's price alongside.</p>
+      <button id="outright-toggle" class="collapse-head">
+        <span class="chev">▸</span><span>Show the full title board</span>
+        <span class="collapse-hint">show / hide</span>
+      </button>
+      <div id="outright-table" class="table-wrap collapsed"></div>
     </section>
 
     <!-- RELIABILITY -->

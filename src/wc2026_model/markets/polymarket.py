@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from typing import Any
 from urllib.parse import urlencode
@@ -15,6 +16,19 @@ DEFAULT_HTTP_HEADERS = {
     "User-Agent": "Mozilla/5.0",
     "Accept": "application/json",
 }
+
+# Polymarket spells a few nations differently from our fixtures' canonical names;
+# normalize before canonicalize_team_name so the (date, home, away) merge lines up.
+_POLYMARKET_NAME_FIXUPS = {
+    "IR Iran": "Iran",
+    "Cabo Verde": "Cape Verde",
+    "Korea Republic": "South Korea",
+}
+
+
+def _fix_polymarket_team(name: str) -> str:
+    name = str(name).strip()
+    return canonicalize_team_name(_POLYMARKET_NAME_FIXUPS.get(name, name))
 
 
 @dataclass(frozen=True)
@@ -208,3 +222,173 @@ def _probability_to_decimal_odds(probability: float) -> float | None:
     if probability <= 0.0:
         return None
     return 1.0 / probability
+
+
+# --------------------------------------------------------------------------- #
+# Per-match 1X2 markets (slug pattern: fifwc-<home>-<away>-YYYY-MM-DD)
+# --------------------------------------------------------------------------- #
+
+# fifwc-fra-sen-2026-06-16  ->  date 2026-06-16. (Score / halftime variants carry an
+# extra suffix and are skipped.)
+_MATCH_SLUG_RE = re.compile(r"^fifwc-[a-z]{2,4}-[a-z]{2,4}-(\d{4}-\d{2}-\d{2})$")
+_TITLE_VS_RE = re.compile(r"^(.*?)\s+vs\.?\s+(.*?)$")
+
+
+def fetch_polymarket_world_cup_events(
+    tag_slug: str = "fifa-world-cup", *, limit: int = 500, closed: bool = False
+) -> list[dict[str, Any]]:
+    """Fetch the broader World Cup event list (per-match + round/group markets live
+    under tag 'fifa-world-cup', NOT '2026-fifa-world-cup' which is winner-only).
+
+    The Gamma API caps a single response at 100 events, so we page with ``offset``
+    until a short page (or ``limit``) is reached. Without this, the per-team round
+    markets (R16/QF/SF) fall off the first page and silently go missing.
+    """
+    page_size = 100
+    collected: list[dict[str, Any]] = []
+    offset = 0
+    while len(collected) < limit:
+        query_string = urlencode(
+            {
+                "limit": page_size,
+                "offset": offset,
+                "closed": str(closed).lower(),
+                "tag_slug": tag_slug,
+            }
+        )
+        request = Request(
+            f"{POLYMARKET_GAMMA_EVENTS_URL}?{query_string}", headers=DEFAULT_HTTP_HEADERS
+        )
+        with urlopen(request) as response:
+            page = json.load(response)
+        if not isinstance(page, list) or not page:
+            break
+        collected.extend(page)
+        offset += page_size
+        if len(page) < page_size:
+            break
+    return collected
+
+
+def extract_match_odds_frame(events: list[dict[str, Any]]) -> pd.DataFrame:
+    """Turn the per-match (fifwc-*) events into a 1X2 decimal-odds snapshot ready for
+    ``markets.match_odds.compare_match_probabilities``.
+
+    Each match event has three Yes/No markets: "Will <home> win", "Will <away> win",
+    and "Will <home> vs <away> end in a draw". We read each Yes price as the outcome
+    probability and convert to decimal odds (1/p); the no-vig step happens downstream.
+    """
+    rows: list[dict[str, Any]] = []
+    for event in events:
+        slug = str(event.get("slug", "")).strip()
+        match = _MATCH_SLUG_RE.match(slug)
+        if not match:
+            continue  # skip non-match, exact-score, halftime variants
+        match_date = match.group(1)
+
+        title = str(event.get("title", "")).strip()
+        title_match = _TITLE_VS_RE.match(title)
+        if not title_match:
+            continue
+        home_team = _fix_polymarket_team(title_match.group(1))
+        away_team = _fix_polymarket_team(title_match.group(2))
+
+        markets = event.get("markets")
+        if not isinstance(markets, list):
+            continue
+
+        home_p = draw_p = away_p = None
+        for m in markets:
+            if not isinstance(m, dict):
+                continue
+            yes = _yes_price(m)
+            if yes is None:
+                continue
+            git = str(m.get("groupItemTitle", "")).strip()
+            question = str(m.get("question", "")).lower()
+            if "draw" in git.lower() or "end in a draw" in question:
+                draw_p = yes
+            else:
+                team = _fix_polymarket_team(git)
+                if team == home_team:
+                    home_p = yes
+                elif team == away_team:
+                    away_p = yes
+        if None in (home_p, draw_p, away_p):
+            continue
+
+        rows.append(
+            {
+                "match_date": match_date,
+                "home_team": home_team,
+                "away_team": away_team,
+                "home_decimal_odds": _probability_to_decimal_odds(home_p),
+                "draw_decimal_odds": _probability_to_decimal_odds(draw_p),
+                "away_decimal_odds": _probability_to_decimal_odds(away_p),
+                "home_market_probability": home_p,
+                "draw_market_probability": draw_p,
+                "away_market_probability": away_p,
+                "event_slug": slug,
+                "source_url": f"https://polymarket.com/event/{slug}",
+                "bookmaker": "Polymarket",
+                "volume": _coerce_float(event.get("volume")),
+            }
+        )
+
+    columns = [
+        "match_date", "home_team", "away_team",
+        "home_decimal_odds", "draw_decimal_odds", "away_decimal_odds",
+        "home_market_probability", "draw_market_probability", "away_market_probability",
+        "event_slug", "source_url", "bookmaker", "volume",
+    ]
+    if not rows:
+        return pd.DataFrame(columns=columns)
+    return pd.DataFrame.from_records(rows)[columns].sort_values(
+        ["match_date", "home_team", "away_team"], kind="stable"
+    ).reset_index(drop=True)
+
+
+def _yes_price(market: dict[str, Any]) -> float | None:
+    outcomes = _coerce_list(market.get("outcomes"))
+    prices = _coerce_float_list(_coerce_list(market.get("outcomePrices")))
+    lookup = {str(o).strip(): p for o, p in zip(outcomes, prices, strict=False)}
+    return _first_non_null(
+        lookup.get("Yes"),
+        prices[0] if prices else None,
+        _coerce_float(market.get("lastTradePrice")),
+    )
+
+
+# --------------------------------------------------------------------------- #
+# Per-team advancement / group markets (Yes/No per nation, like the winner market)
+# --------------------------------------------------------------------------- #
+
+
+def extract_per_team_yes_market_frame(event: dict[str, Any]) -> pd.DataFrame:
+    """Generic Yes/No-per-team extractor (reach-round, group-winner, …). Same shape as
+    the winner market: each market's ``groupItemTitle`` is a nation and the Yes price is
+    its probability. Returns columns: team, market_probability, volume."""
+    markets = event.get("markets")
+    rows: list[dict[str, Any]] = []
+    if isinstance(markets, list):
+        for m in markets:
+            if not isinstance(m, dict):
+                continue
+            team = str(m.get("groupItemTitle", "")).strip()
+            if not team or team.lower() in ("other", "field"):
+                continue
+            yes = _yes_price(m)
+            if yes is None:
+                continue
+            rows.append(
+                {
+                    "team": _fix_polymarket_team(team),
+                    "market_probability": yes,
+                    "volume": _coerce_float(m.get("volume")),
+                }
+            )
+    if not rows:
+        return pd.DataFrame(columns=["team", "market_probability", "volume"])
+    return pd.DataFrame.from_records(rows).sort_values(
+        ["market_probability", "team"], ascending=[False, True], kind="stable"
+    ).reset_index(drop=True)

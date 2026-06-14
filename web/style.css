@@ -222,6 +222,12 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; }
 /* flags */
 .flag { font-size: 16px; vertical-align: -1px; }
 
+/* market dropdown picker + collapsible tables */
+.market-picker { margin: 4px 0 12px; }
+.market-picker select { min-width: 260px; font-size: 14px; }
+.table-wrap.collapsed { display: none; }
+#match-edges { max-width: 520px; }
+
 /* next-up highlight + collapsible older predictions */
 .next-up { margin-bottom: 22px; }
 .next-up .match-card {

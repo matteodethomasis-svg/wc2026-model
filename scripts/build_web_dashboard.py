@@ -168,20 +168,27 @@ def build_match_edges(comparison: pd.DataFrame) -> list[dict[str, Any]]:
             )
         best_edge = _num(getattr(row, "best_model_edge_no_vig", None))
         best_ev = _num(getattr(row, "best_model_ev", None))
+        # Our most confident outcome, used to sort the table by OUR call (not by edge).
+        our_top = max((o["model_p"] or 0) for o in outcomes) if outcomes else 0
         rows.append(
             {
                 "home": str(getattr(row, "home_team", "")),
                 "away": str(getattr(row, "away_team", "")),
                 "date": str(getattr(row, "match_date", "")),
-                "bookmaker": str(getattr(row, "bookmaker", "")),
+                "bookmaker": str(getattr(row, "bookmaker", "Polymarket")),
                 "source_title": str(getattr(row, "source_title", "")),
                 "source_url": str(getattr(row, "source_url", "")),
                 "outcomes": outcomes,
                 "best_edge": None if best_edge is None else round(best_edge * 100.0, 1),
                 "best_ev": None if best_ev is None else round(best_ev * 100.0, 1),
+                "_our_top": our_top,
             }
         )
-    rows.sort(key=lambda r: (r["best_ev"] is None, -(r["best_ev"] or 0)))
+    # Sort by our most confident pick (descending), then date. Keeps the strongest
+    # model calls on top rather than amplifying noisy high-EV longshots.
+    rows.sort(key=lambda r: (-r["_our_top"], r["date"]))
+    for r in rows:
+        r.pop("_our_top", None)
     return rows
 
 
@@ -206,8 +213,74 @@ def build_outright_edges(comparison: pd.DataFrame) -> list[dict[str, Any]]:
                 "volume": _num(getattr(row, "volume", None)),
             }
         )
-    rows.sort(key=lambda r: (r["ev"] is None, -(r["ev"] or 0)))
+    # Order by OUR probability (descending), not by edge — the market table should read
+    # as "our title board", with the edge shown alongside, not driving the sort.
+    rows.sort(key=lambda r: (r["model_p"] is None, -(r["model_p"] or 0)))
     return rows
+
+
+def _per_team_market_rows(comparison: pd.DataFrame) -> list[dict[str, Any]]:
+    """Rows for a per-team Yes-market comparison (rounds / group winner), already
+    sorted by our probability upstream. Market prob is the RAW Polymarket Yes price."""
+    rows: list[dict[str, Any]] = []
+    for row in comparison.itertuples(index=False):
+        model_p = _num(getattr(row, "model_probability", None))
+        if model_p is None:
+            continue
+        market_p = _num(getattr(row, "market_probability", None))
+        edge = _num(getattr(row, "edge_vs_market", None))
+        rows.append(
+            {
+                "team": str(getattr(row, "team", "")),
+                "model_p": _pct(model_p),
+                "market_p": _pct(market_p),
+                "edge": None if edge is None else round(edge * 100.0, 1),
+                "model_odds": _fair_odds(model_p),
+                "market_odds": _fair_odds(market_p),
+                "volume": _num(getattr(row, "volume", None)),
+            }
+        )
+    return rows
+
+
+# Human labels for the round-market dropdown.
+_ROUND_LABELS = {
+    "advance": "Advance past group",
+    "r16": "Reach Round of 16",
+    "quarter": "Reach Quarterfinals",
+    "semi": "Reach Semifinals",
+    "final": "Reach Final",
+}
+
+
+def build_market_comparisons(
+    matches: pd.DataFrame | None,
+    rounds: pd.DataFrame | None,
+    groups: pd.DataFrame | None,
+) -> dict[str, Any]:
+    """Everything for the dropdown-driven 'Edge vs Market' tab: ante-post per-match
+    1X2, per-team round markets, and per-group winner markets — all vs Polymarket."""
+    out: dict[str, Any] = {"matches": [], "rounds": [], "groups": []}
+
+    # Per-match 1X2 (already ante-post + sorted by our pick upstream).
+    if matches is not None and not matches.empty:
+        out["matches"] = build_match_edges(matches)
+
+    # Round markets: a list of {key,label,rows} for the dropdown.
+    if rounds is not None and not rounds.empty and "market_key" in rounds.columns:
+        for key, label in _ROUND_LABELS.items():
+            sub = rounds[rounds["market_key"] == key]
+            if sub.empty:
+                continue
+            out["rounds"].append({"key": key, "label": label, "rows": _per_team_market_rows(sub)})
+
+    # Group winner: one entry per group letter.
+    if groups is not None and not groups.empty and "group" in groups.columns:
+        for letter in sorted(groups["group"].dropna().unique()):
+            sub = groups[groups["group"] == letter]
+            out["groups"].append({"key": str(letter), "label": f"Group {letter} winner",
+                                  "rows": _per_team_market_rows(sub)})
+    return out
 
 
 # ----------------------------- reliability ----------------------------------
@@ -373,7 +446,14 @@ def main() -> None:
     )
     parser.add_argument(
         "--match-edges",
-        default="reports/bookmaker_match_odds_expected_xi_plus_goalkeeper_live_sample_comparison.csv",
+        # Ante-post per-match 1X2 vs Polymarket (future kickoffs only).
+        default="reports/polymarket_match_edges_antepost_comparison.csv",
+    )
+    parser.add_argument(
+        "--round-edges", default="reports/polymarket_round_comparison.csv",
+    )
+    parser.add_argument(
+        "--group-edges", default="reports/polymarket_group_winner_comparison.csv",
     )
     parser.add_argument(
         "--outright-edges",
@@ -400,6 +480,8 @@ def main() -> None:
 
     fixtures = _read_csv(ROOT / args.fixtures)
     match_cmp = _read_csv(ROOT / args.match_edges)
+    round_cmp = _read_csv(ROOT / args.round_edges)
+    group_cmp = _read_csv(ROOT / args.group_edges)
     outright_cmp = _read_csv(ROOT / args.outright_edges)
     summary = _read_csv(ROOT / args.backtest_summary)
     ablation = _read_csv(ROOT / args.ablation_summary)
@@ -417,6 +499,7 @@ def main() -> None:
         "predictions": build_predictions(fixtures, results) if fixtures is not None else [],
         "match_edges": build_match_edges(match_cmp) if match_cmp is not None else [],
         "outright_edges": build_outright_edges(outright_cmp) if outright_cmp is not None else [],
+        "market_comparisons": build_market_comparisons(match_cmp, round_cmp, group_cmp),
         "reliability": build_reliability(summary, ablation),
         "tournament": build_tournament(sim) if sim is not None else {"teams": []},
         "track_record": build_track_record(

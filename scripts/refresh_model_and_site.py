@@ -159,13 +159,21 @@ def main() -> None:
         "--output", FIXTURES_OUT,
     ], "Regenerate fixture predictions")
 
-    # Refresh live Polymarket winner odds (free Gamma API) so the edge/track record
-    # compares against current prices, not a stale snapshot. Non-fatal on hiccup.
+    # Refresh live Polymarket odds (free Gamma API) so the edge/track record compares
+    # against CURRENT prices, not a stale snapshot. We snapshot the market at the SAME
+    # moment we re-condition the model on the latest results — otherwise we'd grade our
+    # updated probabilities against a market price from a different information state,
+    # which is unfair to whichever side moved. Non-fatal on hiccup.
     if not args.skip_market_fetch:
         try:
-            run(["scripts/fetch_polymarket_world_cup_winner.py"], "Fetch live Polymarket odds")
+            run(["scripts/fetch_polymarket_world_cup_winner.py"], "Fetch live Polymarket winner odds")
         except SystemExit:
-            print("  (Polymarket fetch failed; keeping the existing odds snapshot.)")
+            print("  (Polymarket winner fetch failed; keeping the existing odds snapshot.)")
+        try:
+            run(["scripts/fetch_polymarket_world_cup_matches.py"],
+                "Fetch live Polymarket per-match + round/group odds")
+        except SystemExit:
+            print("  (Polymarket match fetch failed; keeping the existing snapshot.)")
 
     if (ROOT / POLY_MARKET).exists():
         run([
@@ -173,7 +181,15 @@ def main() -> None:
             "--model-probabilities-input", SIM_OUT,
             "--market-probabilities-input", POLY_MARKET,
             "--output", POLY_CMP, "--summary-output", POLY_SUMMARY,
-        ], "Refresh Polymarket comparison")
+        ], "Refresh Polymarket winner comparison")
+
+    # Per-match (1X2) + round/group comparison. Splits ante-post (future kickoff) for
+    # the site's edge view from the full set used by the track record.
+    if (ROOT / "data/interim/polymarket_world_cup_matches.csv").exists():
+        run([
+            "scripts/compare_polymarket_world_cup_matches.py",
+            "--fixtures", FIXTURES_OUT, "--sim", SIM_OUT,
+        ], "Refresh Polymarket per-match + round/group comparison")
 
     # 7. Update the model-vs-market track record (append snapshot + score played).
     run(["scripts/update_prediction_ledger.py"], "Update model-vs-market track record")
