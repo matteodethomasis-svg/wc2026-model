@@ -92,7 +92,29 @@ function upcomingCard(m) {
           <span class="conf-bar"><span style="width:${m.confidence}%"></span></span>
         </span>
       </div>
+      ${lineupBlock(m)}
     </div>`;
+}
+
+// Official XI block — only renders once ESPN publishes the lineups (~1h pre-kickoff).
+function lineupBlock(m) {
+  const h = m.home_xi || [], a = m.away_xi || [];
+  if (!h.length && !a.length) return "";
+  const col = (team, xi) => `
+    <div class="xi-col">
+      <div class="xi-team">${flag(team)} ${esc(team)}</div>
+      <ol class="xi-list">
+        ${xi.map((p) => `<li><span class="xi-pos xi-${esc(p.pos)}">${esc(p.pos || "·")}</span> ${esc(p.name)}</li>`).join("")}
+      </ol>
+    </div>`;
+  return `
+    <details class="xi-details">
+      <summary>📋 Official lineups out</summary>
+      <div class="xi-grid">
+        ${h.length ? col(m.home, h) : ""}
+        ${a.length ? col(m.away, a) : ""}
+      </div>
+    </details>`;
 }
 
 function playedCard(m) {

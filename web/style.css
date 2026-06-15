@@ -230,6 +230,19 @@ img.flag {
 }
 .pg-flag img.flag, .pg-flag .flag-unknown { width: 56px; height: 38px; border-radius: 4px; vertical-align: 0; }
 
+/* official lineups on the upcoming card */
+.xi-details { margin-top: 12px; border-top: 1px solid var(--border); padding-top: 10px; }
+.xi-details summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; }
+.xi-details summary::-webkit-details-marker { display: none; }
+.xi-details summary::before { content: "▸ "; color: var(--muted); }
+.xi-details[open] summary::before { content: "▾ "; }
+.xi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+.xi-team { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.xi-list { margin: 0; padding-left: 18px; font-size: 12px; color: var(--text); }
+.xi-list li { margin-bottom: 3px; }
+.xi-pos { display: inline-block; min-width: 22px; font-size: 10px; font-weight: 700; color: var(--muted); }
+.xi-GK { color: var(--gold); } .xi-DF { color: var(--home); } .xi-MF { color: var(--draw); } .xi-FW { color: var(--away); }
+
 /* market dropdown picker + collapsible tables */
 .market-picker { margin: 4px 0 12px; }
 .market-picker select { min-width: 260px; font-size: 14px; }

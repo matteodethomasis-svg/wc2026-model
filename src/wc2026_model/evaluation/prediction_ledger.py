@@ -90,6 +90,7 @@ def score_match_ledger(
     results: pd.DataFrame,
     *,
     kickoffs: pd.DataFrame | None = None,
+    lineup_lead_minutes: int = 75,
 ) -> pd.DataFrame:
     """Score each match snapshot against the real result, PER MATCH.
 
@@ -102,10 +103,14 @@ def score_match_ledger(
 
     FAIRNESS: the market (Polymarket) is live and moves during a game, while our
     prediction is fixed ante-post. To compare like-with-like we must use the market's
-    ANTE-POST snapshot — the last one captured BEFORE kickoff. Pass `kickoffs`
-    (home_team, away_team, kickoff_ts) and we keep, per match, the latest snapshot with
-    snapshot_ts < kickoff_ts. Without kickoffs we fall back to the latest snapshot
-    (only safe before any of the matches start).
+    ANTE-POST snapshot — but more precisely, the last one captured before the OFFICIAL
+    LINEUP dropped. Official XIs publish ~1h before kickoff and move both our model and
+    the market; scoring after that would compare a lineup-informed snapshot. So we cut at
+    ``kickoff − lineup_lead_minutes`` (default 75 min) and keep, per match, the latest
+    snapshot before that cutoff. This is the "equal information" test: who predicted
+    better with LESS info, before anyone saw the teamsheet. Pass `kickoffs`
+    (home_team, away_team, kickoff_ts). Without kickoffs we fall back to the latest
+    snapshot (only safe before any of the matches start).
     """
     if ledger.empty or results.empty:
         return pd.DataFrame()
@@ -118,12 +123,15 @@ def score_match_ledger(
             (str(r.home_team), str(r.away_team)): r.kickoff_ts
             for r in kickoffs.itertuples(index=False)
         }
+        cutoff_delta = pd.Timedelta(minutes=lineup_lead_minutes)
         kept = []
         for (home, away), grp in work.groupby(["home_team", "away_team"]):
             kickoff = ko.get((str(home), str(away)))
-            ante = grp if kickoff is None else grp[grp["_snap_ts"] < kickoff]
+            # Cut at kickoff − lineup lead so the scored snapshot predates the official XI.
+            cutoff = None if kickoff is None else kickoff - cutoff_delta
+            ante = grp if cutoff is None else grp[grp["_snap_ts"] < cutoff]
             if ante.empty:
-                continue  # no pre-kickoff snapshot -> can't fairly score this match
+                continue  # no pre-lineup snapshot -> can't fairly score this match
             kept.append(ante.sort_values("_snap_ts").iloc[[-1]])
         latest = pd.concat(kept, ignore_index=True) if kept else work.iloc[0:0]
     else:

@@ -100,13 +100,35 @@ def _kickoff_lookup(kickoffs: pd.DataFrame | None) -> dict[tuple[str, str], pd.T
     }
 
 
+_POSITION_ORDER = {"GK": 0, "DF": 1, "MF": 2, "FW": 3}
+
+
+def _lineups_by_team(lineups: pd.DataFrame | None) -> dict[str, list[dict[str, str]]]:
+    """Map team -> its starting XI (ordered GK→DF→MF→FW) from the ESPN lineups feed.
+    Keyed by team only (one upcoming fixture per team at a time)."""
+    if lineups is None or lineups.empty:
+        return {}
+    out: dict[str, list[dict[str, str]]] = {}
+    starters = lineups[lineups["is_expected_starter"].astype(str).str.lower().isin(["true", "1"])]
+    for team, grp in starters.groupby("team"):
+        players = [
+            {"name": str(r.player), "pos": str(getattr(r, "position", "") or "")}
+            for r in grp.itertuples(index=False)
+        ]
+        players.sort(key=lambda p: _POSITION_ORDER.get(p["pos"], 9))
+        out[str(team)] = players
+    return out
+
+
 def build_predictions(
     fixtures: pd.DataFrame,
     results: pd.DataFrame | None = None,
     kickoffs: pd.DataFrame | None = None,
+    lineups: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
     played = _played_results_lookup(results)
     ko = _kickoff_lookup(kickoffs)
+    xi = _lineups_by_team(lineups)
     now = pd.Timestamp.now(tz="UTC")
     rows: list[dict[str, Any]] = []
     for row in fixtures.itertuples(index=False):
@@ -151,6 +173,10 @@ def build_predictions(
                 "confidence": _pct(picks[pick]),
                 "played": result is not None,
                 "started": started,
+                # Official starting XI (from ESPN), shown on the upcoming card once it's
+                # published ~1h pre-kickoff. Only attached while the match is still upcoming.
+                "home_xi": (xi.get(home_team, []) if not started else []),
+                "away_xi": (xi.get(away_team, []) if not started else []),
                 "result_home_goals": (result or {}).get("home_goals"),
                 "result_away_goals": (result or {}).get("away_goals"),
                 "result_side": (result or {}).get("result_side"),
@@ -491,6 +517,7 @@ def main() -> None:
     parser.add_argument("--track-summary", default="reports/track_record_summary.json")
     parser.add_argument("--track-scored", default="reports/track_record_match_scored.csv")
     parser.add_argument("--results", default="data/interim/international_results_augmented.csv")
+    parser.add_argument("--lineups", default="data/interim/wc2026_expected_lineups_espn.csv")
     parser.add_argument("--elo", default="reports/baseline_latest_elo_ratings.csv")
     parser.add_argument("--squad", default="reports/wc2026_squad_strength_player_elo_ratings.csv")
     parser.add_argument("--groups", default="data/reference/wc2026_groups_actual.csv")
@@ -526,12 +553,15 @@ def main() -> None:
     except Exception as exc:  # pragma: no cover - network best-effort
         print(f"  (kickoff fetch skipped: {exc})")
 
+    # Official XIs (from the ESPN lineups feed produced by the refresh) for the upcoming cards.
+    lineups = _read_csv(ROOT / args.lineups)
+
     payload: dict[str, Any] = {
         "meta": {
             "generated_at": pd.Timestamp.now("UTC").strftime("%Y-%m-%d %H:%M UTC"),
             "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)",
         },
-        "predictions": build_predictions(fixtures, results, kickoffs) if fixtures is not None else [],
+        "predictions": build_predictions(fixtures, results, kickoffs, lineups) if fixtures is not None else [],
         "match_edges": build_match_edges(match_cmp) if match_cmp is not None else [],
         "outright_edges": build_outright_edges(outright_cmp) if outright_cmp is not None else [],
         "market_comparisons": build_market_comparisons(match_cmp, round_cmp, group_cmp),
