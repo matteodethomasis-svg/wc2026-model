@@ -48,6 +48,9 @@ reports/*
 # The lineups + derived availability features are regenerated each refresh but kept
 # so the site/model still have them if a single run skips the fetch.
 !data/interim/statsbomb_real_lineups.csv
+!reports/historical_world_cup_real_xi_squad_strength.csv
+!reports/validation_real_vs_heuristic_xi_real.json
+!reports/validation_real_vs_heuristic_xi_heuristic.json
 !data/interim/api_football_injuries.csv
 !reports/api_football_injuries_download_summary.json
 !data/interim/wc2026_expected_lineups_espn.csv

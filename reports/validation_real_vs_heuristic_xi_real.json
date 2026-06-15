@@ -1,0 +1,44 @@
+{
+  "years": [
+    2018,
+    2022
+  ],
+  "scale_grid": [
+    0.0,
+    0.5,
+    1.0,
+    1.5
+  ],
+  "rating_column": "real_xi_club_elo_rating",
+  "secondary_rating_column": null,
+  "secondary_scale_grid": [],
+  "best_overall": {
+    "model_name": "real_xi_club_elo_rating__scale_1.5",
+    "predictions": 128,
+    "mean_log_loss": 1.0009758305232537,
+    "mean_brier_score": 0.5795548346446513,
+    "mean_ranked_probability_score": 0.20518335827606993
+  },
+  "tournament_best_rows": [
+    {
+      "tournament_year": 2018,
+      "primary_scale": 1.5,
+      "secondary_scale": 0.0,
+      "secondary_rating_column": null,
+      "matches": 64,
+      "mean_log_loss": 0.9575647510678441,
+      "mean_brier_score": 0.5662989127976591,
+      "mean_ranked_probability_score": 0.19854268441031636
+    },
+    {
+      "tournament_year": 2022,
+      "primary_scale": 1.5,
+      "secondary_scale": 0.0,
+      "secondary_rating_column": null,
+      "matches": 64,
+      "mean_log_loss": 1.0443869099786631,
+      "mean_brier_score": 0.5928107564916436,
+      "mean_ranked_probability_score": 0.2118240321418235
+    }
+  ]
+}
