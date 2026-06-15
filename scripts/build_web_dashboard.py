@@ -91,10 +91,23 @@ def _played_results_lookup(results: pd.DataFrame | None) -> dict[tuple[str, str]
     return lookup
 
 
+def _kickoff_lookup(kickoffs: pd.DataFrame | None) -> dict[tuple[str, str], pd.Timestamp]:
+    if kickoffs is None or kickoffs.empty:
+        return {}
+    return {
+        (str(r.home_team), str(r.away_team)): r.kickoff_ts
+        for r in kickoffs.itertuples(index=False)
+    }
+
+
 def build_predictions(
-    fixtures: pd.DataFrame, results: pd.DataFrame | None = None
+    fixtures: pd.DataFrame,
+    results: pd.DataFrame | None = None,
+    kickoffs: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
     played = _played_results_lookup(results)
+    ko = _kickoff_lookup(kickoffs)
+    now = pd.Timestamp.now(tz="UTC")
     rows: list[dict[str, Any]] = []
     for row in fixtures.itertuples(index=False):
         home_p = _num(getattr(row, "home_win_probability", None))
@@ -105,7 +118,14 @@ def build_predictions(
         # The model's most confident pick, for the "call" badge.
         picks = {"home": home_p, "draw": draw_p, "away": away_p}
         pick = max(picks, key=picks.get)
-        result = played.get((str(getattr(row, "home_team", "")), str(getattr(row, "away_team", ""))))
+        home_team = str(getattr(row, "home_team", ""))
+        away_team = str(getattr(row, "away_team", ""))
+        result = played.get((home_team, away_team))
+        # A match is "started" once its real kickoff (UTC) has passed — timezone-correct,
+        # so a fixture can disappear from the upcoming tools the moment it kicks off,
+        # even before ESPN posts the final result.
+        kickoff = ko.get((home_team, away_team))
+        started = bool(result is not None or (kickoff is not None and now >= kickoff))
         rows.append(
             {
                 "match_id": str(getattr(row, "match_id", "")),
@@ -130,6 +150,7 @@ def build_predictions(
                 "pick": pick,
                 "confidence": _pct(picks[pick]),
                 "played": result is not None,
+                "started": started,
                 "result_home_goals": (result or {}).get("home_goals"),
                 "result_away_goals": (result or {}).get("away_goals"),
                 "result_side": (result or {}).get("result_side"),
@@ -491,12 +512,26 @@ def main() -> None:
     squad = _read_csv(ROOT / args.squad)
     groups = _read_csv(ROOT / args.groups)
 
+    # Kickoff times (UTC) let us mark a fixture "started" the moment it kicks off —
+    # timezone-correct — so the upcoming-only tools (predict-a-game, edge match list)
+    # drop it immediately, not only once ESPN posts the final score. Free ESPN call;
+    # non-fatal if it hiccups (then nothing is flagged started early, only `played`).
+    kickoffs = None
+    try:
+        from datetime import date as _date, timedelta as _timedelta
+
+        from wc2026_model.data import fetch_world_cup_kickoffs
+        end = (_date.today() + _timedelta(days=2)).isoformat()
+        kickoffs = fetch_world_cup_kickoffs("2026-06-08", end)
+    except Exception as exc:  # pragma: no cover - network best-effort
+        print(f"  (kickoff fetch skipped: {exc})")
+
     payload: dict[str, Any] = {
         "meta": {
             "generated_at": pd.Timestamp.now("UTC").strftime("%Y-%m-%d %H:%M UTC"),
             "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)",
         },
-        "predictions": build_predictions(fixtures, results) if fixtures is not None else [],
+        "predictions": build_predictions(fixtures, results, kickoffs) if fixtures is not None else [],
         "match_edges": build_match_edges(match_cmp) if match_cmp is not None else [],
         "outright_edges": build_outright_edges(outright_cmp) if outright_cmp is not None else [],
         "market_comparisons": build_market_comparisons(match_cmp, round_cmp, group_cmp),

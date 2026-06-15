@@ -14,26 +14,32 @@ const fmtSign = (v) => (v === null || v === undefined ? "—" : `${v > 0 ? "+" :
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ---------- flags ----------
-// Emoji flags keyed by team name (covers the WC2026 field + common qualifiers).
-const FLAGS = {
-  "Argentina":"🇦🇷","Australia":"🇦🇺","Austria":"🇦🇹","Belgium":"🇧🇪","Brazil":"🇧🇷",
-  "Cameroon":"🇨🇲","Canada":"🇨🇦","Chile":"🇨🇱","Colombia":"🇨🇴","Costa Rica":"🇨🇷",
-  "Croatia":"🇭🇷","Czechia":"🇨🇿","Czech Republic":"🇨🇿","Denmark":"🇩🇰","Ecuador":"🇪🇨",
-  "Egypt":"🇪🇬","England":"🏴\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}","France":"🇫🇷",
-  "Germany":"🇩🇪","Ghana":"🇬🇭","Greece":"🇬🇷","Hungary":"🇭🇺","Iran":"🇮🇷","IR Iran":"🇮🇷",
-  "Italy":"🇮🇹","Ivory Coast":"🇨🇮","Côte d'Ivoire":"🇨🇮","Japan":"🇯🇵","Jordan":"🇯🇴",
-  "Mexico":"🇲🇽","Morocco":"🇲🇦","Netherlands":"🇳🇱","New Zealand":"🇳🇿","Nigeria":"🇳🇬",
-  "Norway":"🇳🇴","Panama":"🇵🇦","Paraguay":"🇵🇾","Peru":"🇵🇪","Poland":"🇵🇱","Portugal":"🇵🇹",
-  "Qatar":"🇶🇦","Saudi Arabia":"🇸🇦","Scotland":"🏴\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}",
-  "Senegal":"🇸🇳","Serbia":"🇷🇸","Slovenia":"🇸🇮","South Africa":"🇿🇦","South Korea":"🇰🇷",
-  "Korea Republic":"🇰🇷","Spain":"🇪🇸","Sweden":"🇸🇪","Switzerland":"🇨🇭","Tunisia":"🇹🇳",
-  "Turkey":"🇹🇷","Türkiye":"🇹🇷","Ukraine":"🇺🇦","United States":"🇺🇸","USA":"🇺🇸","Uruguay":"🇺🇾",
-  "Uzbekistan":"🇺🇿","Wales":"🏴\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}",
-  "Algeria":"🇩🇿","Bolivia":"🇧🇴","Cape Verde":"🇨🇻","Curacao":"🇨🇼","Curaçao":"🇨🇼",
-  "DR Congo":"🇨🇩","Haiti":"🇭🇹","Honduras":"🇭🇳","Jamaica":"🇯🇲","New Caledonia":"🇳🇨",
-  "Bolivia ":"🇧🇴","Iraq":"🇮🇶","UAE":"🇦🇪","United Arab Emirates":"🇦🇪",
+// Emoji regional-indicator flags don't render on Windows (Segoe UI Emoji lacks them),
+// so we map each nation to its ISO-3166 alpha-2 code and render a flagcdn.com SVG —
+// free, no key, consistent on every platform.
+const FLAG_CC = {
+  "Argentina":"ar","Australia":"au","Austria":"at","Belgium":"be","Brazil":"br",
+  "Cameroon":"cm","Canada":"ca","Chile":"cl","Colombia":"co","Costa Rica":"cr",
+  "Croatia":"hr","Czechia":"cz","Czech Republic":"cz","Denmark":"dk","Ecuador":"ec",
+  "Egypt":"eg","England":"gb-eng","France":"fr","Germany":"de","Ghana":"gh","Greece":"gr",
+  "Hungary":"hu","Iran":"ir","IR Iran":"ir","Italy":"it","Ivory Coast":"ci","Côte d'Ivoire":"ci",
+  "Japan":"jp","Jordan":"jo","Mexico":"mx","Morocco":"ma","Netherlands":"nl","New Zealand":"nz",
+  "Nigeria":"ng","Norway":"no","Panama":"pa","Paraguay":"py","Peru":"pe","Poland":"pl",
+  "Portugal":"pt","Qatar":"qa","Saudi Arabia":"sa","Scotland":"gb-sct","Senegal":"sn",
+  "Serbia":"rs","Slovenia":"si","South Africa":"za","South Korea":"kr","Korea Republic":"kr",
+  "Spain":"es","Sweden":"se","Switzerland":"ch","Tunisia":"tn","Turkey":"tr","Türkiye":"tr",
+  "Ukraine":"ua","United States":"us","USA":"us","Uruguay":"uy","Uzbekistan":"uz","Wales":"gb-wls",
+  "Algeria":"dz","Bolivia":"bo","Cape Verde":"cv","Cabo Verde":"cv","Curacao":"cw","Curaçao":"cw",
+  "DR Congo":"cd","Haiti":"ht","Honduras":"hn","Jamaica":"jm","New Caledonia":"nc",
+  "Iraq":"iq","UAE":"ae","United Arab Emirates":"ae","Bosnia and Herzegovina":"ba",
 };
-const flag = (team) => FLAGS[team] || "🏳️";
+// Returns an <img> flag (or a neutral placeholder span when the nation is unknown).
+function flag(team) {
+  const cc = FLAG_CC[team];
+  if (!cc) return `<span class="flag flag-unknown" title="${esc(team)}"></span>`;
+  return `<img class="flag" loading="lazy" alt="${esc(team)}" `
+    + `src="https://flagcdn.com/${cc}.svg" onerror="this.style.display='none'">`;
+}
 
 // ---------- tabs ----------
 function initTabs() {
@@ -64,9 +70,9 @@ function upcomingCard(m) {
         <span>${m.neutral ? "neutral venue" : esc(m.city)}</span>
       </div>
       <div class="mc-teams">
-        <span class="home"><span class="flag">${flag(m.home)}</span> ${esc(m.home)}</span>
+        <span class="home">${flag(m.home)} ${esc(m.home)}</span>
         <span class="mc-vs">vs</span>
-        <span class="away">${esc(m.away)} <span class="flag">${flag(m.away)}</span></span>
+        <span class="away">${esc(m.away)} ${flag(m.away)}</span>
       </div>
       <div class="probbar">
         <span class="p-home" style="width:${m.p_home}%" title="Home win">${m.p_home >= 12 ? m.p_home + "%" : ""}</span>
@@ -99,9 +105,9 @@ function playedCard(m) {
         <span class="${ok ? "tick" : "cross"}">${ok ? "✓ model got it" : "✗ model missed"}</span>
       </div>
       <div class="mc-teams">
-        <span class="home ${m.result_side === "home" ? "won" : ""}"><span class="flag">${flag(m.home)}</span> ${esc(m.home)}</span>
+        <span class="home ${m.result_side === "home" ? "won" : ""}">${flag(m.home)} ${esc(m.home)}</span>
         <span class="mc-score">${m.result_home_goals}–${m.result_away_goals}</span>
-        <span class="away ${m.result_side === "away" ? "won" : ""}">${esc(m.away)} <span class="flag">${flag(m.away)}</span></span>
+        <span class="away ${m.result_side === "away" ? "won" : ""}">${esc(m.away)} ${flag(m.away)}</span>
       </div>
       <div class="mc-recap">
         Model had picked <span class="pill ${pc}">${pl}</span> at ${fmtPct(m.confidence)} confidence.
@@ -121,7 +127,10 @@ function renderPredictions() {
     return (a.date + a.home).localeCompare(b.date + b.home);
   };
 
-  const upcoming = items.filter((m) => !m.played).sort(sortFn);
+  // Upcoming = not yet kicked off (timezone-correct). A started-but-unresolved match
+  // is neither upcoming (prediction is locked) nor shown with a score yet, so it simply
+  // waits out of the list until ESPN posts the result and it joins "played".
+  const upcoming = items.filter((m) => !(m.started || m.played)).sort(sortFn);
   // Older matches: most recent first regardless of the chosen sort (latest result on top).
   const played = items.filter((m) => m.played)
     .sort((a, b) => (b.date + b.home).localeCompare(a.date + a.home));
@@ -191,7 +200,7 @@ function perTeamTable(rows, { evCol = false } = {}) {
       <tbody>
         ${rows.map((r) => `
         <tr>
-          <td><span class="flag">${flag(r.team)}</span> ${esc(r.team)}</td>
+          <td>${flag(r.team)} ${esc(r.team)}</td>
           <td class="num">${fmtPct(r.model_p)}</td>
           <td class="num">${fmtPct(r.market_p)}</td>
           <td class="num ${(r.edge ?? 0) > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(r.edge)}</td>
@@ -202,38 +211,56 @@ function perTeamTable(rows, { evCol = false } = {}) {
 }
 
 // ---------- edge: per-match 1X2 (dropdown, one match at a time) ----------
+// One row per outcome with two side-by-side bars (us vs Polymarket) so the
+// agreement/disagreement reads at a glance.
 function renderMatchEdge(m) {
   const wrap = $("#match-edges");
-  if (!m) { wrap.innerHTML = `<div class="empty">No upcoming match odds on Polymarket right now.</div>`; return; }
-  const hasValue = (m.best_ev ?? -1) > 0;
+  if (!m) { wrap.innerHTML = `<div class="empty">No upcoming match odds on Polymarket right now — they appear before kickoff.</div>`; return; }
   const labelName = { "1": m.home, "X": "Draw", "2": m.away };
-  const outcomeRows = m.outcomes.map((o) => `
-    <div class="ec-row">
-      <span class="o-label">${o.label} · ${esc(labelName[o.label] || "")}</span>
-      <span>model <b>${fmtPct(o.model_p)}</b></span>
-      <span>poly ${fmtPct(o.market_p)} @ ${fmtOdds(o.book_odds)}</span>
-      <span class="o-edge ${o.edge > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(o.edge)}</span>
-    </div>`).join("");
-  wrap.innerHTML = `
-    <div class="edge-card ${hasValue ? "has-value" : ""}">
-      <div class="ec-head">
-        <span class="teams"><span class="flag">${flag(m.home)}</span> ${esc(m.home)} vs ${esc(m.away)} <span class="flag">${flag(m.away)}</span></span>
-        <span class="book">${esc(m.date)} · ${esc(m.bookmaker)}</span>
+  const colorOf = { "1": "var(--home)", "X": "var(--draw)", "2": "var(--away)" };
+
+  const rows = m.outcomes.map((o) => {
+    const edgePos = (o.edge ?? 0) > 0;
+    return `
+    <div class="me-row">
+      <div class="me-outcome"><span class="me-dot" style="background:${colorOf[o.label]}"></span>${esc(labelName[o.label] || o.label)}</div>
+      <div class="me-bars">
+        <div class="me-bar"><span class="me-tag">us</span><div class="me-track"><div class="me-fill us" style="width:${o.model_p}%"></div></div><span class="me-val">${fmtPct(o.model_p)}</span></div>
+        <div class="me-bar"><span class="me-tag">poly</span><div class="me-track"><div class="me-fill poly" style="width:${o.market_p}%"></div></div><span class="me-val">${fmtPct(o.market_p)}</span></div>
       </div>
-      ${outcomeRows}
-      <div style="margin-top:10px;font-size:13px">
-        Best value: <span class="${hasValue ? "edge-pos" : "edge-neg"}">${fmtSign(m.best_ev)} EV</span>
-        ${m.source_url ? `· <a href="${esc(m.source_url)}" target="_blank" rel="noopener" style="color:var(--accent)">view on Polymarket ↗</a>` : ""}
+      <div class="me-edge ${edgePos ? "edge-pos" : "edge-neg"}">${fmtSign(o.edge)}</div>
+    </div>`;
+  }).join("");
+
+  const ev = m.best_ev;
+  const valueTone = (ev ?? -1) > 0 ? "edge-pos" : "edge-neg";
+  wrap.innerHTML = `
+    <div class="me-card">
+      <div class="me-head">
+        <div class="me-teams">${flag(m.home)} <b>${esc(m.home)}</b> <span class="me-vs">vs</span> <b>${esc(m.away)}</b> ${flag(m.away)}</div>
+        <div class="me-date">${esc(m.date)}</div>
+      </div>
+      <div class="me-legend"><span><span class="me-swatch us"></span> our model</span><span><span class="me-swatch poly"></span> Polymarket</span><span class="me-edge-head">edge = us − poly</span></div>
+      ${rows}
+      <div class="me-foot">
+        Best value for us: <span class="${valueTone}">${fmtSign(ev)} EV</span>
+        ${m.source_url ? `· <a href="${esc(m.source_url)}" target="_blank" rel="noopener">view on Polymarket ↗</a>` : ""}
       </div>
     </div>`;
 }
 
+// Sort matches chronologically (soonest first) so the next game leads — and so a
+// finished game naturally drops to/falls out of the list as the data refreshes.
+function _matchEdgesSorted() {
+  return (DATA.match_edges || []).slice().sort((a, b) => (a.date + a.home).localeCompare(b.date + b.home));
+}
+
 function initMatchEdges() {
   const sel = $("#me-match");
-  const rows = DATA.match_edges || [];
+  const rows = _matchEdgesSorted();
   if (!rows.length) { renderMatchEdge(null); if (sel) sel.style.display = "none"; return; }
   sel.innerHTML = rows.map((m, i) =>
-    `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)} (best ${fmtSign(m.best_ev)} EV)</option>`).join("");
+    `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)}</option>`).join("");
   sel.addEventListener("change", () => renderMatchEdge(rows[parseInt(sel.value, 10) || 0]));
   renderMatchEdge(rows[0]);
 }
@@ -650,7 +677,11 @@ async function renderPrediction(match) {
 function initPredictGame() {
   const sel = $("#pg-match");
   if (!sel) return;
-  const upcoming = DATA.predictions.filter((m) => !m.played);
+  // Only fixtures that haven't kicked off yet (timezone-correct via `started`); sorted
+  // soonest-first so the next match leads and finished ones fall off automatically.
+  const upcoming = DATA.predictions
+    .filter((m) => !(m.started || m.played))
+    .sort((a, b) => (a.date + a.home).localeCompare(b.date + b.home));
   if (!upcoming.length) { document.querySelectorAll(".sim-box")[1]?.style && (document.querySelectorAll(".sim-box")[1].style.display = "none"); return; }
   sel.innerHTML = upcoming.map((m, i) =>
     `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)}</option>`).join("");
