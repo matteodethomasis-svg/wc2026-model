@@ -66,6 +66,41 @@ def _match_candidates(name: str, team: str, tm_index) -> list[int]:
     return _collect(require_nat=False)
 
 
+def build_tm_index(tm_players: pd.DataFrame, ratings: pd.DataFrame, lineups: pd.DataFrame) -> dict:
+    """Name/nationality index over TM players who have a rating, plus a team->country map.
+    Shared by the value and composite strength builders."""
+    rated_ids = set(ratings["player_id"].unique())
+    by_name, by_last_first, all_players, nat_of = {}, {}, [], {}
+    for r in tm_players.itertuples(index=False):
+        if r.player_id not in rated_ids:
+            continue
+        nm = _strip(r.name)
+        parts = nm.split()
+        if not parts:
+            continue
+        by_name.setdefault(nm, r.player_id)
+        nat_of[r.player_id] = _strip(getattr(r, "country_of_citizenship", "") or "")
+        by_last_first.setdefault(parts[-1], []).append((r.player_id, parts[0]))
+        for tok in set(parts):
+            by_last_first.setdefault(tok, []).append((r.player_id, parts[0]))
+        all_players.append((r.player_id, _toks(r.name)))
+
+    _TEAM_ALIASES = {
+        "south korea": "korea, south", "ivory coast": "cote d'ivoire",
+        "iran": "iran", "usa": "united states", "united states": "united states",
+        "czech republic": "czech republic", "china pr": "china",
+    }
+    tm_countries = {_strip(c) for c in tm_players["country_of_citizenship"].dropna().unique()}
+    team_to_country = {}
+    for team in lineups["team"].dropna().unique():
+        ts = _strip(team)
+        cand = _TEAM_ALIASES.get(ts, ts)
+        team_to_country[str(team)] = cand if cand in tm_countries else (ts if ts in tm_countries else None)
+
+    return {"by_name": by_name, "by_last_first": by_last_first, "all": all_players,
+            "nat_of": nat_of, "team_to_country": team_to_country}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--lineups", default="data/interim/statsbomb_real_lineups.csv")
@@ -88,40 +123,7 @@ def main() -> None:
     panel["match_date"] = pd.to_datetime(panel["match_date"], errors="coerce")
     mid_info = {int(r.source_match_id): (r.year, r.match_date) for r in panel.itertuples(index=False)}
 
-    # Build a name -> player_id index from TM players. To keep the all-players token scan
-    # cheap, restrict candidates to those who ever had a rating (real players we can use).
-    rated_ids = set(pd.read_csv(ROOT / args.ratings, usecols=["player_id"])["player_id"].unique())
-    by_name, by_last_first, all_players, nat_of = {}, {}, [], {}
-    for r in tm_players.itertuples(index=False):
-        if r.player_id not in rated_ids:
-            continue
-        nm = _strip(r.name)
-        parts = nm.split()
-        if not parts:
-            continue
-        by_name.setdefault(nm, r.player_id)
-        nat_of[r.player_id] = _strip(getattr(r, "country_of_citizenship", "") or "")
-        by_last_first.setdefault(parts[-1], []).append((r.player_id, parts[0]))
-        for tok in set(parts):
-            by_last_first.setdefault(tok, []).append((r.player_id, parts[0]))
-        all_players.append((r.player_id, _toks(r.name)))
-
-    # Map each lineup team name to the TM country string. Names mostly match after strip;
-    # a few aliases bridge canonical vs TM spelling.
-    _TEAM_ALIASES = {
-        "south korea": "korea, south", "ivory coast": "cote d'ivoire",
-        "iran": "iran", "usa": "united states", "united states": "united states",
-        "czech republic": "czech republic", "china pr": "china",
-    }
-    tm_countries = {_strip(c) for c in tm_players["country_of_citizenship"].dropna().unique()}
-    team_to_country = {}
-    for team in lineups["team"].dropna().unique():
-        ts = _strip(team)
-        cand = _TEAM_ALIASES.get(ts, ts)
-        team_to_country[str(team)] = cand if cand in tm_countries else (ts if ts in tm_countries else None)
-
-    tm_index = {"by_name": by_name, "by_last_first": by_last_first, "all": all_players,
-                "nat_of": nat_of, "team_to_country": team_to_country}
+    tm_index = build_tm_index(tm_players, ratings, lineups)
 
     # Ratings keyed for fast "value at date" lookup.
     ratings = ratings.sort_values(["player_id", "date"])

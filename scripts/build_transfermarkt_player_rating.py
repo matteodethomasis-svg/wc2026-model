@@ -42,7 +42,10 @@ def _coarse_position(sub_position: str, position: str) -> str:
     return "MF"
 
 
-def build_rating_table(valuations: pd.DataFrame, players: pd.DataFrame) -> pd.DataFrame:
+def build_rating_table(
+    valuations: pd.DataFrame, players: pd.DataFrame, *,
+    correct_age: bool = True, correct_inflation: bool = True, correct_role: bool = True,
+) -> pd.DataFrame:
     players = players.copy()
     players["date_of_birth"] = pd.to_datetime(players["date_of_birth"], errors="coerce")
     players["coarse_pos"] = [
@@ -68,24 +71,28 @@ def build_rating_table(valuations: pd.DataFrame, players: pd.DataFrame) -> pd.Da
     last_full_year = int(year_index.index.max())
     def infl(year: int) -> float:
         return float(year_index.get(year, year_index.loc[last_full_year]))
-    v["infl"] = v["year"].map(infl)
+    v["infl"] = v["year"].map(infl) if correct_inflation else 0.0
     v["log_deinfl"] = v["log_mv"] - v["infl"]
 
     # --- age curve from de-inflated values; ADD BACK the penalty vs the peak ---
-    age_curve = full.assign(
-        ld=full["log_mv"] - full["year"].map(infl)
-    ).groupby(full["age"].round())["ld"].mean()
-    peak = float(age_curve.get(PEAK_AGE, age_curve.max()))
-    def age_adj(age: float) -> float:
-        a = float(np.clip(round(age), AGE_MIN, AGE_MAX))
-        return peak - float(age_curve.get(a, age_curve.min()))  # >=0, bigger for old/young
-    v["age_addback"] = v["age"].map(age_adj)
-    v["log_age_corrected"] = v["log_deinfl"] + v["age_addback"]
+    if correct_age:
+        age_curve = full.assign(
+            ld=full["log_mv"] - full["year"].map(infl)
+        ).groupby(full["age"].round())["ld"].mean()
+        peak = float(age_curve.get(PEAK_AGE, age_curve.max()))
+        def age_adj(age: float) -> float:
+            a = float(np.clip(round(age), AGE_MIN, AGE_MAX))
+            return peak - float(age_curve.get(a, age_curve.min()))
+        v["log_age_corrected"] = v["log_deinfl"] + v["age"].map(age_adj)
+    else:
+        v["log_age_corrected"] = v["log_deinfl"]
 
     # --- role normalization: center each position to the same mean ---
-    pos_mean = v.groupby("coarse_pos")["log_age_corrected"].transform("mean")
-    overall_mean = v["log_age_corrected"].mean()
-    v["rating"] = v["log_age_corrected"] - pos_mean + overall_mean
+    if correct_role:
+        pos_mean = v.groupby("coarse_pos")["log_age_corrected"].transform("mean")
+        v["rating"] = v["log_age_corrected"] - pos_mean + v["log_age_corrected"].mean()
+    else:
+        v["rating"] = v["log_age_corrected"]
 
     out = v[[
         "player_id", "name", "date", "year", "age", "coarse_pos",
@@ -99,11 +106,18 @@ def main() -> None:
     parser.add_argument("--valuations", default="data/raw/transfermarkt/player_valuations.csv")
     parser.add_argument("--players", default="data/raw/transfermarkt/players.csv")
     parser.add_argument("--output", default="data/interim/transfermarkt_player_rating.csv")
+    parser.add_argument("--no-age", action="store_true")
+    parser.add_argument("--no-inflation", action="store_true")
+    parser.add_argument("--no-role", action="store_true")
     args = parser.parse_args()
 
     valuations = pd.read_csv(ROOT / args.valuations)
     players = pd.read_csv(ROOT / args.players)
-    table = build_rating_table(valuations, players)
+    table = build_rating_table(
+        valuations, players,
+        correct_age=not args.no_age, correct_inflation=not args.no_inflation,
+        correct_role=not args.no_role,
+    )
 
     out = ROOT / args.output
     out.parent.mkdir(parents=True, exist_ok=True)
