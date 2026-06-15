@@ -90,6 +90,24 @@ def run(cmd: list[str], desc: str) -> None:
         raise SystemExit(f"Step failed: {desc}")
 
 
+def run_soft(cmd: list[str], desc: str) -> bool:
+    """Run a non-essential step; never abort the refresh if it fails. Returns success."""
+    print(f"\n>>> {desc}")
+    result = subprocess.run(PY + cmd, cwd=ROOT)
+    if result.returncode != 0:
+        print(f"  (non-fatal: {desc} failed; continuing without it.)")
+        return False
+    return True
+
+
+# Live lineup / availability layer (official XIs from the free ESPN summary API).
+ESPN_LINEUPS = "data/interim/wc2026_expected_lineups_espn.csv"
+AVAILABILITY = "reports/wc2026_team_availability_features.csv"
+# Injuries are fetched by a SEPARATE low-frequency job (API-Football free tier, 1-2x/day —
+# see .github/workflows/refresh-injuries.yml). The refresh just consumes the CSV if present.
+INJURIES = "data/interim/api_football_injuries.csv"
+
+
 def _row_count(path: Path) -> int:
     if not path.exists():
         return -1
@@ -110,6 +128,8 @@ def main() -> None:
                         help="Use the results already on disk (offline / testing).")
     parser.add_argument("--skip-market-fetch", action="store_true",
                         help="Don't re-fetch live Polymarket odds (use the snapshot on disk).")
+    parser.add_argument("--skip-lineups", action="store_true",
+                        help="Don't fetch official ESPN lineups / rebuild the availability layer.")
     args = parser.parse_args()
 
     before = _row_count(ROOT / AUGMENTED)
@@ -132,6 +152,35 @@ def main() -> None:
         run(["scripts/build_world_cup_player_elo_strength.py"],
             "Rebuild player-Elo squad strength")
 
+    # 4b. Live lineup / availability layer. OFFICIAL XIs from the free ESPN summary API
+    # (published ~1h before kickoff, confirmed at kickoff). Fully non-fatal: if ESPN has
+    # no lineup yet, or anything hiccups, we just skip the availability adjustment and the
+    # score-based refresh proceeds untouched. Predicted (earlier) lineups will come from a
+    # separate source later — see memory live-lineups-injuries-plan.
+    availability_ready = False
+    if not args.skip_lineups:
+        got_lineups = run_soft(
+            ["scripts/fetch_espn_expected_lineups.py", "--output", ESPN_LINEUPS],
+            "Fetch official XIs (ESPN, free)")
+        if got_lineups and (ROOT / ESPN_LINEUPS).exists() and _row_count(ROOT / ESPN_LINEUPS) > 0:
+            intel_cmd = [
+                "scripts/build_live_squad_intelligence.py",
+                "--expected-lineups-input", ESPN_LINEUPS,
+                "--expected-lineups-provider", "flat",
+                "--expected-lineup-source-label", "espn_official_lineups",
+            ]
+            # Fold in injuries from the separate low-frequency job, if it has run recently.
+            # This is what actually moves the odds: a missing expected starter -> Elo penalty.
+            if (ROOT / INJURIES).exists() and _row_count(ROOT / INJURIES) > 0:
+                intel_cmd += [
+                    "--injuries-input", INJURIES,
+                    "--injuries-provider", "flat",
+                    "--injury-source-label", "api_football_injuries",
+                ]
+                print("  (folding in API-Football injuries snapshot)")
+            availability_ready = run_soft(
+                intel_cmd, "Build live squad intelligence (availability features)")
+
     # 5. Simulate, CONDITIONED on matches already played up to as-of-date.
     run([
         "scripts/simulate_world_cup.py",
@@ -147,8 +196,9 @@ def main() -> None:
         "--output", SIM_OUT, "--summary-output", SIM_SUMMARY,
     ], f"Simulate WC2026 (conditioned on played matches as-of {args.as_of_date})")
 
-    # 6. Fixture predictions + market comparison.
-    run([
+    # 6. Fixture predictions + market comparison. Feed the live availability layer when
+    # we have it, so a missing expected starter / keeper nudges the match probabilities.
+    predict_cmd = [
         "scripts/predict_world_cup_fixtures.py",
         "--squad-strength-input", SQUAD_STRENGTH,
         "--squad-strength-column", "expected_xi_player_elo_rating", "--squad-elo-scale", SQUAD_SCALE,
@@ -157,7 +207,11 @@ def main() -> None:
         "--elo-blend-alpha", BLEND_ALPHA,
         "--calibration-gamma-home", GAMMA_HOME, "--calibration-gamma-away", GAMMA_AWAY,
         "--output", FIXTURES_OUT,
-    ], "Regenerate fixture predictions")
+    ]
+    if availability_ready and (ROOT / AVAILABILITY).exists():
+        predict_cmd += ["--availability-input", AVAILABILITY]
+    run(predict_cmd, "Regenerate fixture predictions"
+        + (" (with live availability)" if availability_ready else ""))
 
     # Refresh live Polymarket odds (free Gamma API) so the edge/track record compares
     # against CURRENT prices, not a stale snapshot. We snapshot the market at the SAME

@@ -1,0 +1,80 @@
+{
+  "row_count": 0,
+  "team_count": 0,
+  "fixture_count": 0,
+  "unavailable_rows": 0,
+  "doubtful_rows": 0,
+  "query": {
+    "league": null,
+    "season": null,
+    "fixture": null,
+    "team": null,
+    "team_ids": [
+      5529,
+      1113,
+      16,
+      1531,
+      17,
+      770,
+      1569,
+      15,
+      6,
+      31,
+      2386,
+      1108,
+      2384,
+      2380,
+      20,
+      777,
+      25,
+      5530,
+      1501,
+      2382,
+      1118,
+      12,
+      5,
+      28,
+      1,
+      32,
+      4673,
+      9,
+      1533,
+      23,
+      7,
+      2,
+      13,
+      1567,
+      1090,
+      26,
+      1532,
+      775,
+      1548
+    ],
+    "player": null,
+    "date": null,
+    "timezone": null,
+    "page": null
+  },
+  "targeting": {
+    "provider": "api_football",
+    "provider_column": "api_football_team_id",
+    "team_ids": [
+      5529,
+      1113
+    ],
+    "target_teams": [
+      "Canada",
+      "Bosnia and Herzegovina"
+    ],
+    "covered_teams": [
+      "Canada",
+      "Bosnia and Herzegovina"
+    ],
+    "missing_teams": [],
+    "window_days": 2,
+    "window_match_count": 1,
+    "window_team_count": 2
+  },
+  "raw_output": "data\\interim\\api_football_injuries_raw.json",
+  "csv_output": "data\\interim\\api_football_injuries.csv"
+}

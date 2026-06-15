@@ -28,12 +28,24 @@ from wc2026_model.data.international_results import canonicalize_team_name
 ESPN_SCOREBOARD_URL = (
     "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates={date}"
 )
+ESPN_SUMMARY_URL = (
+    "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event={event}"
+)
 _USER_AGENT = "Mozilla/5.0 (wc2026-model results fetcher)"
 _FINAL_STATUSES = {"STATUS_FULL_TIME", "STATUS_FINAL"}
+# ESPN position abbreviations -> our coarse buckets.
+_ESPN_POSITION = {"G": "GK", "D": "DF", "M": "MF", "F": "FW"}
 
 
 def _fetch_scoreboard_json(yyyymmdd: str, *, timeout: int = 20) -> dict:
     url = ESPN_SCOREBOARD_URL.format(date=yyyymmdd)
+    request = Request(url, headers={"User-Agent": _USER_AGENT})
+    with urlopen(request, timeout=timeout) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def _fetch_summary_json(event_id: str, *, timeout: int = 20) -> dict:
+    url = ESPN_SUMMARY_URL.format(event=event_id)
     request = Request(url, headers={"User-Agent": _USER_AGENT})
     with urlopen(request, timeout=timeout) as response:
         return json.loads(response.read().decode("utf-8"))
@@ -159,3 +171,82 @@ def fetch_world_cup_results(
         subset=["match_date", "home_team", "away_team", "home_goals", "away_goals"]
     ).reset_index(drop=True)
     return frame
+
+
+def fetch_world_cup_expected_lineups(
+    start_date: str,
+    end_date: str,
+    *,
+    timeout: int = 20,
+) -> pd.DataFrame:
+    """Return expected/confirmed starting XIs for WC2026 fixtures in the date range.
+
+    Source: the SAME free, keyless ESPN endpoints used for results — the per-event
+    ``summary`` carries a ``rosters`` block with a ``starter`` flag and position per
+    player. ESPN publishes the probable XI roughly an hour before kickoff and the
+    confirmed XI at kickoff, so a frequent poll picks it up automatically.
+
+    Output is the flat schema the squad-intelligence loader expects:
+    ``team, player, position, is_expected_starter, lineup_confidence, match_date``.
+    Only rows with a populated roster (>1 entry, i.e. a real lineup) are returned, so a
+    fixture with no lineup yet simply contributes nothing.
+    """
+    start = date.fromisoformat(start_date)
+    end = date.fromisoformat(end_date)
+    rows: list[dict] = []
+    day = start
+    while day <= end:
+        try:
+            payload = _fetch_scoreboard_json(day.strftime("%Y%m%d"), timeout=timeout)
+        except Exception:
+            day += timedelta(days=1)
+            continue
+        for event in payload.get("events", []):
+            event_id = str(event.get("id", ""))
+            match_date = str(event.get("date", ""))[:10]
+            if not event_id:
+                continue
+            try:
+                summary = _fetch_summary_json(event_id, timeout=timeout)
+            except Exception:
+                continue
+            rosters = summary.get("rosters") or []
+            for team_roster in rosters:
+                roster = team_roster.get("roster") or []
+                if len(roster) <= 1:
+                    continue  # lineup not published yet
+                team_name = canonicalize_team_name(
+                    (team_roster.get("team") or {}).get("displayName", "")
+                )
+                # Confirmed XI (game started) is certain; a pre-match probable XI is less so.
+                status = summary.get("header", {}).get("competitions", [{}])[0] \
+                    .get("status", {}).get("type", {}).get("name", "")
+                confidence = 1.0 if status not in ("STATUS_SCHEDULED", "") else 0.7
+                for entry in roster:
+                    athlete = entry.get("athlete") or {}
+                    name = athlete.get("displayName") or athlete.get("fullName")
+                    if not name:
+                        continue
+                    pos = (entry.get("position") or {}).get("abbreviation", "")
+                    rows.append(
+                        {
+                            "match_date": match_date,
+                            "team": team_name,
+                            "player": str(name),
+                            "position": _ESPN_POSITION.get(pos, pos),
+                            "is_expected_starter": bool(entry.get("starter")),
+                            "lineup_confidence": confidence,
+                            "fixture_id": event_id,
+                        }
+                    )
+        day += timedelta(days=1)
+
+    columns = [
+        "match_date", "team", "player", "position",
+        "is_expected_starter", "lineup_confidence", "fixture_id",
+    ]
+    if not rows:
+        return pd.DataFrame(columns=columns)
+    return pd.DataFrame(rows)[columns].drop_duplicates(
+        subset=["fixture_id", "team", "player"]
+    ).reset_index(drop=True)

@@ -1,7 +1,11 @@
 """Data loading and standardization utilities."""
 
 from .club_elo import load_club_elo_snapshot, save_club_elo_snapshot_csv
-from .espn_results import fetch_world_cup_kickoffs, fetch_world_cup_results
+from .espn_results import (
+    fetch_world_cup_expected_lineups,
+    fetch_world_cup_kickoffs,
+    fetch_world_cup_results,
+)
 from .cup26_open_data import (
     DEFAULT_CUP26_OPEN_RESULTS_URL,
     download_cup26_open_results_json,
@@ -130,6 +134,7 @@ __all__ = [
     "build_statsbomb_team_xg_summary",
     "build_statsbomb_world_cup_match_features",
     "canonicalize_team_name",
+    "fetch_world_cup_expected_lineups",
     "fetch_world_cup_kickoffs",
     "fetch_world_cup_results",
     "canonicalize_tournament_name",

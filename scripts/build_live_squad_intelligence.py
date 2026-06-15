@@ -158,9 +158,11 @@ def main() -> None:
 
     player_intelligence.to_csv(player_output, index=False)
     team_features.to_csv(team_output, index=False)
-    summary_output.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    # Records can carry pandas Timestamps (e.g. report_date) that json can't serialize
+    # natively — coerce them to strings via the str fallback.
+    summary_output.write_text(json.dumps(summary, indent=2, default=str), encoding="utf-8")
 
-    print(json.dumps(summary, indent=2))
+    print(json.dumps(summary, indent=2, default=str))
     print(f"Saved player-level live squad intelligence to {player_output}")
     print(f"Saved team-level availability features to {team_output}")
 

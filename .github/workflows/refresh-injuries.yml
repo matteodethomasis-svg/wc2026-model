@@ -1,0 +1,62 @@
+name: Refresh injuries (API-Football, low frequency)
+
+# Injuries come from API-Football's FREE tier, which has a tight daily call cap. A full
+# pass targets ~39 teams (≈39 calls), so we deliberately run this only TWICE A DAY — never
+# on the 20-minute model loop. It commits the injuries CSV; the main refresh then folds it
+# into the availability layer on its next run.
+#
+# Requires three repo secrets (Settings -> Secrets and variables -> Actions), taken from
+# your local .env: API_FOOTBALL_API_KEY, API_FOOTBALL_API_KEY_HEADER, API_FOOTBALL_HOST.
+# Without them the job no-ops gracefully (the step is continue-on-error).
+on:
+  schedule:
+    - cron: "0 6,16 * * *"   # 06:00 and 16:00 UTC — twice a day, well under the free cap
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-injuries
+  cancel-in-progress: false
+
+jobs:
+  injuries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python + sync deps
+        run: uv sync --frozen || uv sync
+
+      - name: Download API-Football injuries (free plan, upcoming teams only)
+        continue-on-error: true
+        env:
+          API_FOOTBALL_API_KEY: ${{ secrets.API_FOOTBALL_API_KEY }}
+          API_FOOTBALL_API_KEY_HEADER: ${{ secrets.API_FOOTBALL_API_KEY_HEADER }}
+          API_FOOTBALL_HOST: ${{ secrets.API_FOOTBALL_HOST }}
+        run: |
+          uv run python scripts/download_api_football_injuries.py \
+            --free-plan \
+            --registry-input data/reference/wc2026_provider_team_registry.csv \
+            --fixtures-input data/raw/international_results.csv
+
+      - name: Commit injuries snapshot (if changed)
+        continue-on-error: true
+        run: |
+          git config user.name "wc2026-bot"
+          git config user.email "actions@github.com"
+          git add data/interim/api_football_injuries.csv data/interim/api_football_injuries_raw.json reports/api_football_injuries_download_summary.json || true
+          if git diff --cached --quiet; then
+            echo "No injury changes to commit."
+          else
+            git commit -m "auto: refresh injuries snapshot ($(date -u +%Y-%m-%dT%H:%MZ))"
+            for i in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && break
+              echo "push attempt $i failed; retrying after rebase…"
+              sleep 5
+            done
+          fi

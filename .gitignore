@@ -43,6 +43,16 @@ reports/*
 !reports/track_record_match_scored.csv
 !reports/track_record_summary.json
 
+# Live availability layer: the injuries snapshot is the handoff from the separate
+# low-frequency injuries job to the main refresh, so it MUST persist across runs.
+# The lineups + derived availability features are regenerated each refresh but kept
+# so the site/model still have them if a single run skips the fetch.
+!data/interim/api_football_injuries.csv
+!reports/api_football_injuries_download_summary.json
+!data/interim/wc2026_expected_lineups_espn.csv
+!reports/wc2026_team_availability_features.csv
+!reports/wc2026_live_squad_intelligence.csv
+
 # Never commit scratch files.
 reports/tmp_*
 data/raw/tmp_*
