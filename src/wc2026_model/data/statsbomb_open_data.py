@@ -384,6 +384,53 @@ def build_statsbomb_team_xg_summary(matches: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+def fetch_statsbomb_match_lineup(
+    match_id: int,
+    *,
+    base_url: str = DEFAULT_STATSBOMB_OPEN_DATA_BASE_URL,
+) -> pd.DataFrame:
+    """Return the REAL lineup for a StatsBomb match: one row per player, with a
+    ``is_starter`` flag (a player whose first listed position begins at 00:00 started)
+    and the starting position label.
+
+    StatsBomb open data is free and we already use it for xG, so this gives us actual
+    historical starting XIs — letting us validate the lineup layer on real teamsheets
+    instead of the heuristic top-11 proxy.
+    """
+    payload = _load_statsbomb_json(f"lineups/{int(match_id)}.json", base_url=base_url)
+    if not isinstance(payload, list):
+        raise ValueError("StatsBomb lineup payload must be a list.")
+
+    rows: list[dict[str, object]] = []
+    for team_block in payload:
+        if not isinstance(team_block, dict):
+            continue
+        team_name = canonicalize_team_name(str(team_block.get("team_name", "")))
+        for player in team_block.get("lineup", []) or []:
+            if not isinstance(player, dict):
+                continue
+            positions = player.get("positions") or []
+            # The player started if any of their position spells begins at kickoff.
+            first_pos = positions[0] if positions else {}
+            started = any(str(p.get("from", "")).strip() == "00:00" for p in positions)
+            rows.append(
+                {
+                    "match_id": int(match_id),
+                    "team": team_name,
+                    "player": str(player.get("player_name", "")),
+                    "player_id": player.get("player_id"),
+                    "jersey_number": player.get("jersey_number"),
+                    "position": str(_as_dict(first_pos).get("position", "")),
+                    "is_starter": bool(started),
+                }
+            )
+
+    columns = ["match_id", "team", "player", "player_id", "jersey_number", "position", "is_starter"]
+    if not rows:
+        return pd.DataFrame(columns=columns)
+    return pd.DataFrame(rows)[columns]
+
+
 def _load_statsbomb_json(relative_path: str, *, base_url: str) -> object:
     url = f"{base_url.rstrip('/')}/{relative_path.lstrip('/')}"
     with urlopen(url) as response:
