@@ -1,10 +1,13 @@
 {
-  "snapshot_ts": "2026-06-16T11:59Z",
+  "snapshot_ts": "2026-06-16T13:52Z",
   "resolved_matches": 6,
   "model_mean_log_loss": 2.5785,
   "matches_vs_market": 5,
   "market_mean_log_loss": 2.8269,
   "model_mean_log_loss_vs_market_subset": 2.6542,
   "model_wins": 4,
-  "market_wins": 1
+  "market_wins": 1,
+  "log_loss_skill_vs_market": 0.0611,
+  "model_mean_brier_vs_market": 0.5406,
+  "market_mean_brier_vs_market": 0.5709
 }
