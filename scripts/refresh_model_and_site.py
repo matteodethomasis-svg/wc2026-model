@@ -245,6 +245,17 @@ def main() -> None:
             "--fixtures", FIXTURES_OUT, "--sim", SIM_OUT,
         ], "Refresh Polymarket per-match + round/group comparison")
 
+    # 6b. Individual goalscorer markets (Golden Boot + Player-to-score) vs Polymarket.
+    # Fully non-fatal: a goalscorer fetch/build hiccup must never break the core refresh.
+    # Build the model side from the squads + sim, fetch the live Polymarket prices, compare.
+    run_soft(["scripts/build_wc2026_goalscorer_predictions.py"],
+             "Build individual goalscorer model predictions")
+    if not args.skip_market_fetch:
+        run_soft(["scripts/fetch_polymarket_goalscorer_markets.py"],
+                 "Fetch live Polymarket goalscorer markets")
+    run_soft(["scripts/compare_polymarket_goalscorer_markets.py"],
+             "Compare goalscorer model vs Polymarket")
+
     # 7. Update the model-vs-market track record (append snapshot + score played).
     run(["scripts/update_prediction_ledger.py"], "Update model-vs-market track record")
 

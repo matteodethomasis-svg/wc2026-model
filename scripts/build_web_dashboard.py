@@ -290,6 +290,44 @@ def _per_team_market_rows(comparison: pd.DataFrame) -> list[dict[str, Any]]:
     return rows
 
 
+def _goalscorer_rows(comparison: pd.DataFrame | None) -> list[dict[str, Any]]:
+    """Rows for a player goalscorer market (Golden Boot / Player-to-score) vs
+    Polymarket. Sorted by OUR probability upstream; edge shown alongside."""
+    rows: list[dict[str, Any]] = []
+    if comparison is None or comparison.empty:
+        return rows
+    for row in comparison.itertuples(index=False):
+        model_p = _num(getattr(row, "model_probability", None))
+        if model_p is None:
+            continue
+        market_p = _num(getattr(row, "market_probability", None))
+        edge = _num(getattr(row, "edge_vs_market", None))
+        rows.append(
+            {
+                "player": str(getattr(row, "player", "")),
+                "team": str(getattr(row, "team", "")),
+                "model_p": _pct(model_p),
+                "market_p": _pct(market_p),
+                "edge": None if edge is None else round(edge * 100.0, 1),
+                "model_odds": _fair_odds(model_p),
+                "market_odds": _fair_odds(market_p),
+                "volume": _num(getattr(row, "volume", None)),
+            }
+        )
+    return rows
+
+
+def build_goalscorers(golden_boot: pd.DataFrame | None,
+                      player_to_score: pd.DataFrame | None) -> dict[str, Any]:
+    """Individual goalscorer markets vs Polymarket: Golden Boot (top scorer) and
+    Player-to-score (anytime over the tournament). A fun/edge view; the model side is
+    the validated p_i term (modest signal — framed as fun, not a sharp edge)."""
+    return {
+        "golden_boot": _goalscorer_rows(golden_boot),
+        "player_to_score": _goalscorer_rows(player_to_score),
+    }
+
+
 # Human labels for the round-market dropdown.
 _ROUND_LABELS = {
     "advance": "Advance past group",
@@ -506,6 +544,14 @@ def main() -> None:
         "--outright-edges",
         default="reports/polymarket_world_cup_winner_live_comparison.csv",
     )
+    parser.add_argument(
+        "--golden-boot-edges",
+        default="reports/polymarket_goalscorer_golden_boot_comparison.csv",
+    )
+    parser.add_argument(
+        "--player-to-score-edges",
+        default="reports/polymarket_goalscorer_player_to_score_comparison.csv",
+    )
     parser.add_argument("--backtest-summary", default="reports/benchmark_backtest_summary.csv")
     parser.add_argument(
         "--ablation-summary", default="reports/benchmark_backtest_summary_xg_ablation.csv"
@@ -531,6 +577,8 @@ def main() -> None:
     round_cmp = _read_csv(ROOT / args.round_edges)
     group_cmp = _read_csv(ROOT / args.group_edges)
     outright_cmp = _read_csv(ROOT / args.outright_edges)
+    golden_boot_cmp = _read_csv(ROOT / args.golden_boot_edges)
+    player_to_score_cmp = _read_csv(ROOT / args.player_to_score_edges)
     summary = _read_csv(ROOT / args.backtest_summary)
     ablation = _read_csv(ROOT / args.ablation_summary)
     sim = _read_csv(ROOT / args.tournament)
@@ -565,6 +613,7 @@ def main() -> None:
         "match_edges": build_match_edges(match_cmp) if match_cmp is not None else [],
         "outright_edges": build_outright_edges(outright_cmp) if outright_cmp is not None else [],
         "market_comparisons": build_market_comparisons(match_cmp, round_cmp, group_cmp),
+        "goalscorers": build_goalscorers(golden_boot_cmp, player_to_score_cmp),
         "reliability": build_reliability(summary, ablation),
         "tournament": build_tournament(sim) if sim is not None else {"teams": []},
         "track_record": build_track_record(
