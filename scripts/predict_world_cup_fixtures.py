@@ -47,6 +47,15 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Weight on the baseline Dixon-Coles probabilities. Set below 1.0 to blend with Elo multinomial probabilities.",
     )
     parser.add_argument(
+        "--blend-method", choices=["linear", "log_pool"], default="linear",
+        help="How to combine DC and Elo-multinomial: linear (arithmetic) or log_pool "
+             "(weighted geometric mean; validated ~0.5%% better log loss).",
+    )
+    parser.add_argument(
+        "--blend-temperature", type=float, default=1.0,
+        help="Temperature for log_pool blending (>1 softer, <1 sharper). Ignored for linear.",
+    )
+    parser.add_argument(
         "--calibration-gamma-home",
         type=float,
         default=1.0,
@@ -151,6 +160,8 @@ def main() -> None:
         output=args.output,
         summary_output=args.summary_output,
         elo_blend_alpha=args.elo_blend_alpha,
+        blend_method=args.blend_method,
+        blend_temperature=args.blend_temperature,
         calibration_gamma_home=args.calibration_gamma_home,
         calibration_gamma_draw=args.calibration_gamma_draw,
         calibration_gamma_away=args.calibration_gamma_away,

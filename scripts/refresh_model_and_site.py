@@ -52,6 +52,8 @@ _DETUNED_FALLBACK = {
     "squad_scale": "0.0",      # no per-player squad layer
     "gk_scale": "0.0",         # no goalkeeper layer
     "blend_alpha": "1.0",      # pure Dixon-Coles, no Elo blend
+    "blend_method": "linear",  # arithmetic blend (log_pool is the tuned upgrade)
+    "blend_temperature": "1.0",
     "gamma_home": "1.0",       # no calibration
     "gamma_away": "1.0",
 }
@@ -79,6 +81,8 @@ _RECIPE = _load_recipe()
 SQUAD_SCALE = _RECIPE["squad_scale"]
 GK_SCALE = _RECIPE["gk_scale"]
 BLEND_ALPHA = _RECIPE["blend_alpha"]
+BLEND_METHOD = _RECIPE["blend_method"]
+BLEND_TEMPERATURE = _RECIPE["blend_temperature"]
 GAMMA_HOME = _RECIPE["gamma_home"]
 GAMMA_AWAY = _RECIPE["gamma_away"]
 
@@ -190,6 +194,7 @@ def main() -> None:
         "--secondary-squad-strength-column", "expected_xi_goalkeeper_player_elo_rating",
         "--secondary-squad-elo-scale", GK_SCALE,
         "--elo-blend-alpha", BLEND_ALPHA,
+        "--blend-method", BLEND_METHOD, "--blend-temperature", BLEND_TEMPERATURE,
         "--calibration-gamma-home", GAMMA_HOME, "--calibration-gamma-away", GAMMA_AWAY,
         "--simulations", args.simulations, "--random-state", "2026",
         "--results-input", AUGMENTED, "--as-of-date", args.as_of_date,
@@ -205,6 +210,7 @@ def main() -> None:
         "--secondary-squad-strength-column", "expected_xi_goalkeeper_player_elo_rating",
         "--secondary-squad-elo-scale", GK_SCALE,
         "--elo-blend-alpha", BLEND_ALPHA,
+        "--blend-method", BLEND_METHOD, "--blend-temperature", BLEND_TEMPERATURE,
         "--calibration-gamma-home", GAMMA_HOME, "--calibration-gamma-away", GAMMA_AWAY,
         "--output", FIXTURES_OUT,
     ]

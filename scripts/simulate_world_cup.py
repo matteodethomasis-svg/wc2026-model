@@ -44,6 +44,14 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Weight on the baseline Dixon-Coles probabilities. Set below 1.0 to blend with Elo multinomial probabilities.",
     )
     parser.add_argument(
+        "--blend-method", choices=["linear", "log_pool"], default="linear",
+        help="DC/Elo combine rule: linear or log_pool (validated ~0.5%% better log loss).",
+    )
+    parser.add_argument(
+        "--blend-temperature", type=float, default=1.0,
+        help="Temperature for log_pool blending. Ignored for linear.",
+    )
+    parser.add_argument(
         "--calibration-gamma-home",
         type=float,
         default=1.0,
@@ -254,6 +262,8 @@ def _maybe_build_blended_model(
     *,
     training_frame_path: Path,
     alpha_on_base: float,
+    blend_method: str = "linear",
+    blend_temperature: float = 1.0,
 ) -> object:
     if alpha_on_base >= 1.0:
         return model
@@ -263,6 +273,8 @@ def _maybe_build_blended_model(
         base_model=model,
         overlay_model=elo_benchmark,
         alpha_on_base=alpha_on_base,
+        blend_method=blend_method,
+        blend_temperature=blend_temperature,
     )
 
 
@@ -329,6 +341,8 @@ def main() -> None:
         model,
         training_frame_path=training_frame_path,
         alpha_on_base=args.elo_blend_alpha,
+        blend_method=args.blend_method,
+        blend_temperature=args.blend_temperature,
     )
     model = _maybe_build_calibrated_model(
         model,
@@ -409,6 +423,8 @@ def main() -> None:
         "as_of_date": args.as_of_date,
         "tournament_year": args.tournament_year,
         "elo_blend_alpha": args.elo_blend_alpha,
+        "blend_method": args.blend_method,
+        "blend_temperature": args.blend_temperature,
         "calibration_gamma_home": args.calibration_gamma_home,
         "calibration_gamma_draw": args.calibration_gamma_draw,
         "calibration_gamma_away": args.calibration_gamma_away,
