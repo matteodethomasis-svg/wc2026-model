@@ -638,7 +638,35 @@ function predictGame(match) {
   const topScores = Object.entries(scoreCounts)
     .sort((a, b) => b[1] - a[1]).slice(0, 4)
     .map(([s, n]) => ({ score: s, pct: (n / N) * 100 }));
-  return { topScores, simN: N };
+
+  // Fun extra: attribute the most-likely scoreline's goals to plausible scorers,
+  // sampled from each team's p_i share, with a simulated minute. Pure colour — the
+  // minute carries no real signal (uniform over 90'), and the scorer is one random
+  // draw, not a probability. Label it clearly in the UI.
+  const scorers = (topScores.length)
+    ? _sampleScorers(match, topScores[0].score) : [];
+  return { topScores, simN: N, scorers };
+}
+
+// Sample scorers + minutes for a given "h–a" scoreline from the team share tables.
+function _sampleScorers(match, scoreKey) {
+  const shares = DATA.scorer_shares || {};
+  const [hg, ag] = scoreKey.split("–").map((x) => parseInt(x, 10));
+  const pick = (team) => {
+    const tbl = (shares[team] || []).filter((p) => (p.pos || "").toLowerCase().indexOf("goalkeeper") < 0);
+    if (!tbl.length) return null;
+    const tot = tbl.reduce((s, p) => s + p.share, 0);
+    let r = Math.random() * tot;
+    for (const p of tbl) { r -= p.share; if (r <= 0) return p.player; }
+    return tbl[0].player;
+  };
+  const events = [];
+  for (let i = 0; i < (hg || 0); i++) { const n = pick(match.home); if (n) events.push({ team: match.home, player: n }); }
+  for (let i = 0; i < (ag || 0); i++) { const n = pick(match.away); if (n) events.push({ team: match.away, player: n }); }
+  // Assign distinct simulated minutes, sorted chronologically.
+  const minutes = events.map(() => 1 + Math.floor(Math.random() * 90));
+  minutes.sort((a, b) => a - b);
+  return events.map((e, i) => ({ ...e, minute: minutes[i] })).sort((a, b) => a.minute - b.minute);
 }
 
 let PG_BUSY = false;
@@ -665,6 +693,15 @@ function predictionCardHTML(match, mc) {
         <span class="pg-side"><span class="pg-flag">${flag(match.away)}</span><span class="pg-name">${esc(match.away)}</span></span>
       </div>
       <div class="pg-headline-sub">most likely scoreline${top ? ` · <b>${top.pct.toFixed(0)}%</b> of sims` : ""}</div>
+
+      ${(mc.scorers && mc.scorers.length) ? `
+      <div class="pg-scorers">
+        <div class="pg-scorers-label">⚽ how it might unfold <span class="pg-scorers-note">(simulated — for fun)</span></div>
+        ${mc.scorers.map((s) => `
+          <div class="pg-goal"><span class="pg-min">${s.minute}'</span>
+            <span class="pg-scorer">${flag(s.team)} ${esc(s.player)}</span></div>`).join("")}
+      </div>` : (top && top.score === "0–0" ? `
+      <div class="pg-scorers"><div class="pg-scorers-label">⚽ a goalless one in this sim</div></div>` : "")}
 
       ${rest.length ? `
       <div class="pg-alts">

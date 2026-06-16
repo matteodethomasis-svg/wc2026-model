@@ -333,6 +333,13 @@ img.flag {
 .pg-alts { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 .pg-alts-label { font-size: 12px; color: var(--muted); }
 
+.pg-scorers { margin-top: 14px; padding: 10px 12px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; }
+.pg-scorers-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.pg-scorers-note { opacity: .7; font-style: italic; }
+.pg-goal { display: flex; align-items: center; gap: 8px; font-size: 14px; padding: 2px 0; }
+.pg-min { color: var(--accent); font-variant-numeric: tabular-nums; min-width: 32px; font-weight: 600; }
+.pg-scorer { color: var(--text); }
+
 @media (max-width: 620px) {
   .strengths { grid-template-columns: 1fr; }
   .tr-row { grid-template-columns: 22px 110px 1fr 48px; }

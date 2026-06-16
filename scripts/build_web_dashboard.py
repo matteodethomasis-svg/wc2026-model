@@ -297,6 +297,73 @@ def _per_team_market_rows(comparison: pd.DataFrame) -> list[dict[str, Any]]:
     return rows
 
 
+def build_scorer_shares(
+    goalscorer_model: pd.DataFrame | None,
+    squad: pd.DataFrame | None,
+    intel: pd.DataFrame | None = None,
+) -> dict[str, list[dict[str, Any]]]:
+    """Per-team scorer distribution for the predict-a-game fun feature: each team maps to
+    its players with a normalized within-team SHARE of goals, so the browser can attribute
+    simulated goals to plausible scorers. Includes position for a GK-excluded pick.
+
+    Conditioned on likely-starter status + injuries (user request): p_i is multiplied by
+    an availability factor — INJURED/unavailable players go to 0, bench players are
+    downweighted vs expected starters. When the live intel feed is empty (the usual case
+    outside the ~1h pre-match window), we fall back to a proxy: the top players by lambda
+    per team are treated as probable starters, the rest as bench. Top ~16 per team."""
+    if goalscorer_model is None or goalscorer_model.empty:
+        return {}
+    pos_by_player: dict[str, str] = {}
+    if squad is not None and "player" in squad.columns and "position" in squad.columns:
+        for r in squad.itertuples(index=False):
+            pos_by_player[str(r.player)] = str(getattr(r, "position", "") or "")
+
+    # Live starter / availability map from the squad-intel feed, keyed by (team?, player).
+    starter_by_player: dict[str, bool] = {}
+    unavailable_by_player: dict[str, bool] = {}
+    avail_weight_by_player: dict[str, float] = {}
+    have_intel = intel is not None and not intel.empty and "player" in intel.columns
+    if have_intel:
+        for r in intel.itertuples(index=False):
+            name = str(getattr(r, "player", ""))
+            starter_by_player[name] = str(getattr(r, "is_expected_starter", "")).lower() in ("true", "1")
+            unavailable_by_player[name] = str(getattr(r, "is_unavailable", "")).lower() in ("true", "1")
+            w = _num(getattr(r, "availability_weight", None))
+            avail_weight_by_player[name] = 1.0 if w is None else float(w)
+
+    BENCH_FACTOR = 0.35  # a bench player scores far less often than an expected starter
+
+    out: dict[str, list[dict[str, Any]]] = {}
+    for team, grp in goalscorer_model.groupby("team"):
+        grp = grp.sort_values("lambda_goals", ascending=False).reset_index(drop=True)
+        # Proxy starters when no live intel: top 11 by expected goals are "likely XI".
+        proxy_starter_cut = 11
+        rows = []
+        for idx, r in enumerate(grp.itertuples(index=False)):
+            name = str(r.player)
+            base = max(float(getattr(r, "lambda_goals", 0.0)), 0.0)
+            if have_intel and name in starter_by_player:
+                if unavailable_by_player.get(name):
+                    factor = 0.0  # injured / suspended -> can't score
+                else:
+                    factor = avail_weight_by_player.get(name, 1.0)
+                    if not starter_by_player.get(name):
+                        factor *= BENCH_FACTOR
+            else:
+                factor = 1.0 if idx < proxy_starter_cut else BENCH_FACTOR
+            rows.append({"player": name, "weight": base * factor,
+                         "pos": pos_by_player.get(name, "")})
+        total = sum(x["weight"] for x in rows)
+        if total <= 0.0:
+            continue
+        for x in rows:
+            x["share"] = round(x["weight"] / total, 5)
+            del x["weight"]
+        rows.sort(key=lambda x: x["share"], reverse=True)
+        out[str(team)] = rows[:16]
+    return out
+
+
 def _goalscorer_rows(comparison: pd.DataFrame | None) -> list[dict[str, Any]]:
     """Rows for a player goalscorer market (Golden Boot / Player-to-score) vs
     Polymarket. Sorted by OUR probability upstream; edge shown alongside."""
@@ -559,6 +626,15 @@ def main() -> None:
         "--player-to-score-edges",
         default="reports/polymarket_goalscorer_player_to_score_comparison.csv",
     )
+    parser.add_argument(
+        "--goalscorer-model",
+        default="reports/wc2026_goalscorer_model_predictions.csv",
+    )
+    parser.add_argument(
+        "--squad-players",
+        default="reports/wc2026_squad_players_with_player_elo.csv",
+        help="Player-level squad file (with position), for scorer-share positions.",
+    )
     parser.add_argument("--backtest-summary", default="reports/benchmark_backtest_summary.csv")
     parser.add_argument(
         "--ablation-summary", default="reports/benchmark_backtest_summary_xg_ablation.csv"
@@ -586,6 +662,9 @@ def main() -> None:
     outright_cmp = _read_csv(ROOT / args.outright_edges)
     golden_boot_cmp = _read_csv(ROOT / args.golden_boot_edges)
     player_to_score_cmp = _read_csv(ROOT / args.player_to_score_edges)
+    goalscorer_model = _read_csv(ROOT / args.goalscorer_model)
+    squad_players = _read_csv(ROOT / args.squad_players)
+    squad_intel = _read_csv(ROOT / "reports/wc2026_live_squad_intelligence.csv")
     summary = _read_csv(ROOT / args.backtest_summary)
     ablation = _read_csv(ROOT / args.ablation_summary)
     sim = _read_csv(ROOT / args.tournament)
@@ -621,6 +700,7 @@ def main() -> None:
         "outright_edges": build_outright_edges(outright_cmp) if outright_cmp is not None else [],
         "market_comparisons": build_market_comparisons(match_cmp, round_cmp, group_cmp),
         "goalscorers": build_goalscorers(golden_boot_cmp, player_to_score_cmp),
+        "scorer_shares": build_scorer_shares(goalscorer_model, squad_players, squad_intel),
         "reliability": build_reliability(summary, ablation),
         "tournament": build_tournament(sim) if sim is not None else {"teams": []},
         "track_record": build_track_record(
