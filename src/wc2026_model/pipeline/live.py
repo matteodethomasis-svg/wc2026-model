@@ -62,6 +62,8 @@ def save_world_cup_fixture_predictions(
     output: str | Path,
     summary_output: str | Path,
     elo_blend_alpha: float = 1.0,
+    blend_method: str = "linear",
+    blend_temperature: float = 1.0,
     calibration_gamma_home: float = 1.0,
     calibration_gamma_draw: float = 1.0,
     calibration_gamma_away: float = 1.0,
@@ -83,6 +85,8 @@ def save_world_cup_fixture_predictions(
         elo_ratings_input=elo_ratings_input,
         training_frame_input=training_frame_input,
         elo_blend_alpha=elo_blend_alpha,
+        blend_method=blend_method,
+        blend_temperature=blend_temperature,
         calibration_gamma_home=calibration_gamma_home,
         calibration_gamma_draw=calibration_gamma_draw,
         calibration_gamma_away=calibration_gamma_away,
@@ -114,6 +118,8 @@ def predict_world_cup_fixtures(
     elo_ratings_input: str | Path,
     training_frame_input: str | Path,
     elo_blend_alpha: float = 1.0,
+    blend_method: str = "linear",
+    blend_temperature: float = 1.0,
     calibration_gamma_home: float = 1.0,
     calibration_gamma_draw: float = 1.0,
     calibration_gamma_away: float = 1.0,
@@ -142,6 +148,8 @@ def predict_world_cup_fixtures(
         model,
         training_frame_path=training_frame_path,
         alpha_on_base=elo_blend_alpha,
+        blend_method=blend_method,
+        blend_temperature=blend_temperature,
     )
     model = _maybe_build_calibrated_model(
         model,
@@ -307,6 +315,8 @@ def predict_world_cup_fixtures(
         "start_date": start_date,
         "tournament": tournament,
         "elo_blend_alpha": elo_blend_alpha,
+        "blend_method": blend_method,
+        "blend_temperature": blend_temperature,
         "calibration_gamma_home": calibration_gamma_home,
         "calibration_gamma_draw": calibration_gamma_draw,
         "calibration_gamma_away": calibration_gamma_away,
@@ -428,6 +438,8 @@ def _maybe_build_blended_model(
     *,
     training_frame_path: Path,
     alpha_on_base: float,
+    blend_method: str = "linear",
+    blend_temperature: float = 1.0,
 ) -> object:
     if alpha_on_base >= 1.0:
         return model
@@ -437,6 +449,8 @@ def _maybe_build_blended_model(
         base_model=model,
         overlay_model=elo_benchmark,
         alpha_on_base=alpha_on_base,
+        blend_method=blend_method,
+        blend_temperature=blend_temperature,
     )
 
 

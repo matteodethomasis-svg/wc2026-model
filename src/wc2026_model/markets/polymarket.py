@@ -364,6 +364,43 @@ def _yes_price(market: dict[str, Any]) -> float | None:
 # --------------------------------------------------------------------------- #
 
 
+def extract_per_player_yes_market_frame(event: dict[str, Any]) -> pd.DataFrame:
+    """Yes/No-per-PLAYER extractor for the goalscorer markets (Golden Boot winner,
+    Player to score). Same shape as the per-team one but the ``groupItemTitle`` is a
+    player name (kept verbatim, not canonicalized — names join downstream by token
+    overlap). Polymarket seeds the Golden Boot field with placeholder rows
+    ('Player Q', 'Other', 'Field'); those are dropped.
+
+    Returns columns: player, market_probability, volume."""
+    markets = event.get("markets")
+    rows: list[dict[str, Any]] = []
+    if isinstance(markets, list):
+        for m in markets:
+            if not isinstance(m, dict):
+                continue
+            player = str(m.get("groupItemTitle", "")).strip()
+            if not player or player.lower() in ("other", "field"):
+                continue
+            # Drop the 'Player X' placeholder seeds in the Golden Boot field.
+            if re.fullmatch(r"Player [A-Z]", player):
+                continue
+            yes = _yes_price(m)
+            if yes is None:
+                continue
+            rows.append(
+                {
+                    "player": player,
+                    "market_probability": yes,
+                    "volume": _coerce_float(m.get("volume")),
+                }
+            )
+    if not rows:
+        return pd.DataFrame(columns=["player", "market_probability", "volume"])
+    return pd.DataFrame.from_records(rows).sort_values(
+        ["market_probability", "player"], ascending=[False, True], kind="stable"
+    ).reset_index(drop=True)
+
+
 def extract_per_team_yes_market_frame(event: dict[str, Any]) -> pd.DataFrame:
     """Generic Yes/No-per-team extractor (reach-round, group-winner, …). Same shape as
     the winner market: each market's ``groupItemTitle`` is a nation and the Yes price is

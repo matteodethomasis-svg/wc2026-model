@@ -9,6 +9,7 @@ from .dixon_coles import (
 from .hybrid import (
     BlendedMatchModel,
     blend_three_way_probabilities,
+    log_pool_three_way_probabilities,
     reweight_score_matrix_to_outcomes,
     three_way_probabilities_from_score_matrix,
 )
@@ -19,6 +20,7 @@ __all__ = [
     "DixonColesFitResult",
     "DixonColesModel",
     "blend_three_way_probabilities",
+    "log_pool_three_way_probabilities",
     "exponential_time_decay_weights",
     "power_calibrate_probabilities",
     "reweight_score_matrix_to_outcomes",

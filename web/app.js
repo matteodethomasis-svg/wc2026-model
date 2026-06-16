@@ -143,10 +143,13 @@ function renderPredictions() {
   let items = DATA.predictions.slice();
   if (q) items = items.filter((m) => (m.home + " " + m.away).toLowerCase().includes(q));
 
+  // Chronological key: real kickoff time when known, else the day (sorted after timed
+  // games that day). This puts the NEXT match first, not the alphabetically-first one.
+  const whenKey = (m) => (m.kickoff || (m.date + "T99:99")) + m.home;
   const sortFn = (a, b) => {
     if (sort === "confidence") return (b.confidence ?? 0) - (a.confidence ?? 0);
     if (sort === "upset") return (a.confidence ?? 0) - (b.confidence ?? 0);
-    return (a.date + a.home).localeCompare(b.date + b.home);
+    return whenKey(a).localeCompare(whenKey(b));
   };
 
   // Upcoming = not yet kicked off (timezone-correct). A started-but-unresolved match
@@ -230,6 +233,36 @@ function perTeamTable(rows, { evCol = false } = {}) {
         </tr>`).join("")}
       </tbody>
     </table>`;
+}
+
+// ---------- edge: goalscorer markets (Golden Boot + Player to score) ----------
+function goalscorerTable(rows) {
+  if (!rows || !rows.length) {
+    return `<div class="empty">No goalscorer market comparison available right now.</div>`;
+  }
+  return `
+    <table>
+      <thead><tr>
+        <th>Player</th><th>Team</th><th class="num">Model</th>
+        <th class="num">Polymarket</th><th class="num">Edge</th>
+      </tr></thead>
+      <tbody>
+        ${rows.map((r) => `
+        <tr>
+          <td>${esc(r.player)}</td>
+          <td>${flag(r.team)} ${esc(r.team)}</td>
+          <td class="num">${fmtPct(r.model_p)}</td>
+          <td class="num">${fmtPct(r.market_p)}</td>
+          <td class="num ${(r.edge ?? 0) > 0 ? "edge-pos" : "edge-neg"}">${fmtSign(r.edge)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>`;
+}
+
+function renderGoalscorers() {
+  const gs = DATA.goalscorers || {};
+  $("#goldenboot-table").innerHTML = goalscorerTable(gs.golden_boot);
+  $("#anytime-table").innerHTML = goalscorerTable(gs.player_to_score);
 }
 
 // ---------- edge: per-match 1X2 (dropdown, one match at a time) ----------
@@ -703,7 +736,8 @@ function initPredictGame() {
   // soonest-first so the next match leads and finished ones fall off automatically.
   const upcoming = DATA.predictions
     .filter((m) => !(m.started || m.played))
-    .sort((a, b) => (a.date + a.home).localeCompare(b.date + b.home));
+    .sort((a, b) => ((a.kickoff || (a.date + "T99:99")) + a.home)
+      .localeCompare((b.kickoff || (b.date + "T99:99")) + b.home));
   if (!upcoming.length) { document.querySelectorAll(".sim-box")[1]?.style && (document.querySelectorAll(".sim-box")[1].style.display = "none"); return; }
   sel.innerHTML = upcoming.map((m, i) =>
     `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)}</option>`).join("");
@@ -763,6 +797,15 @@ async function boot() {
   if (ot) ot.addEventListener("click", () => {
     const open = ot.classList.toggle("open");
     $("#outright-table").classList.toggle("collapsed", !open);
+  });
+  renderGoalscorers();
+  [["#goldenboot-toggle", "#goldenboot-table"],
+   ["#anytime-toggle", "#anytime-table"]].forEach(([btnSel, tblSel]) => {
+    const btn = $(btnSel);
+    if (btn) btn.addEventListener("click", () => {
+      const open = btn.classList.toggle("open");
+      $(tblSel).classList.toggle("collapsed", !open);
+    });
   });
   renderLeaderboard();
   renderTrackRecord();

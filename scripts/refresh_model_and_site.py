@@ -52,6 +52,8 @@ _DETUNED_FALLBACK = {
     "squad_scale": "0.0",      # no per-player squad layer
     "gk_scale": "0.0",         # no goalkeeper layer
     "blend_alpha": "1.0",      # pure Dixon-Coles, no Elo blend
+    "blend_method": "linear",  # arithmetic blend (log_pool is the tuned upgrade)
+    "blend_temperature": "1.0",
     "gamma_home": "1.0",       # no calibration
     "gamma_away": "1.0",
 }
@@ -79,6 +81,8 @@ _RECIPE = _load_recipe()
 SQUAD_SCALE = _RECIPE["squad_scale"]
 GK_SCALE = _RECIPE["gk_scale"]
 BLEND_ALPHA = _RECIPE["blend_alpha"]
+BLEND_METHOD = _RECIPE["blend_method"]
+BLEND_TEMPERATURE = _RECIPE["blend_temperature"]
 GAMMA_HOME = _RECIPE["gamma_home"]
 GAMMA_AWAY = _RECIPE["gamma_away"]
 
@@ -190,6 +194,7 @@ def main() -> None:
         "--secondary-squad-strength-column", "expected_xi_goalkeeper_player_elo_rating",
         "--secondary-squad-elo-scale", GK_SCALE,
         "--elo-blend-alpha", BLEND_ALPHA,
+        "--blend-method", BLEND_METHOD, "--blend-temperature", BLEND_TEMPERATURE,
         "--calibration-gamma-home", GAMMA_HOME, "--calibration-gamma-away", GAMMA_AWAY,
         "--simulations", args.simulations, "--random-state", "2026",
         "--results-input", AUGMENTED, "--as-of-date", args.as_of_date,
@@ -205,6 +210,7 @@ def main() -> None:
         "--secondary-squad-strength-column", "expected_xi_goalkeeper_player_elo_rating",
         "--secondary-squad-elo-scale", GK_SCALE,
         "--elo-blend-alpha", BLEND_ALPHA,
+        "--blend-method", BLEND_METHOD, "--blend-temperature", BLEND_TEMPERATURE,
         "--calibration-gamma-home", GAMMA_HOME, "--calibration-gamma-away", GAMMA_AWAY,
         "--output", FIXTURES_OUT,
     ]
@@ -244,6 +250,17 @@ def main() -> None:
             "scripts/compare_polymarket_world_cup_matches.py",
             "--fixtures", FIXTURES_OUT, "--sim", SIM_OUT,
         ], "Refresh Polymarket per-match + round/group comparison")
+
+    # 6b. Individual goalscorer markets (Golden Boot + Player-to-score) vs Polymarket.
+    # Fully non-fatal: a goalscorer fetch/build hiccup must never break the core refresh.
+    # Build the model side from the squads + sim, fetch the live Polymarket prices, compare.
+    run_soft(["scripts/build_wc2026_goalscorer_predictions.py"],
+             "Build individual goalscorer model predictions")
+    if not args.skip_market_fetch:
+        run_soft(["scripts/fetch_polymarket_goalscorer_markets.py"],
+                 "Fetch live Polymarket goalscorer markets")
+    run_soft(["scripts/compare_polymarket_goalscorer_markets.py"],
+             "Compare goalscorer model vs Polymarket")
 
     # 7. Update the model-vs-market track record (append snapshot + score played).
     run(["scripts/update_prediction_ledger.py"], "Update model-vs-market track record")
