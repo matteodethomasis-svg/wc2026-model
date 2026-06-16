@@ -466,6 +466,16 @@ function renderTrackRecord() {
   const s = tr.summary || {};
   const cards = [];
   cards.push(`<div class="stat-card"><div class="big">${s.resolved_matches ?? 0}</div><div class="label">matches scored</div></div>`);
+  // Headline PRECISION index: log-loss skill vs market. Error-weighted — a single big
+  // blunder hurts far more than many tiny edges help — so it's a fairer "who's sharper"
+  // than the raw win count. >0 = we're sharper than the market.
+  if (s.log_loss_skill_vs_market != null) {
+    const skillPct = (s.log_loss_skill_vs_market * 100);
+    const tone = skillPct >= 0 ? "model" : "market";
+    cards.push(`<div class="stat-card ${tone}" title="Log-loss skill vs market: how much lower (better) our average log loss is. Penalizes confident misses far more than small edges.">
+      <div class="big">${skillPct >= 0 ? "+" : ""}${skillPct.toFixed(1)}%</div>
+      <div class="label">precision vs market ↑ (error-weighted)</div></div>`);
+  }
   if (s.model_mean_log_loss != null)
     cards.push(`<div class="stat-card model"><div class="big">${fmt(s.model_mean_log_loss, 3)}</div><div class="label">model avg log loss ↓</div></div>`);
   if (s.market_mean_log_loss != null)
@@ -836,14 +846,6 @@ async function boot() {
     $("#outright-table").classList.toggle("collapsed", !open);
   });
   renderGoalscorers();
-  [["#goldenboot-toggle", "#goldenboot-table"],
-   ["#anytime-toggle", "#anytime-table"]].forEach(([btnSel, tblSel]) => {
-    const btn = $(btnSel);
-    if (btn) btn.addEventListener("click", () => {
-      const open = btn.classList.toggle("open");
-      $(tblSel).classList.toggle("collapsed", !open);
-    });
-  });
   renderLeaderboard();
   renderTrackRecord();
   initSimulator();

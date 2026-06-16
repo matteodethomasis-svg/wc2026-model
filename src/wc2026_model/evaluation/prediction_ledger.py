@@ -189,13 +189,26 @@ def summarize_track_record(scored: pd.DataFrame) -> dict:
         "model_mean_log_loss": round(float(scored["model_log_loss"].mean()), 4),
     }
     if not with_market.empty:
+        model_ll = float(with_market["model_log_loss"].mean())
+        market_ll = float(with_market["market_log_loss"].mean())
+        # Aggregate PRECISION index: a log-loss skill score. Because log loss punishes
+        # confident misses much harder than it rewards small wins, one 10% blunder
+        # outweighs many 1% edges — exactly the weighting the user wants. >0 = we beat
+        # the market overall; e.g. +0.05 = 5% lower (better) average log loss than market.
+        skill = (market_ll - model_ll) / market_ll if market_ll > 0 else 0.0
+        # Brier on the realized outcome: (1 - p_assigned_to_actual)^2, also error-weighted
+        # (quadratic), as a second aggregate accuracy measure.
+        model_brier = float(((1.0 - with_market["model_p_result"]) ** 2).mean())
+        market_brier = float(((1.0 - with_market["market_p_result"]) ** 2).mean())
         summary.update({
             "matches_vs_market": int(len(with_market)),
-            "market_mean_log_loss": round(float(with_market["market_log_loss"].mean()), 4),
-            "model_mean_log_loss_vs_market_subset": round(
-                float(with_market["model_log_loss"].mean()), 4
-            ),
+            "market_mean_log_loss": round(market_ll, 4),
+            "model_mean_log_loss_vs_market_subset": round(model_ll, 4),
             "model_wins": int((with_market["winner"] == "model").sum()),
             "market_wins": int((with_market["winner"] == "market").sum()),
+            # Aggregate precision (the headline single number the user asked for).
+            "log_loss_skill_vs_market": round(skill, 4),
+            "model_mean_brier_vs_market": round(model_brier, 4),
+            "market_mean_brier_vs_market": round(market_brier, 4),
         })
     return summary
