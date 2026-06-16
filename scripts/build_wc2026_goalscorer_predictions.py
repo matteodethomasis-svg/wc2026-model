@@ -57,8 +57,20 @@ def _coarse_position(pos: str) -> str:
     return "MF"
 
 
+def _index_from_rate_frame(g: pd.DataFrame) -> tuple[list, dict]:
+    """Build the (token-index, surname-index) name lookups from a frame with columns
+    name + per90."""
+    tok = [(_tokens(r.name), float(r.per90)) for r in g.itertuples(index=False)]
+    sur: dict[str, float] = {}
+    for r in g.itertuples(index=False):
+        sur.setdefault(_surname(r.name), float(r.per90))
+    return tok, sur
+
+
 def _build_club_rate(appearances: pd.DataFrame, *, cutoff: pd.Timestamp,
                      window_days: int = 365) -> tuple[list, dict]:
+    """Compute per-player club goals/90 from the raw appearances file (the heavy
+    142MB Transfermarkt CSV; used locally / to refresh the small precomputed artifact)."""
     lo = cutoff - pd.Timedelta(days=window_days)
     w = appearances[(appearances["date"] >= lo) & (appearances["date"] < cutoff)]
     g = w.groupby("player_id").agg(
@@ -66,11 +78,27 @@ def _build_club_rate(appearances: pd.DataFrame, *, cutoff: pd.Timestamp,
     ).reset_index()
     g = g[g["mins"] >= 270]
     g["per90"] = g["goals"] / g["mins"] * 90.0
-    tok = [(_tokens(r.name), float(r.per90)) for r in g.itertuples(index=False)]
-    sur: dict[str, float] = {}
-    for r in g.itertuples(index=False):
-        sur.setdefault(_surname(r.name), float(r.per90))
-    return tok, sur
+    return _index_from_rate_frame(g)
+
+
+def _load_rate_index(rate_input: str, appearances_input: str) -> tuple[list, dict]:
+    """Prefer the small precomputed per-player rate artifact (committed, available in
+    CI). Fall back to the heavy raw appearances file when the artifact is missing
+    (e.g. first build, or to regenerate it). The raw file is gitignored (142MB), so in
+    CI only the precomputed path works — that's why it's the default."""
+    if Path(rate_input).exists():
+        g = pd.read_csv(rate_input)
+        return _index_from_rate_frame(g)
+    if Path(appearances_input).exists():
+        appearances = pd.read_csv(
+            appearances_input,
+            usecols=["player_id", "player_name", "date", "goals", "minutes_played"],
+        )
+        appearances["date"] = pd.to_datetime(appearances["date"], errors="coerce")
+        return _build_club_rate(appearances, cutoff=WC2026_KICKOFF)
+    raise FileNotFoundError(
+        f"Neither rate artifact ({rate_input}) nor appearances ({appearances_input}) found."
+    )
 
 
 def _match_rate(name: str, tok_index: list, sur_index: dict) -> float | None:
@@ -122,7 +150,13 @@ def main() -> None:
                         default="reports/wc2026_simulation_expected_xi_plus_goalkeeper_probabilities.csv")
     parser.add_argument("--elo-input", default="reports/baseline_latest_elo_ratings.csv")
     parser.add_argument("--groups-input", default="data/reference/wc2026_groups_actual.csv")
-    parser.add_argument("--appearances-input", default="data/raw/transfermarkt/appearances.csv")
+    parser.add_argument(
+        "--rate-input", default="data/reference/wc2026_player_goal_rate.csv",
+        help="Small precomputed per-player club goals/90 (committed, used in CI). "
+             "Regenerate from raw appearances with scripts/build_player_goal_rate.py.",
+    )
+    parser.add_argument("--appearances-input", default="data/raw/transfermarkt/appearances.csv",
+                        help="Heavy raw Transfermarkt appearances (gitignored); fallback only.")
     parser.add_argument("--output", default="reports/wc2026_goalscorer_model_predictions.csv")
     args = parser.parse_args()
 
@@ -130,13 +164,8 @@ def main() -> None:
     sim = pd.read_csv(args.sim_input)
     elo = pd.read_csv(args.elo_input)
     groups = pd.read_csv(args.groups_input)
-    appearances = pd.read_csv(
-        args.appearances_input,
-        usecols=["player_id", "player_name", "date", "goals", "minutes_played"],
-    )
-    appearances["date"] = pd.to_datetime(appearances["date"], errors="coerce")
 
-    tok_index, sur_index = _build_club_rate(appearances, cutoff=WC2026_KICKOFF)
+    tok_index, sur_index = _load_rate_index(args.rate_input, args.appearances_input)
 
     sim_by_team = {str(r.team): r for r in sim.itertuples(index=False)}
     elo_map = {str(r.team): float(r.elo_rating) for r in elo.itertuples(index=False)}
