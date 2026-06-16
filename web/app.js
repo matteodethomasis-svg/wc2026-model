@@ -143,10 +143,13 @@ function renderPredictions() {
   let items = DATA.predictions.slice();
   if (q) items = items.filter((m) => (m.home + " " + m.away).toLowerCase().includes(q));
 
+  // Chronological key: real kickoff time when known, else the day (sorted after timed
+  // games that day). This puts the NEXT match first, not the alphabetically-first one.
+  const whenKey = (m) => (m.kickoff || (m.date + "T99:99")) + m.home;
   const sortFn = (a, b) => {
     if (sort === "confidence") return (b.confidence ?? 0) - (a.confidence ?? 0);
     if (sort === "upset") return (a.confidence ?? 0) - (b.confidence ?? 0);
-    return (a.date + a.home).localeCompare(b.date + b.home);
+    return whenKey(a).localeCompare(whenKey(b));
   };
 
   // Upcoming = not yet kicked off (timezone-correct). A started-but-unresolved match
@@ -733,7 +736,8 @@ function initPredictGame() {
   // soonest-first so the next match leads and finished ones fall off automatically.
   const upcoming = DATA.predictions
     .filter((m) => !(m.started || m.played))
-    .sort((a, b) => (a.date + a.home).localeCompare(b.date + b.home));
+    .sort((a, b) => ((a.kickoff || (a.date + "T99:99")) + a.home)
+      .localeCompare((b.kickoff || (b.date + "T99:99")) + b.home));
   if (!upcoming.length) { document.querySelectorAll(".sim-box")[1]?.style && (document.querySelectorAll(".sim-box")[1].style.display = "none"); return; }
   sel.innerHTML = upcoming.map((m, i) =>
     `<option value="${i}">${esc(m.date)} — ${esc(m.home)} vs ${esc(m.away)}</option>`).join("");

@@ -152,6 +152,9 @@ def build_predictions(
             {
                 "match_id": str(getattr(row, "match_id", "")),
                 "date": str(getattr(row, "match_date", "")),
+                # Full kickoff timestamp (UTC, ISO) when known, so the site can order
+                # same-day fixtures by actual kickoff time (not alphabetically by team).
+                "kickoff": (kickoff.isoformat() if kickoff is not None else None),
                 "home": str(getattr(row, "home_team", "")),
                 "away": str(getattr(row, "away_team", "")),
                 "city": str(getattr(row, "city", "")),
@@ -183,8 +186,12 @@ def build_predictions(
                 "pick_correct": (None if result is None else pick == result["result_side"]),
             }
         )
-    # Upcoming matches first (sorted by date), played matches pushed to the bottom.
-    rows.sort(key=lambda r: (r["played"], r["date"], r["home"]))
+    # Upcoming matches first, ordered by actual KICKOFF time (so the nearest game leads),
+    # falling back to date + home when a kickoff time isn't known yet. Played matches last.
+    def _sort_key(r: dict[str, Any]) -> tuple:
+        ko_key = r["kickoff"] if r["kickoff"] else (str(r["date"]) + "T99:99")
+        return (r["played"], ko_key, r["home"])
+    rows.sort(key=_sort_key)
     return rows
 
 
