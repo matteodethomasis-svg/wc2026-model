@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-06-18 21:34 UTC",
+    "generated_at": "2026-06-18 23:26 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -27,99 +27,9 @@
       "pick": "home",
       "confidence": 76.5,
       "played": false,
-      "started": false,
-      "home_xi": [
-        {
-          "name": "Maxime Crépeau",
-          "pos": "GK"
-        },
-        {
-          "name": "Alistair Johnston",
-          "pos": "DF"
-        },
-        {
-          "name": "Derek Cornelius",
-          "pos": "DF"
-        },
-        {
-          "name": "Luc de Fougerolles",
-          "pos": "DF"
-        },
-        {
-          "name": "Richie Laryea",
-          "pos": "DF"
-        },
-        {
-          "name": "Ali Ahmed",
-          "pos": "MF"
-        },
-        {
-          "name": "Tajon Buchanan",
-          "pos": "MF"
-        },
-        {
-          "name": "Stephen Eustáquio",
-          "pos": "MF"
-        },
-        {
-          "name": "Ismaël Koné",
-          "pos": "MF"
-        },
-        {
-          "name": "Cyle Larin",
-          "pos": "FW"
-        },
-        {
-          "name": "Jonathan David",
-          "pos": "FW"
-        }
-      ],
-      "away_xi": [
-        {
-          "name": "Mahmoud Abunada",
-          "pos": "GK"
-        },
-        {
-          "name": "Homam Ahmed",
-          "pos": "DF"
-        },
-        {
-          "name": "Ayoub Al-Oui",
-          "pos": "DF"
-        },
-        {
-          "name": "Pedro Miguel",
-          "pos": "DF"
-        },
-        {
-          "name": "Boualem Khoukhi",
-          "pos": "DF"
-        },
-        {
-          "name": "Jassem Gaber",
-          "pos": "MF"
-        },
-        {
-          "name": "Assim Madibo",
-          "pos": "MF"
-        },
-        {
-          "name": "Issa Laye",
-          "pos": "MF"
-        },
-        {
-          "name": "Yusuf Abdurisag",
-          "pos": "FW"
-        },
-        {
-          "name": "Edmílson Junior",
-          "pos": "FW"
-        },
-        {
-          "name": "Akram Afif",
-          "pos": "FW"
-        }
-      ],
+      "started": true,
+      "home_xi": [],
+      "away_xi": [],
       "result_home_goals": null,
       "result_away_goals": null,
       "result_side": null,
@@ -1572,44 +1482,44 @@
           "pos": "GK"
         },
         {
-          "name": "Homam Ahmed",
-          "pos": "DF"
-        },
-        {
-          "name": "Ayoub Al-Oui",
-          "pos": "DF"
-        },
-        {
-          "name": "Pedro Miguel",
-          "pos": "DF"
-        },
-        {
-          "name": "Boualem Khoukhi",
-          "pos": "DF"
-        },
-        {
-          "name": "Jassem Gaber",
-          "pos": "MF"
-        },
-        {
-          "name": "Assim Madibo",
-          "pos": "MF"
-        },
-        {
-          "name": "Issa Laye",
-          "pos": "MF"
-        },
-        {
           "name": "Yusuf Abdurisag",
           "pos": "FW"
         },
         {
-          "name": "Edmílson Junior",
-          "pos": "FW"
+          "name": "Boualem Khoukhi",
+          "pos": "CD-L"
+        },
+        {
+          "name": "Pedro Miguel",
+          "pos": "CD-R"
+        },
+        {
+          "name": "Homam Ahmed",
+          "pos": "LB"
+        },
+        {
+          "name": "Ayoub Al-Oui",
+          "pos": "RB"
+        },
+        {
+          "name": "Assim Madibo",
+          "pos": "CM"
+        },
+        {
+          "name": "Issa Laye",
+          "pos": "LM"
+        },
+        {
+          "name": "Jassem Gaber",
+          "pos": "RM"
         },
         {
           "name": "Akram Afif",
-          "pos": "FW"
+          "pos": "LF"
+        },
+        {
+          "name": "Edmílson Junior",
+          "pos": "RF"
         }
       ],
       "result_home_goals": null,
@@ -1647,44 +1557,44 @@
           "pos": "GK"
         },
         {
-          "name": "Alistair Johnston",
-          "pos": "DF"
-        },
-        {
           "name": "Derek Cornelius",
-          "pos": "DF"
+          "pos": "CD-L"
         },
         {
           "name": "Luc de Fougerolles",
-          "pos": "DF"
+          "pos": "CD-R"
         },
         {
           "name": "Richie Laryea",
-          "pos": "DF"
+          "pos": "LB"
         },
         {
-          "name": "Ali Ahmed",
-          "pos": "MF"
-        },
-        {
-          "name": "Tajon Buchanan",
-          "pos": "MF"
+          "name": "Alistair Johnston",
+          "pos": "RB"
         },
         {
           "name": "Stephen Eustáquio",
-          "pos": "MF"
+          "pos": "CM-L"
         },
         {
           "name": "Ismaël Koné",
-          "pos": "MF"
+          "pos": "CM-R"
+        },
+        {
+          "name": "Ali Ahmed",
+          "pos": "LM"
+        },
+        {
+          "name": "Tajon Buchanan",
+          "pos": "RM"
         },
         {
           "name": "Cyle Larin",
-          "pos": "FW"
+          "pos": "CF-L"
         },
         {
           "name": "Jonathan David",
-          "pos": "FW"
+          "pos": "CF-R"
         }
       ],
       "away_xi": [
@@ -3988,7 +3898,7 @@
           "label": "1",
           "side": "home",
           "model_p": 93.1,
-          "market_p": 88.2,
+          "market_p": 88.1,
           "edge": 4.9,
           "ev": 5.2,
           "book_odds": 1.1299435028248588
@@ -4006,10 +3916,10 @@
           "label": "2",
           "side": "away",
           "model_p": 1.1,
-          "market_p": 3.8,
-          "edge": -2.7,
-          "ev": -71.0,
-          "book_odds": 25.97402597402597
+          "market_p": 3.9,
+          "edge": -2.8,
+          "ev": -71.7,
+          "book_odds": 25.31645569620253
         }
       ],
       "best_edge": 4.9,
@@ -4027,10 +3937,10 @@
           "label": "1",
           "side": "home",
           "model_p": 1.9,
-          "market_p": 6.2,
-          "edge": -4.4,
-          "ev": -70.1,
-          "book_odds": 16.0
+          "market_p": 6.0,
+          "edge": -4.2,
+          "ev": -69.1,
+          "book_odds": 16.528925619834713
         },
         {
           "label": "X",
@@ -4045,13 +3955,13 @@
           "label": "2",
           "side": "away",
           "model_p": 87.8,
-          "market_p": 81.3,
-          "edge": 6.5,
+          "market_p": 81.5,
+          "edge": 6.3,
           "ev": 7.7,
           "book_odds": 1.2269938650306749
         }
       ],
-      "best_edge": 6.5,
+      "best_edge": 6.3,
       "best_ev": 7.7
     },
     {
@@ -4183,17 +4093,17 @@
           "label": "1",
           "side": "home",
           "model_p": 84.4,
-          "market_p": 89.3,
-          "edge": -4.9,
-          "ev": -4.7,
-          "book_odds": 1.1299435028248588
+          "market_p": 89.9,
+          "edge": -5.5,
+          "ev": -5.7,
+          "book_odds": 1.11731843575419
         },
         {
           "label": "X",
           "side": "draw",
           "model_p": 12.7,
-          "market_p": 7.6,
-          "edge": 5.1,
+          "market_p": 7.5,
+          "edge": 5.2,
           "ev": 69.4,
           "book_odds": 13.333333333333334
         },
@@ -4201,13 +4111,13 @@
           "label": "2",
           "side": "away",
           "model_p": 2.9,
-          "market_p": 3.2,
-          "edge": -0.3,
-          "ev": -7.3,
-          "book_odds": 31.746031746031747
+          "market_p": 2.6,
+          "edge": 0.3,
+          "ev": 12.4,
+          "book_odds": 38.46153846153846
         }
       ],
-      "best_edge": 5.1,
+      "best_edge": 5.2,
       "best_ev": 69.4
     },
     {
@@ -4261,8 +4171,8 @@
           "label": "1",
           "side": "home",
           "model_p": 82.2,
-          "market_p": 87.6,
-          "edge": -5.4,
+          "market_p": 86.8,
+          "edge": -4.5,
           "ev": -6.0,
           "book_odds": 1.1428571428571428
         },
@@ -4270,23 +4180,23 @@
           "label": "X",
           "side": "draw",
           "model_p": 14.7,
-          "market_p": 8.5,
-          "edge": 6.2,
-          "ev": 73.3,
-          "book_odds": 11.76470588235294
+          "market_p": 9.4,
+          "edge": 5.3,
+          "ev": 55.0,
+          "book_odds": 10.526315789473683
         },
         {
           "label": "2",
           "side": "away",
           "model_p": 3.0,
-          "market_p": 3.9,
+          "market_p": 3.8,
           "edge": -0.8,
           "ev": -21.4,
           "book_odds": 25.97402597402597
         }
       ],
-      "best_edge": 6.2,
-      "best_ev": 73.3
+      "best_edge": 5.3,
+      "best_ev": 55.0
     },
     {
       "home": "England",
@@ -4367,45 +4277,6 @@
       "best_ev": 25.7
     },
     {
-      "home": "Canada",
-      "away": "Qatar",
-      "date": "2026-06-18",
-      "bookmaker": "Polymarket",
-      "source_title": "",
-      "source_url": "https://polymarket.com/event/fifwc-can-qat-2026-06-18",
-      "outcomes": [
-        {
-          "label": "1",
-          "side": "home",
-          "model_p": 76.5,
-          "market_p": 76.1,
-          "edge": 0.4,
-          "ev": -0.0,
-          "book_odds": 1.30718954248366
-        },
-        {
-          "label": "X",
-          "side": "draw",
-          "model_p": 17.6,
-          "market_p": 16.4,
-          "edge": 1.2,
-          "ev": 6.6,
-          "book_odds": 6.0606060606060606
-        },
-        {
-          "label": "2",
-          "side": "away",
-          "model_p": 5.9,
-          "market_p": 7.5,
-          "edge": -1.5,
-          "ev": -20.9,
-          "book_odds": 13.333333333333334
-        }
-      ],
-      "best_edge": 1.2,
-      "best_ev": 6.6
-    },
-    {
       "home": "Portugal",
       "away": "Uzbekistan",
       "date": "2026-06-23",
@@ -4457,7 +4328,7 @@
           "side": "home",
           "model_p": 7.3,
           "market_p": 9.5,
-          "edge": -2.2,
+          "edge": -2.1,
           "ev": -22.8,
           "book_odds": 10.526315789473683
         },
@@ -4465,23 +4336,23 @@
           "label": "X",
           "side": "draw",
           "model_p": 18.5,
-          "market_p": 15.6,
-          "edge": 2.9,
-          "ev": 19.2,
-          "book_odds": 6.451612903225807
+          "market_p": 16.4,
+          "edge": 2.1,
+          "ev": 12.0,
+          "book_odds": 6.0606060606060606
         },
         {
           "label": "2",
           "side": "away",
           "model_p": 74.2,
-          "market_p": 74.9,
-          "edge": -0.7,
+          "market_p": 74.1,
+          "edge": 0.1,
           "ev": -0.4,
           "book_odds": 1.342281879194631
         }
       ],
-      "best_edge": 2.9,
-      "best_ev": 19.2
+      "best_edge": 2.1,
+      "best_ev": 12.0
     },
     {
       "home": "Panama",
@@ -4573,17 +4444,17 @@
           "label": "1",
           "side": "home",
           "model_p": 67.3,
-          "market_p": 71.9,
-          "edge": -4.6,
-          "ev": -5.9,
-          "book_odds": 1.3986013986013988
+          "market_p": 73.2,
+          "edge": -6.0,
+          "ev": -7.2,
+          "book_odds": 1.3793103448275863
         },
         {
           "label": "X",
           "side": "draw",
           "model_p": 24.2,
-          "market_p": 17.6,
-          "edge": 6.6,
+          "market_p": 17.7,
+          "edge": 6.5,
           "ev": 38.2,
           "book_odds": 5.714285714285714
         },
@@ -4591,13 +4462,13 @@
           "label": "2",
           "side": "away",
           "model_p": 8.6,
-          "market_p": 10.6,
-          "edge": -2.0,
-          "ev": -18.4,
-          "book_odds": 9.523809523809524
+          "market_p": 9.1,
+          "edge": -0.5,
+          "ev": -4.8,
+          "book_odds": 11.11111111111111
         }
       ],
-      "best_edge": 6.6,
+      "best_edge": 6.5,
       "best_ev": 38.2
     },
     {
@@ -4807,17 +4678,17 @@
           "label": "1",
           "side": "home",
           "model_p": 62.5,
-          "market_p": 68.2,
-          "edge": -5.7,
-          "ev": -8.8,
-          "book_odds": 1.45985401459854
+          "market_p": 67.8,
+          "edge": -5.4,
+          "ev": -7.5,
+          "book_odds": 1.4814814814814814
         },
         {
           "label": "X",
           "side": "draw",
           "model_p": 24.3,
-          "market_p": 20.4,
-          "edge": 3.9,
+          "market_p": 20.6,
+          "edge": 3.7,
           "ev": 18.5,
           "book_odds": 4.878048780487805
         },
@@ -4825,13 +4696,13 @@
           "label": "2",
           "side": "away",
           "model_p": 13.2,
-          "market_p": 11.4,
-          "edge": 1.8,
+          "market_p": 11.6,
+          "edge": 1.7,
           "ev": 15.0,
           "book_odds": 8.695652173913043
         }
       ],
-      "best_edge": 3.9,
+      "best_edge": 3.7,
       "best_ev": 18.5
     },
     {
@@ -5080,17 +4951,17 @@
           "label": "1",
           "side": "home",
           "model_p": 52.1,
-          "market_p": 47.3,
-          "edge": 4.8,
-          "ev": 9.7,
-          "book_odds": 2.1052631578947367
+          "market_p": 47.8,
+          "edge": 4.3,
+          "ev": 7.4,
+          "book_odds": 2.061855670103093
         },
         {
           "label": "X",
           "side": "draw",
           "model_p": 28.7,
-          "market_p": 29.4,
-          "edge": -0.6,
+          "market_p": 29.1,
+          "edge": -0.4,
           "ev": -2.7,
           "book_odds": 3.389830508474577
         },
@@ -5098,14 +4969,14 @@
           "label": "2",
           "side": "away",
           "model_p": 19.2,
-          "market_p": 23.4,
-          "edge": -4.2,
+          "market_p": 23.2,
+          "edge": -4.0,
           "ev": -18.3,
           "book_odds": 4.25531914893617
         }
       ],
-      "best_edge": 4.8,
-      "best_ev": 9.7
+      "best_edge": 4.3,
+      "best_ev": 7.4
     },
     {
       "home": "Germany",
@@ -5119,8 +4990,8 @@
           "label": "1",
           "side": "home",
           "model_p": 50.9,
-          "market_p": 63.2,
-          "edge": -12.3,
+          "market_p": 63.8,
+          "edge": -12.9,
           "ev": -19.8,
           "book_odds": 1.574803149606299
         },
@@ -5128,8 +4999,8 @@
           "label": "X",
           "side": "draw",
           "model_p": 29.3,
-          "market_p": 20.4,
-          "edge": 8.9,
+          "market_p": 20.6,
+          "edge": 8.7,
           "ev": 43.0,
           "book_odds": 4.878048780487805
         },
@@ -5137,13 +5008,13 @@
           "label": "2",
           "side": "away",
           "model_p": 19.8,
-          "market_p": 16.4,
-          "edge": 3.4,
-          "ev": 19.8,
-          "book_odds": 6.0606060606060606
+          "market_p": 15.6,
+          "edge": 4.2,
+          "ev": 27.6,
+          "book_odds": 6.451612903225807
         }
       ],
-      "best_edge": 8.9,
+      "best_edge": 8.7,
       "best_ev": 43.0
     },
     {
@@ -5275,8 +5146,8 @@
           "label": "1",
           "side": "home",
           "model_p": 27.2,
-          "market_p": 28.1,
-          "edge": -0.9,
+          "market_p": 28.4,
+          "edge": -1.2,
           "ev": -4.6,
           "book_odds": 3.5087719298245617
         },
@@ -5284,8 +5155,8 @@
           "label": "X",
           "side": "draw",
           "model_p": 29.0,
-          "market_p": 26.1,
-          "edge": 2.9,
+          "market_p": 26.4,
+          "edge": 2.6,
           "ev": 9.4,
           "book_odds": 3.773584905660377
         },
@@ -5293,13 +5164,13 @@
           "label": "2",
           "side": "away",
           "model_p": 43.8,
-          "market_p": 45.8,
-          "edge": -2.0,
-          "ev": -5.7,
-          "book_odds": 2.150537634408602
+          "market_p": 45.3,
+          "edge": -1.4,
+          "ev": -3.7,
+          "book_odds": 2.197802197802197
         }
       ],
-      "best_edge": 2.9,
+      "best_edge": 2.6,
       "best_ev": 9.4
     },
     {
@@ -5392,32 +5263,32 @@
           "label": "1",
           "side": "home",
           "model_p": 41.2,
-          "market_p": 60.2,
-          "edge": -19.0,
-          "ev": -31.8,
-          "book_odds": 1.6528925619834711
+          "market_p": 67.8,
+          "edge": -26.6,
+          "ev": -38.9,
+          "book_odds": 1.4814814814814814
         },
         {
           "label": "X",
           "side": "draw",
           "model_p": 29.7,
-          "market_p": 23.4,
-          "edge": 6.3,
-          "ev": 26.4,
-          "book_odds": 4.25531914893617
+          "market_p": 19.6,
+          "edge": 10.1,
+          "ev": 52.4,
+          "book_odds": 5.128205128205128
         },
         {
           "label": "2",
           "side": "away",
           "model_p": 29.0,
-          "market_p": 16.4,
-          "edge": 12.6,
-          "ev": 76.0,
-          "book_odds": 6.0606060606060606
+          "market_p": 12.6,
+          "edge": 16.5,
+          "ev": 132.3,
+          "book_odds": 8.0
         }
       ],
-      "best_edge": 12.6,
-      "best_ev": 76.0
+      "best_edge": 16.5,
+      "best_ev": 132.3
     },
     {
       "home": "DR Congo",
@@ -5624,7 +5495,7 @@
       "ev": 16.2,
       "model_odds": 3.58,
       "market_odds": 8.51063829787234,
-      "volume": 60601379.18637671
+      "volume": 60666620.21090968
     },
     {
       "team": "Spain",
@@ -5634,7 +5505,7 @@
       "ev": 6.2,
       "model_odds": 5.03,
       "market_odds": 7.326007326007326,
-      "volume": 53682342.32926995
+      "volume": 53701362.63731194
     },
     {
       "team": "England",
@@ -5644,7 +5515,7 @@
       "ev": -2.2,
       "model_odds": 9.43,
       "market_odds": 7.782101167315175,
-      "volume": 46027711.4349952
+      "volume": 46080529.59010124
     },
     {
       "team": "France",
@@ -5654,7 +5525,7 @@
       "ev": -8.8,
       "model_odds": 10.42,
       "market_odds": 5.420054200542006,
-      "volume": 60305596.058812216
+      "volume": 60370942.38661523
     },
     {
       "team": "Portugal",
@@ -5663,8 +5534,8 @@
       "edge": -1.8,
       "ev": -1.8,
       "model_odds": 16.67,
-      "market_odds": 12.738853503184714,
-      "volume": 55456070.84767183
+      "market_odds": 12.903225806451614,
+      "volume": 55530402.94968982
     },
     {
       "team": "Brazil",
@@ -5674,17 +5545,17 @@
       "ev": -2.5,
       "model_odds": 23.81,
       "market_odds": 15.037593984962406,
-      "volume": 44048466.59603503
+      "volume": 44094852.55427903
     },
     {
       "team": "Germany",
       "model_p": 3.9,
-      "market_p": 5.8,
-      "edge": -1.8,
-      "ev": -1.8,
+      "market_p": 5.9,
+      "edge": -1.9,
+      "ev": -1.9,
       "model_odds": 25.64,
-      "market_odds": 17.391304347826086,
-      "volume": 53903684.05976001
+      "market_odds": 17.094017094017094,
+      "volume": 53970664.345696025
     },
     {
       "team": "Morocco",
@@ -5694,7 +5565,7 @@
       "ev": 1.4,
       "model_odds": 26.32,
       "market_odds": 42.5531914893617,
-      "volume": 60563903.36576558
+      "volume": 60631903.5253376
     },
     {
       "team": "Netherlands",
@@ -5704,7 +5575,7 @@
       "ev": -0.9,
       "model_odds": 33.33,
       "market_odds": 25.31645569620253,
-      "volume": 53345665.19581058
+      "volume": 53411445.81452758
     },
     {
       "team": "Colombia",
@@ -5714,7 +5585,7 @@
       "ev": 0.9,
       "model_odds": 40.0,
       "market_odds": 60.6060606060606,
-      "volume": 57019574.523444064
+      "volume": 57033029.44867904
     },
     {
       "team": "Belgium",
@@ -5724,7 +5595,7 @@
       "ev": 0.2,
       "model_odds": 55.56,
       "market_odds": 64.51612903225806,
-      "volume": 57577284.67151369
+      "volume": 57627257.277979694
     },
     {
       "team": "Norway",
@@ -5734,7 +5605,7 @@
       "ev": -1.2,
       "model_odds": 76.92,
       "market_odds": 39.21568627450981,
-      "volume": 55201190.78610187
+      "volume": 55274143.73805588
     },
     {
       "team": "Japan",
@@ -5744,7 +5615,7 @@
       "ev": -0.7,
       "model_odds": 100.0,
       "market_odds": 60.6060606060606,
-      "volume": 58430878.22555375
+      "volume": 58526468.44556575
     },
     {
       "team": "Croatia",
@@ -5754,7 +5625,7 @@
       "ev": 0.2,
       "model_odds": 111.11,
       "market_odds": 153.84615384615384,
-      "volume": 63254245.72624665
+      "volume": 63258872.67873964
     },
     {
       "team": "Switzerland",
@@ -5764,17 +5635,17 @@
       "ev": -0.1,
       "model_odds": 125.0,
       "market_odds": 105.26315789473684,
-      "volume": 56211076.4023993
+      "volume": 56831898.95106033
     },
     {
       "team": "Ivory Coast",
       "model_p": 0.6,
-      "market_p": 0.5,
+      "market_p": 0.4,
       "edge": 0.1,
       "ev": 0.1,
       "model_odds": 166.67,
-      "market_odds": 181.81818181818184,
-      "volume": 70040857.67285533
+      "market_odds": 222.22222222222223,
+      "volume": 70548386.47135529
     },
     {
       "team": "Uruguay",
@@ -5784,7 +5655,7 @@
       "ev": -0.0,
       "model_odds": 200.0,
       "market_odds": 181.81818181818184,
-      "volume": 59203412.40310825
+      "volume": 59415404.38010724
     },
     {
       "team": "Mexico",
@@ -5794,7 +5665,7 @@
       "ev": -0.9,
       "model_odds": 250.0,
       "market_odds": 74.07407407407408,
-      "volume": 71786342.03841934
+      "volume": 71989778.84727736
     },
     {
       "team": "Australia",
@@ -5804,7 +5675,7 @@
       "ev": -0.1,
       "model_odds": 333.33,
       "market_odds": 222.22222222222223,
-      "volume": 69177506.21365647
+      "volume": 69239879.19965647
     },
     {
       "team": "Ecuador",
@@ -5814,7 +5685,7 @@
       "ev": -0.1,
       "model_odds": 333.33,
       "market_odds": 222.22222222222223,
-      "volume": 59971719.13741148
+      "volume": 60023858.13041146
     },
     {
       "team": "Senegal",
@@ -5824,7 +5695,7 @@
       "ev": -0.3,
       "model_odds": 333.33,
       "market_odds": 153.84615384615384,
-      "volume": 53384168.6962259
+      "volume": 53438522.87786391
     },
     {
       "team": "Austria",
@@ -5834,7 +5705,7 @@
       "ev": -0.2,
       "model_odds": 500.0,
       "market_odds": 222.22222222222223,
-      "volume": 60037140.37707627
+      "volume": 60057254.78557628
     },
     {
       "team": "Bosnia and Herzegovina",
@@ -5844,7 +5715,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 45934741.695717774
+      "volume": 46086774.295717776
     },
     {
       "team": "Cape Verde",
@@ -5874,7 +5745,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 2000.0,
-      "volume": 56912139.47301566
+      "volume": 56917236.593015656
     },
     {
       "team": "Haiti",
@@ -5994,7 +5865,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 62132429.13621536
+      "volume": 62411127.16821536
     },
     {
       "team": "DR Congo",
@@ -6004,7 +5875,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 75731580.93707167
+      "volume": 75789299.65507166
     },
     {
       "team": "Ghana",
@@ -6014,7 +5885,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 51924491.78644148
+      "volume": 51984331.78644148
     },
     {
       "team": "Paraguay",
@@ -6024,17 +5895,7 @@
       "ev": -0.1,
       "model_odds": null,
       "market_odds": 666.6666666666666,
-      "volume": 61069854.58098735
-    },
-    {
-      "team": "Canada",
-      "model_p": 0.0,
-      "market_p": 0.2,
-      "edge": -0.2,
-      "ev": -0.2,
-      "model_odds": null,
-      "market_odds": 400.0,
-      "volume": 57621890.86491935
+      "volume": 61128870.97698735
     },
     {
       "team": "Egypt",
@@ -6044,7 +5905,7 @@
       "ev": -0.2,
       "model_odds": null,
       "market_odds": 400.0,
-      "volume": 65686493.40112071
+      "volume": 65741408.82878672
     },
     {
       "team": "Scotland",
@@ -6054,7 +5915,17 @@
       "ev": -0.2,
       "model_odds": null,
       "market_odds": 400.0,
-      "volume": 60500982.99025033
+      "volume": 60556036.86674933
+    },
+    {
+      "team": "Canada",
+      "model_p": 0.0,
+      "market_p": 0.4,
+      "edge": -0.4,
+      "ev": -0.4,
+      "model_odds": null,
+      "market_odds": 285.7142857142857,
+      "volume": 60685646.62374835
     },
     {
       "team": "South Korea",
@@ -6064,7 +5935,7 @@
       "ev": -0.4,
       "model_odds": null,
       "market_odds": 285.7142857142857,
-      "volume": 81649969.36581932
+      "volume": 81844822.7021493
     },
     {
       "team": "Sweden",
@@ -6074,7 +5945,7 @@
       "ev": -0.5,
       "model_odds": null,
       "market_odds": 181.81818181818184,
-      "volume": 48296080.22709035
+      "volume": 48317184.83048836
     },
     {
       "team": "United States",
@@ -6084,7 +5955,7 @@
       "ev": -2.2,
       "model_odds": null,
       "market_odds": 44.44444444444444,
-      "volume": 78653890.43501012
+      "volume": 78812157.94323415
     }
   ],
   "market_comparisons": {
@@ -6101,7 +5972,7 @@
             "label": "1",
             "side": "home",
             "model_p": 93.1,
-            "market_p": 88.2,
+            "market_p": 88.1,
             "edge": 4.9,
             "ev": 5.2,
             "book_odds": 1.1299435028248588
@@ -6119,10 +5990,10 @@
             "label": "2",
             "side": "away",
             "model_p": 1.1,
-            "market_p": 3.8,
-            "edge": -2.7,
-            "ev": -71.0,
-            "book_odds": 25.97402597402597
+            "market_p": 3.9,
+            "edge": -2.8,
+            "ev": -71.7,
+            "book_odds": 25.31645569620253
           }
         ],
         "best_edge": 4.9,
@@ -6140,10 +6011,10 @@
             "label": "1",
             "side": "home",
             "model_p": 1.9,
-            "market_p": 6.2,
-            "edge": -4.4,
-            "ev": -70.1,
-            "book_odds": 16.0
+            "market_p": 6.0,
+            "edge": -4.2,
+            "ev": -69.1,
+            "book_odds": 16.528925619834713
           },
           {
             "label": "X",
@@ -6158,13 +6029,13 @@
             "label": "2",
             "side": "away",
             "model_p": 87.8,
-            "market_p": 81.3,
-            "edge": 6.5,
+            "market_p": 81.5,
+            "edge": 6.3,
             "ev": 7.7,
             "book_odds": 1.2269938650306749
           }
         ],
-        "best_edge": 6.5,
+        "best_edge": 6.3,
         "best_ev": 7.7
       },
       {
@@ -6296,17 +6167,17 @@
             "label": "1",
             "side": "home",
             "model_p": 84.4,
-            "market_p": 89.3,
-            "edge": -4.9,
-            "ev": -4.7,
-            "book_odds": 1.1299435028248588
+            "market_p": 89.9,
+            "edge": -5.5,
+            "ev": -5.7,
+            "book_odds": 1.11731843575419
           },
           {
             "label": "X",
             "side": "draw",
             "model_p": 12.7,
-            "market_p": 7.6,
-            "edge": 5.1,
+            "market_p": 7.5,
+            "edge": 5.2,
             "ev": 69.4,
             "book_odds": 13.333333333333334
           },
@@ -6314,13 +6185,13 @@
             "label": "2",
             "side": "away",
             "model_p": 2.9,
-            "market_p": 3.2,
-            "edge": -0.3,
-            "ev": -7.3,
-            "book_odds": 31.746031746031747
+            "market_p": 2.6,
+            "edge": 0.3,
+            "ev": 12.4,
+            "book_odds": 38.46153846153846
           }
         ],
-        "best_edge": 5.1,
+        "best_edge": 5.2,
         "best_ev": 69.4
       },
       {
@@ -6374,8 +6245,8 @@
             "label": "1",
             "side": "home",
             "model_p": 82.2,
-            "market_p": 87.6,
-            "edge": -5.4,
+            "market_p": 86.8,
+            "edge": -4.5,
             "ev": -6.0,
             "book_odds": 1.1428571428571428
           },
@@ -6383,23 +6254,23 @@
             "label": "X",
             "side": "draw",
             "model_p": 14.7,
-            "market_p": 8.5,
-            "edge": 6.2,
-            "ev": 73.3,
-            "book_odds": 11.76470588235294
+            "market_p": 9.4,
+            "edge": 5.3,
+            "ev": 55.0,
+            "book_odds": 10.526315789473683
           },
           {
             "label": "2",
             "side": "away",
             "model_p": 3.0,
-            "market_p": 3.9,
+            "market_p": 3.8,
             "edge": -0.8,
             "ev": -21.4,
             "book_odds": 25.97402597402597
           }
         ],
-        "best_edge": 6.2,
-        "best_ev": 73.3
+        "best_edge": 5.3,
+        "best_ev": 55.0
       },
       {
         "home": "England",
@@ -6480,45 +6351,6 @@
         "best_ev": 25.7
       },
       {
-        "home": "Canada",
-        "away": "Qatar",
-        "date": "2026-06-18",
-        "bookmaker": "Polymarket",
-        "source_title": "",
-        "source_url": "https://polymarket.com/event/fifwc-can-qat-2026-06-18",
-        "outcomes": [
-          {
-            "label": "1",
-            "side": "home",
-            "model_p": 76.5,
-            "market_p": 76.1,
-            "edge": 0.4,
-            "ev": -0.0,
-            "book_odds": 1.30718954248366
-          },
-          {
-            "label": "X",
-            "side": "draw",
-            "model_p": 17.6,
-            "market_p": 16.4,
-            "edge": 1.2,
-            "ev": 6.6,
-            "book_odds": 6.0606060606060606
-          },
-          {
-            "label": "2",
-            "side": "away",
-            "model_p": 5.9,
-            "market_p": 7.5,
-            "edge": -1.5,
-            "ev": -20.9,
-            "book_odds": 13.333333333333334
-          }
-        ],
-        "best_edge": 1.2,
-        "best_ev": 6.6
-      },
-      {
         "home": "Portugal",
         "away": "Uzbekistan",
         "date": "2026-06-23",
@@ -6570,7 +6402,7 @@
             "side": "home",
             "model_p": 7.3,
             "market_p": 9.5,
-            "edge": -2.2,
+            "edge": -2.1,
             "ev": -22.8,
             "book_odds": 10.526315789473683
           },
@@ -6578,23 +6410,23 @@
             "label": "X",
             "side": "draw",
             "model_p": 18.5,
-            "market_p": 15.6,
-            "edge": 2.9,
-            "ev": 19.2,
-            "book_odds": 6.451612903225807
+            "market_p": 16.4,
+            "edge": 2.1,
+            "ev": 12.0,
+            "book_odds": 6.0606060606060606
           },
           {
             "label": "2",
             "side": "away",
             "model_p": 74.2,
-            "market_p": 74.9,
-            "edge": -0.7,
+            "market_p": 74.1,
+            "edge": 0.1,
             "ev": -0.4,
             "book_odds": 1.342281879194631
           }
         ],
-        "best_edge": 2.9,
-        "best_ev": 19.2
+        "best_edge": 2.1,
+        "best_ev": 12.0
       },
       {
         "home": "Panama",
@@ -6686,17 +6518,17 @@
             "label": "1",
             "side": "home",
             "model_p": 67.3,
-            "market_p": 71.9,
-            "edge": -4.6,
-            "ev": -5.9,
-            "book_odds": 1.3986013986013988
+            "market_p": 73.2,
+            "edge": -6.0,
+            "ev": -7.2,
+            "book_odds": 1.3793103448275863
           },
           {
             "label": "X",
             "side": "draw",
             "model_p": 24.2,
-            "market_p": 17.6,
-            "edge": 6.6,
+            "market_p": 17.7,
+            "edge": 6.5,
             "ev": 38.2,
             "book_odds": 5.714285714285714
           },
@@ -6704,13 +6536,13 @@
             "label": "2",
             "side": "away",
             "model_p": 8.6,
-            "market_p": 10.6,
-            "edge": -2.0,
-            "ev": -18.4,
-            "book_odds": 9.523809523809524
+            "market_p": 9.1,
+            "edge": -0.5,
+            "ev": -4.8,
+            "book_odds": 11.11111111111111
           }
         ],
-        "best_edge": 6.6,
+        "best_edge": 6.5,
         "best_ev": 38.2
       },
       {
@@ -6920,17 +6752,17 @@
             "label": "1",
             "side": "home",
             "model_p": 62.5,
-            "market_p": 68.2,
-            "edge": -5.7,
-            "ev": -8.8,
-            "book_odds": 1.45985401459854
+            "market_p": 67.8,
+            "edge": -5.4,
+            "ev": -7.5,
+            "book_odds": 1.4814814814814814
           },
           {
             "label": "X",
             "side": "draw",
             "model_p": 24.3,
-            "market_p": 20.4,
-            "edge": 3.9,
+            "market_p": 20.6,
+            "edge": 3.7,
             "ev": 18.5,
             "book_odds": 4.878048780487805
           },
@@ -6938,13 +6770,13 @@
             "label": "2",
             "side": "away",
             "model_p": 13.2,
-            "market_p": 11.4,
-            "edge": 1.8,
+            "market_p": 11.6,
+            "edge": 1.7,
             "ev": 15.0,
             "book_odds": 8.695652173913043
           }
         ],
-        "best_edge": 3.9,
+        "best_edge": 3.7,
         "best_ev": 18.5
       },
       {
@@ -7193,17 +7025,17 @@
             "label": "1",
             "side": "home",
             "model_p": 52.1,
-            "market_p": 47.3,
-            "edge": 4.8,
-            "ev": 9.7,
-            "book_odds": 2.1052631578947367
+            "market_p": 47.8,
+            "edge": 4.3,
+            "ev": 7.4,
+            "book_odds": 2.061855670103093
           },
           {
             "label": "X",
             "side": "draw",
             "model_p": 28.7,
-            "market_p": 29.4,
-            "edge": -0.6,
+            "market_p": 29.1,
+            "edge": -0.4,
             "ev": -2.7,
             "book_odds": 3.389830508474577
           },
@@ -7211,14 +7043,14 @@
             "label": "2",
             "side": "away",
             "model_p": 19.2,
-            "market_p": 23.4,
-            "edge": -4.2,
+            "market_p": 23.2,
+            "edge": -4.0,
             "ev": -18.3,
             "book_odds": 4.25531914893617
           }
         ],
-        "best_edge": 4.8,
-        "best_ev": 9.7
+        "best_edge": 4.3,
+        "best_ev": 7.4
       },
       {
         "home": "Germany",
@@ -7232,8 +7064,8 @@
             "label": "1",
             "side": "home",
             "model_p": 50.9,
-            "market_p": 63.2,
-            "edge": -12.3,
+            "market_p": 63.8,
+            "edge": -12.9,
             "ev": -19.8,
             "book_odds": 1.574803149606299
           },
@@ -7241,8 +7073,8 @@
             "label": "X",
             "side": "draw",
             "model_p": 29.3,
-            "market_p": 20.4,
-            "edge": 8.9,
+            "market_p": 20.6,
+            "edge": 8.7,
             "ev": 43.0,
             "book_odds": 4.878048780487805
           },
@@ -7250,13 +7082,13 @@
             "label": "2",
             "side": "away",
             "model_p": 19.8,
-            "market_p": 16.4,
-            "edge": 3.4,
-            "ev": 19.8,
-            "book_odds": 6.0606060606060606
+            "market_p": 15.6,
+            "edge": 4.2,
+            "ev": 27.6,
+            "book_odds": 6.451612903225807
           }
         ],
-        "best_edge": 8.9,
+        "best_edge": 8.7,
         "best_ev": 43.0
       },
       {
@@ -7388,8 +7220,8 @@
             "label": "1",
             "side": "home",
             "model_p": 27.2,
-            "market_p": 28.1,
-            "edge": -0.9,
+            "market_p": 28.4,
+            "edge": -1.2,
             "ev": -4.6,
             "book_odds": 3.5087719298245617
           },
@@ -7397,8 +7229,8 @@
             "label": "X",
             "side": "draw",
             "model_p": 29.0,
-            "market_p": 26.1,
-            "edge": 2.9,
+            "market_p": 26.4,
+            "edge": 2.6,
             "ev": 9.4,
             "book_odds": 3.773584905660377
           },
@@ -7406,13 +7238,13 @@
             "label": "2",
             "side": "away",
             "model_p": 43.8,
-            "market_p": 45.8,
-            "edge": -2.0,
-            "ev": -5.7,
-            "book_odds": 2.150537634408602
+            "market_p": 45.3,
+            "edge": -1.4,
+            "ev": -3.7,
+            "book_odds": 2.197802197802197
           }
         ],
-        "best_edge": 2.9,
+        "best_edge": 2.6,
         "best_ev": 9.4
       },
       {
@@ -7505,32 +7337,32 @@
             "label": "1",
             "side": "home",
             "model_p": 41.2,
-            "market_p": 60.2,
-            "edge": -19.0,
-            "ev": -31.8,
-            "book_odds": 1.6528925619834711
+            "market_p": 67.8,
+            "edge": -26.6,
+            "ev": -38.9,
+            "book_odds": 1.4814814814814814
           },
           {
             "label": "X",
             "side": "draw",
             "model_p": 29.7,
-            "market_p": 23.4,
-            "edge": 6.3,
-            "ev": 26.4,
-            "book_odds": 4.25531914893617
+            "market_p": 19.6,
+            "edge": 10.1,
+            "ev": 52.4,
+            "book_odds": 5.128205128205128
           },
           {
             "label": "2",
             "side": "away",
             "model_p": 29.0,
-            "market_p": 16.4,
-            "edge": 12.6,
-            "ev": 76.0,
-            "book_odds": 6.0606060606060606
+            "market_p": 12.6,
+            "edge": 16.5,
+            "ev": 132.3,
+            "book_odds": 8.0
           }
         ],
-        "best_edge": 12.6,
-        "best_ev": 76.0
+        "best_edge": 16.5,
+        "best_ev": 132.3
       },
       {
         "home": "DR Congo",
@@ -7740,7 +7572,7 @@
             "edge": 0.6,
             "model_odds": 1.0,
             "market_odds": 1.01,
-            "volume": 42511.83697499996
+            "volume": 42612.23857999996
           },
           {
             "team": "Germany",
@@ -7749,7 +7581,7 @@
             "edge": 0.6,
             "model_odds": 1.0,
             "market_odds": 1.01,
-            "volume": 61135.52195999998
+            "volume": 61236.024470999975
           },
           {
             "team": "Switzerland",
@@ -7767,16 +7599,16 @@
             "edge": 0.4,
             "model_odds": 1.0,
             "market_odds": 1.01,
-            "volume": 40510.24989000002
+            "volume": 40610.55079100002
           },
           {
             "team": "France",
             "model_p": 99.8,
-            "market_p": 99.3,
-            "edge": 0.5,
+            "market_p": 99.4,
+            "edge": 0.4,
             "model_odds": 1.0,
             "market_odds": 1.01,
-            "volume": 235987.724544
+            "volume": 236088.227055
           },
           {
             "team": "Ivory Coast",
@@ -7799,11 +7631,11 @@
           {
             "team": "Mexico",
             "model_p": 98.3,
-            "market_p": 97.5,
-            "edge": 0.7,
+            "market_p": 96.9,
+            "edge": 1.4,
             "model_odds": 1.02,
             "market_odds": 1.03,
-            "volume": 92780.89652900003
+            "volume": 93210.89480300005
           },
           {
             "team": "Morocco",
@@ -7817,8 +7649,8 @@
           {
             "team": "Brazil",
             "model_p": 97.9,
-            "market_p": 96.9,
-            "edge": 1.0,
+            "market_p": 97.2,
+            "edge": 0.7,
             "model_odds": 1.02,
             "market_odds": 1.03,
             "volume": 68289.79303099998
@@ -7826,38 +7658,38 @@
           {
             "team": "Australia",
             "model_p": 97.8,
-            "market_p": 85.5,
-            "edge": 12.3,
+            "market_p": 86.0,
+            "edge": 11.8,
             "model_odds": 1.02,
-            "market_odds": 1.17,
-            "volume": 52305.97156400009
+            "market_odds": 1.16,
+            "volume": 52753.77489400009
           },
           {
             "team": "Norway",
             "model_p": 97.7,
-            "market_p": 95.8,
-            "edge": 1.9,
+            "market_p": 95.6,
+            "edge": 2.1,
             "model_odds": 1.02,
-            "market_odds": 1.04,
+            "market_odds": 1.05,
             "volume": 145487.10387299978
           },
           {
             "team": "Spain",
             "model_p": 96.9,
-            "market_p": 96.9,
-            "edge": 0.0,
+            "market_p": 97.0,
+            "edge": -0.1,
             "model_odds": 1.03,
             "market_odds": 1.03,
-            "volume": 106882.60518699992
+            "volume": 106985.69795299992
           },
           {
             "team": "United States",
             "model_p": 96.4,
-            "market_p": 98.0,
-            "edge": -1.6,
+            "market_p": 97.5,
+            "edge": -1.1,
             "model_odds": 1.04,
-            "market_odds": 1.02,
-            "volume": 104322.759296
+            "market_odds": 1.03,
+            "volume": 104459.290096
           },
           {
             "team": "South Korea",
@@ -7866,16 +7698,16 @@
             "edge": 2.8,
             "model_odds": 1.04,
             "market_odds": 1.07,
-            "volume": 33184.58617900003
+            "volume": 33189.58617900003
           },
           {
             "team": "Sweden",
             "model_p": 94.7,
-            "market_p": 94.3,
+            "market_p": 94.4,
             "edge": 0.3,
             "model_odds": 1.06,
             "market_odds": 1.06,
-            "volume": 105573.44589499992
+            "volume": 105622.50805099992
           },
           {
             "team": "Belgium",
@@ -7893,7 +7725,7 @@
             "edge": 2.0,
             "model_odds": 1.06,
             "market_odds": 1.08,
-            "volume": 47430.98373099983
+            "volume": 47480.98373099983
           },
           {
             "team": "Netherlands",
@@ -7907,20 +7739,20 @@
           {
             "team": "Portugal",
             "model_p": 92.7,
-            "market_p": 95.0,
-            "edge": -2.3,
+            "market_p": 95.2,
+            "edge": -2.4,
             "model_odds": 1.08,
             "market_odds": 1.05,
-            "volume": 114174.87277800003
+            "volume": 114345.34554800004
           },
           {
             "team": "Japan",
             "model_p": 90.6,
-            "market_p": 84.5,
-            "edge": 6.1,
+            "market_p": 84.0,
+            "edge": 6.6,
             "model_odds": 1.1,
-            "market_odds": 1.18,
-            "volume": 124375.51239799996
+            "market_odds": 1.19,
+            "volume": 126047.03004399994
           },
           {
             "team": "Croatia",
@@ -7934,20 +7766,20 @@
           {
             "team": "Scotland",
             "model_p": 83.6,
-            "market_p": 79.5,
-            "edge": 4.1,
+            "market_p": 76.5,
+            "edge": 7.1,
             "model_odds": 1.2,
-            "market_odds": 1.26,
-            "volume": 125262.01641599974
+            "market_odds": 1.31,
+            "volume": 127231.80612299974
           },
           {
             "team": "Canada",
             "model_p": 83.4,
-            "market_p": 83.5,
-            "edge": -0.1,
+            "market_p": 99.6,
+            "edge": -16.2,
             "model_odds": 1.2,
-            "market_odds": 1.2,
-            "volume": 62307.59461199911
+            "market_odds": 1.0,
+            "volume": 66097.99066899912
           },
           {
             "team": "Ecuador",
@@ -7965,7 +7797,7 @@
             "edge": -0.6,
             "model_odds": 1.3,
             "market_odds": 1.29,
-            "volume": 23306.074900000018
+            "volume": 23644.336085000017
           },
           {
             "team": "Egypt",
@@ -7983,7 +7815,7 @@
             "edge": -1.9,
             "model_odds": 1.46,
             "market_odds": 1.42,
-            "volume": 113663.016116
+            "volume": 114284.118694
           },
           {
             "team": "Senegal",
@@ -7992,7 +7824,7 @@
             "edge": 0.4,
             "model_odds": 1.47,
             "market_odds": 1.48,
-            "volume": 80426.47529899988
+            "volume": 80576.47529899988
           },
           {
             "team": "Algeria",
@@ -8001,7 +7833,7 @@
             "edge": 8.2,
             "model_odds": 1.59,
             "market_odds": 1.83,
-            "volume": 47816.105632
+            "volume": 48205.051083000006
           },
           {
             "team": "Iran",
@@ -8010,25 +7842,25 @@
             "edge": 11.8,
             "model_odds": 1.88,
             "market_odds": 2.42,
-            "volume": 44644.03466900003
+            "volume": 44669.77091900003
           },
           {
             "team": "DR Congo",
             "model_p": 46.0,
-            "market_p": 59.0,
-            "edge": -13.0,
+            "market_p": 59.5,
+            "edge": -13.5,
             "model_odds": 2.17,
-            "market_odds": 1.69,
-            "volume": 61788.65340299997
+            "market_odds": 1.68,
+            "volume": 62316.546258999966
           },
           {
             "team": "Cape Verde",
             "model_p": 45.5,
-            "market_p": 44.5,
-            "edge": 1.0,
+            "market_p": 38.5,
+            "edge": 7.0,
             "model_odds": 2.2,
-            "market_odds": 2.25,
-            "volume": 62313.656127
+            "market_odds": 2.6,
+            "volume": 70882.581379
           },
           {
             "team": "Saudi Arabia",
@@ -8037,25 +7869,25 @@
             "edge": -0.5,
             "model_odds": 2.33,
             "market_odds": 2.3,
-            "volume": 170700.42209399995
+            "volume": 170709.08118199994
           },
           {
             "team": "Bosnia and Herzegovina",
             "model_p": 42.6,
-            "market_p": 57.0,
-            "edge": -14.4,
+            "market_p": 69.5,
+            "edge": -26.9,
             "model_odds": 2.35,
-            "market_odds": 1.75,
-            "volume": 88977.76859199993
+            "market_odds": 1.44,
+            "volume": 91983.06521499997
           },
           {
             "team": "Qatar",
             "model_p": 40.0,
-            "market_p": 29.5,
-            "edge": 10.5,
+            "market_p": 13.0,
+            "edge": 27.0,
             "model_odds": 2.5,
-            "market_odds": 3.39,
-            "volume": 150079.47296100005
+            "market_odds": 7.69,
+            "volume": 154570.806202
           },
           {
             "team": "New Zealand",
@@ -8069,20 +7901,20 @@
           {
             "team": "Czech Republic",
             "model_p": 24.7,
-            "market_p": 19.5,
-            "edge": 5.2,
+            "market_p": 20.5,
+            "edge": 4.2,
             "model_odds": 4.05,
-            "market_odds": 5.13,
-            "volume": 49006.28221199996
+            "market_odds": 4.88,
+            "volume": 49523.98221199995
           },
           {
             "team": "Paraguay",
             "model_p": 23.5,
-            "market_p": 38.5,
-            "edge": -15.0,
+            "market_p": 37.5,
+            "edge": -14.0,
             "model_odds": 4.26,
-            "market_odds": 2.6,
-            "volume": 55924.17947900004
+            "market_odds": 2.67,
+            "volume": 56060.36105600004
           },
           {
             "team": "Uzbekistan",
@@ -8091,16 +7923,16 @@
             "edge": 3.3,
             "model_odds": 4.59,
             "market_odds": 5.41,
-            "volume": 35226.31383100001
+            "volume": 35730.71383100001
           },
           {
             "team": "South Africa",
             "model_p": 14.3,
-            "market_p": 15.0,
-            "edge": -0.7,
+            "market_p": 15.5,
+            "edge": -1.2,
             "model_odds": 6.99,
-            "market_odds": 6.67,
-            "volume": 42674.77226800003
+            "market_odds": 6.45,
+            "volume": 42678.26063900003
           },
           {
             "team": "Jordan",
@@ -8118,16 +7950,16 @@
             "edge": 0.7,
             "model_odds": 12.2,
             "market_odds": 13.33,
-            "volume": 102243.5309930001
+            "volume": 102387.6815210001
           },
           {
             "team": "Panama",
             "model_p": 6.0,
-            "market_p": 12.5,
-            "edge": -6.5,
+            "market_p": 11.5,
+            "edge": -5.5,
             "model_odds": 16.67,
-            "market_odds": 8.0,
-            "volume": 68375.17402200002
+            "market_odds": 8.7,
+            "volume": 68629.32402200002
           },
           {
             "team": "Iraq",
@@ -8136,7 +7968,7 @@
             "edge": -0.9,
             "model_odds": 21.74,
             "market_odds": 18.18,
-            "volume": 213669.1450579998
+            "volume": 213679.1450579998
           },
           {
             "team": "Curaçao",
@@ -8145,16 +7977,16 @@
             "edge": -1.8,
             "model_odds": 100.0,
             "market_odds": 35.71,
-            "volume": 91578.01831600002
+            "volume": 92045.161173
           },
           {
             "team": "Haiti",
             "model_p": 1.0,
             "market_p": 3.9,
-            "edge": -2.8,
+            "edge": -2.9,
             "model_odds": 100.0,
-            "market_odds": 25.97,
-            "volume": 114919.08323100004
+            "market_odds": 25.64,
+            "volume": 114920.12273100002
           }
         ]
       },
@@ -8174,38 +8006,38 @@
           {
             "team": "England",
             "model_p": 80.6,
-            "market_p": 79.5,
-            "edge": 1.1,
+            "market_p": 80.5,
+            "edge": 0.1,
             "model_odds": 1.24,
-            "market_odds": 1.26,
-            "volume": 55859.09433099995
+            "market_odds": 1.24,
+            "volume": 55860.22433099995
           },
           {
             "team": "France",
             "model_p": 78.1,
-            "market_p": 86.5,
-            "edge": -8.4,
+            "market_p": 85.5,
+            "edge": -7.4,
             "model_odds": 1.28,
-            "market_odds": 1.16,
-            "volume": 122535.55125600006
+            "market_odds": 1.17,
+            "volume": 122668.83125600006
           },
           {
             "team": "Spain",
             "model_p": 76.0,
-            "market_p": 73.0,
-            "edge": 3.0,
+            "market_p": 72.5,
+            "edge": 3.5,
             "model_odds": 1.32,
-            "market_odds": 1.37,
+            "market_odds": 1.38,
             "volume": 69242.31030600001
           },
           {
             "team": "Germany",
             "model_p": 71.4,
-            "market_p": 73.0,
-            "edge": -1.6,
+            "market_p": 74.0,
+            "edge": -2.6,
             "model_odds": 1.4,
-            "market_odds": 1.37,
-            "volume": 56726.96151299999
+            "market_odds": 1.35,
+            "volume": 57237.51407599999
           },
           {
             "team": "Portugal",
@@ -8237,20 +8069,20 @@
           {
             "team": "Switzerland",
             "model_p": 68.6,
-            "market_p": 53.5,
-            "edge": 15.1,
+            "market_p": 54.0,
+            "edge": 14.6,
             "model_odds": 1.46,
-            "market_odds": 1.87,
+            "market_odds": 1.85,
             "volume": 15476.360381000006
           },
           {
             "team": "Brazil",
             "model_p": 63.7,
-            "market_p": 64.5,
-            "edge": -0.8,
+            "market_p": 69.0,
+            "edge": -5.3,
             "model_odds": 1.57,
-            "market_odds": 1.55,
-            "volume": 33957.03063299997
+            "market_odds": 1.45,
+            "volume": 33994.92063299997
           },
           {
             "team": "Morocco",
@@ -8259,15 +8091,15 @@
             "edge": 7.5,
             "model_odds": 1.68,
             "market_odds": 1.92,
-            "volume": 36876.376303000005
+            "volume": 36913.055545
           },
           {
             "team": "Australia",
             "model_p": 57.7,
-            "market_p": 39.5,
-            "edge": 18.2,
+            "market_p": 37.0,
+            "edge": 20.7,
             "model_odds": 1.73,
-            "market_odds": 2.53,
+            "market_odds": 2.7,
             "volume": 4606.887272000002
           },
           {
@@ -8282,11 +8114,11 @@
           {
             "team": "Mexico",
             "model_p": 52.9,
-            "market_p": 59.5,
-            "edge": -6.6,
+            "market_p": 59.0,
+            "edge": -6.1,
             "model_odds": 1.89,
-            "market_odds": 1.68,
-            "volume": 31826.798205
+            "market_odds": 1.69,
+            "volume": 31828.298205
           },
           {
             "team": "United States",
@@ -8300,38 +8132,38 @@
           {
             "team": "Netherlands",
             "model_p": 49.2,
-            "market_p": 52.5,
-            "edge": -3.3,
+            "market_p": 51.5,
+            "edge": -2.3,
             "model_odds": 2.03,
-            "market_odds": 1.9,
-            "volume": 24795.556498
+            "market_odds": 1.94,
+            "volume": 24913.801881
           },
           {
             "team": "South Korea",
             "model_p": 44.4,
-            "market_p": 53.0,
-            "edge": -8.6,
+            "market_p": 54.0,
+            "edge": -9.6,
             "model_odds": 2.25,
-            "market_odds": 1.89,
+            "market_odds": 1.85,
             "volume": 22971.960824
           },
           {
             "team": "Ivory Coast",
             "model_p": 43.2,
-            "market_p": 37.0,
-            "edge": 6.2,
+            "market_p": 36.0,
+            "edge": 7.2,
             "model_odds": 2.31,
-            "market_odds": 2.7,
+            "market_odds": 2.78,
             "volume": 10885.832465000052
           },
           {
             "team": "Canada",
             "model_p": 42.8,
-            "market_p": 45.0,
-            "edge": -2.2,
+            "market_p": 52.5,
+            "edge": -9.7,
             "model_odds": 2.34,
-            "market_odds": 2.22,
-            "volume": 11068.478905999997
+            "market_odds": 1.9,
+            "volume": 11383.758905999995
           },
           {
             "team": "Ecuador",
@@ -8345,11 +8177,11 @@
           {
             "team": "Japan",
             "model_p": 37.6,
-            "market_p": 44.0,
-            "edge": -6.4,
+            "market_p": 43.0,
+            "edge": -5.4,
             "model_odds": 2.66,
-            "market_odds": 2.27,
-            "volume": 56689.24060800007
+            "market_odds": 2.33,
+            "volume": 56694.24060800007
           },
           {
             "team": "Croatia",
@@ -8358,42 +8190,42 @@
             "edge": -3.2,
             "model_odds": 2.72,
             "market_odds": 2.5,
-            "volume": 6709.509182
+            "volume": 6725.629182
           },
           {
             "team": "Austria",
             "model_p": 29.4,
-            "market_p": 31.5,
-            "edge": -2.1,
+            "market_p": 29.5,
+            "edge": -0.1,
             "model_odds": 3.4,
-            "market_odds": 3.17,
-            "volume": 8641.959708
+            "market_odds": 3.39,
+            "volume": 8655.109708
           },
           {
             "team": "Egypt",
             "model_p": 29.1,
-            "market_p": 37.5,
-            "edge": -8.4,
+            "market_p": 37.0,
+            "edge": -7.9,
             "model_odds": 3.44,
-            "market_odds": 2.67,
+            "market_odds": 2.7,
             "volume": 11268.558404
           },
           {
             "team": "Scotland",
             "model_p": 27.9,
-            "market_p": 26.0,
-            "edge": 1.9,
+            "market_p": 24.5,
+            "edge": 3.4,
             "model_odds": 3.58,
-            "market_odds": 3.85,
+            "market_odds": 4.08,
             "volume": 6952.591768
           },
           {
             "team": "Senegal",
             "model_p": 27.1,
-            "market_p": 28.5,
-            "edge": -1.4,
+            "market_p": 28.0,
+            "edge": -0.9,
             "model_odds": 3.69,
-            "market_odds": 3.51,
+            "market_odds": 3.57,
             "volume": 10996.504910999998
           },
           {
@@ -8408,65 +8240,65 @@
           {
             "team": "Sweden",
             "model_p": 21.0,
-            "market_p": 35.5,
-            "edge": -14.5,
+            "market_p": 34.5,
+            "edge": -13.5,
             "model_odds": 4.76,
-            "market_odds": 2.82,
+            "market_odds": 2.9,
             "volume": 4728.490355000002
           },
           {
             "team": "Iran",
             "model_p": 20.8,
-            "market_p": 12.5,
-            "edge": 8.3,
+            "market_p": 13.5,
+            "edge": 7.3,
             "model_odds": 4.81,
-            "market_odds": 8.0,
+            "market_odds": 7.41,
             "volume": 8799.402588000003
           },
           {
             "team": "Algeria",
             "model_p": 20.4,
-            "market_p": 20.0,
-            "edge": 0.4,
+            "market_p": 17.5,
+            "edge": 2.9,
             "model_odds": 4.9,
-            "market_odds": 5.0,
+            "market_odds": 5.71,
             "volume": 1958.196557
           },
           {
             "team": "Bosnia and Herzegovina",
             "model_p": 9.5,
-            "market_p": 17.5,
-            "edge": -8.0,
+            "market_p": 18.0,
+            "edge": -8.5,
             "model_odds": 10.53,
-            "market_odds": 5.71,
-            "volume": 2133.77782
+            "market_odds": 5.56,
+            "volume": 2439.66782
           },
           {
             "team": "Czech Republic",
             "model_p": 8.6,
-            "market_p": 10.5,
-            "edge": -1.9,
+            "market_p": 8.5,
+            "edge": 0.1,
             "model_odds": 11.63,
-            "market_odds": 9.52,
+            "market_odds": 11.76,
             "volume": 721.9082579999998
           },
           {
             "team": "DR Congo",
             "model_p": 8.5,
-            "market_p": 14.0,
-            "edge": -5.5,
+            "market_p": 16.0,
+            "edge": -7.5,
             "model_odds": 11.76,
-            "market_odds": 7.14,
+            "market_odds": 6.25,
             "volume": 3097.611374
           },
           {
             "team": "Ghana",
             "model_p": 7.6,
-            "market_p": 19.5,
-            "edge": -11.9,
+            "market_p": 20.5,
+            "edge": -12.9,
             "model_odds": 13.16,
-            "market_odds": 5.13,
-            "volume": 17083.522683999996
+            "market_odds": 4.88,
+            "volume": 17355.584889999995
           },
           {
             "team": "Paraguay",
@@ -8480,82 +8312,82 @@
           {
             "team": "Qatar",
             "model_p": 5.4,
-            "market_p": 3.8,
-            "edge": 1.7,
+            "market_p": 2.8,
+            "edge": 2.6,
             "model_odds": 18.52,
-            "market_odds": 26.67,
+            "market_odds": 36.36,
             "volume": 19292.791931
           },
           {
             "team": "Saudi Arabia",
             "model_p": 5.2,
-            "market_p": 8.0,
-            "edge": -2.8,
+            "market_p": 9.0,
+            "edge": -3.8,
             "model_odds": 19.23,
-            "market_odds": 12.5,
+            "market_odds": 11.11,
             "volume": 8968.000286000006
           },
           {
             "team": "New Zealand",
             "model_p": 4.5,
-            "market_p": 8.0,
-            "edge": -3.5,
+            "market_p": 7.0,
+            "edge": -2.5,
             "model_odds": 22.22,
-            "market_odds": 12.5,
+            "market_odds": 14.29,
             "volume": 6901.586964
           },
           {
             "team": "Cape Verde",
             "model_p": 4.3,
-            "market_p": 8.3,
+            "market_p": 8.2,
             "edge": -4.0,
             "model_odds": 23.26,
-            "market_odds": 11.98,
+            "market_odds": 12.12,
             "volume": 1860.104167
           },
           {
             "team": "South Africa",
             "model_p": 3.2,
-            "market_p": 4.0,
-            "edge": -0.8,
+            "market_p": 5.2,
+            "edge": -2.0,
             "model_odds": 31.25,
-            "market_odds": 25.32,
-            "volume": 15879.764909
+            "market_odds": 19.05,
+            "volume": 15972.294909000002
           },
           {
             "team": "Uzbekistan",
             "model_p": 2.8,
-            "market_p": 7.0,
-            "edge": -4.2,
+            "market_p": 6.2,
+            "edge": -3.4,
             "model_odds": 35.71,
-            "market_odds": 14.29,
+            "market_odds": 16.26,
             "volume": 4002.724295
           },
           {
             "team": "Jordan",
             "model_p": 1.0,
-            "market_p": 13.4,
-            "edge": -12.4,
+            "market_p": 4.9,
+            "edge": -3.9,
             "model_odds": 100.0,
-            "market_odds": 7.46,
+            "market_odds": 20.41,
             "volume": 1284.346306
           },
           {
             "team": "Tunisia",
             "model_p": 0.9,
-            "market_p": 14.3,
-            "edge": -13.4,
+            "market_p": 3.9,
+            "edge": -3.0,
             "model_odds": 111.11,
-            "market_odds": 6.97,
+            "market_odds": 25.64,
             "volume": 1203.6218970000002
           },
           {
             "team": "Panama",
             "model_p": 0.5,
-            "market_p": 4.6,
-            "edge": -4.1,
+            "market_p": 4.3,
+            "edge": -3.8,
             "model_odds": 200.0,
-            "market_odds": 21.74,
+            "market_odds": 23.26,
             "volume": 3198.068254
           },
           {
@@ -8573,16 +8405,16 @@
             "market_p": 14.1,
             "edge": -14.0,
             "model_odds": 1000.0,
-            "market_odds": 7.09,
+            "market_odds": 7.07,
             "volume": 1534.817224
           },
           {
             "team": "Curaçao",
             "model_p": 0.0,
-            "market_p": 5.3,
-            "edge": -5.3,
+            "market_p": 4.3,
+            "edge": -4.3,
             "model_odds": null,
-            "market_odds": 18.87,
+            "market_odds": 23.26,
             "volume": 376.21404100000007
           }
         ]
@@ -8621,20 +8453,20 @@
           {
             "team": "France",
             "model_p": 54.4,
-            "market_p": 62.0,
-            "edge": -7.6,
+            "market_p": 60.5,
+            "edge": -6.1,
             "model_odds": 1.84,
-            "market_odds": 1.61,
-            "volume": 73489.36473700001
+            "market_odds": 1.65,
+            "volume": 75352.50217100001
           },
           {
             "team": "Portugal",
             "model_p": 45.1,
-            "market_p": 44.0,
-            "edge": 1.1,
+            "market_p": 42.5,
+            "edge": 2.6,
             "model_odds": 2.22,
-            "market_odds": 2.27,
-            "volume": 154929.36051599984
+            "market_odds": 2.35,
+            "volume": 155419.99051599985
           },
           {
             "team": "Brazil",
@@ -8670,7 +8502,7 @@
             "edge": 8.7,
             "model_odds": 2.58,
             "market_odds": 3.33,
-            "volume": 20395.558686000004
+            "volume": 20437.218686000004
           },
           {
             "team": "Germany",
@@ -8679,16 +8511,16 @@
             "edge": -2.3,
             "model_odds": 2.84,
             "market_odds": 2.67,
-            "volume": 9075.734928
+            "volume": 9124.024398999998
           },
           {
             "team": "Netherlands",
             "model_p": 32.8,
-            "market_p": 39.5,
-            "edge": -6.7,
+            "market_p": 36.5,
+            "edge": -3.7,
             "model_odds": 3.05,
-            "market_odds": 2.53,
-            "volume": 21151.565994
+            "market_odds": 2.74,
+            "volume": 23917.515124
           },
           {
             "team": "Norway",
@@ -8702,11 +8534,11 @@
           {
             "team": "Switzerland",
             "model_p": 26.6,
-            "market_p": 21.5,
-            "edge": 5.1,
+            "market_p": 23.0,
+            "edge": 3.6,
             "model_odds": 3.76,
-            "market_odds": 4.65,
-            "volume": 3161.9731509999992
+            "market_odds": 4.35,
+            "volume": 3403.463150999999
           },
           {
             "team": "Japan",
@@ -8720,19 +8552,19 @@
           {
             "team": "Australia",
             "model_p": 19.0,
-            "market_p": 8.9,
-            "edge": 10.1,
+            "market_p": 8.8,
+            "edge": 10.2,
             "model_odds": 5.26,
-            "market_odds": 11.24,
+            "market_odds": 11.3,
             "volume": 652.0215040000002
           },
           {
             "team": "Ivory Coast",
             "model_p": 15.2,
-            "market_p": 14.0,
-            "edge": 1.2,
+            "market_p": 13.5,
+            "edge": 1.7,
             "model_odds": 6.58,
-            "market_odds": 7.14,
+            "market_odds": 7.41,
             "volume": 5131.367067
           },
           {
@@ -8742,15 +8574,15 @@
             "edge": -3.5,
             "model_odds": 7.14,
             "market_odds": 5.71,
-            "volume": 5903.62102
+            "volume": 5913.62102
           },
           {
             "team": "Ecuador",
             "model_p": 13.8,
-            "market_p": 13.5,
-            "edge": 0.3,
+            "market_p": 14.0,
+            "edge": -0.2,
             "model_odds": 7.25,
-            "market_odds": 7.41,
+            "market_odds": 7.14,
             "volume": 12026.883015000005
           },
           {
@@ -8765,10 +8597,10 @@
           {
             "team": "Mexico",
             "model_p": 12.9,
-            "market_p": 33.0,
-            "edge": -20.1,
+            "market_p": 32.5,
+            "edge": -19.6,
             "model_odds": 7.75,
-            "market_odds": 3.03,
+            "market_odds": 3.08,
             "volume": 43649.900022000016
           },
           {
@@ -8778,7 +8610,7 @@
             "edge": -0.9,
             "model_odds": 7.94,
             "market_odds": 7.41,
-            "volume": 11986.221132
+            "volume": 12045.041132
           },
           {
             "team": "Uruguay",
@@ -8801,19 +8633,19 @@
           {
             "team": "Canada",
             "model_p": 10.7,
-            "market_p": 16.5,
-            "edge": -5.8,
+            "market_p": 17.0,
+            "edge": -6.3,
             "model_odds": 9.35,
-            "market_odds": 6.06,
-            "volume": 1520.380306
+            "market_odds": 5.88,
+            "volume": 1769.380306
           },
           {
             "team": "Algeria",
             "model_p": 7.3,
-            "market_p": 7.0,
-            "edge": 0.3,
+            "market_p": 7.5,
+            "edge": -0.2,
             "model_odds": 13.7,
-            "market_odds": 14.29,
+            "market_odds": 13.33,
             "volume": 1153.3801600000002
           },
           {
@@ -8855,10 +8687,10 @@
           {
             "team": "Sweden",
             "model_p": 4.8,
-            "market_p": 15.0,
-            "edge": -10.2,
+            "market_p": 13.0,
+            "edge": -8.2,
             "model_odds": 20.83,
-            "market_odds": 6.67,
+            "market_odds": 7.69,
             "volume": 1978.093042
           },
           {
@@ -8873,19 +8705,19 @@
           {
             "team": "Bosnia and Herzegovina",
             "model_p": 1.5,
-            "market_p": 5.0,
-            "edge": -3.5,
+            "market_p": 7.0,
+            "edge": -5.5,
             "model_odds": 66.67,
-            "market_odds": 20.0,
+            "market_odds": 14.29,
             "volume": 2920.550837
           },
           {
             "team": "Ghana",
             "model_p": 1.4,
-            "market_p": 3.9,
-            "edge": -2.5,
+            "market_p": 4.0,
+            "edge": -2.6,
             "model_odds": 71.43,
-            "market_odds": 25.64,
+            "market_odds": 25.0,
             "volume": 4577.066034
           },
           {
@@ -8900,37 +8732,37 @@
           {
             "team": "Saudi Arabia",
             "model_p": 1.4,
-            "market_p": 3.8,
-            "edge": -2.4,
+            "market_p": 3.7,
+            "edge": -2.3,
             "model_odds": 71.43,
-            "market_odds": 26.67,
+            "market_odds": 27.03,
             "volume": 2126.399933
           },
           {
             "team": "DR Congo",
             "model_p": 1.1,
-            "market_p": 5.8,
-            "edge": -4.7,
+            "market_p": 5.7,
+            "edge": -4.5,
             "model_odds": 90.91,
-            "market_odds": 17.24,
+            "market_odds": 17.7,
             "volume": 4469.790457000001
           },
           {
             "team": "New Zealand",
             "model_p": 0.7,
             "market_p": 3.0,
-            "edge": -2.3,
+            "edge": -2.4,
             "model_odds": 142.86,
-            "market_odds": 33.33,
+            "market_odds": 32.79,
             "volume": 516.247934
           },
           {
             "team": "South Africa",
             "model_p": 0.5,
-            "market_p": 2.1,
-            "edge": -1.6,
+            "market_p": 2.2,
+            "edge": -1.7,
             "model_odds": 200.0,
-            "market_odds": 46.51,
+            "market_odds": 45.45,
             "volume": 806.439216
           },
           {
@@ -8945,28 +8777,28 @@
           {
             "team": "Uzbekistan",
             "model_p": 0.5,
-            "market_p": 1.7,
-            "edge": -1.2,
+            "market_p": 1.6,
+            "edge": -1.1,
             "model_odds": 200.0,
-            "market_odds": 58.82,
+            "market_odds": 62.5,
             "volume": 341.18407
           },
           {
             "team": "Cape Verde",
             "model_p": 0.4,
-            "market_p": 4.7,
+            "market_p": 4.6,
             "edge": -4.2,
             "model_odds": 250.0,
-            "market_odds": 21.51,
+            "market_odds": 21.74,
             "volume": 6057.696233
           },
           {
             "team": "Qatar",
             "model_p": 0.4,
-            "market_p": 2.1,
-            "edge": -1.7,
+            "market_p": 2.2,
+            "edge": -1.8,
             "model_odds": 250.0,
-            "market_odds": 47.62,
+            "market_odds": 45.45,
             "volume": 1054.171557
           },
           {
@@ -8990,10 +8822,10 @@
           {
             "team": "Iraq",
             "model_p": 0.0,
-            "market_p": 1.6,
-            "edge": -1.6,
+            "market_p": 1.1,
+            "edge": -1.1,
             "model_odds": null,
-            "market_odds": 64.52,
+            "market_odds": 86.96,
             "volume": 813.8705100000001
           },
           {
@@ -9027,15 +8859,15 @@
             "edge": 22.1,
             "model_odds": 1.68,
             "market_odds": 2.67,
-            "volume": 49216.21661699999
+            "volume": 49358.32187899999
           },
           {
             "team": "Spain",
             "model_p": 47.5,
-            "market_p": 42.0,
-            "edge": 5.5,
+            "market_p": 42.5,
+            "edge": 5.0,
             "model_odds": 2.11,
-            "market_odds": 2.38,
+            "market_odds": 2.35,
             "volume": 29195.152959000025
           },
           {
@@ -9045,16 +8877,16 @@
             "edge": 2.3,
             "model_odds": 2.39,
             "market_odds": 2.53,
-            "volume": 29265.836056999982
+            "volume": 29327.59605699998
           },
           {
             "team": "France",
             "model_p": 34.0,
-            "market_p": 45.5,
-            "edge": -11.5,
+            "market_p": 44.5,
+            "edge": -10.5,
             "model_odds": 2.94,
-            "market_odds": 2.2,
-            "volume": 22220.672292
+            "market_odds": 2.25,
+            "volume": 22473.342292
           },
           {
             "team": "Brazil",
@@ -9063,16 +8895,16 @@
             "edge": -0.3,
             "model_odds": 4.22,
             "market_odds": 4.17,
-            "volume": 13936.184359000006
+            "volume": 14096.504359000006
           },
           {
             "team": "Portugal",
             "model_p": 23.5,
-            "market_p": 27.0,
-            "edge": -3.5,
+            "market_p": 26.5,
+            "edge": -3.0,
             "model_odds": 4.26,
-            "market_odds": 3.7,
-            "volume": 23678.660665999992
+            "market_odds": 3.77,
+            "volume": 23740.320665999992
           },
           {
             "team": "Morocco",
@@ -9095,20 +8927,20 @@
           {
             "team": "Netherlands",
             "model_p": 16.6,
-            "market_p": 19.0,
-            "edge": -2.4,
+            "market_p": 20.0,
+            "edge": -3.4,
             "model_odds": 6.02,
-            "market_odds": 5.26,
-            "volume": 13940.521438000002
+            "market_odds": 5.0,
+            "volume": 14118.521438000002
           },
           {
             "team": "Colombia",
             "model_p": 16.5,
-            "market_p": 14.0,
-            "edge": 2.5,
+            "market_p": 15.0,
+            "edge": 1.5,
             "model_odds": 6.06,
-            "market_odds": 7.14,
-            "volume": 4077.172163
+            "market_odds": 6.67,
+            "volume": 4963.112163
           },
           {
             "team": "Belgium",
@@ -9131,47 +8963,47 @@
           {
             "team": "Switzerland",
             "model_p": 8.2,
-            "market_p": 5.0,
-            "edge": 3.2,
+            "market_p": 6.0,
+            "edge": 2.2,
             "model_odds": 12.2,
-            "market_odds": 20.0,
-            "volume": 9530.170573999992
+            "market_odds": 16.67,
+            "volume": 9658.98057399999
           },
           {
             "team": "Japan",
             "model_p": 7.9,
-            "market_p": 10.0,
-            "edge": -2.1,
+            "market_p": 7.5,
+            "edge": 0.4,
             "model_odds": 12.66,
-            "market_odds": 10.0,
-            "volume": 22737.482501999988
+            "market_odds": 13.33,
+            "volume": 22910.90250199999
           },
           {
             "team": "Croatia",
             "model_p": 7.5,
-            "market_p": 8.5,
-            "edge": -1.0,
+            "market_p": 7.3,
+            "edge": 0.2,
             "model_odds": 13.33,
-            "market_odds": 11.76,
-            "volume": 14253.57337
+            "market_odds": 13.7,
+            "volume": 14273.57337
           },
           {
             "team": "Ivory Coast",
             "model_p": 5.3,
-            "market_p": 5.0,
-            "edge": 0.3,
+            "market_p": 5.6,
+            "edge": -0.3,
             "model_odds": 18.87,
-            "market_odds": 20.0,
-            "volume": 12445.459322000004
+            "market_odds": 17.86,
+            "volume": 12498.059322000005
           },
           {
             "team": "Uruguay",
             "model_p": 5.0,
-            "market_p": 9.0,
-            "edge": -4.0,
+            "market_p": 9.5,
+            "edge": -4.5,
             "model_odds": 20.0,
-            "market_odds": 11.11,
-            "volume": 12353.171831
+            "market_odds": 10.53,
+            "volume": 12538.261831
           },
           {
             "team": "Australia",
@@ -9185,46 +9017,46 @@
           {
             "team": "Ecuador",
             "model_p": 4.7,
-            "market_p": 5.9,
-            "edge": -1.2,
+            "market_p": 5.8,
+            "edge": -1.1,
             "model_odds": 21.28,
-            "market_odds": 16.95,
+            "market_odds": 17.24,
             "volume": 9071.434737000003
           },
           {
             "team": "Mexico",
             "model_p": 4.0,
-            "market_p": 11.5,
-            "edge": -7.5,
+            "market_p": 10.5,
+            "edge": -6.5,
             "model_odds": 25.0,
-            "market_odds": 8.7,
+            "market_odds": 9.52,
             "volume": 16252.865845000002
           },
           {
             "team": "Senegal",
             "model_p": 3.6,
-            "market_p": 5.1,
-            "edge": -1.5,
+            "market_p": 3.8,
+            "edge": -0.1,
             "model_odds": 27.78,
-            "market_odds": 19.61,
-            "volume": 8431.195196000002
+            "market_odds": 26.67,
+            "volume": 8532.595196000002
           },
           {
             "team": "Austria",
             "model_p": 3.1,
-            "market_p": 4.1,
-            "edge": -1.0,
+            "market_p": 3.7,
+            "edge": -0.6,
             "model_odds": 32.26,
-            "market_odds": 24.39,
-            "volume": 8641.738349999998
+            "market_odds": 27.03,
+            "volume": 8710.638349999997
           },
           {
             "team": "Canada",
             "model_p": 2.7,
-            "market_p": 2.8,
-            "edge": -0.1,
+            "market_p": 2.7,
+            "edge": 0.0,
             "model_odds": 37.04,
-            "market_odds": 35.71,
+            "market_odds": 37.04,
             "volume": 7074.340647
           },
           {
@@ -9234,25 +9066,25 @@
             "edge": -14.2,
             "model_odds": 43.48,
             "market_odds": 6.06,
-            "volume": 19214.896540999995
+            "volume": 19264.896540999995
           },
           {
             "team": "Algeria",
             "model_p": 1.7,
-            "market_p": 2.5,
-            "edge": -0.8,
+            "market_p": 2.0,
+            "edge": -0.3,
             "model_odds": 58.82,
-            "market_odds": 40.82,
+            "market_odds": 50.0,
             "volume": 1547.272883
           },
           {
             "team": "South Korea",
             "model_p": 1.4,
-            "market_p": 4.8,
-            "edge": -3.4,
+            "market_p": 5.1,
+            "edge": -3.6,
             "model_odds": 71.43,
-            "market_odds": 20.83,
-            "volume": 11412.978040999988
+            "market_odds": 19.8,
+            "volume": 11440.478040999988
           },
           {
             "team": "Egypt",
@@ -9266,20 +9098,20 @@
           {
             "team": "Scotland",
             "model_p": 1.1,
-            "market_p": 4.0,
-            "edge": -2.9,
+            "market_p": 2.1,
+            "edge": -0.9,
             "model_odds": 90.91,
-            "market_odds": 25.32,
-            "volume": 1447.8544130000002
+            "market_odds": 48.78,
+            "volume": 1453.3244130000005
           },
           {
             "team": "Sweden",
             "model_p": 1.1,
-            "market_p": 7.3,
-            "edge": -6.2,
+            "market_p": 4.5,
+            "edge": -3.5,
             "model_odds": 90.91,
-            "market_odds": 13.7,
-            "volume": 9669.521460000004
+            "market_odds": 21.98,
+            "volume": 9697.651460000005
           },
           {
             "team": "Iran",
@@ -9287,7 +9119,7 @@
             "market_p": 2.1,
             "edge": -1.4,
             "model_odds": 142.86,
-            "market_odds": 46.51,
+            "market_odds": 47.62,
             "volume": 867.879775
           },
           {
@@ -9302,46 +9134,46 @@
           {
             "team": "Paraguay",
             "model_p": 0.5,
-            "market_p": 2.0,
-            "edge": -1.5,
+            "market_p": 2.1,
+            "edge": -1.6,
             "model_odds": 200.0,
-            "market_odds": 50.0,
+            "market_odds": 46.51,
             "volume": 6049.11997
           },
           {
             "team": "DR Congo",
             "model_p": 0.2,
             "market_p": 3.9,
-            "edge": -3.6,
+            "edge": -3.7,
             "model_odds": 500.0,
-            "market_odds": 25.97,
-            "volume": 2398.323755
+            "market_odds": 25.64,
+            "volume": 2488.243755
           },
           {
             "team": "Saudi Arabia",
             "model_p": 0.2,
-            "market_p": 1.8,
-            "edge": -1.7,
+            "market_p": 2.2,
+            "edge": -2.0,
             "model_odds": 500.0,
-            "market_odds": 54.05,
+            "market_odds": 44.44,
             "volume": 676.3748149999999
           },
           {
             "team": "Bosnia and Herzegovina",
             "model_p": 0.1,
-            "market_p": 1.8,
-            "edge": -1.7,
+            "market_p": 1.5,
+            "edge": -1.4,
             "model_odds": 1000.0,
-            "market_odds": 57.14,
+            "market_odds": 66.67,
             "volume": 25321.79991000001
           },
           {
             "team": "Ghana",
             "model_p": 0.1,
-            "market_p": 3.0,
-            "edge": -2.9,
+            "market_p": 2.9,
+            "edge": -2.8,
             "model_odds": 1000.0,
-            "market_odds": 32.79,
+            "market_odds": 34.48,
             "volume": 1136.103024
           },
           {
@@ -9419,10 +9251,10 @@
           {
             "team": "Qatar",
             "model_p": 0.0,
-            "market_p": 21.1,
-            "edge": -21.1,
+            "market_p": 1.2,
+            "edge": -1.2,
             "model_odds": null,
-            "market_odds": 4.74,
+            "market_odds": 80.0,
             "volume": 229.32
           },
           {
@@ -9437,10 +9269,10 @@
           {
             "team": "Tunisia",
             "model_p": 0.0,
-            "market_p": 1.7,
-            "edge": -1.7,
+            "market_p": 1.1,
+            "edge": -1.1,
             "model_odds": null,
-            "market_odds": 60.61,
+            "market_odds": 90.91,
             "volume": 6841.608556
           }
         ]
@@ -9456,16 +9288,16 @@
             "edge": 21.9,
             "model_odds": 2.36,
             "market_odds": 4.88,
-            "volume": 38757.57265300002
+            "volume": 38762.334556000016
           },
           {
             "team": "Spain",
             "model_p": 34.1,
-            "market_p": 24.0,
-            "edge": 10.1,
+            "market_p": 24.5,
+            "edge": 9.6,
             "model_odds": 2.93,
-            "market_odds": 4.17,
-            "volume": 61166.533047
+            "market_odds": 4.08,
+            "volume": 61768.598834
           },
           {
             "team": "England",
@@ -9474,7 +9306,7 @@
             "edge": -3.8,
             "model_odds": 4.83,
             "market_odds": 4.08,
-            "volume": 55809.24039600001
+            "volume": 55823.440396000005
           },
           {
             "team": "France",
@@ -9483,7 +9315,7 @@
             "edge": -9.2,
             "model_odds": 5.46,
             "market_odds": 3.64,
-            "volume": 65618.95825599998
+            "volume": 66154.67253899999
           },
           {
             "team": "Portugal",
@@ -9492,7 +9324,7 @@
             "edge": -2.7,
             "model_odds": 7.81,
             "market_odds": 6.45,
-            "volume": 73533.347322
+            "volume": 73859.447322
           },
           {
             "team": "Brazil",
@@ -9515,29 +9347,29 @@
           {
             "team": "Germany",
             "model_p": 8.5,
-            "market_p": 11.5,
-            "edge": -3.0,
+            "market_p": 12.5,
+            "edge": -4.0,
             "model_odds": 11.76,
-            "market_odds": 8.7,
-            "volume": 14876.702067000004
+            "market_odds": 8.0,
+            "volume": 15449.795399000004
           },
           {
             "team": "Netherlands",
             "model_p": 7.7,
-            "market_p": 8.5,
-            "edge": -0.8,
+            "market_p": 9.0,
+            "edge": -1.3,
             "model_odds": 12.99,
-            "market_odds": 11.76,
-            "volume": 35659.431258000026
+            "market_odds": 11.11,
+            "volume": 35740.13125800003
           },
           {
             "team": "Colombia",
             "model_p": 6.7,
             "market_p": 5.9,
-            "edge": 0.9,
+            "edge": 0.8,
             "model_odds": 14.93,
-            "market_odds": 17.09,
-            "volume": 21281.174417000013
+            "market_odds": 16.81,
+            "volume": 21336.36703700001
           },
           {
             "team": "Belgium",
@@ -9573,42 +9405,42 @@
             "edge": 0.1,
             "model_odds": 40.0,
             "market_odds": 41.67,
-            "volume": 14168.690035000003
+            "volume": 14288.450035000003
           },
           {
             "team": "Switzerland",
             "model_p": 2.5,
-            "market_p": 3.0,
-            "edge": -0.5,
+            "market_p": 2.5,
+            "edge": -0.0,
             "model_odds": 40.0,
-            "market_odds": 32.79,
-            "volume": 22804.145761
+            "market_odds": 39.22,
+            "volume": 23134.705761
           },
           {
             "team": "Ivory Coast",
             "model_p": 1.7,
-            "market_p": 1.7,
+            "market_p": 1.6,
             "edge": 0.1,
             "model_odds": 58.82,
-            "market_odds": 60.61,
+            "market_odds": 62.5,
             "volume": 7947.024068999998
           },
           {
             "team": "Ecuador",
             "model_p": 1.6,
-            "market_p": 1.7,
-            "edge": -0.1,
+            "market_p": 1.8,
+            "edge": -0.2,
             "model_odds": 62.5,
-            "market_odds": 60.61,
+            "market_odds": 54.05,
             "volume": 16118.178078
           },
           {
             "team": "Uruguay",
             "model_p": 1.5,
-            "market_p": 2.7,
+            "market_p": 2.8,
             "edge": -1.2,
             "model_odds": 66.67,
-            "market_odds": 37.04,
+            "market_odds": 36.36,
             "volume": 13124.838933
           },
           {
@@ -9623,10 +9455,10 @@
           {
             "team": "Australia",
             "model_p": 0.9,
-            "market_p": 1.3,
-            "edge": -0.4,
+            "market_p": 1.1,
+            "edge": -0.2,
             "model_odds": 111.11,
-            "market_odds": 76.92,
+            "market_odds": 90.91,
             "volume": 95.026
           },
           {
@@ -9686,10 +9518,10 @@
           {
             "team": "Algeria",
             "model_p": 0.2,
-            "market_p": 1.5,
-            "edge": -1.3,
+            "market_p": 1.3,
+            "edge": -1.1,
             "model_odds": 500.0,
-            "market_odds": 66.67,
+            "market_odds": 76.92,
             "volume": 204.344099
           },
           {
@@ -9704,11 +9536,11 @@
           {
             "team": "United States",
             "model_p": 0.2,
-            "market_p": 7.1,
-            "edge": -6.9,
+            "market_p": 7.2,
+            "edge": -7.0,
             "model_odds": 500.0,
-            "market_odds": 14.08,
-            "volume": 48732.191224
+            "market_odds": 13.89,
+            "volume": 48755.321975
           },
           {
             "team": "DR Congo",
@@ -9725,7 +9557,7 @@
             "market_p": 1.5,
             "edge": -1.4,
             "model_odds": 1000.0,
-            "market_odds": 66.67,
+            "market_odds": 68.97,
             "volume": 3583.268659
           },
           {
@@ -9806,7 +9638,7 @@
             "market_p": 1.8,
             "edge": -1.8,
             "model_odds": null,
-            "market_odds": 55.56,
+            "market_odds": 54.05,
             "volume": 591.620041
           },
           {
@@ -9821,10 +9653,10 @@
           {
             "team": "Paraguay",
             "model_p": 0.0,
-            "market_p": 1.3,
-            "edge": -1.3,
+            "market_p": 1.2,
+            "edge": -1.2,
             "model_odds": null,
-            "market_odds": 76.92,
+            "market_odds": 80.0,
             "volume": 717.5629650000001
           },
           {
@@ -9839,10 +9671,10 @@
           {
             "team": "Saudi Arabia",
             "model_p": 0.0,
-            "market_p": 1.2,
-            "edge": -1.2,
+            "market_p": 1.1,
+            "edge": -1.1,
             "model_odds": null,
-            "market_odds": 83.33,
+            "market_odds": 86.96,
             "volume": 1715.078548
           },
           {
@@ -9860,16 +9692,16 @@
             "market_p": 0.8,
             "edge": -0.8,
             "model_odds": null,
-            "market_odds": 125.0,
+            "market_odds": 133.33,
             "volume": 267.094704
           },
           {
             "team": "Uzbekistan",
             "model_p": 0.0,
-            "market_p": 1.7,
-            "edge": -1.7,
+            "market_p": 1.9,
+            "edge": -1.9,
             "model_odds": null,
-            "market_odds": 60.61,
+            "market_odds": 52.63,
             "volume": 2858.780868
           }
         ]
@@ -9883,29 +9715,29 @@
           {
             "team": "Mexico",
             "model_p": 60.3,
-            "market_p": 61.0,
-            "edge": -0.7,
+            "market_p": 62.5,
+            "edge": -2.2,
             "model_odds": 1.66,
-            "market_odds": 1.64,
-            "volume": 464014.4198069997
+            "market_odds": 1.6,
+            "volume": 465648.7204199997
           },
           {
             "team": "South Korea",
             "model_p": 39.0,
-            "market_p": 36.5,
-            "edge": 2.5,
+            "market_p": 38.5,
+            "edge": 0.5,
             "model_odds": 2.56,
-            "market_odds": 2.74,
-            "volume": 227041.0659899994
+            "market_odds": 2.6,
+            "volume": 228459.5066179994
           },
           {
             "team": "Czech Republic",
             "model_p": 0.6,
             "market_p": 0.4,
-            "edge": 0.1,
+            "edge": 0.2,
             "model_odds": 166.67,
-            "market_odds": 222.22,
-            "volume": 163375.56942999994
+            "market_odds": 250.0,
+            "volume": 163479.40942999994
           },
           {
             "team": "South Africa",
@@ -9914,7 +9746,7 @@
             "edge": -0.2,
             "model_odds": 1000.0,
             "market_odds": 333.33,
-            "volume": 376969.1551000002
+            "volume": 377129.5632130002
           }
         ]
       },
@@ -9925,29 +9757,29 @@
           {
             "team": "Switzerland",
             "model_p": 74.3,
-            "market_p": 64.5,
-            "edge": 9.8,
+            "market_p": 43.0,
+            "edge": 31.3,
             "model_odds": 1.35,
-            "market_odds": 1.55,
-            "volume": 433155.9362150031
+            "market_odds": 2.33,
+            "volume": 455306.2461390032
           },
           {
             "team": "Canada",
             "model_p": 22.4,
-            "market_p": 29.5,
-            "edge": -7.1,
+            "market_p": 57.5,
+            "edge": -35.1,
             "model_odds": 4.46,
-            "market_odds": 3.39,
-            "volume": 149926.50884999984
+            "market_odds": 1.74,
+            "volume": 178495.79817499977
           },
           {
             "team": "Qatar",
             "model_p": 3.3,
-            "market_p": 3.0,
-            "edge": 0.3,
+            "market_p": 0.1,
+            "edge": 3.2,
             "model_odds": 30.3,
-            "market_odds": 33.33,
-            "volume": 131168.11837799993
+            "market_odds": 2000.0,
+            "volume": 150934.58143399985
           },
           {
             "team": "Bosnia and Herzegovina",
@@ -9955,8 +9787,8 @@
             "market_p": 0.1,
             "edge": -0.1,
             "model_odds": null,
-            "market_odds": 1000.0,
-            "volume": 235701.3132500001
+            "market_odds": 666.67,
+            "volume": 240616.3220290001
           }
         ]
       },
@@ -9971,7 +9803,7 @@
             "edge": 1.1,
             "model_odds": 1.68,
             "market_odds": 1.71,
-            "volume": 246555.0567370001
+            "volume": 246714.4594460001
           },
           {
             "team": "Morocco",
@@ -9980,16 +9812,16 @@
             "edge": -0.3,
             "model_odds": 3.42,
             "market_odds": 3.39,
-            "volume": 248017.3789370008
+            "volume": 248430.5789320008
           },
           {
             "team": "Scotland",
             "model_p": 11.2,
-            "market_p": 10.9,
-            "edge": 0.3,
+            "market_p": 10.8,
+            "edge": 0.4,
             "model_odds": 8.93,
-            "market_odds": 9.17,
-            "volume": 281289.5625079998
+            "market_odds": 9.26,
+            "volume": 281791.6119429999
           },
           {
             "team": "Haiti",
@@ -9998,7 +9830,7 @@
             "edge": -0.4,
             "model_odds": null,
             "market_odds": 250.0,
-            "volume": 92454.88109099994
+            "volume": 92621.54775699996
           }
         ]
       },
@@ -10013,7 +9845,7 @@
             "edge": 27.2,
             "model_odds": 2.07,
             "market_odds": 4.72,
-            "volume": 102565.72886999998
+            "volume": 102718.87279899996
           },
           {
             "team": "United States",
@@ -10022,16 +9854,16 @@
             "edge": -23.6,
             "model_odds": 2.23,
             "market_odds": 1.46,
-            "volume": 363616.10274199775
+            "volume": 365076.6273759977
           },
           {
             "team": "Turkey",
             "model_p": 5.8,
-            "market_p": 8.0,
-            "edge": -2.2,
+            "market_p": 8.5,
+            "edge": -2.7,
             "model_odds": 17.24,
-            "market_odds": 12.5,
-            "volume": 399997.2804659998
+            "market_odds": 11.76,
+            "volume": 400270.39713099983
           },
           {
             "team": "Paraguay",
@@ -10040,7 +9872,7 @@
             "edge": -1.6,
             "model_odds": 111.11,
             "market_odds": 40.0,
-            "volume": 209752.23519899952
+            "volume": 210060.5031249995
           }
         ]
       },
@@ -10055,16 +9887,16 @@
             "edge": -6.0,
             "model_odds": 1.5,
             "market_odds": 1.38,
-            "volume": 349933.42479000334
+            "volume": 358820.166048003
           },
           {
             "team": "Ivory Coast",
             "model_p": 32.1,
-            "market_p": 21.4,
-            "edge": 10.7,
+            "market_p": 21.3,
+            "edge": 10.8,
             "model_odds": 3.12,
-            "market_odds": 4.67,
-            "volume": 100622.5650639985
+            "market_odds": 4.68,
+            "volume": 101085.7132109985
           },
           {
             "team": "Ecuador",
@@ -10072,8 +9904,8 @@
             "market_p": 3.8,
             "edge": -2.4,
             "model_odds": 71.43,
-            "market_odds": 26.67,
-            "volume": 100895.1052409999
+            "market_odds": 26.32,
+            "volume": 101018.9052409999
           },
           {
             "team": "Curaçao",
@@ -10082,7 +9914,7 @@
             "edge": -0.2,
             "model_odds": null,
             "market_odds": 400.0,
-            "volume": 74792.013644
+            "volume": 74892.013644
           }
         ]
       },
@@ -10097,7 +9929,7 @@
             "edge": 4.8,
             "model_odds": 2.11,
             "market_odds": 2.35,
-            "volume": 193645.6077
+            "volume": 193959.0653689999
           },
           {
             "team": "Japan",
@@ -10144,11 +9976,11 @@
           {
             "team": "Egypt",
             "model_p": 15.5,
-            "market_p": 23.5,
-            "edge": -8.0,
+            "market_p": 24.5,
+            "edge": -9.0,
             "model_odds": 6.45,
-            "market_odds": 4.26,
-            "volume": 117012.63053599995
+            "market_odds": 4.08,
+            "volume": 117442.63053599995
           },
           {
             "team": "Iran",
@@ -10157,7 +9989,7 @@
             "edge": 5.9,
             "model_odds": 7.63,
             "market_odds": 13.79,
-            "volume": 136130.69220299984
+            "volume": 136416.29633899985
           },
           {
             "team": "New Zealand",
@@ -10165,8 +9997,8 @@
             "market_p": 3.1,
             "edge": 0.8,
             "model_odds": 25.64,
-            "market_odds": 32.26,
-            "volume": 81393.79168200002
+            "market_odds": 31.75,
+            "volume": 81452.89991600002
           }
         ]
       },
@@ -10181,7 +10013,7 @@
             "edge": 4.0,
             "model_odds": 1.31,
             "market_odds": 1.38,
-            "volume": 156156.65076599945
+            "volume": 156163.50007999945
           },
           {
             "team": "Uruguay",
@@ -10190,16 +10022,16 @@
             "edge": -3.3,
             "model_odds": 5.81,
             "market_odds": 4.88,
-            "volume": 101521.0703549999
+            "volume": 101973.78511199988
           },
           {
             "team": "Cape Verde",
             "model_p": 3.2,
-            "market_p": 3.1,
-            "edge": 0.1,
+            "market_p": 2.9,
+            "edge": 0.3,
             "model_odds": 31.25,
-            "market_odds": 32.26,
-            "volume": 135455.64911199996
+            "market_odds": 34.48,
+            "volume": 136799.40911199994
           },
           {
             "team": "Saudi Arabia",
@@ -10207,8 +10039,8 @@
             "market_p": 3.5,
             "edge": -0.4,
             "model_odds": 32.26,
-            "market_odds": 28.17,
-            "volume": 254285.5868129994
+            "market_odds": 28.57,
+            "volume": 254611.5868129994
           }
         ]
       },
@@ -10223,7 +10055,7 @@
             "edge": -3.6,
             "model_odds": 1.37,
             "market_odds": 1.31,
-            "volume": 456354.7022499987
+            "volume": 457425.4722499987
           },
           {
             "team": "Norway",
@@ -10240,8 +10072,8 @@
             "market_p": 1.6,
             "edge": -0.1,
             "model_odds": 66.67,
-            "market_odds": 64.52,
-            "volume": 154481.62707600003
+            "market_odds": 62.5,
+            "volume": 154564.96040800004
           },
           {
             "team": "Iraq",
@@ -10250,7 +10082,7 @@
             "edge": -0.1,
             "model_odds": null,
             "market_odds": 666.67,
-            "volume": 132648.83398399985
+            "volume": 132649.29398399987
           }
         ]
       },
@@ -10265,7 +10097,7 @@
             "edge": 8.0,
             "model_odds": 1.08,
             "market_odds": 1.18,
-            "volume": 405805.7009709984
+            "volume": 405926.7333209984
           },
           {
             "team": "Austria",
@@ -10307,7 +10139,7 @@
             "edge": 10.6,
             "model_odds": 1.72,
             "market_odds": 2.11,
-            "volume": 140649.278181
+            "volume": 141035.85901
           },
           {
             "team": "Portugal",
@@ -10316,16 +10148,16 @@
             "edge": -7.9,
             "model_odds": 2.66,
             "market_odds": 2.2,
-            "volume": 367790.1462030002
+            "volume": 367835.8262030002
           },
           {
             "team": "DR Congo",
             "model_p": 3.8,
-            "market_p": 6.2,
-            "edge": -2.4,
+            "market_p": 6.5,
+            "edge": -2.7,
             "model_odds": 26.32,
-            "market_odds": 16.26,
-            "volume": 84064.51281800013
+            "market_odds": 15.38,
+            "volume": 84580.75832400014
           },
           {
             "team": "Uzbekistan",
@@ -10349,34 +10181,34 @@
             "edge": 5.2,
             "model_odds": 1.03,
             "market_odds": 1.09,
-            "volume": 161188.38211799972
+            "volume": 162252.9096239997
           },
           {
             "team": "Croatia",
             "model_p": 2.0,
-            "market_p": 3.1,
-            "edge": -1.1,
+            "market_p": 3.8,
+            "edge": -1.7,
             "model_odds": 50.0,
-            "market_odds": 31.75,
-            "volume": 99754.11045799982
+            "market_odds": 26.67,
+            "volume": 103516.44201799984
           },
           {
             "team": "Ghana",
             "model_p": 1.3,
-            "market_p": 4.9,
-            "edge": -3.5,
+            "market_p": 4.7,
+            "edge": -3.4,
             "model_odds": 76.92,
-            "market_odds": 20.62,
-            "volume": 55057.214099000026
+            "market_odds": 21.28,
+            "volume": 57759.84725100003
           },
           {
             "team": "Panama",
             "model_p": 0.0,
-            "market_p": 0.4,
-            "edge": -0.4,
+            "market_p": 1.1,
+            "edge": -1.1,
             "model_odds": null,
-            "market_odds": 222.22,
-            "volume": 77341.18919899996
+            "market_odds": 86.96,
+            "volume": 91738.50999599996
           }
         ]
       }
@@ -10392,7 +10224,7 @@
         "edge": -6.3,
         "model_odds": 7.06,
         "market_odds": 4.88,
-        "volume": 518616.23407
+        "volume": 518858.861686
       },
       {
         "player": "Lautaro Martinez",
@@ -10402,7 +10234,7 @@
         "edge": 10.7,
         "model_odds": 8.98,
         "market_odds": 222.22,
-        "volume": 254936.93488299992
+        "volume": 255336.93488299992
       },
       {
         "player": "Julian Alvarez",
@@ -10422,7 +10254,7 @@
         "edge": 1.1,
         "model_odds": 31.95,
         "market_odds": 48.78,
-        "volume": 400948.8665940008
+        "volume": 401821.0065940008
       },
       {
         "player": "Kylian Mbappe",
@@ -10432,17 +10264,17 @@
         "edge": -21.5,
         "model_odds": 33.33,
         "market_odds": 4.08,
-        "volume": 668999.5233440008
+        "volume": 669736.4486060009
       },
       {
         "player": "Lamine Yamal",
         "team": "Spain",
         "model_p": 1.9,
-        "market_p": 2.8,
-        "edge": -0.9,
+        "market_p": 2.9,
+        "edge": -1.0,
         "model_odds": 53.19,
-        "market_odds": 36.36,
-        "volume": 366538.5067820001
+        "market_odds": 35.09,
+        "volume": 367368.3467820001
       },
       {
         "player": "Luis Javier Suárez",
@@ -10462,7 +10294,7 @@
         "edge": 1.3,
         "model_odds": 64.52,
         "market_odds": 400.0,
-        "volume": 250914.05514599965
+        "volume": 251763.46514599965
       },
       {
         "player": "Mikel Oyarzabal",
@@ -10472,17 +10304,17 @@
         "edge": -0.3,
         "model_odds": 74.07,
         "market_odds": 60.61,
-        "volume": 301306.44927399966
+        "volume": 301867.91927399964
       },
       {
         "player": "Lionel Messi",
         "team": "Argentina",
         "model_p": 0.9,
         "market_p": 21.1,
-        "edge": -20.1,
+        "edge": -20.2,
         "model_odds": 107.53,
-        "market_odds": 4.75,
-        "volume": 487012.8030270008
+        "market_odds": 4.73,
+        "volume": 487999.4753820008
       },
       {
         "player": "Luis Diaz",
@@ -10502,7 +10334,7 @@
         "edge": 0.4,
         "model_odds": 140.85,
         "market_odds": 285.71,
-        "volume": 154458.87767600006
+        "volume": 155708.87767600006
       },
       {
         "player": "Marcus Thuram",
@@ -10522,17 +10354,17 @@
         "edge": -7.9,
         "model_odds": 175.44,
         "market_odds": 11.76,
-        "volume": 473088.5255269999
+        "volume": 473733.9928889999
       },
       {
         "player": "Michael Olise",
         "team": "France",
         "model_p": 0.6,
-        "market_p": 0.9,
-        "edge": -0.4,
+        "market_p": 1.1,
+        "edge": -0.5,
         "model_odds": 178.57,
-        "market_odds": 105.26,
-        "volume": 392019.6400190008
+        "market_odds": 95.24,
+        "volume": 392051.6700190008
       },
       {
         "player": "Donyell Malen",
@@ -10572,7 +10404,7 @@
         "edge": 0.2,
         "model_odds": 232.56,
         "market_odds": 400.0,
-        "volume": 303190.6259620003
+        "volume": 303870.6192950003
       },
       {
         "player": "Desire Doue",
@@ -10612,7 +10444,7 @@
         "edge": -4.9,
         "model_odds": 277.78,
         "market_odds": 19.05,
-        "volume": 245905.93062799983
+        "volume": 246052.10062799987
       },
       {
         "player": "Noah Okafor",
@@ -10641,8 +10473,8 @@
         "market_p": 2.1,
         "edge": -1.8,
         "model_odds": 400.0,
-        "market_odds": 48.78,
-        "volume": 238518.41788100023
+        "market_odds": 47.62,
+        "volume": 238972.96333400023
       },
       {
         "player": "Folarin Balogun",
@@ -10652,7 +10484,7 @@
         "edge": -2.3,
         "model_odds": 400.0,
         "market_odds": 39.22,
-        "volume": 96773.20608599987
+        "volume": 96827.71608599988
       },
       {
         "player": "Mohamed Salah",
@@ -10672,7 +10504,7 @@
         "edge": -0.0,
         "model_odds": 476.19,
         "market_odds": 400.0,
-        "volume": 74757.05332800004
+        "volume": 75430.55666100004
       },
       {
         "player": "Andrej Kramarić",
@@ -10688,11 +10520,11 @@
         "player": "Cristiano Ronaldo",
         "team": "Portugal",
         "model_p": 0.2,
-        "market_p": 2.0,
-        "edge": -1.8,
+        "market_p": 1.8,
+        "edge": -1.6,
         "model_odds": 588.24,
-        "market_odds": 50.0,
-        "volume": 397326.71065600094
+        "market_odds": 57.14,
+        "volume": 397853.98338300094
       },
       {
         "player": "Jude Bellingham",
@@ -10721,7 +10553,7 @@
         "market_p": 0.4,
         "edge": -0.3,
         "model_odds": 769.23,
-        "market_odds": 222.22,
+        "market_odds": 250.0,
         "volume": 148755.24711600004
       },
       {
@@ -10802,7 +10634,7 @@
         "edge": -0.1,
         "model_odds": null,
         "market_odds": 2000.0,
-        "volume": 229412.44113200004
+        "volume": 230484.57113200004
       },
       {
         "player": "Scott McTominay",
@@ -10832,7 +10664,7 @@
         "edge": -0.1,
         "model_odds": null,
         "market_odds": 666.67,
-        "volume": 622653.067695999
+        "volume": 623168.4976959991
       },
       {
         "player": "Bruno Fernandes",
@@ -10880,40 +10712,40 @@
         "player": "Lautaro Martínez",
         "team": "Argentina",
         "model_p": 95.7,
-        "market_p": 66.0,
-        "edge": 29.7,
+        "market_p": 68.0,
+        "edge": 27.7,
         "model_odds": 1.05,
-        "market_odds": 1.52,
+        "market_odds": 1.47,
         "volume": 3157.74741
       },
       {
         "player": "Julián Álvarez",
         "team": "Argentina",
         "model_p": 91.5,
-        "market_p": 81.5,
-        "edge": 10.0,
+        "market_p": 82.0,
+        "edge": 9.5,
         "model_odds": 1.09,
-        "market_odds": 1.23,
+        "market_odds": 1.22,
         "volume": 3084.1608420000007
       },
       {
         "player": "Ferran Torres",
         "team": "Spain",
         "model_p": 91.3,
-        "market_p": 70.0,
-        "edge": 21.3,
+        "market_p": 70.5,
+        "edge": 20.8,
         "model_odds": 1.1,
-        "market_odds": 1.43,
+        "market_odds": 1.42,
         "volume": 2438.737521
       },
       {
         "player": "Luis Javier Suárez",
         "team": "Colombia",
         "model_p": 87.8,
-        "market_p": 73.5,
-        "edge": 14.3,
+        "market_p": 60.5,
+        "edge": 27.3,
         "model_odds": 1.14,
-        "market_odds": 1.36,
+        "market_odds": 1.65,
         "volume": 1249.720688
       },
       {
@@ -10930,8 +10762,8 @@
         "player": "Mikel Oyarzabal",
         "team": "Spain",
         "model_p": 86.2,
-        "market_p": 83.9,
-        "edge": 2.3,
+        "market_p": 83.8,
+        "edge": 2.4,
         "model_odds": 1.16,
         "market_odds": 1.19,
         "volume": 8557.474305
@@ -10940,11 +10772,11 @@
         "player": "Raphinha",
         "team": "Brazil",
         "model_p": 80.4,
-        "market_p": 74.5,
-        "edge": 5.9,
+        "market_p": 75.0,
+        "edge": 5.4,
         "model_odds": 1.24,
-        "market_odds": 1.34,
-        "volume": 2544.073258999999
+        "market_odds": 1.33,
+        "volume": 2550.9632589999987
       },
       {
         "player": "Ricardo Pepi",
@@ -10974,46 +10806,46 @@
         "edge": -2.3,
         "model_odds": 1.29,
         "market_odds": 1.25,
-        "volume": 15451.896943999998
+        "volume": 15519.158847
       },
       {
         "player": "Donyell Malen",
         "team": "Netherlands",
         "model_p": 76.1,
-        "market_p": 65.5,
-        "edge": 10.6,
+        "market_p": 66.5,
+        "edge": 9.6,
         "model_odds": 1.31,
-        "market_odds": 1.53,
+        "market_odds": 1.5,
         "volume": 917.8919739999998
       },
       {
         "player": "Nico Williams",
         "team": "Spain",
         "model_p": 75.1,
-        "market_p": 59.5,
-        "edge": 15.6,
+        "market_p": 61.5,
+        "edge": 13.6,
         "model_odds": 1.33,
-        "market_odds": 1.68,
-        "volume": 2983.4034100000003
+        "market_odds": 1.63,
+        "volume": 3137.5534100000004
       },
       {
         "player": "Dani Olmo",
         "team": "Spain",
         "model_p": 74.9,
-        "market_p": 66.5,
-        "edge": 8.4,
+        "market_p": 65.0,
+        "edge": 9.9,
         "model_odds": 1.34,
-        "market_odds": 1.5,
+        "market_odds": 1.54,
         "volume": 2035.618283
       },
       {
         "player": "Enzo Fernández",
         "team": "Argentina",
         "model_p": 74.4,
-        "market_p": 57.0,
-        "edge": 17.4,
+        "market_p": 52.0,
+        "edge": 22.4,
         "model_odds": 1.34,
-        "market_odds": 1.75,
+        "market_odds": 1.92,
         "volume": 2195.5901280000003
       },
       {
@@ -11030,10 +10862,10 @@
         "player": "Désiré Doué",
         "team": "France",
         "model_p": 73.4,
-        "market_p": 70.0,
-        "edge": 3.4,
+        "market_p": 69.5,
+        "edge": 3.9,
         "model_odds": 1.36,
-        "market_odds": 1.43,
+        "market_odds": 1.44,
         "volume": 917.53202
       },
       {
@@ -11054,7 +10886,7 @@
         "edge": 22.4,
         "model_odds": 1.38,
         "market_odds": 2.0,
-        "volume": 3334.2464560000003
+        "volume": 3359.2464560000003
       },
       {
         "player": "Brahim Díaz",
@@ -11094,16 +10926,16 @@
         "edge": 21.1,
         "model_odds": 1.48,
         "market_odds": 2.15,
-        "volume": 3146.322359
+        "volume": 3156.322359
       },
       {
         "player": "Omar Marmoush",
         "team": "Egypt",
         "model_p": 66.3,
-        "market_p": 57.5,
-        "edge": 8.8,
+        "market_p": 57.0,
+        "edge": 9.3,
         "model_odds": 1.51,
-        "market_odds": 1.74,
+        "market_odds": 1.75,
         "volume": 1707.252044
       },
       {
@@ -11134,7 +10966,7 @@
         "edge": -3.9,
         "model_odds": 1.57,
         "market_odds": 1.48,
-        "volume": 5070.655200000001
+        "volume": 5075.003025000001
       },
       {
         "player": "Mohamed Salah",
@@ -11150,10 +10982,10 @@
         "player": "Endrick",
         "team": "Brazil",
         "model_p": 61.4,
-        "market_p": 57.0,
-        "edge": 4.4,
+        "market_p": 56.5,
+        "edge": 4.9,
         "model_odds": 1.63,
-        "market_odds": 1.75,
+        "market_odds": 1.77,
         "volume": 3149.471548999999
       },
       {
@@ -11170,10 +11002,10 @@
         "player": "Jérémy Doku",
         "team": "Belgium",
         "model_p": 60.4,
-        "market_p": 54.0,
-        "edge": 6.4,
+        "market_p": 67.0,
+        "edge": -6.6,
         "model_odds": 1.66,
-        "market_odds": 1.85,
+        "market_odds": 1.49,
         "volume": 2092.662138
       },
       {
@@ -11190,11 +11022,11 @@
         "player": "Leandro Trossard",
         "team": "Belgium",
         "model_p": 58.8,
-        "market_p": 51.0,
-        "edge": 7.8,
+        "market_p": 58.5,
+        "edge": 0.2,
         "model_odds": 1.7,
-        "market_odds": 1.96,
-        "volume": 2819.4531179999994
+        "market_odds": 1.71,
+        "volume": 2979.8531179999995
       },
       {
         "player": "Pedro Neto",
@@ -11234,7 +11066,7 @@
         "edge": -21.6,
         "model_odds": 1.76,
         "market_odds": 1.27,
-        "volume": 41379.03130700001
+        "volume": 41395.53894500001
       },
       {
         "player": "Fabián Ruiz",
@@ -11280,20 +11112,20 @@
         "player": "Dan Ndoye",
         "team": "Switzerland",
         "model_p": 51.7,
-        "market_p": 37.5,
-        "edge": 14.2,
+        "market_p": 50.0,
+        "edge": 1.7,
         "model_odds": 1.93,
-        "market_odds": 2.67,
-        "volume": 6446.409716999998
+        "market_odds": 2.0,
+        "volume": 6504.6497169999975
       },
       {
         "player": "Charles De Ketelaere",
         "team": "Belgium",
         "model_p": 51.6,
-        "market_p": 62.0,
-        "edge": -10.4,
+        "market_p": 61.0,
+        "edge": -9.4,
         "model_odds": 1.94,
-        "market_odds": 1.61,
+        "market_odds": 1.64,
         "volume": 4099.430351999999
       },
       {
@@ -11310,10 +11142,10 @@
         "player": "Casemiro",
         "team": "Brazil",
         "model_p": 46.9,
-        "market_p": 32.5,
-        "edge": 14.3,
+        "market_p": 33.5,
+        "edge": 13.4,
         "model_odds": 2.13,
-        "market_odds": 3.08,
+        "market_odds": 2.99,
         "volume": 3363.0557929999995
       },
       {
@@ -11340,10 +11172,10 @@
         "player": "Son Heung-min",
         "team": "South Korea",
         "model_p": 44.7,
-        "market_p": 50.0,
-        "edge": -5.3,
+        "market_p": 62.0,
+        "edge": -17.3,
         "model_odds": 2.24,
-        "market_odds": 2.0,
+        "market_odds": 1.61,
         "volume": 3501.148688
       },
       {
@@ -11380,10 +11212,10 @@
         "player": "Ismaïla Sarr",
         "team": "Senegal",
         "model_p": 42.7,
-        "market_p": 62.0,
-        "edge": -19.3,
+        "market_p": 57.5,
+        "edge": -14.8,
         "model_odds": 2.34,
-        "market_odds": 1.61,
+        "market_odds": 1.74,
         "volume": 2099.096241
       },
       {
@@ -11400,20 +11232,20 @@
         "player": "Rodri",
         "team": "Spain",
         "model_p": 41.5,
-        "market_p": 40.0,
-        "edge": 1.5,
+        "market_p": 39.0,
+        "edge": 2.5,
         "model_odds": 2.41,
-        "market_odds": 2.5,
+        "market_odds": 2.56,
         "volume": 1249.5818369999995
       },
       {
         "player": "Ismael Díaz",
         "team": "Panama",
         "model_p": 41.2,
-        "market_p": 13.5,
-        "edge": 27.7,
+        "market_p": 14.0,
+        "edge": 27.2,
         "model_odds": 2.43,
-        "market_odds": 7.41,
+        "market_odds": 7.14,
         "volume": 1069.4856610000002
       },
       {
@@ -11470,10 +11302,10 @@
         "player": "Tijjani Reijnders",
         "team": "Netherlands",
         "model_p": 38.6,
-        "market_p": 17.0,
-        "edge": 21.6,
+        "market_p": 16.0,
+        "edge": 22.6,
         "model_odds": 2.59,
-        "market_odds": 5.88,
+        "market_odds": 6.25,
         "volume": 1330.249684
       },
       {
@@ -11520,40 +11352,40 @@
         "player": "Hakan Çalhanoğlu",
         "team": "Turkey",
         "model_p": 36.6,
-        "market_p": 42.0,
-        "edge": -5.4,
+        "market_p": 42.5,
+        "edge": -5.9,
         "model_odds": 2.73,
-        "market_odds": 2.38,
+        "market_odds": 2.35,
         "volume": 2555.4617330000005
       },
       {
         "player": "Memphis Depay",
         "team": "Netherlands",
         "model_p": 36.5,
-        "market_p": 44.5,
-        "edge": -8.0,
+        "market_p": 43.5,
+        "edge": -7.0,
         "model_odds": 2.74,
-        "market_odds": 2.25,
+        "market_odds": 2.3,
         "volume": 2707.585644
       },
       {
         "player": "Kenan Yıldız",
         "team": "Turkey",
         "model_p": 36.3,
-        "market_p": 46.5,
-        "edge": -10.2,
+        "market_p": 47.5,
+        "edge": -11.2,
         "model_odds": 2.75,
-        "market_odds": 2.15,
+        "market_odds": 2.11,
         "volume": 6415.7387450000015
       },
       {
         "player": "Vitinha",
         "team": "Portugal",
         "model_p": 36.3,
-        "market_p": 38.0,
-        "edge": -1.7,
+        "market_p": 38.5,
+        "edge": -2.2,
         "model_odds": 2.76,
-        "market_odds": 2.63,
+        "market_odds": 2.6,
         "volume": 2546.7160850000005
       },
       {
@@ -11600,40 +11432,40 @@
         "player": "Iliman Ndiaye",
         "team": "Senegal",
         "model_p": 33.3,
-        "market_p": 38.5,
-        "edge": -5.2,
+        "market_p": 38.0,
+        "edge": -4.7,
         "model_odds": 3.0,
-        "market_odds": 2.6,
+        "market_odds": 2.63,
         "volume": 247.468046
       },
       {
         "player": "Carney Chukwuemeka",
         "team": "Austria",
         "model_p": 32.9,
-        "market_p": 15.5,
-        "edge": 17.4,
+        "market_p": 13.5,
+        "edge": 19.4,
         "model_odds": 3.04,
-        "market_odds": 6.45,
+        "market_odds": 7.41,
         "volume": 29.413582
       },
       {
         "player": "Julio Enciso",
         "team": "Paraguay",
         "model_p": 32.7,
-        "market_p": 29.5,
-        "edge": 3.2,
+        "market_p": 30.0,
+        "edge": 2.7,
         "model_odds": 3.06,
-        "market_odds": 3.39,
+        "market_odds": 3.33,
         "volume": 3671.396635000001
       },
       {
         "player": "Ryan Gravenberch",
         "team": "Netherlands",
         "model_p": 32.0,
-        "market_p": 29.5,
-        "edge": 2.5,
+        "market_p": 30.0,
+        "edge": 2.1,
         "model_odds": 3.12,
-        "market_odds": 3.39,
+        "market_odds": 3.33,
         "volume": 1066.185043
       },
       {
@@ -11650,20 +11482,20 @@
         "player": "Marc Guéhi",
         "team": "England",
         "model_p": 31.0,
-        "market_p": 17.7,
-        "edge": 13.3,
+        "market_p": 17.5,
+        "edge": 13.5,
         "model_odds": 3.22,
-        "market_odds": 5.65,
+        "market_odds": 5.7,
         "volume": 2236.9627
       },
       {
         "player": "Wilson Isidor",
         "team": "Haiti",
         "model_p": 30.7,
-        "market_p": 25.0,
-        "edge": 5.7,
+        "market_p": 24.5,
+        "edge": 6.2,
         "model_odds": 3.26,
-        "market_odds": 4.0,
+        "market_odds": 4.08,
         "volume": 1230.9162560000002
       },
       {
@@ -11680,20 +11512,20 @@
         "player": "Gavi",
         "team": "Spain",
         "model_p": 29.9,
-        "market_p": 30.5,
-        "edge": -0.6,
+        "market_p": 31.0,
+        "edge": -1.1,
         "model_odds": 3.35,
-        "market_odds": 3.28,
+        "market_odds": 3.23,
         "volume": 2150.600218
       },
       {
         "player": "Takefusa Kubo",
         "team": "Japan",
         "model_p": 29.4,
-        "market_p": 39.5,
-        "edge": -10.1,
+        "market_p": 30.5,
+        "edge": -1.1,
         "model_odds": 3.4,
-        "market_odds": 2.53,
+        "market_odds": 3.28,
         "volume": 5217.441533
       },
       {
@@ -11740,20 +11572,20 @@
         "player": "Aurélien Tchouaméni",
         "team": "France",
         "model_p": 28.7,
-        "market_p": 31.5,
-        "edge": -2.8,
+        "market_p": 32.5,
+        "edge": -3.8,
         "model_odds": 3.48,
-        "market_odds": 3.17,
+        "market_odds": 3.08,
         "volume": 2629.247838
       },
       {
         "player": "Iñaki Williams",
         "team": "Ghana",
         "model_p": 28.5,
-        "market_p": 22.5,
-        "edge": 6.0,
+        "market_p": 21.5,
+        "edge": 7.0,
         "model_odds": 3.5,
-        "market_odds": 4.44,
+        "market_odds": 4.65,
         "volume": 2560.550538
       },
       {
@@ -11765,16 +11597,6 @@
         "model_odds": 3.52,
         "market_odds": 3.77,
         "volume": 558.3692209999999
-      },
-      {
-        "player": "Granit Xhaka",
-        "team": "Switzerland",
-        "model_p": 26.8,
-        "market_p": 100.0,
-        "edge": -73.2,
-        "model_odds": 3.73,
-        "market_odds": 1.0,
-        "volume": 5713.627062000025
       },
       {
         "player": "James Rodríguez",
@@ -11800,30 +11622,30 @@
         "player": "Jules Koundé",
         "team": "France",
         "model_p": 23.6,
-        "market_p": 15.5,
-        "edge": 8.1,
+        "market_p": 14.5,
+        "edge": 9.1,
         "model_odds": 4.23,
-        "market_odds": 6.45,
+        "market_odds": 6.9,
         "volume": 835.3426310000002
       },
       {
         "player": "Oscar Bobb",
         "team": "Norway",
         "model_p": 23.5,
-        "market_p": 18.5,
-        "edge": 5.1,
+        "market_p": 20.0,
+        "edge": 3.5,
         "model_odds": 4.25,
-        "market_odds": 5.41,
-        "volume": 279.879396
+        "market_odds": 5.0,
+        "volume": 291.879396
       },
       {
         "player": "Alphonso Davies",
         "team": "Canada",
         "model_p": 22.9,
-        "market_p": 44.0,
-        "edge": -21.1,
+        "market_p": 48.0,
+        "edge": -25.1,
         "model_odds": 4.37,
-        "market_odds": 2.27,
+        "market_odds": 2.08,
         "volume": 1745.8476369999998
       },
       {
@@ -11860,10 +11682,10 @@
         "player": "Pau Cubarsí",
         "team": "Spain",
         "model_p": 20.6,
-        "market_p": 16.5,
-        "edge": 4.1,
+        "market_p": 13.5,
+        "edge": 7.1,
         "model_odds": 4.85,
-        "market_odds": 6.06,
+        "market_odds": 7.41,
         "volume": 2431.599592
       },
       {
@@ -11920,10 +11742,10 @@
         "player": "Marcel Sabitzer",
         "team": "Austria",
         "model_p": 18.5,
-        "market_p": 48.5,
-        "edge": -30.0,
+        "market_p": 48.0,
+        "edge": -29.5,
         "model_odds": 5.4,
-        "market_odds": 2.06,
+        "market_odds": 2.08,
         "volume": 2637.219402
       },
       {
@@ -11934,16 +11756,16 @@
         "edge": -18.4,
         "model_odds": 5.51,
         "market_odds": 2.74,
-        "volume": 5844.161654000001
+        "volume": 5854.161654000001
       },
       {
         "player": "Rúben Dias",
         "team": "Portugal",
         "model_p": 17.9,
-        "market_p": 17.0,
-        "edge": 0.9,
+        "market_p": 18.0,
+        "edge": -0.1,
         "model_odds": 5.59,
-        "market_odds": 5.88,
+        "market_odds": 5.56,
         "volume": 1217.196947
       },
       {
@@ -11970,10 +11792,10 @@
         "player": "Khalil Ayari",
         "team": "Tunisia",
         "model_p": 16.7,
-        "market_p": 49.5,
-        "edge": -32.8,
+        "market_p": 49.0,
+        "edge": -32.3,
         "model_odds": 6.0,
-        "market_odds": 2.02,
+        "market_odds": 2.04,
         "volume": 105.406073
       },
       {
@@ -12000,10 +11822,10 @@
         "player": "Joshua Kimmich",
         "team": "Germany",
         "model_p": 15.1,
-        "market_p": 36.5,
-        "edge": -21.4,
+        "market_p": 36.0,
+        "edge": -20.9,
         "model_odds": 6.62,
-        "market_odds": 2.74,
+        "market_odds": 2.78,
         "volume": 3418.115725
       },
       {
@@ -12020,20 +11842,20 @@
         "player": "Joško Gvardiol",
         "team": "Croatia",
         "model_p": 14.6,
-        "market_p": 18.0,
-        "edge": -3.4,
+        "market_p": 17.0,
+        "edge": -2.4,
         "model_odds": 6.86,
-        "market_odds": 5.56,
+        "market_odds": 5.88,
         "volume": 1569.162912
       },
       {
         "player": "Antonio Rüdiger",
         "team": "Germany",
         "model_p": 14.5,
-        "market_p": 8.7,
-        "edge": 5.8,
+        "market_p": 8.6,
+        "edge": 5.9,
         "model_odds": 6.88,
-        "market_odds": 11.49,
+        "market_odds": 11.56,
         "volume": 3929.427713
       },
       {
@@ -12060,20 +11882,20 @@
         "player": "Abdulaziz Hatem",
         "team": "Qatar",
         "model_p": 11.9,
-        "market_p": 48.0,
-        "edge": -36.1,
+        "market_p": 49.0,
+        "edge": -37.1,
         "model_odds": 8.43,
-        "market_odds": 2.08,
+        "market_odds": 2.04,
         "volume": 15.382306
       },
       {
         "player": "Miguel Almirón",
         "team": "Paraguay",
         "model_p": 11.8,
-        "market_p": 8.5,
-        "edge": 3.3,
+        "market_p": 10.5,
+        "edge": 1.3,
         "model_odds": 8.47,
-        "market_odds": 11.76,
+        "market_odds": 9.52,
         "volume": 1850.804649
       },
       {
@@ -12090,10 +11912,10 @@
         "player": "Tahith Chong",
         "team": "Curaçao",
         "model_p": 7.5,
-        "market_p": 6.5,
-        "edge": 1.0,
+        "market_p": 7.0,
+        "edge": 0.5,
         "model_odds": 13.28,
-        "market_odds": 15.38,
+        "market_odds": 14.29,
         "volume": 892.710557
       },
       {
@@ -16487,7 +16309,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-06-18T21:34Z",
+      "snapshot_ts": "2026-06-18T23:25Z",
       "resolved_matches": 16,
       "model_mean_log_loss": 1.8128,
       "matches_vs_market": 14,
