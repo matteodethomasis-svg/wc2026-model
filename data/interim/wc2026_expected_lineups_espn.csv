@@ -612,12 +612,12 @@ match_date,team,player,position,is_expected_starter,lineup_confidence,fixture_id
 2026-06-27,Croatia,Josip Sutalo,CD-R,True,1.0,760480
 2026-06-27,Croatia,Ivan Perisic,LB,True,1.0,760480
 2026-06-27,Croatia,Josip Stanisic,RB,True,1.0,760480
-2026-06-27,Croatia,Nikola Vlasic,AM,True,1.0,760480
+2026-06-27,Croatia,Petar Sucic,AM,True,1.0,760480
 2026-06-27,Croatia,Mateo Kovacic,LM,True,1.0,760480
 2026-06-27,Croatia,Luka Modric,RM,True,1.0,760480
 2026-06-27,Croatia,Ante Budimir,FW,True,1.0,760480
 2026-06-27,Croatia,Martin Baturina,AM-L,True,1.0,760480
-2026-06-27,Croatia,Petar Sucic,AM-R,True,1.0,760480
+2026-06-27,Croatia,Nikola Vlasic,AM-R,True,1.0,760480
 2026-06-27,Croatia,Duje Caleta-Car,SUB,False,1.0,760480
 2026-06-27,Croatia,Martin Erlic,SUB,False,1.0,760480
 2026-06-27,Croatia,Mario Pasalic,SUB,False,1.0,760480
@@ -665,8 +665,8 @@ match_date,team,player,position,is_expected_starter,lineup_confidence,fixture_id
 2026-06-27,Panama,Fidel Escobar,CD-R,True,1.0,760485
 2026-06-27,Panama,Jorge Gutiérrez,LB,True,1.0,760485
 2026-06-27,Panama,Amir Murillo,RB,True,1.0,760485
-2026-06-27,Panama,Carlos Harvey,CM-L,True,1.0,760485
-2026-06-27,Panama,Édgar Yoel Bárcenas,CM-R,True,1.0,760485
+2026-06-27,Panama,Édgar Yoel Bárcenas,CM-L,True,1.0,760485
+2026-06-27,Panama,Carlos Harvey,CM-R,True,1.0,760485
 2026-06-27,Panama,José Luis Rodríguez,LM,True,1.0,760485
 2026-06-27,Panama,Cristian Martínez,RM,True,1.0,760485
 2026-06-27,Panama,Tomás Rodríguez,FW,True,1.0,760485
@@ -688,14 +688,14 @@ match_date,team,player,position,is_expected_starter,lineup_confidence,fixture_id
 2026-06-27,England,Jordan Pickford,GK,True,1.0,760485
 2026-06-27,England,Marc Guéhi,CD-L,True,1.0,760485
 2026-06-27,England,Ezri Konsa,CD-R,True,1.0,760485
+2026-06-27,England,Elliot Anderson,DM,True,1.0,760485
 2026-06-27,England,Nico O'Reilly,LB,True,1.0,760485
 2026-06-27,England,Jarell Quansah,RB,True,1.0,760485
-2026-06-27,England,Morgan Rogers,AM,True,1.0,760485
-2026-06-27,England,Jude Bellingham,LM,True,1.0,760485
-2026-06-27,England,Elliot Anderson,RM,True,1.0,760485
+2026-06-27,England,Jude Bellingham,CM-L,True,1.0,760485
+2026-06-27,England,Morgan Rogers,CM-R,True,1.0,760485
+2026-06-27,England,Marcus Rashford,LM,True,1.0,760485
+2026-06-27,England,Bukayo Saka,RM,True,1.0,760485
 2026-06-27,England,Harry Kane,FW,True,1.0,760485
-2026-06-27,England,Marcus Rashford,AM-L,True,1.0,760485
-2026-06-27,England,Bukayo Saka,AM-R,True,1.0,760485
 2026-06-27,England,John Stones,SUB,False,1.0,760485
 2026-06-27,England,Kobbie Mainoo,SUB,False,1.0,760485
 2026-06-27,England,Dean Henderson,SUB,False,1.0,760485
@@ -710,3 +710,107 @@ match_date,team,player,position,is_expected_starter,lineup_confidence,fixture_id
 2026-06-27,England,Trevoh Chalobah,SUB,False,1.0,760485
 2026-06-27,England,Ollie Watkins,SUB,False,1.0,760485
 2026-06-27,England,Jordan Henderson,SUB,False,1.0,760485
+2026-06-27,Colombia,Camilo Vargas,GK,True,0.7,760481
+2026-06-27,Colombia,Santiago Arias,DF,True,0.7,760481
+2026-06-27,Colombia,Deiver Machado,DF,True,0.7,760481
+2026-06-27,Colombia,Davinson Sánchez,DF,True,0.7,760481
+2026-06-27,Colombia,Jhon Lucumí,DF,True,0.7,760481
+2026-06-27,Colombia,Gustavo Puerta,MF,True,0.7,760481
+2026-06-27,Colombia,Jhon Arias,MF,True,0.7,760481
+2026-06-27,Colombia,Jefferson Lerma,MF,True,0.7,760481
+2026-06-27,Colombia,Luis Díaz,FW,True,0.7,760481
+2026-06-27,Colombia,James Rodríguez,FW,True,0.7,760481
+2026-06-27,Colombia,Jhon Córdoba,FW,True,0.7,760481
+2026-06-27,Colombia,Daniel Muñoz,SUB,False,0.7,760481
+2026-06-27,Colombia,Luis Suárez,SUB,False,0.7,760481
+2026-06-27,Colombia,Jáminton Campaz,SUB,False,0.7,760481
+2026-06-27,Colombia,Cucho Hernández,SUB,False,0.7,760481
+2026-06-27,Colombia,David Ospina,SUB,False,0.7,760481
+2026-06-27,Colombia,Kevin Castaño,SUB,False,0.7,760481
+2026-06-27,Colombia,Willer Ditta,SUB,False,0.7,760481
+2026-06-27,Colombia,Andrés Gómez,SUB,False,0.7,760481
+2026-06-27,Colombia,Álvaro Montero,SUB,False,0.7,760481
+2026-06-27,Colombia,Jorge Carrascal,SUB,False,0.7,760481
+2026-06-27,Colombia,Yerry Mina,SUB,False,0.7,760481
+2026-06-27,Colombia,Juan Portilla,SUB,False,0.7,760481
+2026-06-27,Colombia,Johan Mojica,SUB,False,0.7,760481
+2026-06-27,Colombia,Juan Fernando Quintero,SUB,False,0.7,760481
+2026-06-27,Colombia,Richard Ríos,SUB,False,0.7,760481
+2026-06-27,Portugal,Diogo Costa,GK,True,0.7,760481
+2026-06-27,Portugal,Nuno Mendes,DF,True,0.7,760481
+2026-06-27,Portugal,Rúben Dias,DF,True,0.7,760481
+2026-06-27,Portugal,Renato Veiga,DF,True,0.7,760481
+2026-06-27,Portugal,João Cancelo,DF,True,0.7,760481
+2026-06-27,Portugal,Vitinha ,MF,True,0.7,760481
+2026-06-27,Portugal,Rúben Neves,MF,True,0.7,760481
+2026-06-27,Portugal,Pedro Neto,MF,True,0.7,760481
+2026-06-27,Portugal,Bruno Fernandes,MF,True,0.7,760481
+2026-06-27,Portugal,João Félix,MF,True,0.7,760481
+2026-06-27,Portugal,Cristiano Ronaldo,FW,True,0.7,760481
+2026-06-27,Portugal,Francisco Trincão,SUB,False,0.7,760481
+2026-06-27,Portugal,João Neves,SUB,False,0.7,760481
+2026-06-27,Portugal,Gonçalo Ramos,SUB,False,0.7,760481
+2026-06-27,Portugal,Nélson Semedo,SUB,False,0.7,760481
+2026-06-27,Portugal,Gonçalo Guedes,SUB,False,0.7,760481
+2026-06-27,Portugal,Rafael Leão,SUB,False,0.7,760481
+2026-06-27,Portugal,Rui Silva,SUB,False,0.7,760481
+2026-06-27,Portugal,Samú Costa,SUB,False,0.7,760481
+2026-06-27,Portugal,Diogo Dalot,SUB,False,0.7,760481
+2026-06-27,Portugal,Bernardo Silva,SUB,False,0.7,760481
+2026-06-27,Portugal,Tomás Araújo,SUB,False,0.7,760481
+2026-06-27,Portugal,Gonçalo Inácio,SUB,False,0.7,760481
+2026-06-27,Portugal,Matheus Nunes,SUB,False,0.7,760481
+2026-06-27,Portugal,José Sá,SUB,False,0.7,760481
+2026-06-27,Portugal,Francisco Conceição,SUB,False,0.7,760481
+2026-06-27,DR Congo,Lionel Mpasi,GK,True,0.7,760482
+2026-06-27,DR Congo,Chancel Mbemba,DF,True,0.7,760482
+2026-06-27,DR Congo,Arthur Masuaku,DF,True,0.7,760482
+2026-06-27,DR Congo,Aaron Wan-Bissaka,DF,True,0.7,760482
+2026-06-27,DR Congo,Axel Tuanzebe,DF,True,0.7,760482
+2026-06-27,DR Congo,Noah Sadiki,MF,True,0.7,760482
+2026-06-27,DR Congo,Brian Cipenga,MF,True,0.7,760482
+2026-06-27,DR Congo,Nathanaël Mbuku,MF,True,0.7,760482
+2026-06-27,DR Congo,Samuel Moutoussamy,MF,True,0.7,760482
+2026-06-27,DR Congo,Cédric Bakambu,FW,True,0.7,760482
+2026-06-27,DR Congo,Yoane Wissa,FW,True,0.7,760482
+2026-06-27,DR Congo,Gaël Kakuta,SUB,False,0.7,760482
+2026-06-27,DR Congo,Ngal'ayel Mukau,SUB,False,0.7,760482
+2026-06-27,DR Congo,Fiston Mayele,SUB,False,0.7,760482
+2026-06-27,DR Congo,Gédéon Kalulu,SUB,False,0.7,760482
+2026-06-27,DR Congo,Edo Kayembe,SUB,False,0.7,760482
+2026-06-27,DR Congo,Simon Banza,SUB,False,0.7,760482
+2026-06-27,DR Congo,Matthieu Epolo,SUB,False,0.7,760482
+2026-06-27,DR Congo,Joris Kayembe,SUB,False,0.7,760482
+2026-06-27,DR Congo,Meschack Elia,SUB,False,0.7,760482
+2026-06-27,DR Congo,Théo Bongonda,SUB,False,0.7,760482
+2026-06-27,DR Congo,Steve Kapuadi,SUB,False,0.7,760482
+2026-06-27,DR Congo,Timothy Fayulu,SUB,False,0.7,760482
+2026-06-27,DR Congo,Dylan Batubinsika,SUB,False,0.7,760482
+2026-06-27,DR Congo,Charles Pickel,SUB,False,0.7,760482
+2026-06-27,DR Congo,Aaron Tshibola,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Abduvohid Nematov,GK,True,0.7,760482
+2026-06-27,Uzbekistan,Abdukodir Khusanov,DF,True,0.7,760482
+2026-06-27,Uzbekistan,Jakhongir Urozov,DF,True,0.7,760482
+2026-06-27,Uzbekistan,Rustam Ashurmatov,DF,True,0.7,760482
+2026-06-27,Uzbekistan,Otabek Shukurov,MF,True,0.7,760482
+2026-06-27,Uzbekistan,Khojiakbar Alijonov,MF,True,0.7,760482
+2026-06-27,Uzbekistan,Sherzod Nasrullaev,MF,True,0.7,760482
+2026-06-27,Uzbekistan,Dostonbek Khamdamov,MF,True,0.7,760482
+2026-06-27,Uzbekistan,Abbosbek Fayzullaev,MF,True,0.7,760482
+2026-06-27,Uzbekistan,Akmal Mozgovoy,MF,True,0.7,760482
+2026-06-27,Uzbekistan,Eldor Shomurodov,FW,True,0.7,760482
+2026-06-27,Uzbekistan,Azizjon Ganiev,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Ruslanbek Jiyanov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Abdulla Abdullaev,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Avazbek Ulmasaliyev,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Azizbek Amonov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Farrukh Sayfiev,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Oston Urunov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Botirali Ergashev,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Jamshid Iskanderov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Igor Sergeev,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Utkir Yusupov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Behruzjon Karimov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Odiljon Xamrobekov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Sherzod Esanov,SUB,False,0.7,760482
+2026-06-27,Uzbekistan,Umar Eshmurodov,SUB,False,0.7,760482
