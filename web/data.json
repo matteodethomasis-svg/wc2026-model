@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-14 19:49 UTC",
+    "generated_at": "2026-07-14 20:54 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2180,42 +2180,42 @@
     {
       "team": "Argentina",
       "model_p": 27.3,
-      "market_p": 18.4,
-      "edge": 8.9,
-      "ev": 8.9,
+      "market_p": 19.8,
+      "edge": 7.5,
+      "ev": 7.5,
       "model_odds": 3.66,
-      "market_odds": 5.434782608695652,
-      "volume": 135423424.99209434
+      "market_odds": 5.063291139240506,
+      "volume": 135760780.34261867
     },
     {
       "team": "Spain",
       "model_p": 25.9,
-      "market_p": 35.5,
-      "edge": -9.6,
-      "ev": -9.6,
+      "market_p": 56.5,
+      "edge": -30.6,
+      "ev": -30.6,
       "model_odds": 3.86,
-      "market_odds": 2.8129395218002813,
-      "volume": 112576712.57322729
+      "market_odds": 1.7714791851195748,
+      "volume": 113507224.70211312
     },
     {
       "team": "France",
       "model_p": 13.5,
-      "market_p": 20.4,
-      "edge": -6.9,
-      "ev": -6.9,
+      "market_p": 0.2,
+      "edge": 13.2,
+      "ev": 13.2,
       "model_odds": 7.41,
-      "market_odds": 4.901960784313726,
-      "volume": 120128578.19755268
+      "market_odds": 400.0,
+      "volume": 130034175.56900294
     },
     {
       "team": "England",
       "model_p": 10.9,
-      "market_p": 23.2,
-      "edge": -12.2,
-      "ev": -12.2,
+      "market_p": 25.3,
+      "edge": -14.4,
+      "ev": -14.4,
       "model_odds": 9.17,
-      "market_odds": 4.319654427645788,
-      "volume": 101034789.30690011
+      "market_odds": 3.952569169960474,
+      "volume": 101384077.30279396
     },
     {
       "team": "Portugal",
@@ -2658,29 +2658,29 @@
           {
             "team": "Argentina",
             "model_p": 47.5,
-            "market_p": 45.9,
-            "edge": 1.6,
+            "market_p": 46.0,
+            "edge": 1.5,
             "model_odds": 2.11,
             "market_odds": 2.18,
-            "volume": 1210753.1228309986
+            "volume": 1213317.9232459983
           },
           {
             "team": "Spain",
             "model_p": 37.2,
-            "market_p": 62.5,
-            "edge": -25.3,
+            "market_p": 97.5,
+            "edge": -60.3,
             "model_odds": 2.69,
-            "market_odds": 1.6,
-            "volume": 366082.38619000086
+            "market_odds": 1.03,
+            "volume": 447527.6744110011
           },
           {
             "team": "France",
             "model_p": 24.4,
-            "market_p": 36.5,
-            "edge": -12.1,
+            "market_p": 1.7,
+            "edge": 22.7,
             "model_odds": 4.1,
-            "market_odds": 2.74,
-            "volume": 1605510.5280099928
+            "market_odds": 58.82,
+            "volume": 1703240.677923994
           },
           {
             "team": "England",
@@ -2689,7 +2689,7 @@
             "edge": -31.9,
             "model_odds": 4.42,
             "market_odds": 1.83,
-            "volume": 751127.6896599852
+            "volume": 753149.2920079855
           },
           {
             "team": "Portugal",
@@ -3089,11 +3089,11 @@
         "player": "Harry Kane",
         "team": "England",
         "model_p": 17.0,
-        "market_p": 6.2,
-        "edge": 10.7,
+        "market_p": 7.0,
+        "edge": 9.9,
         "model_odds": 5.9,
-        "market_odds": 16.0,
-        "volume": 2381187.463862988
+        "market_odds": 14.18,
+        "volume": 2416628.2143669887
       },
       {
         "player": "Lautaro Martinez",
@@ -3109,11 +3109,11 @@
         "player": "Kylian Mbappe",
         "team": "France",
         "model_p": 7.0,
-        "market_p": 47.5,
-        "edge": -40.5,
+        "market_p": 29.0,
+        "edge": -22.0,
         "model_odds": 14.33,
-        "market_odds": 2.11,
-        "volume": 3597648.283892907
+        "market_odds": 3.45,
+        "volume": 3666949.190674903
       },
       {
         "player": "Ferran Torres",
@@ -3139,11 +3139,11 @@
         "player": "Ousmane Dembele",
         "team": "France",
         "model_p": 2.9,
-        "market_p": 0.2,
+        "market_p": 0.1,
         "edge": 2.7,
         "model_odds": 34.72,
-        "market_odds": 500.0,
-        "volume": 3882182.6190790366
+        "market_odds": 666.67,
+        "volume": 3912547.534745036
       },
       {
         "player": "Lamine Yamal",
@@ -3153,17 +3153,17 @@
         "edge": 2.4,
         "model_odds": 41.49,
         "market_odds": 2000.0,
-        "volume": 1754277.729855999
+        "volume": 1765217.7098559986
       },
       {
         "player": "Mikel Oyarzabal",
         "team": "Spain",
         "model_p": 1.6,
-        "market_p": 0.7,
-        "edge": 1.0,
+        "market_p": 0.4,
+        "edge": 1.2,
         "model_odds": 62.11,
-        "market_odds": 153.85,
-        "volume": 4115983.212474025
+        "market_odds": 250.0,
+        "volume": 4196595.883631025
       },
       {
         "player": "Marcus Thuram",
@@ -3179,11 +3179,11 @@
         "player": "Lionel Messi",
         "team": "Argentina",
         "model_p": 0.9,
-        "market_p": 39.0,
-        "edge": -38.1,
+        "market_p": 57.2,
+        "edge": -56.4,
         "model_odds": 117.65,
-        "market_odds": 2.57,
-        "volume": 3217210.896819002
+        "market_odds": 1.75,
+        "volume": 3259500.0649900027
       },
       {
         "player": "Michael Olise",
@@ -3239,11 +3239,11 @@
         "player": "Jude Bellingham",
         "team": "England",
         "model_p": 0.1,
-        "market_p": 3.6,
-        "edge": -3.5,
+        "market_p": 6.6,
+        "edge": -6.5,
         "model_odds": 1000.0,
-        "market_odds": 27.4,
-        "volume": 1876971.773400002
+        "market_odds": 15.27,
+        "volume": 1896257.9479430025
       },
       {
         "player": "Pedri",
@@ -3271,21 +3271,21 @@
         "player": "Marcus Thuram",
         "team": "France",
         "model_p": 87.6,
-        "market_p": 1.5,
-        "edge": 86.1,
+        "market_p": 1.7,
+        "edge": 85.9,
         "model_odds": 1.14,
-        "market_odds": 68.97,
-        "volume": 12716.454597
+        "market_odds": 58.82,
+        "volume": 12838.470722
       },
       {
         "player": "Michael Olise",
         "team": "France",
         "model_p": 86.7,
-        "market_p": 36.0,
-        "edge": 50.7,
+        "market_p": 10.1,
+        "edge": 76.6,
         "model_odds": 1.15,
-        "market_odds": 2.78,
-        "volume": 57192.68931199995
+        "market_odds": 9.9,
+        "volume": 61851.765092999965
       },
       {
         "player": "Nico Williams",
@@ -3301,11 +3301,11 @@
         "player": "Dani Olmo",
         "team": "Spain",
         "model_p": 81.7,
-        "market_p": 22.5,
-        "edge": 59.2,
+        "market_p": 22.0,
+        "edge": 59.7,
         "model_odds": 1.22,
-        "market_odds": 4.44,
-        "volume": 5102.159339999998
+        "market_odds": 4.55,
+        "volume": 5146.801312999998
       },
       {
         "player": "Bukayo Saka",
@@ -3321,20 +3321,20 @@
         "player": "Rayan Cherki",
         "team": "France",
         "model_p": 68.4,
-        "market_p": 10.5,
-        "edge": 57.9,
+        "market_p": 6.5,
+        "edge": 61.9,
         "model_odds": 1.46,
-        "market_odds": 9.52,
-        "volume": 8066.937874
+        "market_odds": 15.38,
+        "volume": 8230.517874
       },
       {
         "player": "Eberechi Eze",
         "team": "England",
         "model_p": 62.3,
-        "market_p": 24.0,
-        "edge": 38.3,
+        "market_p": 36.0,
+        "edge": 26.3,
         "model_odds": 1.61,
-        "market_odds": 4.17,
+        "market_odds": 2.78,
         "volume": 2859.7925100000016
       },
       {
@@ -3342,9 +3342,9 @@
         "team": "Spain",
         "model_p": 55.3,
         "market_p": 1.6,
-        "edge": 53.8,
+        "edge": 53.7,
         "model_odds": 1.81,
-        "market_odds": 64.52,
+        "market_odds": 62.5,
         "volume": 6970.464224
       },
       {
@@ -3352,19 +3352,19 @@
         "team": "France",
         "model_p": 49.6,
         "market_p": 0.9,
-        "edge": 48.7,
+        "edge": 48.8,
         "model_odds": 2.01,
-        "market_odds": 111.11,
+        "market_odds": 117.65,
         "volume": 6899.709533000002
       },
       {
         "player": "Rodri",
         "team": "Spain",
         "model_p": 48.3,
-        "market_p": 11.0,
-        "edge": 37.3,
+        "market_p": 11.5,
+        "edge": 36.8,
         "model_odds": 2.07,
-        "market_odds": 9.09,
+        "market_odds": 8.7,
         "volume": 7524.878255
       },
       {
@@ -3391,11 +3391,11 @@
         "player": "Aurélien Tchouaméni",
         "team": "France",
         "model_p": 36.5,
-        "market_p": 4.5,
-        "edge": 32.0,
+        "market_p": 3.7,
+        "edge": 32.8,
         "model_odds": 2.74,
-        "market_odds": 22.47,
-        "volume": 9528.648457
+        "market_odds": 27.03,
+        "volume": 9529.683633
       },
       {
         "player": "Gavi",
@@ -3431,40 +3431,40 @@
         "player": "Jules Koundé",
         "team": "France",
         "model_p": 30.3,
-        "market_p": 2.9,
+        "market_p": 2.8,
         "edge": 27.5,
         "model_odds": 3.3,
-        "market_odds": 35.09,
-        "volume": 5784.1523210000005
+        "market_odds": 35.71,
+        "volume": 7218.775842000001
       },
       {
         "player": "Pau Cubarsí",
         "team": "Spain",
         "model_p": 24.8,
-        "market_p": 2.4,
-        "edge": 22.4,
+        "market_p": 2.8,
+        "edge": 21.9,
         "model_odds": 4.04,
-        "market_odds": 42.55,
+        "market_odds": 35.71,
         "volume": 7059.016641999999
       },
       {
         "player": "Ibrahima Konaté",
         "team": "France",
         "model_p": 24.4,
-        "market_p": 2.5,
-        "edge": 21.9,
+        "market_p": 2.4,
+        "edge": 22.0,
         "model_odds": 4.1,
-        "market_odds": 40.82,
+        "market_odds": 42.55,
         "volume": 3519.994125
       },
       {
         "player": "Marc Cucurella",
         "team": "Spain",
         "model_p": 24.2,
-        "market_p": 12.6,
-        "edge": 11.6,
+        "market_p": 12.5,
+        "edge": 11.7,
         "model_odds": 4.13,
-        "market_odds": 7.94,
+        "market_odds": 8.0,
         "volume": 8839.701541999995
       },
       {
@@ -7868,7 +7868,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-14T19:49Z",
+      "snapshot_ts": "2026-07-14T20:54Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
