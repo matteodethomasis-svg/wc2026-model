@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-14 12:14 UTC",
+    "generated_at": "2026-07-14 14:16 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2180,22 +2180,22 @@
     {
       "team": "Argentina",
       "model_p": 27.3,
-      "market_p": 17.4,
-      "edge": 9.8,
-      "ev": 9.8,
+      "market_p": 17.3,
+      "edge": 10.0,
+      "ev": 10.0,
       "model_odds": 3.66,
-      "market_odds": 5.730659025787966,
-      "volume": 133680217.51541184
+      "market_odds": 5.763688760806917,
+      "volume": 133925005.20462486
     },
     {
       "team": "Spain",
       "model_p": 25.9,
-      "market_p": 21.3,
-      "edge": 4.5,
-      "ev": 4.5,
+      "market_p": 21.8,
+      "edge": 4.2,
+      "ev": 4.2,
       "model_odds": 3.86,
-      "market_odds": 4.68384074941452,
-      "volume": 109014160.03114969
+      "market_odds": 4.597701149425287,
+      "volume": 109885297.66577986
     },
     {
       "team": "France",
@@ -2205,17 +2205,17 @@
       "ev": -25.6,
       "model_odds": 7.41,
       "market_odds": 2.560819462227913,
-      "volume": 117405491.8572438
+      "volume": 117586199.0266936
     },
     {
       "team": "England",
       "model_p": 10.9,
       "market_p": 21.6,
-      "edge": -10.7,
-      "ev": -10.7,
+      "edge": -10.8,
+      "ev": -10.8,
       "model_odds": 9.17,
-      "market_odds": 4.640371229698376,
-      "volume": 100288997.3481872
+      "market_odds": 4.618937644341801,
+      "volume": 100413723.32338633
     },
     {
       "team": "Portugal",
@@ -2658,11 +2658,11 @@
           {
             "team": "Argentina",
             "model_p": 47.5,
-            "market_p": 44.9,
-            "edge": 2.6,
+            "market_p": 44.8,
+            "edge": 2.7,
             "model_odds": 2.11,
             "market_odds": 2.23,
-            "volume": 1185435.376293999
+            "volume": 1189452.0657139989
           },
           {
             "team": "Spain",
@@ -2671,7 +2671,7 @@
             "edge": -3.3,
             "model_odds": 2.69,
             "market_odds": 2.47,
-            "volume": 331986.38423800113
+            "volume": 333450.2047110011
           },
           {
             "team": "France",
@@ -2680,7 +2680,7 @@
             "edge": -35.1,
             "model_odds": 4.1,
             "market_odds": 1.68,
-            "volume": 1456152.2501409925
+            "volume": 1462497.680116993
           },
           {
             "team": "England",
@@ -2689,7 +2689,7 @@
             "edge": -31.9,
             "model_odds": 4.42,
             "market_odds": 1.83,
-            "volume": 744042.4455919852
+            "volume": 746840.7283899852
           },
           {
             "team": "Portugal",
@@ -3089,11 +3089,11 @@
         "player": "Harry Kane",
         "team": "England",
         "model_p": 17.0,
-        "market_p": 5.1,
+        "market_p": 5.2,
         "edge": 11.8,
         "model_odds": 5.9,
-        "market_odds": 19.42,
-        "volume": 2342225.193230992
+        "market_odds": 19.23,
+        "volume": 2349959.411708989
       },
       {
         "player": "Lautaro Martinez",
@@ -3113,7 +3113,7 @@
         "edge": -49.5,
         "model_odds": 14.33,
         "market_odds": 1.77,
-        "volume": 3280785.628710905
+        "volume": 3318657.835083906
       },
       {
         "player": "Ferran Torres",
@@ -3123,7 +3123,7 @@
         "edge": 4.5,
         "model_odds": 22.17,
         "market_odds": 2000.0,
-        "volume": 610452.0380920006
+        "volume": 610453.1780920007
       },
       {
         "player": "Julian Alvarez",
@@ -3139,31 +3139,31 @@
         "player": "Ousmane Dembele",
         "team": "France",
         "model_p": 2.9,
-        "market_p": 0.9,
-        "edge": 2.0,
+        "market_p": 0.8,
+        "edge": 2.1,
         "model_odds": 34.72,
-        "market_odds": 117.65,
-        "volume": 3429587.5409310367
+        "market_odds": 125.0,
+        "volume": 3430716.5047880365
       },
       {
         "player": "Lamine Yamal",
         "team": "Spain",
         "model_p": 2.4,
         "market_p": 0.1,
-        "edge": 2.4,
+        "edge": 2.3,
         "model_odds": 41.49,
-        "market_odds": 2000.0,
-        "volume": 1735719.967855998
+        "market_odds": 666.67,
+        "volume": 1741340.8148559986
       },
       {
         "player": "Mikel Oyarzabal",
         "team": "Spain",
         "model_p": 1.6,
-        "market_p": 0.4,
+        "market_p": 0.3,
         "edge": 1.3,
         "model_odds": 62.11,
-        "market_odds": 285.71,
-        "volume": 3434953.1620320235
+        "market_odds": 333.33,
+        "volume": 3445767.084697024
       },
       {
         "player": "Marcus Thuram",
@@ -3183,7 +3183,7 @@
         "edge": -33.2,
         "model_odds": 117.65,
         "market_odds": 2.94,
-        "volume": 3155366.4777780017
+        "volume": 3163616.5686420016
       },
       {
         "player": "Michael Olise",
@@ -3239,11 +3239,11 @@
         "player": "Jude Bellingham",
         "team": "England",
         "model_p": 0.1,
-        "market_p": 3.4,
-        "edge": -3.2,
+        "market_p": 3.5,
+        "edge": -3.4,
         "model_odds": 1000.0,
-        "market_odds": 29.85,
-        "volume": 1803093.048957002
+        "market_odds": 28.57,
+        "volume": 1810431.8449110023
       },
       {
         "player": "Pedri",
@@ -3265,36 +3265,36 @@
         "edge": 71.5,
         "model_odds": 1.05,
         "market_odds": 4.26,
-        "volume": 8434.410887999997
+        "volume": 8470.825884999998
       },
       {
         "player": "Marcus Thuram",
         "team": "France",
         "model_p": 87.6,
-        "market_p": 1.8,
-        "edge": 85.8,
+        "market_p": 1.7,
+        "edge": 85.9,
         "model_odds": 1.14,
-        "market_odds": 57.14,
+        "market_odds": 60.61,
         "volume": 12716.454597
       },
       {
         "player": "Michael Olise",
         "team": "France",
         "model_p": 86.7,
-        "market_p": 38.5,
-        "edge": 48.2,
+        "market_p": 39.0,
+        "edge": 47.7,
         "model_odds": 1.15,
-        "market_odds": 2.6,
-        "volume": 56355.85700599996
+        "market_odds": 2.56,
+        "volume": 56363.54931199996
       },
       {
         "player": "Nico Williams",
         "team": "Spain",
         "model_p": 81.9,
-        "market_p": 14.5,
-        "edge": 67.4,
+        "market_p": 14.6,
+        "edge": 67.3,
         "model_odds": 1.22,
-        "market_odds": 6.87,
+        "market_odds": 6.85,
         "volume": 14392.493352
       },
       {
@@ -3305,7 +3305,7 @@
         "edge": 62.2,
         "model_odds": 1.22,
         "market_odds": 5.13,
-        "volume": 5032.858388999998
+        "volume": 5037.858388999998
       },
       {
         "player": "Bukayo Saka",
@@ -3325,17 +3325,17 @@
         "edge": 58.4,
         "model_odds": 1.46,
         "market_odds": 10.0,
-        "volume": 7857.744746
+        "volume": 8005.624746
       },
       {
         "player": "Eberechi Eze",
         "team": "England",
         "model_p": 62.3,
-        "market_p": 19.0,
-        "edge": 43.3,
+        "market_p": 18.5,
+        "edge": 43.8,
         "model_odds": 1.61,
-        "market_odds": 5.26,
-        "volume": 2681.053381000001
+        "market_odds": 5.41,
+        "volume": 2854.7925100000016
       },
       {
         "player": "Martin Zubimendi",
@@ -3361,11 +3361,11 @@
         "player": "Rodri",
         "team": "Spain",
         "model_p": 48.3,
-        "market_p": 12.0,
-        "edge": 36.3,
+        "market_p": 12.5,
+        "edge": 35.8,
         "model_odds": 2.07,
-        "market_odds": 8.33,
-        "volume": 7512.735398999999
+        "market_odds": 8.0,
+        "volume": 7519.878255
       },
       {
         "player": "Pedri",
@@ -3385,7 +3385,7 @@
         "edge": 30.1,
         "model_odds": 2.27,
         "market_odds": 7.14,
-        "volume": 6833.783294999996
+        "volume": 6917.106626999996
       },
       {
         "player": "Aurélien Tchouaméni",
@@ -3414,7 +3414,7 @@
         "market_p": 6.3,
         "edge": 28.2,
         "model_odds": 2.9,
-        "market_odds": 15.87,
+        "market_odds": 15.75,
         "volume": 4588.708588
       },
       {
@@ -3425,7 +3425,7 @@
         "edge": 25.8,
         "model_odds": 3.16,
         "market_odds": 16.95,
-        "volume": 2833.553233
+        "volume": 2912.918311
       },
       {
         "player": "Jules Koundé",
@@ -3435,7 +3435,7 @@
         "edge": 27.3,
         "model_odds": 3.3,
         "market_odds": 33.33,
-        "volume": 5778.072321000001
+        "volume": 5783.072321000001
       },
       {
         "player": "Pau Cubarsí",
@@ -3462,9 +3462,9 @@
         "team": "Spain",
         "model_p": 24.2,
         "market_p": 8.2,
-        "edge": 16.0,
+        "edge": 16.1,
         "model_odds": 4.13,
-        "market_odds": 12.2,
+        "market_odds": 12.27,
         "volume": 8839.701541999995
       },
       {
@@ -3474,7 +3474,7 @@
         "market_p": 3.6,
         "edge": 17.0,
         "model_odds": 4.85,
-        "market_odds": 27.78,
+        "market_odds": 27.4,
         "volume": 6265.341430999999
       },
       {
@@ -3507,12 +3507,12 @@
         "share": 0.12308
       },
       {
-        "player": "Nadhir Benbouali",
+        "player": "Farès Ghedjemis",
         "pos": "FW",
         "share": 0.06433
       },
       {
-        "player": "Riyad Mahrez",
+        "player": "Nadhir Benbouali",
         "pos": "FW",
         "share": 0.06433
       },
@@ -3522,7 +3522,7 @@
         "share": 0.06433
       },
       {
-        "player": "Farès Ghedjemis",
+        "player": "Riyad Mahrez",
         "pos": "FW",
         "share": 0.06433
       },
@@ -3686,7 +3686,7 @@
         "share": 0.06836
       },
       {
-        "player": "Mathew Leckie",
+        "player": "Nishan Velupillay",
         "pos": "FW",
         "share": 0.06836
       },
@@ -3696,7 +3696,7 @@
         "share": 0.06836
       },
       {
-        "player": "Nishan Velupillay",
+        "player": "Mathew Leckie",
         "pos": "FW",
         "share": 0.06836
       },
@@ -3716,12 +3716,12 @@
         "share": 0.01087
       },
       {
-        "player": "Connor Metcalfe",
+        "player": "Aiden O'Neill",
         "pos": "MF",
         "share": 0.01087
       },
       {
-        "player": "Aiden O'Neill",
+        "player": "Connor Metcalfe",
         "pos": "MF",
         "share": 0.01087
       },
@@ -3952,9 +3952,14 @@
         "share": 0.03137
       },
       {
-        "player": "Ermin Mahmić",
+        "player": "Dženis Burnić",
         "pos": "MF",
         "share": 0.02219
+      },
+      {
+        "player": "Ivan Šunjić",
+        "pos": "MF",
+        "share": 0.00776
       },
       {
         "player": "Amar Memić",
@@ -3967,12 +3972,7 @@
         "share": 0.00776
       },
       {
-        "player": "Ivan Šunjić",
-        "pos": "MF",
-        "share": 0.00776
-      },
-      {
-        "player": "Dženis Burnić",
+        "player": "Ermin Mahmić",
         "pos": "MF",
         "share": 0.00776
       },
@@ -4101,12 +4101,12 @@
         "share": 0.06014
       },
       {
-        "player": "Cyle Larin",
+        "player": "Ali Ahmed",
         "pos": "FW",
         "share": 0.05836
       },
       {
-        "player": "Ali Ahmed",
+        "player": "Cyle Larin",
         "pos": "FW",
         "share": 0.05836
       },
@@ -4131,7 +4131,7 @@
         "share": 0.0105
       },
       {
-        "player": "Jacob Shaffelburg",
+        "player": "Liam Millar",
         "pos": "MF",
         "share": 0.00928
       },
@@ -4218,7 +4218,7 @@
         "share": 0.01284
       },
       {
-        "player": "Kevin Pina",
+        "player": "Yannick Semedo",
         "pos": "MF",
         "share": 0.0107
       },
@@ -4250,12 +4250,12 @@
         "share": 0.12372
       },
       {
-        "player": "Jaminton Campaz",
+        "player": "Andrés Gómez",
         "pos": "FW",
         "share": 0.05363
       },
       {
-        "player": "Andrés Gómez",
+        "player": "Jaminton Campaz",
         "pos": "FW",
         "share": 0.05363
       },
@@ -4295,17 +4295,17 @@
         "share": 0.00883
       },
       {
-        "player": "Kevin Castaño",
-        "pos": "MF",
-        "share": 0.00853
-      },
-      {
-        "player": "Jefferson Lerma",
-        "pos": "MF",
-        "share": 0.00853
-      },
-      {
         "player": "Jorge Carrascal",
+        "pos": "MF",
+        "share": 0.00853
+      },
+      {
+        "player": "James Rodríguez",
+        "pos": "MF",
+        "share": 0.00853
+      },
+      {
+        "player": "Juan Portilla",
         "pos": "MF",
         "share": 0.00853
       }
@@ -4424,12 +4424,12 @@
         "share": 0.08187
       },
       {
-        "player": "Gervane Kastaneer",
+        "player": "Jürgen Locadia",
         "pos": "FW",
         "share": 0.08187
       },
       {
-        "player": "Jürgen Locadia",
+        "player": "Gervane Kastaneer",
         "pos": "FW",
         "share": 0.08187
       },
@@ -4444,14 +4444,9 @@
         "share": 0.03718
       },
       {
-        "player": "Godfried Roemeratoe",
+        "player": "Livano Comenencia",
         "pos": "MF",
         "share": 0.03718
-      },
-      {
-        "player": "Leandro Bacuna",
-        "pos": "MF",
-        "share": 0.01301
       },
       {
         "player": "Juninho Bacuna",
@@ -4459,17 +4454,22 @@
         "share": 0.01301
       },
       {
-        "player": "Livano Comenencia",
-        "pos": "MF",
-        "share": 0.01301
-      },
-      {
-        "player": "Kevin Felida",
+        "player": "Godfried Roemeratoe",
         "pos": "MF",
         "share": 0.01301
       },
       {
         "player": "Ar'jany Martha",
+        "pos": "MF",
+        "share": 0.01301
+      },
+      {
+        "player": "Leandro Bacuna",
+        "pos": "MF",
+        "share": 0.01301
+      },
+      {
+        "player": "Kevin Felida",
         "pos": "MF",
         "share": 0.01301
       }
@@ -4501,17 +4501,17 @@
         "share": 0.06167
       },
       {
-        "player": "Adam Hložek",
-        "pos": "FW",
-        "share": 0.05604
-      },
-      {
         "player": "Tomáš Chorý",
         "pos": "FW",
         "share": 0.05604
       },
       {
         "player": "Mojmír Chytil",
+        "pos": "FW",
+        "share": 0.05604
+      },
+      {
+        "player": "Adam Hložek",
         "pos": "FW",
         "share": 0.05604
       },
@@ -4526,9 +4526,14 @@
         "share": 0.03787
       },
       {
-        "player": "Lukáš Provod",
+        "player": "Hugo Sochůrek",
         "pos": "MF",
         "share": 0.02549
+      },
+      {
+        "player": "Lukáš Provod",
+        "pos": "MF",
+        "share": 0.00892
       },
       {
         "player": "Michal Sadílek",
@@ -4537,11 +4542,6 @@
       },
       {
         "player": "Alexandr Sojka",
-        "pos": "MF",
-        "share": 0.00892
-      },
-      {
-        "player": "Hugo Sochůrek",
         "pos": "MF",
         "share": 0.00892
       },
@@ -4578,22 +4578,22 @@
         "share": 0.08293
       },
       {
-        "player": "Fiston Mayele",
-        "pos": "FW",
-        "share": 0.06889
-      },
-      {
-        "player": "Simon Banza",
-        "pos": "FW",
-        "share": 0.06889
-      },
-      {
         "player": "Brian Cipenga",
         "pos": "FW",
         "share": 0.06889
       },
       {
+        "player": "Fiston Mayele",
+        "pos": "FW",
+        "share": 0.06889
+      },
+      {
         "player": "Gaël Kakuta",
+        "pos": "FW",
+        "share": 0.06889
+      },
+      {
+        "player": "Simon Banza",
         "pos": "FW",
         "share": 0.06889
       },
@@ -4618,12 +4618,12 @@
         "share": 0.01096
       },
       {
-        "player": "Noah Sadiki",
+        "player": "Aaron Tshibola",
         "pos": "MF",
         "share": 0.01096
       },
       {
-        "player": "Aaron Tshibola",
+        "player": "Noah Sadiki",
         "pos": "MF",
         "share": 0.01096
       },
@@ -4757,7 +4757,7 @@
         "share": 0.08012
       },
       {
-        "player": "Mahmoud Saber",
+        "player": "Marwan Attia",
         "pos": "MF",
         "share": 0.03642
       },
@@ -4772,17 +4772,12 @@
         "share": 0.03642
       },
       {
-        "player": "Nabil Emad",
+        "player": "Mohanad Lasheen",
         "pos": "MF",
         "share": 0.03642
       },
       {
-        "player": "Marwan Attia",
-        "pos": "MF",
-        "share": 0.01275
-      },
-      {
-        "player": "Mohanad Lasheen",
+        "player": "Nabil Emad",
         "pos": "MF",
         "share": 0.01275
       },
@@ -4792,12 +4787,17 @@
         "share": 0.01275
       },
       {
+        "player": "Mahmoud Saber",
+        "pos": "MF",
+        "share": 0.01275
+      },
+      {
         "player": "Hossam Abdelmaguid",
         "pos": "DF",
         "share": 0.00637
       },
       {
-        "player": "Mohamed Abdelmonem",
+        "player": "Ramy Rabia",
         "pos": "DF",
         "share": 0.00637
       }
@@ -5075,7 +5075,7 @@
         "share": 0.09197
       },
       {
-        "player": "Abdul Fatawu",
+        "player": "Brandon Thomas-Asante",
         "pos": "FW",
         "share": 0.07022
       },
@@ -5085,7 +5085,7 @@
         "share": 0.07022
       },
       {
-        "player": "Brandon Thomas-Asante",
+        "player": "Abdul Fatawu",
         "pos": "FW",
         "share": 0.07022
       },
@@ -5110,17 +5110,17 @@
         "share": 0.01117
       },
       {
+        "player": "Elisha Owusu",
+        "pos": "MF",
+        "share": 0.01117
+      },
+      {
         "player": "Augustine Boakye",
         "pos": "MF",
         "share": 0.01117
       },
       {
         "player": "Thomas Partey",
-        "pos": "MF",
-        "share": 0.01117
-      },
-      {
-        "player": "Elisha Owusu",
         "pos": "MF",
         "share": 0.01117
       },
@@ -5157,7 +5157,7 @@
         "share": 0.07661
       },
       {
-        "player": "Ruben Providence",
+        "player": "Yassin Fortuné",
         "pos": "FW",
         "share": 0.07078
       },
@@ -5167,12 +5167,12 @@
         "share": 0.07078
       },
       {
-        "player": "Duckens Nazon",
+        "player": "Ruben Providence",
         "pos": "FW",
         "share": 0.07078
       },
       {
-        "player": "Yassin Fortuné",
+        "player": "Duckens Nazon",
         "pos": "FW",
         "share": 0.07078
       },
@@ -5187,11 +5187,6 @@
         "share": 0.03516
       },
       {
-        "player": "Carl Sainté",
-        "pos": "MF",
-        "share": 0.01126
-      },
-      {
         "player": "Woodensky Pierre",
         "pos": "MF",
         "share": 0.01126
@@ -5203,6 +5198,11 @@
       },
       {
         "player": "Dominique Simon",
+        "pos": "MF",
+        "share": 0.01126
+      },
+      {
+        "player": "Carl Sainté",
         "pos": "MF",
         "share": 0.01126
       },
@@ -5224,17 +5224,7 @@
         "share": 0.11837
       },
       {
-        "player": "Amirhossein Hosseinzadeh",
-        "pos": "FW",
-        "share": 0.07893
-      },
-      {
         "player": "Shahriyar Moghanlou",
-        "pos": "FW",
-        "share": 0.07893
-      },
-      {
-        "player": "Mehdi Ghayedi",
         "pos": "FW",
         "share": 0.07893
       },
@@ -5244,14 +5234,19 @@
         "share": 0.07893
       },
       {
+        "player": "Mehdi Ghayedi",
+        "pos": "FW",
+        "share": 0.07893
+      },
+      {
+        "player": "Amirhossein Hosseinzadeh",
+        "pos": "FW",
+        "share": 0.07893
+      },
+      {
         "player": "Mohammad Mohebi",
         "pos": "MF",
         "share": 0.07234
-      },
-      {
-        "player": "Mehdi Torabi",
-        "pos": "MF",
-        "share": 0.03588
       },
       {
         "player": "Amirmohammad Razzaghinia",
@@ -5271,6 +5266,11 @@
       {
         "player": "Saeid Ezatolahi",
         "pos": "MF",
+        "share": 0.03588
+      },
+      {
+        "player": "Rouzbeh Cheshmi",
+        "pos": "MF",
         "share": 0.01256
       },
       {
@@ -5279,12 +5279,12 @@
         "share": 0.01256
       },
       {
-        "player": "Rouzbeh Cheshmi",
+        "player": "Mehdi Torabi",
         "pos": "MF",
         "share": 0.01256
       },
       {
-        "player": "Shojae Khalilzadeh",
+        "player": "Danial Eiri",
         "pos": "DF",
         "share": 0.00628
       },
@@ -5311,12 +5311,12 @@
         "share": 0.08055
       },
       {
-        "player": "Ali Yousif",
+        "player": "Marko Farji",
         "pos": "FW",
         "share": 0.07259
       },
       {
-        "player": "Aymen Hussein",
+        "player": "Ali Yousif",
         "pos": "FW",
         "share": 0.07259
       },
@@ -5326,34 +5326,29 @@
         "share": 0.07259
       },
       {
-        "player": "Ali Al-Hamadi",
-        "pos": "FW",
-        "share": 0.07259
-      },
-      {
         "player": "Ali Jasim",
         "pos": "FW",
         "share": 0.07259
       },
       {
-        "player": "Marko Farji",
+        "player": "Ali Al-Hamadi",
         "pos": "FW",
         "share": 0.07259
+      },
+      {
+        "player": "Aymen Hussein",
+        "pos": "FW",
+        "share": 0.07259
+      },
+      {
+        "player": "Aimar Sher",
+        "pos": "MF",
+        "share": 0.03302
       },
       {
         "player": "Zaid Ismail",
         "pos": "MF",
         "share": 0.03302
-      },
-      {
-        "player": "Amir Al-Ammari",
-        "pos": "MF",
-        "share": 0.03302
-      },
-      {
-        "player": "Zidane Iqbal",
-        "pos": "MF",
-        "share": 0.01156
       },
       {
         "player": "Youssef Amyn",
@@ -5366,7 +5361,12 @@
         "share": 0.01156
       },
       {
-        "player": "Aimar Sher",
+        "player": "Amir Al-Ammari",
+        "pos": "MF",
+        "share": 0.01156
+      },
+      {
+        "player": "Zidane Iqbal",
         "pos": "MF",
         "share": 0.01156
       },
@@ -5552,27 +5552,7 @@
         "share": 0.09796
       },
       {
-        "player": "Ali Azaizeh",
-        "pos": "FW",
-        "share": 0.09387
-      },
-      {
         "player": "Mahmoud Al-Mardi",
-        "pos": "FW",
-        "share": 0.09387
-      },
-      {
-        "player": "Odeh Al-Fakhouri",
-        "pos": "FW",
-        "share": 0.09387
-      },
-      {
-        "player": "Musa Al-Taamari",
-        "pos": "FW",
-        "share": 0.09387
-      },
-      {
-        "player": "Mohammad Abu Zrayq",
         "pos": "FW",
         "share": 0.09387
       },
@@ -5582,12 +5562,32 @@
         "share": 0.09387
       },
       {
-        "player": "Amer Jamous",
+        "player": "Musa Al-Taamari",
+        "pos": "FW",
+        "share": 0.09387
+      },
+      {
+        "player": "Odeh Al-Fakhouri",
+        "pos": "FW",
+        "share": 0.09387
+      },
+      {
+        "player": "Mohammad Abu Zrayq",
+        "pos": "FW",
+        "share": 0.09387
+      },
+      {
+        "player": "Ali Azaizeh",
+        "pos": "FW",
+        "share": 0.09387
+      },
+      {
+        "player": "Mohammad Al-Dawoud",
         "pos": "MF",
         "share": 0.04266
       },
       {
-        "player": "Noor Al-Rawabdeh",
+        "player": "Amer Jamous",
         "pos": "MF",
         "share": 0.04266
       },
@@ -5602,7 +5602,7 @@
         "share": 0.01493
       },
       {
-        "player": "Mohammad Al-Dawoud",
+        "player": "Noor Al-Rawabdeh",
         "pos": "MF",
         "share": 0.01493
       },
@@ -5617,7 +5617,7 @@
         "share": 0.00746
       },
       {
-        "player": "Husam Abu Dahab",
+        "player": "Anas Badawi",
         "pos": "DF",
         "share": 0.00746
       }
@@ -5649,7 +5649,7 @@
         "share": 0.06757
       },
       {
-        "player": "Guillermo Martínez",
+        "player": "Armando González",
         "pos": "FW",
         "share": 0.06757
       },
@@ -5659,7 +5659,7 @@
         "share": 0.06757
       },
       {
-        "player": "Armando González",
+        "player": "Guillermo Martínez",
         "pos": "FW",
         "share": 0.06757
       },
@@ -5776,12 +5776,12 @@
         "share": 0.01165
       },
       {
-        "player": "Gessime Yassine",
+        "player": "Ayyoub Bouaddi",
         "pos": "MF",
         "share": 0.00909
       },
       {
-        "player": "Ayyoub Bouaddi",
+        "player": "Gessime Yassine",
         "pos": "MF",
         "share": 0.00909
       }
@@ -5915,7 +5915,7 @@
         "share": 0.0393
       },
       {
-        "player": "Matthew Garbett",
+        "player": "Sarpreet Singh",
         "pos": "MF",
         "share": 0.0308
       },
@@ -5930,12 +5930,12 @@
         "share": 0.01078
       },
       {
-        "player": "Marko Stamenić",
+        "player": "Matthew Garbett",
         "pos": "MF",
         "share": 0.01078
       },
       {
-        "player": "Sarpreet Singh",
+        "player": "Marko Stamenić",
         "pos": "MF",
         "share": 0.01078
       },
@@ -5945,7 +5945,7 @@
         "share": 0.01078
       },
       {
-        "player": "Michael Boxall",
+        "player": "Tyler Bindon",
         "pos": "DF",
         "share": 0.00539
       }
@@ -5997,12 +5997,12 @@
         "share": 0.03521
       },
       {
-        "player": "Patrick Berg",
+        "player": "Sander Berge",
         "pos": "MF",
         "share": 0.02883
       },
       {
-        "player": "Sander Berge",
+        "player": "Patrick Berg",
         "pos": "MF",
         "share": 0.02883
       },
@@ -6064,17 +6064,17 @@
         "share": 0.0636
       },
       {
-        "player": "José Fajardo",
-        "pos": "FW",
-        "share": 0.0636
-      },
-      {
         "player": "Cecilio Waterman",
         "pos": "FW",
         "share": 0.0636
       },
       {
         "player": "Azarias Londoño",
+        "pos": "FW",
+        "share": 0.0636
+      },
+      {
+        "player": "José Fajardo",
         "pos": "FW",
         "share": 0.0636
       },
@@ -6089,7 +6089,7 @@
         "share": 0.03544
       },
       {
-        "player": "César Yanis",
+        "player": "Aníbal Godoy",
         "pos": "MF",
         "share": 0.01011
       },
@@ -6099,7 +6099,7 @@
         "share": 0.01011
       },
       {
-        "player": "Aníbal Godoy",
+        "player": "César Yanis",
         "pos": "MF",
         "share": 0.01011
       },
@@ -6136,11 +6136,6 @@
         "share": 0.0872
       },
       {
-        "player": "Isidro Pitta",
-        "pos": "FW",
-        "share": 0.0872
-      },
-      {
         "player": "Kaku",
         "pos": "FW",
         "share": 0.0872
@@ -6151,12 +6146,17 @@
         "share": 0.0872
       },
       {
+        "player": "Isidro Pitta",
+        "pos": "FW",
+        "share": 0.0872
+      },
+      {
         "player": "Matías Galarza",
         "pos": "MF",
         "share": 0.03963
       },
       {
-        "player": "Gustavo Caballero",
+        "player": "Damián Bobadilla",
         "pos": "MF",
         "share": 0.03963
       },
@@ -6171,12 +6171,12 @@
         "share": 0.03963
       },
       {
-        "player": "Damián Bobadilla",
+        "player": "Gustavo Caballero",
         "pos": "MF",
         "share": 0.01387
       },
       {
-        "player": "Maurício",
+        "player": "Ramón Sosa",
         "pos": "MF",
         "share": 0.01387
       },
@@ -6186,7 +6186,7 @@
         "share": 0.01387
       },
       {
-        "player": "Ramón Sosa",
+        "player": "Maurício",
         "pos": "MF",
         "share": 0.01387
       },
@@ -6290,12 +6290,12 @@
         "share": 0.08464
       },
       {
-        "player": "Mohamed Manai",
+        "player": "Ahmed Alaaeldin",
         "pos": "FW",
         "share": 0.07751
       },
       {
-        "player": "Akram Afif",
+        "player": "Mohamed Manai",
         "pos": "FW",
         "share": 0.07751
       },
@@ -6305,17 +6305,7 @@
         "share": 0.07751
       },
       {
-        "player": "Hassan Al-Haydos",
-        "pos": "FW",
-        "share": 0.07751
-      },
-      {
         "player": "Tahsin Jamshid",
-        "pos": "FW",
-        "share": 0.07751
-      },
-      {
-        "player": "Ahmed Alaaeldin",
         "pos": "FW",
         "share": 0.07751
       },
@@ -6325,14 +6315,34 @@
         "share": 0.07751
       },
       {
-        "player": "Ahmed Fathy",
+        "player": "Hassan Al-Haydos",
+        "pos": "FW",
+        "share": 0.07751
+      },
+      {
+        "player": "Akram Afif",
+        "pos": "FW",
+        "share": 0.07751
+      },
+      {
+        "player": "Assim Madibo",
         "pos": "MF",
         "share": 0.03524
       },
       {
-        "player": "Karim Boudiaf",
+        "player": "Ahmed Al-Ganehi",
         "pos": "MF",
         "share": 0.03524
+      },
+      {
+        "player": "Ahmed Fathy",
+        "pos": "MF",
+        "share": 0.01233
+      },
+      {
+        "player": "Karim Boudiaf",
+        "pos": "MF",
+        "share": 0.01233
       },
       {
         "player": "Abdulaziz Hatem",
@@ -6340,49 +6350,24 @@
         "share": 0.01233
       },
       {
-        "player": "Ahmed Al-Ganehi",
-        "pos": "MF",
-        "share": 0.01233
-      },
-      {
-        "player": "Assim Madibo",
-        "pos": "MF",
-        "share": 0.01233
-      },
-      {
-        "player": "Ayoub Al-Oui",
+        "player": "Issa Laye",
         "pos": "DF",
         "share": 0.00616
       },
       {
-        "player": "Homam Ahmed",
+        "player": "Sultan Al-Brake",
         "pos": "DF",
         "share": 0.00616
       }
     ],
     "Saudi Arabia": [
       {
-        "player": "Salem Al-Dawsari",
-        "pos": "FW",
-        "share": 0.09805
-      },
-      {
-        "player": "Firas Al-Buraikan",
-        "pos": "FW",
-        "share": 0.09805
-      },
-      {
         "player": "Ayman Yahya",
         "pos": "FW",
         "share": 0.09805
       },
       {
-        "player": "Abdullah Al-Hamdan",
-        "pos": "FW",
-        "share": 0.09805
-      },
-      {
-        "player": "Khalid Al-Ghannam",
+        "player": "Firas Al-Buraikan",
         "pos": "FW",
         "share": 0.09805
       },
@@ -6397,14 +6382,24 @@
         "share": 0.09805
       },
       {
+        "player": "Abdullah Al-Hamdan",
+        "pos": "FW",
+        "share": 0.09805
+      },
+      {
+        "player": "Salem Al-Dawsari",
+        "pos": "FW",
+        "share": 0.09805
+      },
+      {
+        "player": "Khalid Al-Ghannam",
+        "pos": "FW",
+        "share": 0.09805
+      },
+      {
         "player": "Saud Abdulhamid",
         "pos": "DF",
         "share": 0.06203
-      },
-      {
-        "player": "Musab Al-Juwayr",
-        "pos": "MF",
-        "share": 0.04457
       },
       {
         "player": "Nasser Al-Dawsari",
@@ -6412,7 +6407,12 @@
         "share": 0.04457
       },
       {
-        "player": "Abdullah Al-Khaibari",
+        "player": "Musab Al-Juwayr",
+        "pos": "MF",
+        "share": 0.04457
+      },
+      {
+        "player": "Ziyad Al-Johani",
         "pos": "MF",
         "share": 0.04457
       },
@@ -6427,17 +6427,17 @@
         "share": 0.0156
       },
       {
-        "player": "Ziyad Al-Johani",
+        "player": "Abdullah Al-Khaibari",
         "pos": "MF",
         "share": 0.0156
       },
       {
-        "player": "Ali Majrashi",
+        "player": "Hassan Al-Tambakti",
         "pos": "DF",
         "share": 0.0078
       },
       {
-        "player": "Abdulelah Al-Amri",
+        "player": "Ali Majrashi",
         "pos": "DF",
         "share": 0.0078
       }
@@ -6613,11 +6613,6 @@
         "share": 0.13392
       },
       {
-        "player": "Thapelo Maseko",
-        "pos": "FW",
-        "share": 0.08586
-      },
-      {
         "player": "Relebohile Mofokeng",
         "pos": "FW",
         "share": 0.08586
@@ -6629,6 +6624,11 @@
       },
       {
         "player": "Oswin Appollis",
+        "pos": "FW",
+        "share": 0.08586
+      },
+      {
+        "player": "Thapelo Maseko",
         "pos": "FW",
         "share": 0.08586
       },
@@ -6658,7 +6658,7 @@
         "share": 0.0524
       },
       {
-        "player": "Themba Zwane",
+        "player": "Teboho Mokoena",
         "pos": "MF",
         "share": 0.03903
       },
@@ -6668,7 +6668,7 @@
         "share": 0.01366
       },
       {
-        "player": "Teboho Mokoena",
+        "player": "Themba Zwane",
         "pos": "MF",
         "share": 0.01366
       },
@@ -6683,7 +6683,7 @@
         "share": 0.00683
       },
       {
-        "player": "Aubrey Modiba",
+        "player": "Khulumani Ndamane",
         "pos": "DF",
         "share": 0.00683
       }
@@ -6750,7 +6750,7 @@
         "share": 0.01169
       },
       {
-        "player": "Eom Ji-sung",
+        "player": "Lee Gi-hyuk",
         "pos": "MF",
         "share": 0.01169
       },
@@ -6760,7 +6760,7 @@
         "share": 0.01169
       },
       {
-        "player": "Lee Gi-hyuk",
+        "player": "Eom Ji-sung",
         "pos": "MF",
         "share": 0.01169
       },
@@ -7294,12 +7294,12 @@
         "share": 0.06094
       },
       {
-        "player": "Facundo Pellistri",
+        "player": "Darwin Núñez",
         "pos": "FW",
         "share": 0.05563
       },
       {
-        "player": "Darwin Núñez",
+        "player": "Facundo Pellistri",
         "pos": "FW",
         "share": 0.05563
       },
@@ -7329,17 +7329,17 @@
         "share": 0.01094
       },
       {
-        "player": "Agustín Canobbio",
-        "pos": "MF",
-        "share": 0.00885
-      },
-      {
-        "player": "Manuel Ugarte",
+        "player": "Giorgian de Arrascaeta",
         "pos": "MF",
         "share": 0.00885
       },
       {
         "player": "Nicolás de la Cruz",
+        "pos": "MF",
+        "share": 0.00885
+      },
+      {
+        "player": "Joaquín Piquerez",
         "pos": "MF",
         "share": 0.00885
       }
@@ -7364,16 +7364,6 @@
         "player": "Azizbek Amonov",
         "pos": "FW",
         "share": 0.08406
-      },
-      {
-        "player": "Azizjon Ganiev",
-        "pos": "MF",
-        "share": 0.03819
-      },
-      {
-        "player": "Dostonbek Khamdamov",
-        "pos": "MF",
-        "share": 0.03819
       },
       {
         "player": "Otabek Shukurov",
@@ -7401,27 +7391,37 @@
         "share": 0.03819
       },
       {
+        "player": "Jaloliddin Masharipov",
+        "pos": "MF",
+        "share": 0.03819
+      },
+      {
+        "player": "Dostonbek Khamdamov",
+        "pos": "MF",
+        "share": 0.03819
+      },
+      {
+        "player": "Azizjon Ganiev",
+        "pos": "MF",
+        "share": 0.01337
+      },
+      {
         "player": "Sherzod Esanov",
         "pos": "MF",
         "share": 0.01337
       },
       {
-        "player": "Jaloliddin Masharipov",
-        "pos": "MF",
-        "share": 0.01337
-      },
-      {
-        "player": "Jakhongir Urozov",
-        "pos": "DF",
-        "share": 0.00668
-      },
-      {
-        "player": "Farrukh Sayfiev",
-        "pos": "DF",
-        "share": 0.00668
-      },
-      {
         "player": "Rustam Ashurmatov",
+        "pos": "DF",
+        "share": 0.00668
+      },
+      {
+        "player": "Umar Eshmurodov",
+        "pos": "DF",
+        "share": 0.00668
+      },
+      {
+        "player": "Abdukodir Khusanov",
         "pos": "DF",
         "share": 0.00668
       }
@@ -7868,7 +7868,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-14T12:14Z",
+      "snapshot_ts": "2026-07-14T14:16Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
