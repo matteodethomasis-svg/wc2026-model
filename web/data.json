@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17 16:10 UTC",
+    "generated_at": "2026-07-17 17:33 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2185,7 +2185,7 @@
       "ev": -29.0,
       "model_odds": 3.36,
       "market_odds": 1.699235344095157,
-      "volume": 122756715.5553758
+      "volume": 122804832.9069238
     },
     {
       "team": "Argentina",
@@ -2195,7 +2195,7 @@
       "ev": -11.1,
       "model_odds": 3.39,
       "market_odds": 2.4660912453760786,
-      "volume": 156136109.7389082
+      "volume": 156180955.82865596
     },
     {
       "team": "France",
@@ -2673,7 +2673,7 @@
         "edge": 9.7,
         "model_odds": 9.69,
         "market_odds": 166.67,
-        "volume": 3292818.711070998
+        "volume": 3308143.606781998
       },
       {
         "player": "Ferran Torres",
@@ -2713,7 +2713,7 @@
         "edge": -35.8,
         "model_odds": 27.25,
         "market_odds": 2.53,
-        "volume": 5206974.095339895
+        "volume": 5213968.625339893
       },
       {
         "player": "Mikel Oyarzabal",
@@ -2723,7 +2723,7 @@
         "edge": 2.5,
         "model_odds": 38.17,
         "market_odds": 666.67,
-        "volume": 5092865.447162994
+        "volume": 5118763.147162994
       },
       {
         "player": "Ousmane Dembele",
@@ -2743,7 +2743,7 @@
         "edge": -57.1,
         "model_odds": 105.26,
         "market_odds": 1.72,
-        "volume": 5489138.600625962
+        "volume": 5491764.98788696
       },
       {
         "player": "Dani Olmo",
@@ -2809,11 +2809,11 @@
         "player": "Jude Bellingham",
         "team": "England",
         "model_p": 0.1,
-        "market_p": 0.3,
-        "edge": -0.2,
+        "market_p": 0.4,
+        "edge": -0.3,
         "model_odds": 1250.0,
-        "market_odds": 333.33,
-        "volume": 2808722.518206989
+        "market_odds": 285.71,
+        "volume": 2821494.350210989
       },
       {
         "player": "Pedri",
@@ -2835,7 +2835,7 @@
         "edge": 81.2,
         "model_odds": 1.03,
         "market_odds": 6.45,
-        "volume": 9748.256132999995
+        "volume": 9774.128224999997
       },
       {
         "player": "Nico Williams",
@@ -2851,11 +2851,11 @@
         "player": "Dani Olmo",
         "team": "Spain",
         "model_p": 85.5,
-        "market_p": 19.5,
-        "edge": 66.0,
+        "market_p": 20.0,
+        "edge": 65.5,
         "model_odds": 1.17,
-        "market_odds": 5.13,
-        "volume": 7625.330649999996
+        "market_odds": 5.0,
+        "volume": 7653.196604999996
       },
       {
         "player": "Marcus Thuram",
@@ -2875,16 +2875,16 @@
         "edge": 66.9,
         "model_odds": 1.19,
         "market_odds": 5.85,
-        "volume": 154933.7921410001
+        "volume": 155176.98981100012
       },
       {
         "player": "Bukayo Saka",
         "team": "England",
         "model_p": 75.0,
-        "market_p": 9.0,
-        "edge": 66.0,
+        "market_p": 8.5,
+        "edge": 66.5,
         "model_odds": 1.33,
-        "market_odds": 11.11,
+        "market_odds": 11.76,
         "volume": 15941.113528000007
       },
       {
@@ -2901,10 +2901,10 @@
         "player": "Eberechi Eze",
         "team": "England",
         "model_p": 60.2,
-        "market_p": 10.0,
-        "edge": 50.2,
+        "market_p": 10.5,
+        "edge": 49.7,
         "model_odds": 1.66,
-        "market_odds": 10.0,
+        "market_odds": 9.52,
         "volume": 3468.1458890000026
       },
       {
@@ -2961,20 +2961,20 @@
         "player": "Gavi",
         "team": "Spain",
         "model_p": 39.1,
-        "market_p": 3.0,
-        "edge": 36.1,
+        "market_p": 2.9,
+        "edge": 36.2,
         "model_odds": 2.56,
-        "market_odds": 33.33,
+        "market_odds": 33.9,
         "volume": 4881.471323999999
       },
       {
         "player": "Aurélien Tchouaméni",
         "team": "France",
         "model_p": 33.9,
-        "market_p": 5.1,
-        "edge": 28.7,
+        "market_p": 4.9,
+        "edge": 28.9,
         "model_odds": 2.95,
-        "market_odds": 19.61,
+        "market_odds": 20.41,
         "volume": 17491.130398999994
       },
       {
@@ -3004,7 +3004,7 @@
         "market_p": 1.8,
         "edge": 26.2,
         "model_odds": 3.57,
-        "market_odds": 54.05,
+        "market_odds": 55.56,
         "volume": 12282.116242000002
       },
       {
@@ -7438,7 +7438,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-17T16:10Z",
+      "snapshot_ts": "2026-07-17T17:33Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
