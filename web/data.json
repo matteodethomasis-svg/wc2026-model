@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-18 13:54 UTC",
+    "generated_at": "2026-07-18 14:47 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2185,7 +2185,7 @@
       "ev": -29.3,
       "model_odds": 3.36,
       "market_odds": 1.69061707523246,
-      "volume": 123538047.97198191
+      "volume": 123564174.98556496
     },
     {
       "team": "Argentina",
@@ -2195,7 +2195,7 @@
       "ev": -10.7,
       "model_odds": 3.39,
       "market_odds": 2.4906600249066,
-      "volume": 158070159.53828472
+      "volume": 158185342.91468352
     },
     {
       "team": "France",
@@ -2669,11 +2669,11 @@
         "player": "Harry Kane",
         "team": "England",
         "model_p": 10.3,
-        "market_p": 0.7,
-        "edge": 9.7,
+        "market_p": 0.8,
+        "edge": 9.5,
         "model_odds": 9.69,
-        "market_odds": 153.85,
-        "volume": 3813276.649935001
+        "market_odds": 125.0,
+        "volume": 3888914.723045005
       },
       {
         "player": "Ferran Torres",
@@ -2713,7 +2713,7 @@
         "edge": -37.8,
         "model_odds": 27.25,
         "market_odds": 2.41,
-        "volume": 5315097.683113905
+        "volume": 5321694.461051906
       },
       {
         "player": "Mikel Oyarzabal",
@@ -2743,7 +2743,7 @@
         "edge": -56.3,
         "model_odds": 105.26,
         "market_odds": 1.75,
-        "volume": 5655826.9187269565
+        "volume": 5657424.162675957
       },
       {
         "player": "Dani Olmo",
@@ -2813,7 +2813,7 @@
         "edge": -0.3,
         "model_odds": 1250.0,
         "market_odds": 285.71,
-        "volume": 2927135.9185089893
+        "volume": 3131016.1965089887
       },
       {
         "player": "Pedri",
@@ -2861,21 +2861,21 @@
         "player": "Marcus Thuram",
         "team": "France",
         "model_p": 85.0,
-        "market_p": 3.8,
-        "edge": 81.2,
+        "market_p": 3.9,
+        "edge": 81.1,
         "model_odds": 1.18,
-        "market_odds": 26.32,
-        "volume": 17860.417167000003
+        "market_odds": 25.64,
+        "volume": 17960.417167000003
       },
       {
         "player": "Michael Olise",
         "team": "France",
         "model_p": 84.0,
-        "market_p": 17.4,
-        "edge": 66.6,
+        "market_p": 16.7,
+        "edge": 67.4,
         "model_odds": 1.19,
-        "market_odds": 5.73,
-        "volume": 160123.27260400014
+        "market_odds": 6.01,
+        "volume": 161977.67380000014
       },
       {
         "player": "Bukayo Saka",
@@ -2885,27 +2885,27 @@
         "edge": 64.5,
         "model_odds": 1.33,
         "market_odds": 9.52,
-        "volume": 16344.338183000003
+        "volume": 16475.108183000004
       },
       {
         "player": "Rayan Cherki",
         "team": "France",
         "model_p": 65.0,
-        "market_p": 19.7,
-        "edge": 45.3,
+        "market_p": 19.6,
+        "edge": 45.4,
         "model_odds": 1.54,
-        "market_odds": 5.09,
+        "market_odds": 5.12,
         "volume": 11883.201956000004
       },
       {
         "player": "Eberechi Eze",
         "team": "England",
         "model_p": 60.2,
-        "market_p": 10.5,
-        "edge": 49.7,
+        "market_p": 13.0,
+        "edge": 47.2,
         "model_odds": 1.66,
-        "market_odds": 9.52,
-        "volume": 4050.6565260000025
+        "market_odds": 7.69,
+        "volume": 4156.786526000002
       },
       {
         "player": "Martin Zubimendi",
@@ -2972,9 +2972,9 @@
         "team": "France",
         "model_p": 33.9,
         "market_p": 3.9,
-        "edge": 29.9,
+        "edge": 30.0,
         "model_odds": 2.95,
-        "market_odds": 25.64,
+        "market_odds": 25.97,
         "volume": 19713.478340999995
       },
       {
@@ -2984,7 +2984,7 @@
         "market_p": 4.9,
         "edge": 28.1,
         "model_odds": 3.03,
-        "market_odds": 20.62,
+        "market_odds": 20.41,
         "volume": 5398.289229000002
       },
       {
@@ -3032,9 +3032,9 @@
         "team": "France",
         "model_p": 22.5,
         "market_p": 2.9,
-        "edge": 19.6,
+        "edge": 19.5,
         "model_odds": 4.45,
-        "market_odds": 34.48,
+        "market_odds": 33.9,
         "volume": 5753.173319999998
       },
       {
@@ -7438,7 +7438,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-18T13:53Z",
+      "snapshot_ts": "2026-07-18T14:47Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
