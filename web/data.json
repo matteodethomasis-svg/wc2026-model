@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-19 09:32 UTC",
+    "generated_at": "2026-07-19 10:59 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2185,7 +2185,7 @@
       "ev": -11.3,
       "model_odds": 3.38,
       "market_odds": 2.442002442002442,
-      "volume": 160351441.1844376
+      "volume": 160497672.6331651
     },
     {
       "team": "Spain",
@@ -2195,7 +2195,7 @@
       "ev": -30.9,
       "model_odds": 3.55,
       "market_odds": 1.693480101608806,
-      "volume": 125697645.3777925
+      "volume": 125888268.19806446
     },
     {
       "team": "England",
@@ -2673,7 +2673,7 @@
         "edge": 7.3,
         "model_odds": 13.66,
         "market_odds": 2000.0,
-        "volume": 615840.6180920006
+        "volume": 616840.6180920006
       },
       {
         "player": "Julian Alvarez",
@@ -2693,7 +2693,7 @@
         "edge": 3.6,
         "model_odds": 27.55,
         "market_odds": 2000.0,
-        "volume": 2307338.882006999
+        "volume": 2321338.882006999
       },
       {
         "player": "Mikel Oyarzabal",
@@ -2703,7 +2703,7 @@
         "edge": 2.3,
         "model_odds": 43.29,
         "market_odds": 2000.0,
-        "volume": 5500293.865162992
+        "volume": 5503454.495162992
       },
       {
         "player": "Kylian Mbappe",
@@ -2713,17 +2713,17 @@
         "edge": -90.9,
         "model_odds": 63.29,
         "market_odds": 1.08,
-        "volume": 6638010.726232918
+        "volume": 6646266.320671917
       },
       {
         "player": "Lionel Messi",
         "team": "Argentina",
         "model_p": 0.9,
-        "market_p": 7.0,
-        "edge": -6.0,
+        "market_p": 7.5,
+        "edge": -6.7,
         "model_odds": 111.11,
-        "market_odds": 14.39,
-        "volume": 7793960.253062978
+        "market_odds": 13.25,
+        "volume": 7829235.665345974
       },
       {
         "player": "Dani Olmo",
@@ -2751,21 +2751,21 @@
         "player": "Ferran Torres",
         "team": "Spain",
         "model_p": 96.5,
-        "market_p": 19.0,
-        "edge": 77.5,
+        "market_p": 19.5,
+        "edge": 77.0,
         "model_odds": 1.04,
-        "market_odds": 5.26,
-        "volume": 10439.120276999998
+        "market_odds": 5.13,
+        "volume": 10592.357342999998
       },
       {
         "player": "Nico Williams",
         "team": "Spain",
         "model_p": 85.2,
-        "market_p": 11.3,
-        "edge": 73.9,
+        "market_p": 11.2,
+        "edge": 74.0,
         "model_odds": 1.17,
-        "market_odds": 8.81,
-        "volume": 16067.887958
+        "market_odds": 8.93,
+        "volume": 16073.465814
       },
       {
         "player": "Dani Olmo",
@@ -2775,16 +2775,16 @@
         "edge": 66.1,
         "model_odds": 1.18,
         "market_odds": 5.26,
-        "volume": 8969.085183999996
+        "volume": 8979.085183999996
       },
       {
         "player": "Martin Zubimendi",
         "team": "Spain",
         "model_p": 59.4,
-        "market_p": 4.6,
-        "edge": 54.8,
+        "market_p": 3.6,
+        "edge": 55.8,
         "model_odds": 1.68,
-        "market_odds": 21.74,
+        "market_odds": 27.78,
         "volume": 10258.846826999998
       },
       {
@@ -2811,31 +2811,31 @@
         "player": "Gavi",
         "team": "Spain",
         "model_p": 38.6,
-        "market_p": 2.8,
-        "edge": 35.9,
+        "market_p": 1.9,
+        "edge": 36.7,
         "model_odds": 2.59,
-        "market_odds": 35.71,
+        "market_odds": 51.28,
         "volume": 6606.829431999998
       },
       {
         "player": "Pau Cubarsí",
         "team": "Spain",
         "model_p": 27.2,
-        "market_p": 3.2,
-        "edge": 24.0,
+        "market_p": 3.3,
+        "edge": 23.9,
         "model_odds": 3.67,
-        "market_odds": 30.77,
-        "volume": 7714.098013
+        "market_odds": 30.3,
+        "volume": 7826.848013
       },
       {
         "player": "Marc Cucurella",
         "team": "Spain",
         "model_p": 26.7,
-        "market_p": 6.7,
-        "edge": 20.0,
+        "market_p": 7.2,
+        "edge": 19.5,
         "model_odds": 3.75,
-        "market_odds": 15.04,
-        "volume": 9864.840963999995
+        "market_odds": 13.89,
+        "volume": 9965.964161999991
       },
       {
         "player": "David Raya",
@@ -7228,7 +7228,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-19T09:32Z",
+      "snapshot_ts": "2026-07-19T10:59Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
