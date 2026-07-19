@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-19 11:58 UTC",
+    "generated_at": "2026-07-19 13:07 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2185,7 +2185,7 @@
       "ev": -11.2,
       "model_odds": 3.38,
       "market_odds": 2.4479804161566707,
-      "volume": 160676229.17387572
+      "volume": 160848525.4223577
     },
     {
       "team": "Spain",
@@ -2195,7 +2195,7 @@
       "ev": -30.9,
       "model_odds": 3.55,
       "market_odds": 1.693480101608806,
-      "volume": 126021271.56011848
+      "volume": 126112222.14570647
     },
     {
       "team": "England",
@@ -2693,17 +2693,17 @@
         "edge": 3.6,
         "model_odds": 27.55,
         "market_odds": 2000.0,
-        "volume": 2357858.882006999
+        "volume": 2358878.882006999
       },
       {
         "player": "Mikel Oyarzabal",
         "team": "Spain",
         "model_p": 2.3,
-        "market_p": 0.1,
-        "edge": 2.3,
+        "market_p": 0.4,
+        "edge": 1.9,
         "model_odds": 43.29,
-        "market_odds": 2000.0,
-        "volume": 5504554.495162992
+        "market_odds": 250.0,
+        "volume": 5600240.785162993
       },
       {
         "player": "Kylian Mbappe",
@@ -2713,17 +2713,17 @@
         "edge": -90.9,
         "model_odds": 63.29,
         "market_odds": 1.08,
-        "volume": 6651266.477325918
+        "volume": 6673966.221702915
       },
       {
         "player": "Lionel Messi",
         "team": "Argentina",
         "model_p": 0.9,
-        "market_p": 7.6,
-        "edge": -6.8,
+        "market_p": 7.8,
+        "edge": -6.9,
         "model_odds": 111.11,
-        "market_odds": 13.07,
-        "volume": 7866597.590395969
+        "market_odds": 12.9,
+        "volume": 8180214.159191966
       },
       {
         "player": "Dani Olmo",
@@ -2755,16 +2755,16 @@
         "edge": 77.0,
         "model_odds": 1.04,
         "market_odds": 5.13,
-        "volume": 10706.643055999995
+        "volume": 10729.643055999995
       },
       {
         "player": "Nico Williams",
         "team": "Spain",
         "model_p": 85.2,
-        "market_p": 11.2,
-        "edge": 74.0,
+        "market_p": 11.3,
+        "edge": 73.9,
         "model_odds": 1.17,
-        "market_odds": 8.93,
+        "market_odds": 8.85,
         "volume": 16073.465814
       },
       {
@@ -2775,16 +2775,16 @@
         "edge": 66.6,
         "model_odds": 1.18,
         "market_odds": 5.41,
-        "volume": 8989.085183999996
+        "volume": 9057.506232999996
       },
       {
         "player": "Martin Zubimendi",
         "team": "Spain",
         "model_p": 59.4,
-        "market_p": 2.9,
-        "edge": 56.4,
+        "market_p": 2.2,
+        "edge": 57.2,
         "model_odds": 1.68,
-        "market_odds": 33.9,
+        "market_odds": 45.45,
         "volume": 10269.026767999998
       },
       {
@@ -2801,21 +2801,21 @@
         "player": "Pedri",
         "team": "Spain",
         "model_p": 49.2,
-        "market_p": 8.5,
-        "edge": 40.7,
+        "market_p": 9.0,
+        "edge": 40.2,
         "model_odds": 2.03,
-        "market_odds": 11.76,
+        "market_odds": 11.11,
         "volume": 6287.238524000002
       },
       {
         "player": "Gavi",
         "team": "Spain",
         "model_p": 38.6,
-        "market_p": 2.2,
-        "edge": 36.4,
+        "market_p": 2.1,
+        "edge": 36.6,
         "model_odds": 2.59,
-        "market_odds": 44.44,
-        "volume": 6606.829431999998
+        "market_odds": 48.78,
+        "volume": 6666.829431999998
       },
       {
         "player": "Pau Cubarsí",
@@ -2831,10 +2831,10 @@
         "player": "Marc Cucurella",
         "team": "Spain",
         "model_p": 26.7,
-        "market_p": 6.6,
-        "edge": 20.1,
+        "market_p": 6.2,
+        "edge": 20.4,
         "model_odds": 3.75,
-        "market_odds": 15.27,
+        "market_odds": 16.0,
         "volume": 9965.964161999991
       },
       {
@@ -7228,7 +7228,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-19T11:58Z",
+      "snapshot_ts": "2026-07-19T13:07Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
