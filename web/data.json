@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-19 23:37 UTC",
+    "generated_at": "2026-07-20 01:11 UTC",
     "model": "Elo + Dixon-Coles + xG + per-player squad layer (PlayerElo XI + GK)"
   },
   "predictions": [
@@ -2185,7 +2185,7 @@
       "ev": 29.5,
       "model_odds": 3.38,
       "market_odds": 2000.0,
-      "volume": 174239021.1357342
+      "volume": 174315386.02573428
     },
     {
       "team": "Spain",
@@ -2195,7 +2195,7 @@
       "ev": -71.8,
       "model_odds": 3.55,
       "market_odds": 1.0005002501250624,
-      "volume": 146640726.95338348
+      "volume": 152129544.3697989
     },
     {
       "team": "England",
@@ -2654,200 +2654,8 @@
     "groups": []
   },
   "goalscorers": {
-    "golden_boot": [
-      {
-        "player": "Lautaro Martinez",
-        "team": "Argentina",
-        "model_p": 19.4,
-        "market_p": 0.1,
-        "edge": 19.4,
-        "model_odds": 5.14,
-        "market_odds": 2000.0,
-        "volume": 630207.3069180002
-      },
-      {
-        "player": "Ferran Torres",
-        "team": "Spain",
-        "model_p": 7.3,
-        "market_p": 0.1,
-        "edge": 7.3,
-        "model_odds": 13.66,
-        "market_odds": 2000.0,
-        "volume": 644740.6180920006
-      },
-      {
-        "player": "Julian Alvarez",
-        "team": "Argentina",
-        "model_p": 4.2,
-        "market_p": 0.1,
-        "edge": 4.1,
-        "model_odds": 23.92,
-        "market_odds": 2000.0,
-        "volume": 797812.5493170003
-      },
-      {
-        "player": "Lamine Yamal",
-        "team": "Spain",
-        "model_p": 3.6,
-        "market_p": 0.1,
-        "edge": 3.6,
-        "model_odds": 27.55,
-        "market_odds": 2000.0,
-        "volume": 2641573.6920069987
-      },
-      {
-        "player": "Mikel Oyarzabal",
-        "team": "Spain",
-        "model_p": 2.3,
-        "market_p": 0.1,
-        "edge": 2.3,
-        "model_odds": 43.29,
-        "market_odds": 2000.0,
-        "volume": 5683264.959828997
-      },
-      {
-        "player": "Kylian Mbappe",
-        "team": "France",
-        "model_p": 1.6,
-        "market_p": 100.0,
-        "edge": -98.4,
-        "model_odds": 63.29,
-        "market_odds": 1.0,
-        "volume": 8271129.944615923
-      },
-      {
-        "player": "Lionel Messi",
-        "team": "Argentina",
-        "model_p": 0.9,
-        "market_p": 0.1,
-        "edge": 0.9,
-        "model_odds": 111.11,
-        "market_odds": 2000.0,
-        "volume": 11151382.781807091
-      },
-      {
-        "player": "Dani Olmo",
-        "team": "Spain",
-        "model_p": 0.5,
-        "market_p": 0.1,
-        "edge": 0.5,
-        "model_odds": 196.08,
-        "market_odds": 2000.0,
-        "volume": 458303.0772530002
-      },
-      {
-        "player": "Pedri",
-        "team": "Spain",
-        "model_p": 0.1,
-        "market_p": 0.1,
-        "edge": 0.0,
-        "model_odds": 1666.67,
-        "market_odds": 2000.0,
-        "volume": 572355.275732
-      }
-    ],
-    "player_to_score": [
-      {
-        "player": "Ferran Torres",
-        "team": "Spain",
-        "model_p": 96.5,
-        "market_p": 100.0,
-        "edge": -3.4,
-        "model_odds": 1.04,
-        "market_odds": 1.0,
-        "volume": 19772.35868
-      },
-      {
-        "player": "Nico Williams",
-        "team": "Spain",
-        "model_p": 85.2,
-        "market_p": 0.1,
-        "edge": 85.2,
-        "model_odds": 1.17,
-        "market_odds": 2000.0,
-        "volume": 17609.035300999996
-      },
-      {
-        "player": "Dani Olmo",
-        "team": "Spain",
-        "model_p": 85.1,
-        "market_p": 0.1,
-        "edge": 85.0,
-        "model_odds": 1.18,
-        "market_odds": 2000.0,
-        "volume": 12601.201482000002
-      },
-      {
-        "player": "Martin Zubimendi",
-        "team": "Spain",
-        "model_p": 59.4,
-        "market_p": 0.1,
-        "edge": 59.3,
-        "model_odds": 1.68,
-        "market_odds": 2000.0,
-        "volume": 12256.112682999998
-      },
-      {
-        "player": "Rodri",
-        "team": "Spain",
-        "model_p": 52.2,
-        "market_p": 0.2,
-        "edge": 52.0,
-        "model_odds": 1.92,
-        "market_odds": 500.0,
-        "volume": 11746.193779999998
-      },
-      {
-        "player": "Pedri",
-        "team": "Spain",
-        "model_p": 49.2,
-        "market_p": 0.1,
-        "edge": 49.2,
-        "model_odds": 2.03,
-        "market_odds": 2000.0,
-        "volume": 7691.724418000002
-      },
-      {
-        "player": "Gavi",
-        "team": "Spain",
-        "model_p": 38.6,
-        "market_p": 0.1,
-        "edge": 38.6,
-        "model_odds": 2.59,
-        "market_odds": 2000.0,
-        "volume": 7683.129018999999
-      },
-      {
-        "player": "Pau Cubarsí",
-        "team": "Spain",
-        "model_p": 27.2,
-        "market_p": 0.1,
-        "edge": 27.2,
-        "model_odds": 3.67,
-        "market_odds": 2000.0,
-        "volume": 9551.529433
-      },
-      {
-        "player": "Marc Cucurella",
-        "team": "Spain",
-        "model_p": 26.7,
-        "market_p": 0.1,
-        "edge": 26.6,
-        "model_odds": 3.75,
-        "market_odds": 2000.0,
-        "volume": 12484.780897999992
-      },
-      {
-        "player": "David Raya",
-        "team": "Spain",
-        "model_p": 1.0,
-        "market_p": 0.1,
-        "edge": 0.9,
-        "model_odds": 103.09,
-        "market_odds": 2000.0,
-        "volume": 6585.363937000001
-      }
-    ]
+    "golden_boot": [],
+    "player_to_score": []
   },
   "scorer_shares": {
     "Algeria": [
@@ -7228,7 +7036,7 @@
   },
   "track_record": {
     "summary": {
-      "snapshot_ts": "2026-07-19T23:36Z",
+      "snapshot_ts": "2026-07-20T01:11Z",
       "resolved_matches": 59,
       "model_mean_log_loss": 1.4592,
       "matches_vs_market": 56,
